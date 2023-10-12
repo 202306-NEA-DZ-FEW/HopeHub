@@ -19,6 +19,7 @@ export default function HomePage() {
                     العربية
                 </Link>
             </div>
+            <h1>hope Hub</h1>
         </Layout>
     );
 }
