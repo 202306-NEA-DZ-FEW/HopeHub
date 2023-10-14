@@ -8,15 +8,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        MintGreen: '#BFDFDC',
-        PowderBlue: '#99B4DF',
-        JetBlack: '#363636',
-        AntiFlashWhite: '#EEEEEE',
-        LimeGreen: '#12CB02',
-        EngineeringOrange: '#BD0B0B',
+        Primary: '#BFDFDC',
+        Accent: '#99B4DF',
+        NeutralBlack: '#363636',
+        NeutralWhite: '#EEEEEE',
+        Success: '#12CB02',
+        Error: '#BD0B0B',
       },
       fontFamily: {
-        
+        poppins:["Poppins"],
+        aclonica:["Aclonica"],
         opensans: ["Open Sans", "sans-serif"],
       },
     },
