@@ -65,19 +65,19 @@ export default function Navbar() {
                     </ul>
                 </div>
 
-                <div className='px-6'>
+                <div className='logo-container'>
                     <Link href='/'>
                         <Image
                             src={logo}
                             alt='Logo'
                             width={145}
-                            height={85.872}
+                            height={85.872 * (115 / 145)}
                             layout='fixed'
                         />
                     </Link>
                 </div>
             </div>
-            <div className='flex justify-end ml-auto px-4'>
+            <div className='flex justify-between ml-auto px-4'>
                 <div className='navbar-center hidden lg:flex'>
                     <ul className='menu menu-horizontal px-1 gap-6'>
                         <li className='text-Accent font-bold underline font-poppins text-base tracking-wider'>
@@ -107,7 +107,7 @@ export default function Navbar() {
                 <div className='navbar-end'>
                     <Link
                         href='/login'
-                        className='btn bg-Accent mx-4 h-0 w-32 text-base tracking-wider text-NeutralBlack font-extrabold font-poppins hover:bg-Primary'
+                        className='button-container btn bg-Accent mx-4 h-0 w-32 text-base tracking-wider text-NeutralBlack font-extrabold font-poppins hover:bg-Primary'
                         style={{ textTransform: "capitalize" }}
                     >
                         Log In

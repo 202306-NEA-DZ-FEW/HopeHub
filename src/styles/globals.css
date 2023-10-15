@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.logo-container {
+    padding: 0;
+}
+
+.button-container {
+    width: 90px;
+}
+
+@media (min-width: 300px) {
+    .logo-container {
+        padding-left: 20px; /* Add padding when screen width is at least 300px */
+    }
+}
