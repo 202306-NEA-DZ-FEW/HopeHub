@@ -5,16 +5,9 @@ import Link from "next/link";
 
 export default function Navbar() {
     return (
-        <div
-            className='navbar bg-base-100'
-            style={{
-                background: "rgba(234, 248, 249, 0.08)",
-                boxShadow:
-                    "-51.53333px 51.53333px 51.53333px 0px rgba(255, 255, 255, 0.08) inset, 51.53333px -51.53333px 51.53333px 0px rgba(178, 188, 189, 0.08) inset",
-                backdropFilter: "blur(24.220666885375977px)",
-            }}
-        >
+        <div className='navbar'>
             <div className='navbar-start'>
+                {/* Dropdown menu for small screens */}
                 <div className='dropdown'>
                     <label tabIndex={0} className='btn btn-ghost lg:hidden'>
                         <svg
@@ -34,13 +27,7 @@ export default function Navbar() {
                     </label>
                     <ul
                         tabIndex={0}
-                        className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52'
-                        style={{
-                            background: "rgba(234, 248, 249, 0.08)",
-                            boxShadow:
-                                "-51.53333px 51.53333px 51.53333px 0px rgba(255, 255, 255, 0.08) inset, 51.53333px -51.53333px 51.53333px 0px rgba(178, 188, 189, 0.08) inset",
-                            backdropFilter: "blur(24.220666885375977px)",
-                        }}
+                        className='menu-s menu-sm dropdown-content mt-6 z-[4] p-2 shadow w-52'
                     >
                         <li className='text-Accent font-bold underline font-poppins'>
                             <Link href='/'>Home</Link>
@@ -54,17 +41,10 @@ export default function Navbar() {
                         <li className='text-NeutralBlack font-semibold font-poppins'>
                             <Link href='/contact'>Contact Us</Link>
                         </li>
-
-                        {/* <li>
-              <a className='text-NeutralBlack font-semibold font-poppins'>About</a>
-              <ul className="p-2">
-                <li><a>Submenu 1</a></li>
-                <li><a>Submenu 2</a></li>
-              </ul>
-             </li> */}
                     </ul>
                 </div>
 
+                {/* Our Logo */}
                 <div className='logo-container'>
                     <Link href='/'>
                         <Image
@@ -77,6 +57,8 @@ export default function Navbar() {
                     </Link>
                 </div>
             </div>
+
+            {/* Navbar for large screens*/}
             <div className='flex justify-between ml-auto px-4'>
                 <div className='navbar-center hidden lg:flex'>
                     <ul className='menu menu-horizontal px-1 gap-6'>
@@ -92,22 +74,14 @@ export default function Navbar() {
                         <li className='text-NeutralBlack font-semibold font-poppins text-base tracking-wider'>
                             <Link href='/contact'>Contact Us</Link>
                         </li>
-
-                        {/* <li tabIndex={0}>
-            <details>
-              <summary className='text-NeutralBlack font-semibold font-poppins text-base'>About</summary>
-              <ul className="p-2">
-                <li><a>Submenu 1</a></li>
-                <li><a>Submenu 2</a></li>
-              </ul>
-            </details>
-          </li> */}
                     </ul>
                 </div>
+
+                {/* Login button */}
                 <div className='navbar-end'>
                     <Link
                         href='/login'
-                        className='button-container btn bg-Accent mx-4 h-0 w-32 text-base tracking-wider text-NeutralBlack font-extrabold font-poppins hover:bg-Primary'
+                        className='button-container btn  bg-Accent mx-4 h-0 w-32 text-base tracking-wider text-NeutralBlack font-extrabold font-poppins hover:bg-Primary'
                         style={{ textTransform: "capitalize" }}
                     >
                         Log In
