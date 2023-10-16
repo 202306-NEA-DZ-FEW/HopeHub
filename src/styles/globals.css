@@ -28,4 +28,7 @@
     .logo-container {
         padding-left: 20px;
     }
+    .button-container {
+        width: 120px;
+    }
 }

@@ -18,6 +18,9 @@ export default function HomePage() {
                 <Link href='/' locale='ar'>
                     العربية
                 </Link>
+                <Link href='/' locale='fr'>
+                    French
+                </Link>
             </div>
             <h1>hope Hub</h1>
         </Layout>

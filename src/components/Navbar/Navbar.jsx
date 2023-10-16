@@ -1,9 +1,14 @@
 import React from "react";
+
 import logo from "../../../public/assets/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 
+import { useTranslation } from "next-i18next";
+
 export default function Navbar() {
+    const { t } = useTranslation("common");
+
     return (
         <div className='navbar'>
             <div className='navbar-start'>
@@ -30,16 +35,16 @@ export default function Navbar() {
                         className='menu-s menu-sm dropdown-content mt-6 z-[4] p-2 shadow w-52'
                     >
                         <li className='text-Accent font-bold underline font-poppins'>
-                            <Link href='/'>Home</Link>
+                            <Link href='/'>{t("Home")}</Link>
                         </li>
                         <li className='text-NeutralBlack font-semibold font-poppins'>
-                            <Link href='/blogs'>Blogs</Link>
+                            <Link href='/blogs'>{t("Blogs")}</Link>
                         </li>
                         <li className='text-NeutralBlack font-semibold font-poppins'>
-                            <Link href='/about'>About</Link>
+                            <Link href='/about'>{t("About")}</Link>
                         </li>
                         <li className='text-NeutralBlack font-semibold font-poppins'>
-                            <Link href='/contact'>Contact Us</Link>
+                            <Link href='/contact'>{t("Contact")}</Link>
                         </li>
                     </ul>
                 </div>
@@ -63,16 +68,16 @@ export default function Navbar() {
                 <div className='navbar-center hidden lg:flex'>
                     <ul className='menu menu-horizontal px-1 gap-6'>
                         <li className='text-Accent font-bold underline font-poppins text-base tracking-wider'>
-                            <Link href='/'>Home</Link>
+                            <Link href='/'>{t("Home")}</Link>
                         </li>
                         <li className='text-NeutralBlack font-semibold font-poppins text-base tracking-wider'>
-                            <Link href='/blogs'>Blogs</Link>
+                            <Link href='/blogs'>{t("Blogs")}</Link>
                         </li>
                         <li className='text-NeutralBlack font-semibold font-poppins text-base tracking-wider'>
-                            <Link href='/about'>About</Link>
+                            <Link href='/about'>{t("About")}</Link>
                         </li>
                         <li className='text-NeutralBlack font-semibold font-poppins text-base tracking-wider'>
-                            <Link href='/contact'>Contact Us</Link>
+                            <Link href='/contact'>{t("Contact")}</Link>
                         </li>
                     </ul>
                 </div>
@@ -81,10 +86,10 @@ export default function Navbar() {
                 <div className='navbar-end'>
                     <Link
                         href='/login'
-                        className='button-container btn  bg-Accent mx-4 h-0 w-32 text-base tracking-wider text-NeutralBlack font-extrabold font-poppins hover:bg-Primary'
+                        className='button-container btn  bg-Accent mx-4 w-32 text-base tracking-wider text-NeutralBlack font-extrabold font-poppins hover:bg-Primary'
                         style={{ textTransform: "capitalize" }}
                     >
-                        Log In
+                        {t("Log In")}
                     </Link>
                 </div>
             </div>

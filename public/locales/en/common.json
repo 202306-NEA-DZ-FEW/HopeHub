@@ -1,3 +1,8 @@
 {
-    "test": "Hello"
+    "test": "Hello",
+    "Home": "Home",
+    "Contact": "Contact Us",
+    "Blogs": "Blogs",
+    "About": "About",
+    "Log In": "Login"
 }
