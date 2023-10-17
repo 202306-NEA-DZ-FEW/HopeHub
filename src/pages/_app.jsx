@@ -1,11 +1,14 @@
 import { appWithTranslation } from "next-i18next";
+import { AppWrapper } from "@/context/state";
 
 import "@/styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
     return (
         <>
-            <Component {...pageProps} />
+            <AppWrapper>
+                <Component {...pageProps} />
+            </AppWrapper>
         </>
     );
 }
