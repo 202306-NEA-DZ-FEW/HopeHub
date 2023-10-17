@@ -11,7 +11,14 @@ export default function HomePage() {
     return (
         <Layout>
             <p>{t("test")}</p>
-            <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: "20px",
+                    background: "white",
+                }}
+            >
                 <Link href='/' locale='en'>
                     English
                 </Link>

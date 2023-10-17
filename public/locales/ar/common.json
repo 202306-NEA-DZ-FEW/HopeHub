@@ -1,3 +1,26 @@
 {
-    "test": "مرحبا"
+"test": "مرحبا",
+"Type of Contact": "نوع الاتصال",
+"I have a question about the service.": "لدي سؤال حول الخدمة.",
+"I'm a registered client and I need support.": "أنا عميل مسجل وأحتاج دعمًا.",
+"I'm a counselor interested in joining.": "أنا مستشار مهتم بالانضمام.",
+"I'm a registered counselor and I need support.": "أنا مستشار مسجل وأحتاج دعمًا.",
+"I have a business-related inquiry.": "لدي استفسار متعلق بالأعمال.",
+"I'm interested in Healing Online for my organization.": "أنا مهتم بالشفاء عبر الإنترنت لمؤسستي.",
+"I have a billing-related question.": "لدي سؤال متعلق بالفواتير.",
+"Full Name": "الاسم الكامل",
+"Enter your Full Name here...": "أدخل اسمك الكامل هنا...",
+"Email": "البريد الإلكتروني",
+"Enter your email address here...": "أدخل عنوان بريدك الإلكتروني هنا...",
+"Details": "تفاصيل",
+"Enter your details here...": "أدخل التفاصيل هنا...",
+"Submit": "إرسال",
+"SEND US YOUR REQUEST!": "أرسل لنا طلبك!",
+"Do you have a question, concern, idea, feedback, or problem? If you need assistance, please fill out the form below, and we'd be happy to help!": "هل لديك سؤال، قلق، فكرة، ملاحظة، أو مشكلة؟ إذا كنت بحاجة إلى مساعدة، يرجى ملء النموذج أدناه، وسنكون سعداء بمساعدتك!",
+"Find Us At": "زُرنا هنا",
+"Nergiz Plaza": "مركز نرجيز",
+"3rd Floor": "الطابق الثالث",
+"Bakhtiyari Street 40m": "شارع باختياري، 40 مترًا",
+"Algiers, Algeria": "الجزائر، الجزائر",
+"44001": "44001"
 }
