@@ -2,6 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-input[type="radio"]:checked {
-    border-color: transparent;
+
+/* to achieve glassmorph effect on the navbar */
+
+.navbar,
+.menu-s {
+    background: rgba(234, 248, 249, 0.08);
+    box-shadow: -51.53333px 51.53333px 51.53333px 0px rgba(255, 255, 255, 0.08)
+            inset,
+        51.53333px -51.53333px 51.53333px 0px rgba(178, 188, 189, 0.08) inset;
+    backdrop-filter: blur(24.220666885375977px);
+}
+
+/* for screen lower in width than 300px */
+
+.logo-container {
+    padding: 0;
+}
+
+.button-container {
+    width: 90px;
+}
+
+/* Add padding when screen width is at least 300px */
+@media (min-width: 300px) {
+    .logo-container {
+        padding-left: 20px;
+    }
+    .button-container {
+        width: 120px;
+    }
+
 }

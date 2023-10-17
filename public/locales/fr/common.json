@@ -1,4 +1,5 @@
 {
+
   "Type of Contact": "Type de contact", 
 "I have a question about the service.": "J'ai une question sur le service.",
 "I'm a registered client and I need support.": "Je suis un client enregistré et j'ai besoin de support.",
@@ -21,9 +22,11 @@
 "3rd Floor": "3ème étage",
 "Bakhtiyari Street 40m": "Rue Bakhtiyari, 40 mètres",
 "Algiers, Algeria": "Alger, Algérie",
-"44001": "44001"
+"44001": "44001",
+    "Home": "Accueil",
+    "Contact": "Contactez Nous",
+    "Blogs": "Blogs",
+    "About": "A Propos",
+    "Log In": "Connexion"
 }
-
-
-
 
