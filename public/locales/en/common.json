@@ -1,3 +1,6 @@
 {
-    "test": "Hello"
+    "test": "Hello",
+    "footer_msg_1":"Subscribe",
+    "footer_msg_2":"We’ll never to spam you or share your email",
+    "footer_msg_3":"Enter your e-mail"
 }

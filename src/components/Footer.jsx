@@ -1,24 +1,26 @@
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 import React from "react";
 
 function Footer() {
+    const { t } = useTranslation("common");
     return (
-        <footer className='footer p-10 bg-[#BFDFDC] text-base-content'>
+        <footer className='footer p-10 bg-[#BFDFDC] text-base-content flex flex-col md:flex-row lg:flex-row justify-between'>
             <form>
                 <header className=' font-bold text-xl mb-[-15px]'>
-                    Subscribe
+                    {t("footer_msg_1")}
                 </header>
                 <fieldset className='form-control w-80 mt-2'>
                     <label className='label'>
-                        <span className='label-text opacity-50'>
-                            We’ll never to spam you or share your email
+                        <span className='label-text text-[#718096]'>
+                            {t("footer_msg_2")}
                         </span>
                     </label>
                     <div className='relative flex flex-row'>
                         <input
                             type='text'
-                            placeholder='Enter your e-mail'
-                            className='input input-bordered border-[#718096] border-solid pr-16'
+                            placeholder={t("footer_msg_3")}
+                            className='input input-bordered border-[#718096] border-solid pr-16 outline-none focus:outline-none'
                         />
                         <span className=' w-20 ml-[-1rem]'>
                             <svg
@@ -44,17 +46,17 @@ function Footer() {
                 </fieldset>
             </form>
             <div className=' items-center'>
-                <nav className='footer-title'>
-                    <Link className=' ml-5 mr-5' href='../Home'>
+                <nav className='footer-title flex gap-8'>
+                    <Link className=' ' href='../Home'>
                         Home
                     </Link>
-                    <Link className=' ml-5 mr-5' href='../Blogs'>
+                    <Link className=' ' href='../Blogs'>
                         Blogs
                     </Link>
-                    <Link className=' ml-5 mr-5' href='../About'>
+                    <Link className=' ' href='../About'>
                         About
                     </Link>
-                    <Link className=' ml-5 mr-5' href='../Contact'>
+                    <Link className=' ' href='../Contact'>
                         Contact
                     </Link>
                 </nav>
