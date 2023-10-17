@@ -5,7 +5,7 @@ import React from "react";
 function Footer() {
     const { t } = useTranslation("common");
     return (
-        <footer className='footer p-10 bg-[#BFDFDC] text-base-content flex flex-col md:flex-row lg:flex-row justify-between'>
+        <footer className='footer px-10 py-5 bg-[#BFDFDC] text-base-content flex flex-col md:flex-row lg:flex-row justify-between items-center'>
             <form>
                 <header className=' font-bold text-xl mb-[-15px]'>
                     {t("footer_msg_1")}
@@ -45,7 +45,7 @@ function Footer() {
                     </div>
                 </fieldset>
             </form>
-            <div className=' items-center'>
+            <div className=' items-center flex flex-col justify-center h-full'>
                 <nav className='footer-title flex gap-8'>
                     <Link className=' ' href='../Home'>
                         Home
@@ -60,7 +60,7 @@ function Footer() {
                         Contact
                     </Link>
                 </nav>
-                <div className='grid grid-flow-col gap-4 ml-24 mt-7'>
+                <div className='grid grid-flow-col gap-4'>
                     <a href=''>
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
