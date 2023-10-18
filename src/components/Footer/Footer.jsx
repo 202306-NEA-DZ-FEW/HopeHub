@@ -48,16 +48,16 @@ function Footer() {
             <div className=' items-center flex flex-col justify-center h-full'>
                 <nav className='footer-title flex gap-8'>
                     <Link className=' ' href='../Home'>
-                        Home
+                        {t("Home")}
                     </Link>
                     <Link className=' ' href='../Blogs'>
-                        Blogs
+                        {t("Blogs")}
                     </Link>
                     <Link className=' ' href='../About'>
-                        About
+                        {t("About")}
                     </Link>
                     <Link className=' ' href='../Contact'>
-                        Contact
+                        {t("Contact")}
                     </Link>
                 </nav>
                 <div className='grid grid-flow-col gap-4'>
