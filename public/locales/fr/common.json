@@ -1,5 +1,8 @@
 {
     "test": "Coucou",
+    "footer_msg_1": "S'abonner",
+    "footer_msg_2": "Nous ne partagerons jamais votre adresse e-mail",
+    "footer_msg_3": "Entrez votre e-mail",
     "Home": "Accueil",
     "Contact": "Contactez Nous",
     "Blogs": "Blogs",
