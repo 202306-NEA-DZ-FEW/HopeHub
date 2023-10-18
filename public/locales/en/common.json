@@ -1,12 +1,8 @@
 {
     "test": "Hello",
-    "footer_msg_1":"Subscribe",
-    "footer_msg_2":"We’ll never to spam you or share your email",
-<<<<<<< HEAD
-    "footer_msg_3":"Enter your e-mail",
-=======
-    "footer_msg_3":"Enter your e-mail"
->>>>>>> b4938d13a3dedb38260fceb3cee29ebe1ded177a
+    "footer_msg_1": "Subscribe",
+    "footer_msg_2": "We’ll never to spam you or share your email",
+    "footer_msg_3": "Enter your e-mail",
     "Home": "Home",
     "Contact": "Contact Us",
     "Blogs": "Blogs",
