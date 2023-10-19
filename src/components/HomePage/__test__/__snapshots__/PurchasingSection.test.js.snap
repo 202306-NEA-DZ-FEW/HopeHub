@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="bg-BgWhite w-full font-poppins font-extrabold flex flex-col pb-8"
+>
+  <h1
+    className="mx-6 mt-4 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase"
+  >
+    Purchase
+     
+    Tickets
+  </h1>
+  <h1
+    className="text-xs mx-6  md:text-xl md:mx-9 uppercase"
+  >
+    Purchase tickets that can be used to book appointments!
+  </h1>
+  <div
+    className="flex flex-col items-center"
+  >
+    <div
+      className="flex flex-wrap my-8 mx-2 md:mx-28 lg:mx-2 justify-around w-full"
+    >
+      <div
+        className="card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6"
+      >
+        <div
+          className="card-body flex flex-col items-center"
+        >
+          <h1
+            className="card-title text-xl md:text-3xl uppercase font-extrabold"
+          >
+            5
+             
+            Tickets
+          </h1>
+          <h1
+            className="text-gray-400 text-base md:text-xl"
+          >
+            $
+            10
+          </h1>
+          <div
+            className="card-actions justify-end md:mt-4"
+          >
+            <a
+              href="/buyticket"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              <button
+                className="btn bg-Accent hover:bg-Primary"
+              >
+                Purchase
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6"
+      >
+        <div
+          className="card-body flex flex-col items-center"
+        >
+          <h1
+            className="card-title text-xl md:text-3xl uppercase font-extrabold"
+          >
+            25
+             
+            Tickets
+          </h1>
+          <h1
+            className="text-gray-400 text-base md:text-xl"
+          >
+            $
+            40
+          </h1>
+          <div
+            className="card-actions justify-end md:mt-4"
+          >
+            <a
+              href="/buyticket"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              <button
+                className="btn bg-Accent hover:bg-Primary"
+              >
+                Purchase
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6"
+      >
+        <div
+          className="card-body flex flex-col items-center"
+        >
+          <h1
+            className="card-title text-xl md:text-3xl uppercase font-extrabold"
+          >
+            50
+             
+            Tickets
+          </h1>
+          <h1
+            className="text-gray-400 text-base md:text-xl"
+          >
+            $
+            70
+          </h1>
+          <div
+            className="card-actions justify-end md:mt-4"
+          >
+            <a
+              href="/buyticket"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              <button
+                className="btn bg-Accent hover:bg-Primary"
+              >
+                Purchase
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card items-center my-2 border-2 rounded-xl shadow-xl w-10/12 h-auto"
+    >
+      <div
+        className="card-body items-center"
+      >
+        <h1
+          className="card-title my-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase text-center"
+        >
+          Are you a counselor?
+        </h1>
+        <p
+          className="text-xs my-2 md:text-2xl md:mx-9 text-center"
+        >
+          Interested in joining our mental health platform? You decide your schedule and how much you want to work, we’ll take care of the client referrals and billing details!
+        </p>
+        <div
+          className="card-actions justify-around"
+        >
+          <a
+            href="/therapistcreate"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            <button
+              className="btn bg-Accent hover:bg-Primary my-2"
+            >
+              Learn More
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
