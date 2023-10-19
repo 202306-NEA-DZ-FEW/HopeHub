@@ -1,5 +1,6 @@
 {
     "test": "مرحبا",
+
     "Type of Contact": "نوع الاتصال",
     "I have a question about the service.": "لدي سؤال حول الخدمة.",
     "I'm a registered client and I need support.": "أنا عميل مسجل وأحتاج دعمًا.",
@@ -23,7 +24,9 @@
     "Bakhtiyari Street 40m": "شارع باختياري، 40 مترًا",
     "Algiers, Algeria": "الجزائر، الجزائر",
     "44001": "44001",
-    "test": " مرحبا",
+    "footer_msg_1": "اشترك الآن",
+    "footer_msg_2": "لن نقوم أبدًا بمشاركة بريدك الإلكتروني",
+    "footer_msg_3": "أدخل بريدك الإلكتروني",
     "Blogs": "المدونات",
     "Contact": "اتصل بنا",
     "About": "من نحن",
