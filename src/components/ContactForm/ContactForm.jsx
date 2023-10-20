@@ -28,14 +28,14 @@ const ContactForm = () => {
                 {/* the questions radio list */}
                 <div className='mt-4'>
                     <label
-                        className='block text-black text-sm font-bold mb-4 font-poppins'
+                        className='block text-black text-base md:text-xl lg:text-2xl font-extrabold mb-5 font-poppins '
                         htmlFor='contactType'
                     >
                         {t("Type of Contact")}
                     </label>
-                    <div>
-                        <div className='mb-2'>
-                            <label className='block items-center font-poppins'>
+                    <div className='font-semibold font-poppins text-NeutralBlack text-xs md:text-base'>
+                        <div className='mb-2 '>
+                            <label className='block items-center'>
                                 <input
                                     type='radio'
                                     id='service'
@@ -49,7 +49,7 @@ const ContactForm = () => {
                             </label>
                         </div>
                         <div className='mb-2'>
-                            <label className='block items-center text-black font-poppins'>
+                            <label className='block items-center'>
                                 <input
                                     type='radio'
                                     id='support'
@@ -65,7 +65,7 @@ const ContactForm = () => {
                             </label>
                         </div>
                         <div className='mb-2'>
-                            <label className='block items-center text-black font-poppins'>
+                            <label className='block items-center'>
                                 <input
                                     type='radio'
                                     id='counselor'
@@ -79,7 +79,7 @@ const ContactForm = () => {
                             </label>
                         </div>
                         <div className='mb-2'>
-                            <label className='block items-center text-black font-poppins'>
+                            <label className='block items-center '>
                                 <input
                                     type='radio'
                                     id='counselorSup'
@@ -95,7 +95,7 @@ const ContactForm = () => {
                             </label>
                         </div>
                         <div className='mb-2'>
-                            <label className='block items-center text-black font-poppins'>
+                            <label className='block items-center'>
                                 <input
                                     type='radio'
                                     id='businessRelated'
@@ -109,7 +109,7 @@ const ContactForm = () => {
                             </label>
                         </div>
                         <div className='mb-2'>
-                            <label className='block items-center text-black font-poppins'>
+                            <label className='block items-center '>
                                 <input
                                     type='radio'
                                     id='healingOnline'
@@ -125,7 +125,7 @@ const ContactForm = () => {
                             </label>
                         </div>
                         <div className='mb-2'>
-                            <label className='block items-center text-black font-poppins'>
+                            <label className='block items-center '>
                                 <input
                                     type='radio'
                                     id='billingRelated'

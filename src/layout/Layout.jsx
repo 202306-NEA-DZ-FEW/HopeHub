@@ -6,11 +6,11 @@ export default function Layout({ children }) {
     // Put Header or Footer around the children element
     // Example
     return (
-        <>
+        <main>
             <Navbar />
             {children}
             <Footer />
-        </>
+        </main>
     );
 
     // return <>{children}</>;

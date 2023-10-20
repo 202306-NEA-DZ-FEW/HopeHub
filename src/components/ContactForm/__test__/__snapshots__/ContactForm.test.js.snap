@@ -12,17 +12,19 @@ exports[`renders correctly 1`] = `
       className="mt-4"
     >
       <label
-        className="block text-black text-sm font-bold mb-4 font-poppins"
+        className="block text-black text-base md:text-xl lg:text-2xl font-extrabold mb-5 font-poppins "
         htmlFor="contactType"
       >
         Type of Contact
       </label>
-      <div>
+      <div
+        className="font-semibold font-poppins text-NeutralBlack text-xs md:text-base"
+      >
         <div
-          className="mb-2"
+          className="mb-2 "
         >
           <label
-            className="block items-center font-poppins"
+            className="block items-center"
           >
             <input
               checked={false}
@@ -40,7 +42,7 @@ exports[`renders correctly 1`] = `
           className="mb-2"
         >
           <label
-            className="block items-center text-black font-poppins"
+            className="block items-center"
           >
             <input
               checked={false}
@@ -58,7 +60,7 @@ exports[`renders correctly 1`] = `
           className="mb-2"
         >
           <label
-            className="block items-center text-black font-poppins"
+            className="block items-center"
           >
             <input
               checked={false}
@@ -76,7 +78,7 @@ exports[`renders correctly 1`] = `
           className="mb-2"
         >
           <label
-            className="block items-center text-black font-poppins"
+            className="block items-center "
           >
             <input
               checked={false}
@@ -94,7 +96,7 @@ exports[`renders correctly 1`] = `
           className="mb-2"
         >
           <label
-            className="block items-center text-black font-poppins"
+            className="block items-center"
           >
             <input
               checked={false}
@@ -112,7 +114,7 @@ exports[`renders correctly 1`] = `
           className="mb-2"
         >
           <label
-            className="block items-center text-black font-poppins"
+            className="block items-center "
           >
             <input
               checked={false}
@@ -130,7 +132,7 @@ exports[`renders correctly 1`] = `
           className="mb-2"
         >
           <label
-            className="block items-center text-black font-poppins"
+            className="block items-center "
           >
             <input
               checked={false}
