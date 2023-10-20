@@ -2,6 +2,7 @@ import * as React from "react";
 import Navbar from "@/components/Navbar/Navbar";
 import i18n from "../../i18n";
 import Cookies from "js-cookie";
+import Footer from "@/components/Footer/Footer";
 
 export default function Layout({ children }) {
     const userLanguage = Cookies.get("userLanguage");
@@ -19,6 +20,7 @@ export default function Layout({ children }) {
         <div dir={textDirectionClass}>
             <Navbar />
             {children}
-        </div>
+            <Footer />
+       </div>
     );
 }
