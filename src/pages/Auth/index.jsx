@@ -94,7 +94,6 @@ function Auth() {
                 className='pt-20 pb-8 relative w-full h-fit bg-no-repeat px-2 bg-cover flex justify-center items-center flex-col gap-4 md:flex-row md:justify-center'
                 style={{ backgroundImage: "url('/assets/login-bg.svg')" }}
             >
-                {/* <Image src={bg} width={1000} className='w-full h-full absolute left-0 top-0 right-0 bottom-0 -z-10'/> */}
                 <section className=' flex flex-col items-start justify-center gap-0 p-1 mr-10'>
                     <h1 className='w-full text-left font-poppins font-black text-black text-5xl lg:text-7xl relative top-12 md:top-20'>
                         {t("welcome")}
