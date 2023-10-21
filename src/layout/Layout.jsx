@@ -8,7 +8,7 @@ export default function Layout({ children }) {
     return (
         <>
             <Navbar />
-            {children}
+            <div className='container mx-auto mt-8'>{children}</div>
             <Footer />
         </>
     );
