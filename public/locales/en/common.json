@@ -7,5 +7,17 @@
     "Contact": "Contact Us",
     "Blogs": "Blogs",
     "About": "About",
-    "Log In": "Login"
+    "Log In": "Log in",
+    "Sign Up": "Sign up",
+    "or": "Or",
+    "welcome": "Welcome to",
+    "enter password": "Your Password",
+    "forgot": "Forgot Password",
+    "Back": "Back ",
+    "Send Email": "Send Email",
+    "lname": "Last name",
+    "fname": "First name",
+    "Confirm Email": "Confirm your email",
+    "Confirm Password": "Confirm your password",
+    "bdate": " Birth date"
 }

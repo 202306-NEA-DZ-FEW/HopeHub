@@ -7,5 +7,17 @@
     "Contact": "Contactez Nous",
     "Blogs": "Blogs",
     "About": "A Propos",
-    "Log In": "Connexion"
+    "Log In": "Connexion",
+    "Sign Up": "Inscription",
+    "or": "ou",
+    "welcome": "Bienvenu à",
+    "enter password": "Votre mot de passe",
+    "forgot": "Mot de passe oublié ?",
+    "Back": "Retour",
+    "Send Email": "Envoyer un email",
+    "lname": "Nom",
+    "fname": "Prénom",
+    "Confirm Email": "Confirmez votre adresse email",
+    "Confirm Password": "Confirmez votre mot de passe",
+    "bdate": " Date de naissance"
 }
