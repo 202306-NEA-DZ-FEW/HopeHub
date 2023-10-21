@@ -19,5 +19,9 @@
     "fname": "Prénom",
     "Confirm Email": "Confirmez votre adresse email",
     "Confirm Password": "Confirmez votre mot de passe",
-    "bdate": " Date de naissance"
+    "bdate": " Date de naissance",
+    "Thank you": "Merci Beaucoup",
+    "Back to Home": "Revenir à l'accueil",
+    "Thank text 1": "Votre demande d'inscription a été reçue, vous recevrez bientôt un email de confirmation. Veuillez suivre les étapes indiquées dans l'e-mail pour compléter et activer votre compte.",
+    "Thank text 2": "Votre demande a été envoyée, un membre de l'équipe d'assistance vous contactera via l'e-mail que vous avez fourni dans les plus brefs délais."
 }

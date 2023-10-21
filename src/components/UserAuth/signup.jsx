@@ -1,4 +1,4 @@
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
 import {
     createUserWithEmailAndPassword,
@@ -17,6 +17,8 @@ function Signup({ isChecked, setChecked }) {
     const [lastname, setLastname] = useState("");
     const [bdate, setBdate] = useState("");
     const router = useRouter();
+    const pathname = usePathname().slice(1);
+
     const { t } = useTranslation("common");
 
     function handleSignup(e) {
@@ -35,7 +37,7 @@ function Signup({ isChecked, setChecked }) {
                     .then((cred) => {
                         // const user = userCredential.user;
                         console.log(cred);
-                        router.push("/thanks"); // redirect to thanks pages after registration
+                        router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
                     })
                     .catch((err) => {
                         console.log("updating error", err);
