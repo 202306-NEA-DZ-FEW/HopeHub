@@ -24,16 +24,18 @@ function Signup({ isChecked, setChecked }) {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // console.log(userCredential.user)
-                sendEmailVerification(userCredential.user).then(() => {
+                // to verify the provided email is correct, it will be implemented after deployement
+                /*  sendEmailVerification(userCredential.user).then(() => {
                     console.log("verification email sent");
-                });
+                }); */
                 updateProfile(userCredential.user, {
+                    //after creating user, update his prfole and give him name
                     displayName: firstname + " " + lastname,
                 })
                     .then((cred) => {
                         // const user = userCredential.user;
                         console.log(cred);
-                        router.push("/thanks");
+                        router.push("/thanks"); // redirect to thanks pages after registration
                     })
                     .catch((err) => {
                         console.log("updating error", err);
@@ -45,9 +47,14 @@ function Signup({ isChecked, setChecked }) {
                 console.log("can't sign up", errorMessage, " ", errorCode);
                 // ..
             });
-        // setName("")
+        // reset the fields
         setEmail("");
+        setLastname("");
+        setConfirmemail("");
+        setConfirmpassword("");
+        setBdate("");
         setPassword("");
+        setFirstname("");
     }
     return (
         <>
