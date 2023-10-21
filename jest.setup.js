@@ -16,14 +16,14 @@ jest.mock("@/util/firebase", () => {
     };
 });
 
-jest.mock('next/navigation', () => {
-  return {
-    __esModule: true,
-    useRouter: jest.fn(),
-    usePathname: jest.fn(() => '/home'),
-    useSearchParams: jest.fn(),
-  }
-})
+jest.mock("next/navigation", () => {
+    return {
+        __esModule: true,
+        useRouter: jest.fn(),
+        usePathname: jest.fn(() => "/home"),
+        useSearchParams: jest.fn(),
+    };
+});
 
 jest.mock("next-i18next", () => ({
     useTranslation: () => ({ t: (key) => key }),
