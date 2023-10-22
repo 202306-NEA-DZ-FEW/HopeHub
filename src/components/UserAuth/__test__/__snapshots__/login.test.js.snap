@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="font-poppins flex flex-col items-start justify-center w-full "
+>
+  <h2
+    className=" font-extrabold text-4xl text-black my-5"
+  >
+    Log In
+  </h2>
+  <form
+    className="text-4xl p-3 w-full bg-NeutralWhite rounded-md shadow-md flex flex-col gap-4"
+    onSubmit={[Function]}
+  >
+    <input
+      className="input input-bordered w-full  h-16"
+      onChange={[Function]}
+      placeholder="footer_msg_3"
+      type="email"
+      value=""
+    />
+    <input
+      className="input input-bordered w-full h-16 "
+      onChange={[Function]}
+      placeholder="enter password"
+      type="password"
+      value=""
+    />
+    <div
+      className="flex flex-row justify-between items-center gap-4"
+    >
+      <button
+        className="btn font-bold hover:text-Accent flex-1 text-Accent border-Accent"
+        type="submit"
+      >
+        Log In
+         
+      </button>
+      <button
+        className="btn font-bold  text-Accent border-Accent flex-1"
+        onClick={[Function]}
+        type=""
+      >
+        Sign Up
+         
+      </button>
+    </div>
+    <span
+      className="text-Accent font-semibold text-lg text-right cursor-pointer"
+      onClick={[Function]}
+    >
+      forgot
+    </span>
+  </form>
+</div>
+`;

@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="font-poppins flex flex-col items-start justify-center w-full "
+>
+  <h2
+    className=" font-extrabold text-4xl text-black my-5"
+  >
+     
+    forgot
+     
+  </h2>
+  <form
+    className="text-4xl p-3 w-full bg-NeutralWhite rounded-md shadow-md flex flex-col gap-4"
+    onSubmit={[Function]}
+  >
+    <button
+      className="flex flex-row justify-start items-center text-lg gap-2 font-bold  text-Accent "
+      onClick={[Function]}
+      type=""
+    >
+       
+      <svg
+        fill="none"
+        height="1em"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="19"
+          x2="5"
+          y1="12"
+          y2="12"
+        />
+        <polyline
+          points="12 19 5 12 12 5"
+        />
+      </svg>
+       
+      Back
+       
+    </button>
+    <input
+      className="input input-bordered w-full  h-16"
+      onChange={[Function]}
+      placeholder="footer_msg_3"
+      type="email"
+      value=""
+    />
+    <button
+      className="btn bg-Accent text-center ml-auto text-white flex flex-row justify-start items-center  gap-2 font-bold hover:text-Accent hover:border-Accent"
+      type="submit"
+    >
+      Send Email
+    </button>
+  </form>
+</div>
+`;

@@ -28,4 +28,20 @@
     "Feeling ready to start a conversation? Give your therapist a voice call and talk your heart out!": "Vous vous sentez prêt à entamer une conversation? Appelez votre thérapeute et parlez-lui à cœur ouvert!",
     "Need to talk to someone? Come have a chat with your therapist!": "Besoin de parler à quelqu'un ? Venez discuter avec votre thérapeute!",
     "For a better experience therapists recommend video calls, but always remember that it's your choice!": "Pour une meilleure expérience, les thérapeutes recommandent les appels vidéo, mais n'oubliez jamais que c'est un choix!"
+    "Sign Up": "Inscription",
+    "or": "ou",
+    "welcome": "Bienvenu à",
+    "enter password": "Votre mot de passe",
+    "forgot": "Mot de passe oublié ?",
+    "Back": "Retour",
+    "Send Email": "Envoyer un email",
+    "lname": "Nom",
+    "fname": "Prénom",
+    "Confirm Email": "Confirmez votre adresse email",
+    "Confirm Password": "Confirmez votre mot de passe",
+    "bdate": " Date de naissance",
+    "Thank you": "Merci Beaucoup",
+    "Back to Home": "Revenir à l'accueil",
+    "Thank text 1": "Votre demande d'inscription a été reçue, vous recevrez bientôt un email de confirmation. Veuillez suivre les étapes indiquées dans l'e-mail pour compléter et activer votre compte.",
+    "Thank text 2": "Votre demande a été envoyée, un membre de l'équipe d'assistance vous contactera via l'e-mail que vous avez fourni dans les plus brefs délais."
 }
