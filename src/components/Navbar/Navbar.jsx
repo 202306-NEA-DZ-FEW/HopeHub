@@ -7,10 +7,12 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
 export default function Navbar() {
+    //Function used for translations
     const { t } = useTranslation("common");
 
+    //Navbar for small and big screens
     return (
-        <div className='navbar h-8 fixed top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b-slate-400'>
+        <div className='navbar h-8 sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b-slate-400'>
             <div className='navbar-start'>
                 {/* Dropdown menu for small screens */}
                 <div className='dropdown'>

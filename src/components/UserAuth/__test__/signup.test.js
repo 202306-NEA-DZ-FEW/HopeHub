@@ -1,4 +1,5 @@
 import renderer from "react-test-renderer";
+
 import Signup from "../signup";
 
 it("renders correctly", () => {

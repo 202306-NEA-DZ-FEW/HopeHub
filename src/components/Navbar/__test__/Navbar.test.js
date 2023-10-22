@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import Forgot from "../forgot";
+import Navbar from "../Navbar";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<Forgot />).toJSON();
+    const tree = renderer.create(<Navbar />).toJSON();
     expect(tree).toMatchSnapshot();
 });

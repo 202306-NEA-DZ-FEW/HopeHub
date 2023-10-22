@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import Forgot from "../forgot";
+import BookingButton from "../BookingButton";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<Forgot />).toJSON();
+    const tree = renderer.create(<BookingButton />).toJSON();
     expect(tree).toMatchSnapshot();
 });

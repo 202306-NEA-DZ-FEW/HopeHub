@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import Forgot from "../forgot";
+import Banner from "../Banner";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<Forgot />).toJSON();
+    const tree = renderer.create(<Banner />).toJSON();
     expect(tree).toMatchSnapshot();
 });
