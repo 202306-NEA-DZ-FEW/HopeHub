@@ -35,6 +35,7 @@ class MyDocument extends Document {
                         href='https://fonts.googleapis.com/css2?family=Aclonica&display=swap'
                         rel='stylesheet'
                     />
+                    <link rel='icon' href='/assets/logo-icon.svg' />
                 </Head>
                 <body>
                     <Main />

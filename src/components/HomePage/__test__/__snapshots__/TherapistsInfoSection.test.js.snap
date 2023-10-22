@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="w-full bg-Primary"
+>
+  <h1
+    className="mx-6 mt-4 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-black inline-block"
+  >
+    Professional, licensed, and vetted therapists that you can trust.
+  </h1>
+  <div
+    className="mx-6 w-64 md:w-96 lg:w-auto md:mx-9"
+  >
+    <img
+      alt="therapists"
+      data-nimg="1"
+      decoding="async"
+      height={60}
+      loading="lazy"
+      onError={[Function]}
+      onLoad={[Function]}
+      src="/_next/image?url=%2Fimg.jpg&w=1080&q=75"
+      srcSet="/_next/image?url=%2Fimg.jpg&w=640&q=75 1x, /_next/image?url=%2Fimg.jpg&w=1080&q=75 2x"
+      style={
+        Object {
+          "color": "transparent",
+        }
+      }
+      width={500}
+    />
+  </div>
+  <p
+    className="text-xs mx-6 my-4 md:text-xl md:mx-9 font-bold font-poppins"
+  >
+    Tap to the world's largest network of licensed, accredited, and experienced therapists who can help you with a range of issues including depression, anxiety, relationships, trauma, grief, and more. with our therapists, you get the same professionalism and quality you would expect from an in-office therapist, but with the ability to communicate whenever and however you want.
+  </p>
+  <div
+    className="inset-0 flex items-end justify-end mx-6 md:mx-10 mb-6 sm:mx-20 lg:mx-10"
+  >
+    <div>
+      <button
+        className="button-container bg-Accent rounded-md w-36 h-7 sm:w-52 sm:h-12 lg:w-64 lg:h-14 hover:bg-NeutralWhite"
+        data-testid="booking-button"
+      >
+        <a
+          className="text-xs sm:text-base lg:text-xl text-NeutralBlack uppercase font-extrabold font-poppins"
+          href="/booking"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          Book An Appointement
+        </a>
+      </button>
+    </div>
+  </div>
+</div>
+`;
