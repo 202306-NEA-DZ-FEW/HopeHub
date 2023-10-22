@@ -3,7 +3,15 @@
 @tailwind utilities;
 
 /* to achieve glassmorph effect on the navbar */
-
+@layer base {
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"] {
+        -webkit-appearance: none;
+        margin: 0;
+        -moz-appearance: textfield !important;
+    }
+}
 .navbar,
 .menu-s {
     background: rgba(234, 248, 249, 0.08);
