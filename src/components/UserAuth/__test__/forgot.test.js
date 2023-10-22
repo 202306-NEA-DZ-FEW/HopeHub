@@ -1,4 +1,5 @@
 import renderer from "react-test-renderer";
+
 import Forgot from "../forgot";
 
 it("renders correctly", () => {
