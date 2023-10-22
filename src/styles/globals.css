@@ -19,7 +19,8 @@
     box-shadow: -51.53333px 51.53333px 51.53333px 0px rgba(255, 255, 255, 0.08)
             inset,
         51.53333px -51.53333px 51.53333px 0px rgba(178, 188, 189, 0.08) inset;
-    backdrop-filter: blur(24.220666885375977px)
+    backdrop-filter: blur(24.220666885375977px);
+}
 .custom-text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.384);
 }
