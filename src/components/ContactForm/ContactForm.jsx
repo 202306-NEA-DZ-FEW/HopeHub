@@ -22,125 +22,10 @@ const ContactForm = () => {
     return (
         <div className='container flex ml-0'>
             <form
-                className='w-full max-w-lg p-4 flex-1'
+                className='w-full max-w-2xl p-4 flex-1'
                 onSubmit={handleSubmit}
             >
-                {/* the questions radio list */}
-                <div className='mt-4'>
-                    <label
-                        className='block text-black text-base md:text-xl lg:text-2xl font-extrabold mb-5 font-poppins '
-                        htmlFor='contactType'
-                    >
-                        {t("Type of Contact")}
-                    </label>
-                    <div className='font-semibold font-poppins text-NeutralBlack text-xs md:text-base'>
-                        <div className='mb-2 '>
-                            <label className='block items-center'>
-                                <input
-                                    type='radio'
-                                    id='service'
-                                    name='contactType'
-                                    className='mr-2 form-radio bg-NeutralWhite checked:bg-red-500'
-                                    value='service'
-                                    checked={ContactType === "service"}
-                                    onChange={handleRadioChange}
-                                />
-                                {t("I have a question about the service.")}
-                            </label>
-                        </div>
-                        <div className='mb-2'>
-                            <label className='block items-center'>
-                                <input
-                                    type='radio'
-                                    id='support'
-                                    name='contactType'
-                                    className='mr-2 form-radio text-black'
-                                    value='support'
-                                    checked={ContactType === "support"}
-                                    onChange={handleRadioChange}
-                                />
-                                {t(
-                                    "I'm a registered client and I need support."
-                                )}
-                            </label>
-                        </div>
-                        <div className='mb-2'>
-                            <label className='block items-center'>
-                                <input
-                                    type='radio'
-                                    id='counselor'
-                                    name='contactType'
-                                    className='mr-2 form-radio text-black'
-                                    value='counselor'
-                                    checked={ContactType === "counselor"}
-                                    onChange={handleRadioChange}
-                                />
-                                {t("I'm a counselor interested in joining.")}
-                            </label>
-                        </div>
-                        <div className='mb-2'>
-                            <label className='block items-center '>
-                                <input
-                                    type='radio'
-                                    id='counselorSup'
-                                    name='contactType'
-                                    className='mr-2 form-radio text-black'
-                                    value='counselorSup'
-                                    checked={ContactType === "counselorSup"}
-                                    onChange={handleRadioChange}
-                                />
-                                {t(
-                                    "I'm a registered counselor and I need support."
-                                )}
-                            </label>
-                        </div>
-                        <div className='mb-2'>
-                            <label className='block items-center'>
-                                <input
-                                    type='radio'
-                                    id='businessRelated'
-                                    name='contactType'
-                                    className='mr-2 form-radio text-black'
-                                    value='businessRelated'
-                                    checked={ContactType === "businessRelated"}
-                                    onChange={handleRadioChange}
-                                />
-                                {t("I have a business-related inquiry.")}
-                            </label>
-                        </div>
-                        <div className='mb-2'>
-                            <label className='block items-center '>
-                                <input
-                                    type='radio'
-                                    id='healingOnline'
-                                    name='contactType'
-                                    className='mr-2 form-radio text-black'
-                                    value='healingOnline'
-                                    checked={ContactType === "healingOnline"}
-                                    onChange={handleRadioChange}
-                                />
-                                {t(
-                                    "I'm interested in Healing Online for my organization."
-                                )}
-                            </label>
-                        </div>
-                        <div className='mb-2'>
-                            <label className='block items-center '>
-                                <input
-                                    type='radio'
-                                    id='billingRelated'
-                                    name='contactType'
-                                    className='mr-2 form-radio text-black'
-                                    value='billingRelated'
-                                    checked={ContactType === "billingRelated"}
-                                    onChange={handleRadioChange}
-                                />
-                                {t("I have a billing-related question.")}
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div className='login mt-10'>
+                <div className='login'>
                     <div>
                         <label
                             className='block text-black text-sm font-bold mb-2 font-poppins'
@@ -175,6 +60,75 @@ const ContactForm = () => {
                             required
                         />
                     </div>
+                    <div className='mt-4'>
+                        <label
+                            className='block text-black text-sm font-bold mb-2 font-poppins'
+                            htmlFor='details'
+                        >
+                            {t("Request Type")}
+                        </label>
+                        <select className='select rounded w-full'>
+                            <option disabled selected>
+                                {t("Select Request Type")}
+                            </option>
+                            <option
+                                id='service'
+                                value='service'
+                                checked={ContactType === "service"}
+                            >
+                                {t("I have a question about the service.")}
+                            </option>
+                            <option
+                                id='support'
+                                value='support'
+                                checked={ContactType === "support"}
+                            >
+                                {t(
+                                    "I'm a registered client and I need support."
+                                )}
+                            </option>
+                            <option
+                                id='counselor'
+                                value='counselor'
+                                checked={ContactType === "counselor"}
+                            >
+                                {t("I'm a counselor interested in joining.")}
+                            </option>
+                            <option
+                                id='counselorSup'
+                                value='counselorSup'
+                                checked={ContactType === "counselorSup"}
+                            >
+                                {" "}
+                                {t(
+                                    "I'm a registered counselor and I need support."
+                                )}
+                            </option>
+                            <option
+                                id='businessRelated'
+                                value='businessRelated'
+                                checked={ContactType === "businessRelated"}
+                            >
+                                {t("I have a business-related inquiry.")}
+                            </option>
+                            <option
+                                id='hopehub'
+                                value='hopehub'
+                                checked={ContactType === "hopehub"}
+                            >
+                                {t(
+                                    "I'm interested in Hope Hub for my organization."
+                                )}
+                            </option>
+                            <option
+                                id='billingRelated'
+                                value='billingRelated'
+                                checked={ContactType === "billingRelated"}
+                            >
+                                {t("I have a billing-related question.")}
+                            </option>
+                        </select>
+                    </div>
                     <div className='details mt-4'>
                         <label
                             className='block text-black text-sm font-bold mb-2 font-poppins'
@@ -184,7 +138,7 @@ const ContactForm = () => {
                         </label>
                         <textarea
                             id='details'
-                            className='w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-Accent shadow-md bg-white'
+                            className='w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-Accent shadow-md bg-white resize-none'
                             value={Details}
                             onChange={(e) => setDetails(e.target.value)}
                             placeholder={t("Enter your details here...")}
