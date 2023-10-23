@@ -145,7 +145,7 @@ const ContactForm = () => {
                         ></textarea>
                     </div>
                 </div>
-                <div className='text-center flex items-center mt-3'>
+                <div className='text-center flex justify-end mt-3'>
                     <button
                         type='submit'
                         className='bg-Accent hover:bg-Primary text-black font-poppins font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-Accent'
