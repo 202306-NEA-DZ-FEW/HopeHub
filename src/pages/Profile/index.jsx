@@ -14,7 +14,7 @@ export default function UserProfile() {
                     <div className=' bg-black w-32 h-32 rounded-full justify-center flex items-center'>
                         <FaUser className='fill-white text-6xl'></FaUser>
                     </div>
-                    <div className=' absolute  left-[13.5rem] top-48 w-8 h-8 bg-white rounded-full justify-center flex items-center border-2 border-black'>
+                    <div className=' absolute left-52 top-64 w-8 h-8 bg-white rounded-full justify-center flex items-center border-2 border-black'>
                         <LiaUserEditSolid className=' text-xl'></LiaUserEditSolid>
                     </div>
                 </div>
@@ -200,7 +200,7 @@ export default function UserProfile() {
                                     </label>
                                     <button
                                         name='SHOW CARDS'
-                                        class='w-full bg-Accent hover:bg-Primary rounded-md h-12'
+                                        class='w-full bg-Accent hover:bg-Primary rounded-md h-12 my-3'
                                     >
                                         {t("show cards")}
                                     </button>
@@ -214,7 +214,7 @@ export default function UserProfile() {
                                     </label>
                                     <button
                                         name='BUY TICKETS'
-                                        class='w-full bg-Accent hover:bg-Primary rounded-md h-12'
+                                        class='w-full bg-Accent hover:bg-Primary rounded-md h-12 my-3'
                                     >
                                         {t("buy tickets")}
                                     </button>
