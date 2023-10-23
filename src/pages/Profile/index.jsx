@@ -1,7 +1,7 @@
 import Layout from "@/layout/Layout";
 import React from "react";
 import { useTranslation } from "next-i18next";
-import { FaUser, FaPlus } from "react-icons/fa";
+import { FaUser, FaPlus, FaLock } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
@@ -156,12 +156,17 @@ export default function UserProfile() {
                                 <label for='password' class=' mt-4 w-1/2 '>
                                     {t("password")}
                                 </label>
-                                <input
-                                    type='password'
-                                    name='password'
-                                    id='password'
-                                    class='w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 outline-none '
-                                />
+                                <div className='w-full'>
+                                    <input
+                                        type='password'
+                                        name='password'
+                                        id='password'
+                                        class='w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 outline-none '
+                                    />
+                                    <i className=' relative left-[19rem] bottom-8 '>
+                                        <FaLock></FaLock>
+                                    </i>
+                                </div>
                             </div>
                             <div class='mb-5 flex'>
                                 <label
@@ -170,11 +175,16 @@ export default function UserProfile() {
                                 >
                                     {t("confirm password")}
                                 </label>
-                                <input
-                                    type='password'
-                                    name='Confirm Password'
-                                    class='w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 outline-none '
-                                />
+                                <div className='w-full'>
+                                    <input
+                                        type='password'
+                                        name='Confirm Password'
+                                        class='w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 outline-none  '
+                                    />
+                                    <i className=' relative left-[19rem] bottom-8 '>
+                                        <FaLock></FaLock>
+                                    </i>
+                                </div>
                             </div>
                             <div className='flex gap-4'>
                                 <button class='w-full bg-Accent hover:bg-Primary rounded-md h-12'>
