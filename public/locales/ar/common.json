@@ -7,7 +7,7 @@
     "I'm a counselor interested in joining.": "أنا مستشار مهتم بالانضمام.",
     "I'm a registered counselor and I need support.": "أنا مستشار مسجل وأحتاج دعمًا.",
     "I have a business-related inquiry.": "لدي استفسار متعلق بالأعمال.",
-    "I'm interested in Hope Hub for my organization.": "أنا مهتم بالشفاء عبر الإنترنت لمؤسستي.",
+    "I'm interested in Hope Hub for my organization.": ".أنا مهتم بخدماتك لمنظمتي",
     "I have a billing-related question.": "لدي سؤال متعلق بالفواتير.",
     "Full Name": "الاسم الكامل",
     "Enter your Full Name here...": "أدخل اسمك الكامل هنا...",
@@ -33,6 +33,6 @@
     "About": "من نحن",
     "Home": "الصفحة الرئيسية",
     "Log In": "تسجيل الدخول",
-    "Request Type": "",
-    "Select Request Type": ""
+    "Request Type": "نوع الطلب",
+    "Select Request Type": "حدد نوع الطلب"
 }
