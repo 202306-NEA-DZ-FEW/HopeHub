@@ -1,34 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "react-slideshow-image/dist/styles.css";
 
-/* to achieve glassmorph effect on the navbar */
-
-.navbar,
-.menu-s {
-    background: rgba(234, 248, 249, 0.08);
-    box-shadow: -51.53333px 51.53333px 51.53333px 0px rgba(255, 255, 255, 0.08)
-            inset,
-        51.53333px -51.53333px 51.53333px 0px rgba(178, 188, 189, 0.08) inset;
-    backdrop-filter: blur(24.220666885375977px);
+.custom-text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.384);
 }
-
-/* for screen lower in width than 300px */
 
 .logo-container {
     padding: 0;
 }
 
-.button-container {
-    width: 90px;
-}
-
 /* Add padding when screen width is at least 300px */
 @media (min-width: 300px) {
     .logo-container {
-        padding-left: 20px;
+        padding-left: 10px;
     }
-    .button-container {
-        width: 120px;
-    }
+}
+
+.custom-arrow-r,
+.custom-arrow-l {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.custom-arrow-r {
+    left: 100%;
+}
+
+.custom-arrow-l {
+    right: 100%;
+}
+
+.rtl {
+    direction: rtl;
+}
+
+.rtl .right-align-text {
+    text-align: right;
 }
