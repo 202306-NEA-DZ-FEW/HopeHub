@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="font-poppins flex flex-col items-start justify-center w-full "
+>
+  <h2
+    className=" font-extrabold text-4xl text-black my-5"
+  >
+    Sign Up
+     
+  </h2>
+  <form
+    className="text-4xl p-3 w-full bg-NeutralWhite rounded-md shadow-md flex flex-col gap-4"
+    onSubmit={[Function]}
+  >
+    <div
+      className="flex flex-row justify-between items-center gap-4"
+    >
+      <input
+        className="flex-1 input input-bordered w-full  h-16"
+        id="Fname"
+        name=""
+        onChange={[Function]}
+        placeholder="fname"
+        type="text"
+        value=""
+      />
+      <input
+        className="flex-1 input input-bordered w-full h-16 "
+        id="Lname"
+        name=""
+        onChange={[Function]}
+        placeholder="lname"
+        type="text"
+        value=""
+      />
+    </div>
+    <input
+      className="input input-bordered w-full  h-16"
+      id="email"
+      name=""
+      onChange={[Function]}
+      placeholder="footer_msg_3"
+      type="email"
+      value=""
+    />
+    <input
+      className="input input-bordered w-full h-16 "
+      id="email2"
+      name=""
+      onChange={[Function]}
+      placeholder="Confirm Email"
+      type="email"
+      value=""
+    />
+    <div
+      className="flex flex-row justify-between items-center gap-4"
+    >
+      <input
+        className="flex-1 input input-bordered w-full  h-16"
+        id="password"
+        name=""
+        onChange={[Function]}
+        placeholder="enter password"
+        type="password"
+        value=""
+      />
+      <input
+        className="flex-1 input input-bordered w-full h-16 "
+        id="password2"
+        name=""
+        onChange={[Function]}
+        placeholder="Confirm Password"
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="flex flex-row justify-between items-center text-lg gap-4"
+    >
+      <label
+        className="text-right w-1/2"
+        htmlFor="bdate"
+      >
+        bdate
+      </label>
+      <input
+        className=" w-1/2 input h-16 border"
+        id="bdate"
+        name=""
+        onChange={[Function]}
+        type="date"
+        value=""
+      />
+    </div>
+    <div
+      className="flex flex-row justify-between items-center gap-4"
+    >
+      <button
+        className="btn font-bold  text-Accent border-Accent flex-1"
+        onClick={[Function]}
+        type=""
+      >
+        Log In
+         
+      </button>
+      <button
+        className="btn font-bold flex-1 text-Accent border-Accent hover:text-Accent"
+        type="submit"
+      >
+        Sign Up
+         
+      </button>
+    </div>
+  </form>
+</div>
+`;

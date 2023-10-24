@@ -7,14 +7,19 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
 export default function Navbar() {
+    //Function used for translations
     const { t } = useTranslation("common");
 
+    //Navbar for small and big screens
     return (
-        <div className='navbar'>
+        <div className='navbar h-8 sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b-slate-400'>
             <div className='navbar-start'>
                 {/* Dropdown menu for small screens */}
                 <div className='dropdown'>
-                    <label tabIndex={0} className='btn btn-ghost lg:hidden'>
+                    <label
+                        tabIndex={0}
+                        className='btn btn-ghost md:pl-6 lg:hidden'
+                    >
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
                             className='h-5 w-5'
@@ -32,7 +37,7 @@ export default function Navbar() {
                     </label>
                     <ul
                         tabIndex={0}
-                        className='menu-s menu-sm dropdown-content mt-6 z-[4] p-2 shadow w-52'
+                        className='menu menu-sm dropdown-content -ml-2 p-2 shadow w-28 mt-2 bg-Primary'
                     >
                         <li className='text-Accent font-bold underline font-poppins'>
                             <Link href='/'>{t("Home")}</Link>
@@ -50,13 +55,13 @@ export default function Navbar() {
                 </div>
 
                 {/* Our Logo */}
-                <div className='logo-container'>
+                <div className='logo-container lg:px-6'>
                     <Link href='/'>
                         <Image
                             src={logo}
                             alt='Logo'
-                            width={145}
-                            height={85.872 * (115 / 145)}
+                            width={120}
+                            height={60}
                             layout='fixed'
                         />
                     </Link>
@@ -64,16 +69,16 @@ export default function Navbar() {
             </div>
 
             {/* Navbar for large screens*/}
-            <div className='flex justify-between ml-auto px-4'>
+            <div className='flex justify-between ml-auto'>
                 <div className='navbar-center hidden lg:flex'>
-                    <ul className='menu menu-horizontal px-1 gap-6'>
+                    <ul className='menu menu-horizontal'>
                         <li className='text-Accent font-bold underline font-poppins text-base tracking-wider'>
                             <Link href='/'>{t("Home")}</Link>
                         </li>
-                        <li className='text-NeutralBlack font-semibold font-poppins text-base tracking-wider'>
+                        <li className='text-NeutralBlack font-semibold font-poppins text-base tracking-wider '>
                             <Link href='/blogs'>{t("Blogs")}</Link>
                         </li>
-                        <li className='text-NeutralBlack font-semibold font-poppins text-base tracking-wider'>
+                        <li className='text-NeutralBlack font-semibold font-poppins text-base tracking-wider '>
                             <Link href='/about'>{t("About")}</Link>
                         </li>
                         <li className='text-NeutralBlack font-semibold font-poppins text-base tracking-wider'>
@@ -83,15 +88,15 @@ export default function Navbar() {
                 </div>
 
                 {/* Login button */}
-                <div className='navbar-end'>
+                <button className='button-container w-28 h-9 mx-4 md:mr-8 md:w-40 bg-Accent hover:bg-Primary rounded-md'>
                     <Link
                         href='/login'
-                        className='button-container btn  bg-Accent mx-4 w-32 text-base tracking-wider text-NeutralBlack font-extrabold font-poppins hover:bg-Primary'
+                        className='text-base tracking-wider text-NeutralBlack font-extrabold font-poppins'
                         style={{ textTransform: "capitalize" }}
                     >
                         {t("Log In")}
                     </Link>
-                </div>
+                </button>
             </div>
         </div>
     );
