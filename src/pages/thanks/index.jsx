@@ -13,7 +13,7 @@ function Thanks() {
     return (
         <Layout>
             <main
-                className='h-fit py-48 px-20 flex flex-col items-center bg-no-repeat bg-cover text-white font-poppins'
+                className='h-fit -mt-16 py-48 px-20 flex flex-col items-center bg-no-repeat bg-cover text-white font-poppins'
                 style={{
                     backgroundImage:
                         from === "Auth" ? `url(${bg1})` : `url(${bg2})`,

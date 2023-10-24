@@ -5,7 +5,7 @@ import React from "react";
 function Footer() {
     const { t } = useTranslation("common");
     return (
-        <footer className='footer sticky px-10 py-5 bg-[#BFDFDC] text-base-content flex flex-col md:flex-row lg:flex-row justify-between items-center'>
+        <footer className='footer px-10 py-5 bg-[#BFDFDC] text-base-content flex flex-col md:flex-row lg:flex-row justify-between items-center'>
             <form>
                 <header className=' font-bold text-xl mb-[-15px]'>
                     {t("footer_msg_1")}
