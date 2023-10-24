@@ -19,7 +19,7 @@ export default function Layout({ children }) {
     return (
         <div dir={textDirectionClass}>
             <Navbar />
-            {children}
+            <div className='container mx-auto mt-8'>{children}</div>
             <Footer />
         </div>
     );
