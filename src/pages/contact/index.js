@@ -12,7 +12,7 @@ function Contact() {
         <div
             className='bg-cover bg-center bg-no-repeat flex flex-col'
             style={{
-                backgroundImage: `url('/assets/Background.png')`, // Replace with the actual path to your image
+                backgroundImage: `url('/assets/login-bg.svg')`, // Replace with the actual path to your image
             }}
         >
             <Layout>

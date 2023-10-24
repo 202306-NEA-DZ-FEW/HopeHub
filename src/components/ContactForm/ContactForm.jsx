@@ -1,22 +1,24 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
+import { useRouter, usePathname } from "next/navigation";
 
 const ContactForm = () => {
     const { t } = useTranslation("common");
 
     const [ContactType, setContactType] = useState("");
-    const handleRadioChange = (e) => {
-        setContactType(e.target.value);
-    };
 
     const [Name, setName] = useState("");
     const [Email, setEmail] = useState("");
     const [Details, setDetails] = useState("");
 
+    const router = useRouter();
+    const pathname = usePathname().slice(1);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Name:", Name);
         console.log("Contact Type:", ContactType);
+        router.push(`/thanks?from=${pathname}`);
     };
 
     return (
