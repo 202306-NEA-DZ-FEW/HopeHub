@@ -4,6 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
+        "proxy": "node proxy.js", 
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
@@ -19,6 +20,7 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "axios": "^1.5.1",
         "clsx": "^1.2.1",
         "date-fns": "^2.29.1",
         "embla-carousel-react": "^8.0.0-rc14",

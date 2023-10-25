@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -6,6 +6,7 @@ import Image from "next/image";
 import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
 import { useTranslation } from "next-i18next";
 import blogsData from "../../data/blogsData";
+import { translateText } from "../../util/deepl"; // Adjust the import path as needed
 
 import Link from "next/link";
 
@@ -54,6 +55,52 @@ const BlogsCarousel = () => {
         ],
     };
 
+    const [translatedBlogs, setTranslatedBlogs] = useState([]);
+
+    const targetLang = "FR";
+
+    // Define the translation function
+    const translateBlogs = async () => {
+        const translatedBlogs = [];
+
+        for (const blog of blogsData) {
+            const translatedTitle = await translateText(
+                blog.content.title,
+                targetLang
+            );
+            const translatedSubTitle = await translateText(
+                blog.content.subTitle,
+                targetLang
+            );
+            const translatedBody = await translateText(
+                blog.content.body,
+                targetLang
+            );
+
+            if (translatedTitle && translatedSubTitle) {
+                // Log the translated data
+                console.log("Translated Title:", translatedTitle);
+                console.log("Translated SubTitle:", translatedSubTitle);
+            }
+
+            translatedBlogs.push({
+                ...blog,
+                content: {
+                    title: translatedTitle,
+                    subTitle: translatedSubTitle,
+                    body: translatedBody,
+                },
+            });
+        }
+
+        setTranslatedBlogs(translatedBlogs);
+    };
+
+    // Trigger translation when the component mounts
+    useEffect(() => {
+        translateBlogs();
+    }, []);
+
     //Displaying the carousel
     return (
         <div className='bg-Primary pb-9 w-full'>
@@ -63,7 +110,7 @@ const BlogsCarousel = () => {
             <div className='px-20'>
                 <Slider {...settings}>
                     {/* Mapping over the articles in blogsData and creating a display card for each in the carousel*/}
-                    {blogsData.map((blog) => (
+                    {translatedBlogs.map((blog) => (
                         <Link key={blog.id} href={`/blogs/${blogsData.id}`}>
                             <div
                                 key={blog.id}
