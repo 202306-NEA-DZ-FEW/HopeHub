@@ -1,10 +1,10 @@
+import { useTranslation } from "next-i18next";
 import React from "react";
 import {
-    BsTelephoneForward,
-    BsChatLeftText,
     BsCameraVideo,
+    BsChatLeftText,
+    BsTelephoneForward,
 } from "react-icons/bs";
-import { useTranslation } from "next-i18next";
 
 export default function ConnectionSection() {
     //Function used for translations
