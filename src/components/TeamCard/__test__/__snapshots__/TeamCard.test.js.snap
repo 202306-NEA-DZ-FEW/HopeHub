@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="card w-48  shadow-xl mb-4 m-4 bg-Accent hover:bg-Primary hover:shadow-md"
+>
+  <figure>
+    <img
+      data-nimg="1"
+      decoding="async"
+      height={42}
+      onError={[Function]}
+      onLoad={[Function]}
+      src=""
+      style={
+        Object {
+          "color": "transparent",
+          "height": "auto",
+          "width": "100%",
+        }
+      }
+      width={96}
+    />
+  </figure>
+  <div
+    className="card-body text-NeutralBlack"
+  >
+    <h2
+      className="card-title text-l"
+    />
+    <p />
+  </div>
+</div>
+`;

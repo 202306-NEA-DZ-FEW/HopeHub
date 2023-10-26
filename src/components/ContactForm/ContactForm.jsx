@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
-import { useRouter, usePathname } from "next/navigation";
+import { useState } from "react";
 
 const ContactForm = () => {
     const { t } = useTranslation("common");
