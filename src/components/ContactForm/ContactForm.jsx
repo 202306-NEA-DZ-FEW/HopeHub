@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
-import { useRouter, usePathname } from "next/navigation";
+import { useState } from "react";
 
 const ContactForm = () => {
     const { t } = useTranslation("common");
@@ -64,7 +64,7 @@ const ContactForm = () => {
                     </div>
                     <div className='mt-4'>
                         <label
-                            className='block text-black text-sm font-bold mb-2 font-poppins'
+                            className='block text-white text-sm font-bold mb-2 font-poppins'
                             htmlFor='details'
                         >
                             {t("Request Type")}
