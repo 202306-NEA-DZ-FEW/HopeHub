@@ -95,5 +95,12 @@
     "Thank you": "Merci Beaucoup",
     "Back to Home": "Revenir à l'accueil",
     "Thank text 1": "Votre demande d'inscription a été reçue, vous recevrez bientôt un email de confirmation. Veuillez suivre les étapes indiquées dans l'e-mail pour compléter et activer votre compte.",
-    "Thank text 2": "Votre demande a été envoyée, un membre de l'équipe d'assistance vous contactera via l'e-mail que vous avez fourni dans les plus brefs délais."
+    "Thank text 2": "Votre demande a été envoyée, un membre de l'équipe d'assistance vous contactera via l'e-mail que vous avez fourni dans les plus brefs délais.",
+    "User Name": "Nom d'utilisateur",
+    "City": "Ville",
+    "License Number": "Numéro de licence",
+    "Create Therapist account": "Créer un compte thérapeute",
+    "Create": "Créer",
+    "Therapist": "thérapeute",
+    "account": " un compte"
 }

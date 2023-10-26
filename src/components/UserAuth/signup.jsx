@@ -1,12 +1,9 @@
-import { useRouter, usePathname } from "next/navigation";
-import { useState } from "react";
-import {
-    createUserWithEmailAndPassword,
-    updateProfile,
-    sendEmailVerification,
-} from "firebase/auth";
-import { auth } from "@/util/firebase";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
+import { useState } from "react";
+
+import { auth } from "@/util/firebase";
 
 function Signup({ isChecked, setChecked }) {
     const [email, setEmail] = useState("");
@@ -142,7 +139,7 @@ function Signup({ isChecked, setChecked }) {
                     <div className='flex flex-row justify-between items-center gap-4'>
                         <button
                             type=''
-                            className={`btn font-bold  text-Accent border-Accent flex-1`}
+                            className='btn font-bold  text-Accent border-Accent flex-1'
                             onClick={() => {
                                 setChecked("login");
                             }}
