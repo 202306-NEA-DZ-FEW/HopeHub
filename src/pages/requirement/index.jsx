@@ -51,8 +51,35 @@ export default function Requirement() {
                                 "Licensed by a State Board to provide counseling"
                             )}
                         </li>
-                        {/* Add more list items for requirements here */}
-                    </ul>
+                        <li className='mb-2'>
+                            {"\u25CF "}
+                            {t(
+                                "Experience in counseling for adults, couples, and/or teens"
+                            )}
+                        </li>
+                        <li className='mb-2'>
+                            {" "}
+                            {"\u25CF "}
+                            {t("Excellent writing skills")}
+                        </li>
+                        <li className='mb-2'>
+                            {" "}
+                            {"\u25CF "}
+                            {t("Reliable Internet connection")}
+                        </li>
+                        <li className='mb-2'>
+                            {" "}
+                            {"\u25CF "}
+                            {t("Currently residing in the US")}
+                        </li>
+                        <li className='mb-2'>
+                            {"\u25CF "}
+                            {t(
+                                "Licensed by a State Board to provide counseling"
+                            )}
+                        </li>
+                    </ul>{" "}
+                    {/*Add more list items for requirements here */}
                     <button className=' mt-6 self-end w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'>
                         {t("Next")}
                     </button>
