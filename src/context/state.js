@@ -1,17 +1,24 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
+import { useTheme } from "next-themes";
 
 const AppContext = createContext();
 
 export function AppWrapper({ children }) {
     // declare variables with useState in this part and import them in value part
+    const { theme, setTheme } = useTheme();
+    const [darkMode, setDarkMode] = useState(false);
 
+    function toggledarkMode() {
+        setDarkMode(!darkMode);
+        console.log("darkmode", darkMode);
+    }
     return (
         <AppContext.Provider
-            value={
-                {
-                    //all the values declared here will be accessible for all components
-                }
-            }
+            value={{
+                darkMode,
+                toggledarkMode,
+                //all the values declared here will be accessible for all components
+            }}
         >
             {children}
         </AppContext.Provider>
