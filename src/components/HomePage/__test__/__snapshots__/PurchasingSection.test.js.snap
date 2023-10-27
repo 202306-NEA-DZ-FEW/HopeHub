@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="bg-BgWhite w-full font-poppins font-extrabold flex flex-col pb-8"
+  className=" dark:bg-Dark_Neutral dark:text-NeutralWhite bg-BgWhite w-full font-poppins font-extrabold flex flex-col pb-8"
 >
   <h1
     className="mx-6 mt-4 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase"
@@ -23,7 +23,7 @@ exports[`renders correctly 1`] = `
       className="flex flex-wrap my-8 mx-2 md:mx-28 lg:mx-2 justify-around w-full"
     >
       <div
-        className="card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6"
+        className=" card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6"
       >
         <div
           className="card-body flex flex-col items-center"
@@ -60,7 +60,7 @@ exports[`renders correctly 1`] = `
         </div>
       </div>
       <div
-        className="card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6"
+        className=" card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6"
       >
         <div
           className="card-body flex flex-col items-center"
@@ -97,7 +97,7 @@ exports[`renders correctly 1`] = `
         </div>
       </div>
       <div
-        className="card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6"
+        className=" card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6"
       >
         <div
           className="card-body flex flex-col items-center"

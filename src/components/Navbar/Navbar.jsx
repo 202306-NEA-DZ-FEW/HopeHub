@@ -1,5 +1,7 @@
 import React from "react";
 
+import ToggleBtn from "./toggleBtn";
+
 import logo from "../../../public/assets/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -70,6 +72,7 @@ export default function Navbar() {
 
             {/* Navbar for large screens*/}
             <div className='flex justify-between ml-auto'>
+                <ToggleBtn />
                 <div className='navbar-center hidden lg:flex'>
                     <ul className='menu menu-horizontal'>
                         <li className='text-Accent font-bold underline font-poppins text-base tracking-wider'>

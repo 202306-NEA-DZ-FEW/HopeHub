@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    darkMode: "class",
     content: [
         "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,6 +16,8 @@ module.exports = {
                 BgWhite: "#F4F4F4",
                 Success: "#12CB02",
                 Error: "#BD0B0B",
+                Dark_Primary: "#607595",
+                Dark_Neutral: "#101729",
             },
             fontFamily: {
                 poppins: ["Poppins"],
