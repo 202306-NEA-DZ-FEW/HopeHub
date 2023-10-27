@@ -1,26 +1,32 @@
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { auth } from "@/util/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
+import { useState } from "react";
+
+import { useAppcontext } from "@/context/state";
+import { auth } from "@/util/firebase";
 
 function Login({ isChecked, setChecked }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const router = useRouter();
     const { t } = useTranslation("common");
+    const { authChange } = useAppcontext();
 
     function handleLogin(e) {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                if (userCredential.user.emailVerified) {
-                    console.log("user", userCredential);
-                    router.push("/thanks");
-                } else {
-                    console.log("verify email");
-                }
+                // if (userCredential.user.emailVerified) {
+                // console.log("user", userCredential);
+
+                router.push("/");
+
+                // } else {
+                //     console.log("verify email");
+                // }
             })
+            .then(() => authChange())
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;

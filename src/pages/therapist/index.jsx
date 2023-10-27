@@ -44,7 +44,6 @@ function Therapist() {
                             console.log("cred", cred);
                             console.log("user", userCredential);
                             setDoc(doc(db, "users", userCredential.user.uid), {
-                                confirmPassword: confirmpassword,
                                 city: city,
                                 licenseNumber: licensenumber,
                                 isTherapist: true,

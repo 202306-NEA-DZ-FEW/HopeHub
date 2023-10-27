@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
 
+import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
 
 function Signup({ isChecked, setChecked }) {
@@ -17,7 +18,7 @@ function Signup({ isChecked, setChecked }) {
     const [bdate, setBdate] = useState("");
     const router = useRouter();
     const pathname = usePathname().slice(1);
-
+    const { authChange } = useAppcontext();
     const { t } = useTranslation("common");
 
     function handleSignup(e) {
@@ -40,8 +41,6 @@ function Signup({ isChecked, setChecked }) {
                             console.log(cred);
                             console.log("user", userCredential);
                             setDoc(doc(db, "users", userCredential.user.uid), {
-                                confirmEmail: confirmemail,
-                                confirmPassword: confirmpassword,
                                 birthDate: bdate,
                                 isTherapist: false,
                                 licenseNumber: null,
@@ -50,6 +49,7 @@ function Signup({ isChecked, setChecked }) {
                                     console.log("data", data);
                                     router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
                                 })
+                                .then(() => authChange())
                                 .catch((err) => {
                                     console.log("firestore error", err);
                                 });
