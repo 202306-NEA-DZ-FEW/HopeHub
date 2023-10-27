@@ -19,7 +19,7 @@ export default function HomePage() {
 
     return (
         <Layout>
-            <div className='flex flex-col items-center justify-start h-screen'>
+            <div className='flex flex-col items-center justify-start'>
                 <Banner />
                 <TherapistsInfoSection />
                 <ConnectionSection />
