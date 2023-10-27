@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from "react";
 import { useTheme } from "next-themes";
+import { createContext, useContext, useState } from "react";
 
 const AppContext = createContext();
 
