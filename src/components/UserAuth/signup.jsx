@@ -43,6 +43,8 @@ function Signup({ isChecked, setChecked }) {
                                 confirmEmail: confirmemail,
                                 confirmPassword: confirmpassword,
                                 birthDate: bdate,
+                                isTherapist: false,
+                                licenseNumber: null,
                             })
                                 .then((data) => {
                                     console.log("data", data);
