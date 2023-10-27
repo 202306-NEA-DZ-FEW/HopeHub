@@ -6,7 +6,8 @@ import Image from "next/image";
 import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
 import { useTranslation } from "next-i18next";
 import blogsData from "../../data/blogsData";
-import { translateText } from "../../util/deepl"; // Adjust the import path as needed
+import axios from "axios";
+import { translateText } from "../../pages/api/translate"; // Import the translation utility
 
 import Link from "next/link";
 
@@ -26,6 +27,43 @@ const BlogsCarousel = () => {
             <TfiAngleRight size={30} color='black' />
         </div>
     );
+
+    const [translatedBlogs, setTranslatedBlogs] = useState([]);
+
+    useEffect(() => {
+        // Translate a single blog entry
+        const translateBlogContent = async (blog) => {
+            const translatedTitle = await translateText(blog.content.title);
+            const translatedSubTitle = await translateText(
+                blog.content.subTitle
+            );
+
+            if (translatedTitle && translatedSubTitle) {
+                const translatedBlog = {
+                    ...blog,
+                    content: {
+                        title: translatedTitle,
+                        subTitle: translatedSubTitle,
+                        // You can translate other fields if needed
+                        // body: await translateText(blog.content.body),
+                    },
+                };
+                return translatedBlog;
+            } else {
+                return null; // Handle translation failure
+            }
+        };
+
+        // Translate the blogs and filter out null results
+        const translateBlogs = async () => {
+            const translatedBlogs = await Promise.all(
+                blogsData.map(translateBlogContent)
+            );
+            setTranslatedBlogs(translatedBlogs.filter(Boolean));
+        };
+
+        translateBlogs();
+    }, []);
 
     //Carousel settings
     const settings = {
@@ -54,52 +92,6 @@ const BlogsCarousel = () => {
             },
         ],
     };
-
-    const [translatedBlogs, setTranslatedBlogs] = useState([]);
-
-    const targetLang = "FR";
-
-    // Define the translation function
-    const translateBlogs = async () => {
-        const translatedBlogs = [];
-
-        for (const blog of blogsData) {
-            const translatedTitle = await translateText(
-                blog.content.title,
-                targetLang
-            );
-            const translatedSubTitle = await translateText(
-                blog.content.subTitle,
-                targetLang
-            );
-            const translatedBody = await translateText(
-                blog.content.body,
-                targetLang
-            );
-
-            if (translatedTitle && translatedSubTitle) {
-                // Log the translated data
-                console.log("Translated Title:", translatedTitle);
-                console.log("Translated SubTitle:", translatedSubTitle);
-            }
-
-            translatedBlogs.push({
-                ...blog,
-                content: {
-                    title: translatedTitle,
-                    subTitle: translatedSubTitle,
-                    body: translatedBody,
-                },
-            });
-        }
-
-        setTranslatedBlogs(translatedBlogs);
-    };
-
-    // Trigger translation when the component mounts
-    useEffect(() => {
-        translateBlogs();
-    }, []);
 
     //Displaying the carousel
     return (
