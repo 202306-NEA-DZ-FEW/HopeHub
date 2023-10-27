@@ -1,6 +1,6 @@
-import React from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import React from "react";
 
 export default function PurchasingSection() {
     //Function used for translations
@@ -25,7 +25,7 @@ export default function PurchasingSection() {
                         ${ticketsPrice[index]}
                     </h1>
                     <div className='card-actions justify-end md:mt-4'>
-                        <Link href={`/buyticket/`}>
+                        <Link href='/buyticket/'>
                             <button className='btn bg-Accent hover:bg-Primary'>
                                 {t("Purchase")}
                             </button>
@@ -60,7 +60,7 @@ export default function PurchasingSection() {
                             )}
                         </p>
                         <div className='card-actions justify-around'>
-                            <Link href='/therapistcreate'>
+                            <Link href='/therapist'>
                                 <button className='btn bg-Accent hover:bg-Primary my-2'>
                                     {t("Learn More")}
                                 </button>

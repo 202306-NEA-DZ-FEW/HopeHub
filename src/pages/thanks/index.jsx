@@ -1,8 +1,9 @@
-import Layout from "@/layout/Layout";
 import { useSearchParams } from "next/navigation";
-import React from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from "react";
+
+import Layout from "@/layout/Layout";
 
 function Thanks() {
     const query = useSearchParams();
