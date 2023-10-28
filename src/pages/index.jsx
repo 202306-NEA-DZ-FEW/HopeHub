@@ -1,14 +1,15 @@
+import Cookies from "js-cookie";
 import { useTranslation } from "next-i18next";
-
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
+
 import Banner from "@/components/HomePage/Banner";
-import TherapistsInfoSection from "@/components/HomePage/TherapistsInfoSection";
-import Layout from "@/layout/Layout";
-import ConnectionSection from "@/components/HomePage/ConnectionSection";
 import BlogsCarousel from "@/components/HomePage/BlogsCarousel";
+import ConnectionSection from "@/components/HomePage/ConnectionSection";
 import PurchasingSection from "@/components/HomePage/PurchasingSection";
-import Cookies from "js-cookie";
+import TherapistsInfoSection from "@/components/HomePage/TherapistsInfoSection";
+
+import Layout from "@/layout/Layout";
 
 export default function HomePage() {
     const { t } = useTranslation("common");

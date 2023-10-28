@@ -1,8 +1,9 @@
-import React from "react";
-import therapists from "../../../public/assets/therapists.svg";
 import Image from "next/image";
-import BookingButton from "../BookingButton/BookingButton";
 import { useTranslation } from "next-i18next";
+import React from "react";
+
+import BookingButton from "../BookingButton/BookingButton";
+import therapists from "../../../public/assets/therapists.svg";
 
 export default function () {
     //Function used for translations
