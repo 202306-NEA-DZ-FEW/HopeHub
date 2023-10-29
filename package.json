@@ -19,6 +19,7 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "axios": "^1.6.0",
         "clsx": "^1.2.1",
         "date-fns": "^2.29.1",
         "embla-carousel-react": "^8.0.0-rc14",

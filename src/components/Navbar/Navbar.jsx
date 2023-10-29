@@ -1,12 +1,10 @@
+import Image from "next/image";
+import Link from "next/link";
+import { useTranslation } from "next-i18next";
 import React from "react";
 
 import ToggleBtn from "./toggleBtn";
-
 import logo from "../../../public/assets/logo.svg";
-import Image from "next/image";
-import Link from "next/link";
-
-import { useTranslation } from "next-i18next";
 
 export default function Navbar() {
     //Function used for translations
@@ -72,6 +70,7 @@ export default function Navbar() {
 
             {/* Navbar for large screens*/}
             <div className='flex justify-between ml-auto'>
+                <Link href='/Profile'>profile</Link>
                 <ToggleBtn />
                 <div className='navbar-center hidden lg:flex'>
                     <ul className='menu menu-horizontal'>
