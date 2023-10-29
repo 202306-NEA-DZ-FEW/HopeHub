@@ -26,7 +26,7 @@ export const teamMembers = [
     {
         image: "",
         name: "Brahim Hadj Mahammed",
-        linkedin: "https://www.linkedin.com/in/brahim-hm/",
+        linkedin: "https://www.linkedin.com/in/brahim-hadj-mahammed-b77843156/",
         github: "https://github.com/BrahimHM",
     },
 ];

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import "@testing-library/jest-dom/extend-expect";
 // the next test is common between diferent components
 // it mocks firebase diferent functions and useRouter, and useTranslation
@@ -24,6 +25,17 @@ jest.mock("next/navigation", () => {
         useSearchParams: jest.fn(),
     };
 });
+
+jest.mock("next/router", () => ({
+    useRouter: jest.fn(),
+}));
+
+// In your test setup
+useRouter.mockImplementation(() => ({
+    push: jest.fn(),
+    prefetch: jest.fn(),
+    // Add any other router methods you need
+}));
 
 jest.mock("next-i18next", () => ({
     useTranslation: () => ({ t: (key) => key }),

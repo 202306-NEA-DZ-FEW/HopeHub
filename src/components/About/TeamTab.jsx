@@ -10,8 +10,8 @@ const TeamCard = ({ image, name, linkedin, github }) => {
                 <Image
                     src={image}
                     alt={name}
-                    width='42'
-                    height='80'
+                    width={42}
+                    height={80}
                     layout='responsive'
                     className='border-b-4  border-Accent'
                 />
@@ -21,10 +21,10 @@ const TeamCard = ({ image, name, linkedin, github }) => {
                     {name}
                 </h2>
                 <div className='flex mx-auto gap-3'>
-                    <Link href={linkedin} target='_blank'>
+                    <Link href={`${linkedin}`} target='_blank'>
                         <BsLinkedin className='text-2xl' />
                     </Link>
-                    <Link href={github} target='_blank'>
+                    <Link href={`${github}`} target='_blank'>
                         <BsGithub className='text-2xl' />
                     </Link>
                 </div>
