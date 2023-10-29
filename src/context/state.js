@@ -1,9 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-
 import { createContext, useContext, useState } from "react";
 import { useTheme } from "next-themes";
-
 import { auth, db } from "@/util/firebase";
 const AppContext = createContext();
 
