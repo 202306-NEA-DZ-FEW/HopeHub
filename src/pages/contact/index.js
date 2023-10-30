@@ -1,9 +1,11 @@
-import React from "react";
 import { useTranslation } from "next-i18next";
-import ContactForm from "@/components/ContactForm/ContactForm";
-import Layout from "@/layout/Layout";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from "react";
 import { FaLocationDot, FaPhoneVolume } from "react-icons/fa6";
+
+import ContactForm from "@/components/ContactForm/ContactForm";
+
+import Layout from "@/layout/Layout";
 
 function Contact() {
     const { t } = useTranslation("common");
