@@ -23,7 +23,7 @@ const About = () => {
 
     return (
         <Layout>
-            <div className='bg-NeutralWhite pt-8 min-h-screen flex flex-col'>
+            <div className='bg-NeutralWhite pt-8 min-h-screen flex flex-col '>
                 <Head>
                     <title>{t("About")}</title>
                 </Head>
