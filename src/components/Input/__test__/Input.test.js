@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import TeamCard from "../TeamCard";
+import Input from "../Input";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<TeamCard />).toJSON();
+    const tree = renderer.create(<Input />).toJSON();
     expect(tree).toMatchSnapshot();
 });

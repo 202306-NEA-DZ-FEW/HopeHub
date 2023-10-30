@@ -61,7 +61,7 @@ exports[`renders correctly 1`] = `
           className="text-NeutralBlack font-semibold font-poppins"
         >
           <a
-            href="/about"
+            href="src\\\\pages\\\\about\\\\index.jsx"
             onClick={[Function]}
             onMouseEnter={[Function]}
             onTouchStart={[Function]}

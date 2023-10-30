@@ -1,10 +1,9 @@
+import Image from "next/image";
+import Link from "next/link";
+import { useTranslation } from "next-i18next";
 import React from "react";
 
 import logo from "../../../public/assets/logo.svg";
-import Image from "next/image";
-import Link from "next/link";
-
-import { useTranslation } from "next-i18next";
 
 export default function Navbar() {
     //Function used for translations
@@ -46,7 +45,9 @@ export default function Navbar() {
                             <Link href='/blogs'>{t("Blogs")}</Link>
                         </li>
                         <li className='text-NeutralBlack font-semibold font-poppins'>
-                            <Link href='/about'>{t("About")}</Link>
+                            <Link href='src\pages\about\index.jsx'>
+                                {t("About")}
+                            </Link>
                         </li>
                         <li className='text-NeutralBlack font-semibold font-poppins'>
                             <Link href='/contact'>{t("Contact")}</Link>

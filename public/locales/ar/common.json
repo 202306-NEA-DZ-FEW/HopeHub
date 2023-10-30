@@ -1,6 +1,5 @@
 {
     "test": "مرحبا",
-
     "Type of Contact": "نوع الاتصال",
     "I have a question about the service.": "لدي سؤال حول الخدمة.",
     "I'm a registered client and I need support.": "أنا عميل مسجل وأحتاج دعمًا.",
@@ -96,5 +95,31 @@
     "Thank you": "شكرا جزيلا لكم ",
     "Back to Home": "الصفحة الرئيسية",
     "Thank text 1": "لقد تم استلام طلب التسجيل الخاص بك، وستتلقى قريبًا رسالة تأكيد عبر البريد الإلكتروني. يرجى اتباع الخطوات الواردة في البريد الإلكتروني لإكمال حسابك وتنشيطه.",
-    "Thank text 2": "لقد تم إرسال طلبك، وسيتواصل معك أحد أعضاء فريق الدعم عبر البريد الإلكتروني الذي قدمته في أقرب وقت ممكن."
+    "Thank text 2": "لقد تم إرسال طلبك، وسيتواصل معك أحد أعضاء فريق الدعم عبر البريد الإلكتروني الذي قدمته في أقرب وقت ممكن.",
+    "User Name": "اسم المستخدم",
+    "City": "المدينة",
+    "License Number": "رقم الرخصة",
+    "Create Therapist account": "إنشاء حساب معالج نفسي",
+    "account": " حساب",
+    "Therapist": "معالج نفسي",
+    "Create": "إنشاء",
+    "Why work with HopeHub?": "لماذا العمل مع هوب هاب؟",
+    "Reliable Income": "دخل موثوق به",
+    "Over 10,000 people sign up on HopeHub every day looking for a counselor to help with life challenges. HopeHub can be your main source of income (full time) or a supplement to your current work.": "يوميًا بحثًا عن مستشار لمساعدتهم في التحديات أكثر من 10,000 شخص يسجلون في HopeHub الحياتية. يمكن أن يكون HopeHub مصدر دخلك الرئيسي (بدوام كامل) أو إضافة إلى عملك الحالي.",
+    "Focus on Counseling": "التركيز على الإرشاد",
+    "No need to worry about costs from acquiring clients, billing, support, or operations. Let us handle the fees and paperwork so you can focus on what you do best!": "لا داعي للقلق بشأن تكاليف الحصول على عملاء أو الفوترة أو الدعم أو العمليات. دعونا نتولى الرسوم والأوراق حتى تتمكنوا من التركيز على مهمتكم الأساسية!",
+    "Requirements": "المتطلبات",
+    "Licensed by a State Board to provide counseling": "مرخص من قبل مجلس الدولة لتقديم الإرشاد",
+    "Experience in counseling for adults, couples, and/or teens": "تجربة في الإرشاد للبالغين أو الأزواج أو المراهقين",
+    "Excellent writing skills": "مهارات كتابة ممتازة",
+    "Reliable Internet connection": "اتصال إنترنت موثوق",
+    "Currently residing in the US": "مقيم حالياً في الولايات المتحدة",
+    "Next": "التالي",
+
+    "title": "عنا",
+    "Who are we": "من نحن",
+    "Our team": "فريقنا",
+    "Our Founding": "تأسيسنا",
+    "At HopeHub, we believe there is a better way to do things. A more valuable way where customers are earned rather than bought. We are obsessively passionate about it, and our mission is to help people achieve it. We focus on search engine optimization. It is one of the least understood and least transparent aspects of great marketing, and we see that as an opportunity. We are excited to simplify SEO for everyone through our software, education, and community": "في HopeHub، نعتقد أن هناك وسيلة أفضل للقيام بالأمور. وسيلة أكثر قيمة حيث يتم كسب العملاء بدلاً من شرائهم. نحن مهووسون بشغف بذلك، ومهمتنا هي مساعدة الناس في تحقيقه. نحن نركز على تحسين محركات البحث. إنها واحدة من أقل الجوانب مفهومة وأقل شفافية في التسويق الرائع، ونرى ذلك كفرصة. نحن متحمسون لتبسيط تحسين محركات البحث للجميع من خلال برامجنا وتعليمنا ومجتمعنا.",
+    "HopeHub was founded by a group of Re:coded students in 2023. It was called HopeHub Online and started as a blog and an online community where some of the worlds therapists shared their research and ideas. We launched the Beginners Guide to Therapy and our first study, and that hub of industry expertise transformed into a small consulting firm and led us to create the Online Therapist of today!": "تأسست HopeHub عام 2023 من قبل مجموعة من طلاب Re:coded. تم تسميتها بـ HopeHub Online وبدأت كمدونة ومجتمع عبر الإنترنت حيث شارك بعض معالجي العالم أبحاثهم وأفكارهم. قمنا بإطلاق دليل المبتدئين للعلاج وأول دراستنا، وتحول ذلك المركز لخبراء الصناعة إلى شركة استشارية صغيرة وأدى بنا إلى إنشاء معالج الإنترنت الحالي!"
 }

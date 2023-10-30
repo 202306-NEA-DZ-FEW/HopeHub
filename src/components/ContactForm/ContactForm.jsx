@@ -64,7 +64,7 @@ const ContactForm = () => {
                     </div>
                     <div className='mt-4'>
                         <label
-                            className='block text-black text-sm font-bold mb-2 font-poppins'
+                            className='block text-white text-sm font-bold mb-2 font-poppins'
                             htmlFor='details'
                         >
                             {t("Request Type")}
