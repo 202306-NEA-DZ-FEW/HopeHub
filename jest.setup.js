@@ -16,13 +16,10 @@ jest.mock("@/util/firebase", () => {
     };
 });
 
-jest.mock("@/context/state", () => {
+jest.mock("@/context/state.js", () => {
     return {
-        //
         useAppcontext: jest.fn(() => {
-            return {
-                authChange: jest.fn(() => ({})),
-            };
+            return { setBookingInfos: jest.fn(() => {}) };
         }),
     };
 });
