@@ -10,12 +10,12 @@ exports[`renders correctly 1`] = `
     <div
       className="mb-3 pt-12 font-ogg font-bold text-NeutralBlack capitalize text-2xl lg:text-4xl leading-normal"
     >
-      lets match you with the right therapist
+      Let's match you with the right therapist
     </div>
     <div
       className="font-poppins font-regular text-justify text-NeutralBlack text-base lg:text-lg leading-relaxed"
     >
-      Please fill out this short questionnaire to provide some general and anonymous background about you and the issues youd like to deal with in online therapy. It would help us match you with the most suitable therapist for you.
+      Please fill out this short questionnaire to provide some general and anonymous background about you and the issues you'd like to deal with in online therapy. It would help us match you with the most suitable therapist for you.
        
     </div>
     <div

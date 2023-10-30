@@ -128,14 +128,15 @@
     "you will receive a confirmation email soon.": "سوف تتلقى رسالة تأكيد قريبًا.",
     "Back to home": "العودة إلى الصفحة الرئيسية",
     "Submit your appointment": "قدّم موعدك",
-    "Submit":" قدم الطلب",
+    "Submit": " قدم الطلب",
     "Click Submit if you are sure of all your choices.": "انقر على  إذا كنت متأكدًا من جميع اختياراتك.",
-    "Please be aware that this action will cost you a ticket!": "يرجى أن تكون على علم بأن هذا الإجراء سيتكلفك تذكرة!",    "I prefer a male counselor": "أفضل مستشار ذكر",
+    "Please be aware that this action will cost you a ticket!": "يرجى أن تكون على علم بأن هذا الإجراء سيتكلفك تذكرة!",
+    "I prefer a male counselor": "أفضل مستشار ذكر",
     "I prefer a female counselor": "أفضل مستشارة أنثى",
     "I prefer an older counselor (45+)": "أفضل مستشار أكبر سنًا (45+)",
     "I prefer a non-religious counselor": "أفضل مستشار غير ديني",
     "Are there any specific qualities that you would like in a counselor?": "هل هناك أي صفات محددة تريدها في المستشار؟",
-    "Please write something before proceeding.":"الرجاء كتابة شيء ما قبل المتابعة.",
+    "Please write something before proceeding.": "الرجاء كتابة شيء ما قبل المتابعة.",
     "User Name": "اسم المستخدم",
     "City": "المدينة",
     "License Number": "رقم الرخصة",
@@ -161,5 +162,4 @@
     "carrers desc 2": "لبناء أفضل أدوات تحسين محركات البحث (SEO)، نحتاج إلى قوة عاملة تعكس تنوع مجتمعاتنا وعملائنا. نريد أن يكون العلاج عبر الإنترنت مكانًا يشعر فيه الجميع بالترحيب والمشاركة، باستثناء أي شخص. إنها مهمتنا ونعد بإجراء مقابلات مع مجموعة متنوعة من الأشخاص. وقائمة تمثيلية من المرشحين قبل تقديم عرض لأدوارنا المفتوحة.",
     "CURRENT OPEN POSITIONS": "الوضائف المفتوحة حاليا",
     "careers desc 3": "يرجى إرسال بريد إلكتروني إلينا يتضمن عنوان الطلب كموضوع مع السيرة الذاتية المرفقة بتنسيق PDF!"
-
 }

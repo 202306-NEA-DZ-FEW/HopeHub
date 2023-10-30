@@ -15,7 +15,7 @@ exports[`renders correctly 1`] = `
     <div
       className="font-poppins font-regular text-justify text-NeutralBlack text-base lg:text-lg leading-relaxed"
     >
-      You will receive an email guiding you to book a date and time soon.
+       You will receive an email guiding you to book a date and time soon.
     </div>
     <div
       className="flex flex-col bg-NeutralWhite lg:w-1/2 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative"
@@ -39,10 +39,10 @@ exports[`renders correctly 1`] = `
         </div>
       </div>
       <div
-        className=" self-center py-10  group "
+        className=" self-center py-10 group "
       >
         <a
-          className="w-36 h-10 rounded-md text-lg bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500"
+          className="w-28 h-10 px-5 py-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500"
           href="/"
           onClick={[Function]}
           onMouseEnter={[Function]}

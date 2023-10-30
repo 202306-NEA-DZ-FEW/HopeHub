@@ -1,4 +1,3 @@
-
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { createContext, useContext, useState } from "react";
@@ -62,7 +61,6 @@ export function AppWrapper({ children }) {
                 authChange,
                 darkMode,
                 toggledarkMode,
-
             }}
         >
             {children}

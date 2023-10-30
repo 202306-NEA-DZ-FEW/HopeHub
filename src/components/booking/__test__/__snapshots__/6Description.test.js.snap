@@ -16,6 +16,7 @@ exports[`renders correctly 1`] = `
       className="font-poppins font-regular text-justify text-NeutralBlack text-base lg:text-lg leading-relaxed"
     >
       Please specify (in a few sentences) why you would like counseling. This will give your counselor a good understanding of where to start.
+       
     </div>
     <div
       className="self-center flex flex-col w-full h-[500px] lg:w-[70%] lg:h-[350px] mt-14"
