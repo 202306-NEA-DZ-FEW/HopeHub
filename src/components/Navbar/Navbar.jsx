@@ -1,16 +1,17 @@
-import React, { useState } from "react";
-import ToggleBtn from "./toggleBtn";
-import logo from "../../../public/assets/logo.svg";
-import darklogo from "../../../public/assets/darklogo.svg";
+import { signOut } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import { useAppcontext } from "@/context/state";
-import { signOut } from "firebase/auth";
-import { auth } from "@/util/firebase";
+import React, { useState } from "react";
 import { BiLogOutCircle } from "react-icons/bi";
 import { PiMagnifyingGlass } from "react-icons/pi";
+
+import { useAppcontext } from "@/context/state";
+import { auth } from "@/util/firebase";
+
+import darklogo from "../../../public/assets/darklogo.svg";
+import logo from "../../../public/assets/logo.svg";
 
 export default function Navbar() {
     //Function used for translations
