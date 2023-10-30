@@ -1,4 +1,5 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
@@ -8,7 +9,7 @@ import React, { useState } from "react";
 import Input from "@/components/Input/Input";
 
 import Layout from "@/layout/Layout";
-import { auth } from "@/util/firebase";
+import { auth, db } from "@/util/firebase";
 
 import therapistPic from "../../../public/assets/therapist-pic.jpg";
 
@@ -24,41 +25,55 @@ function Therapist() {
     const pathname = usePathname().slice(1);
     function handleSubmit(e) {
         e.preventDefault();
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // console.log(userCredential.user)
-                // to verify the provided email is correct, it will be implemented after deployement
-                /*  sendEmailVerification(userCredential.user).then(() => {
+        if (password !== confirmpassword) {
+            alert("Password does not match");
+        } else {
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // console.log(userCredential.user)
+                    // to verify the provided email is correct, it will be implemented after deployement
+                    /*  sendEmailVerification(userCredential.user).then(() => {
                     console.log("verification email sent");
                 }); */
-                updateProfile(userCredential.user, {
-                    //after creating user, update his prfole and give him name
-                    displayName: username,
-                    role: "therapist",
-                })
-                    .then((cred) => {
-                        // const user = userCredential.user;
-                        console.log("cred", cred);
-                        router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
+                    updateProfile(userCredential.user, {
+                        //after creating user, update his prfole and give him name
+                        displayName: username,
                     })
-                    .catch((err) => {
-                        console.log("updating error", err);
-                    });
-                console.log(userCredential);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log("can't sign up", errorMessage, " ", errorCode);
-                // ..
-            });
-        // reset the fields
-        setEmail("");
-        setUsername("");
-        setConfirmpassword("");
-        setPassword("");
-        setLicensenumber("");
-        setCity("");
+                        .then((cred) => {
+                            // const user = userCredential.user;
+                            console.log("cred", cred);
+                            console.log("user", userCredential);
+                            setDoc(doc(db, "users", userCredential.user.uid), {
+                                city: city,
+                                licenseNumber: licensenumber,
+                                isTherapist: true,
+                            })
+                                .then((data) => {
+                                    router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
+                                })
+                                .catch((err) => {
+                                    console.log("firestore error", err);
+                                });
+                        })
+                        .catch((err) => {
+                            console.log("updating error", err);
+                        });
+                    console.log(userCredential);
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log("can't sign up", errorMessage, " ", errorCode);
+                    // ..
+                });
+            // reset the fields
+            setEmail("");
+            setUsername("");
+            setConfirmpassword("");
+            setPassword("");
+            setLicensenumber("");
+            setCity("");
+        }
     }
     const infos = [
         {
