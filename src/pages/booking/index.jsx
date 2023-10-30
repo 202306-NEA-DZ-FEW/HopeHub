@@ -9,84 +9,59 @@ import Description from "@/components/booking/6Description";
 import Submission from "@/components/booking/7Submission";
 import Confirmation from "@/components/booking/8Confirmation";
 
+import { useAppcontext } from "@/context/state";
+import Layout from "@/layout/Layout";
+
 function BookingPage() {
-    const [currentStep, setCurrentStep] = useState(1);
-    const [formData, setFormData] = useState({
-        // Initialize with default form data for each step
-        TypeOfCounselingData: {},
-        RelationshipStatusData: {},
-        TherapyData: {},
-        CounseQualitiesData: {},
-        IssuesData: {},
-        DescriptionData: {},
-        SubmissionData: {},
-        ConfirmationData: {},
-    });
-
-    const handleNext = (data) => {
-        setFormData({ ...formData, [`step${currentStep}Data`]: data });
-        setCurrentStep(currentStep + 1);
-    };
-
-    const handlePrevious = () => {
-        setCurrentStep(currentStep - 1);
-    };
-
-    const renderStep = () => {
-        switch (currentStep) {
+    const [step, setStep] = useState(1);
+    const { bookingInfos } = useAppcontext();
+    function OnNext() {
+        setStep(step + 1);
+        console.log(bookingInfos);
+    }
+    function OnPrevious() {
+        setStep(step - 1);
+    }
+    function Step() {
+        switch (step) {
             case 1:
-                return <TypeOfCounseling onNext={handleNext} />;
+                return (
+                    <TypeOfCounseling OnNext={OnNext} OnPrevious={OnPrevious} />
+                );
             case 2:
                 return (
                     <RelationshipStatus
-                        onNext={handleNext}
-                        onPrevious={handlePrevious}
+                        OnNext={OnNext}
+                        OnPrevious={OnPrevious}
                     />
                 );
             case 3:
-                return (
-                    <Therapy onNext={handleNext} onPrevious={handlePrevious} />
-                );
+                return <Therapy OnNext={OnNext} OnPrevious={OnPrevious} />;
             case 4:
                 return (
-                    <CounseQualities
-                        onNext={handleNext}
-                        onPrevious={handlePrevious}
-                    />
+                    <CounseQualities OnNext={OnNext} OnPrevious={OnPrevious} />
                 );
             case 5:
-                return (
-                    <Issues onNext={handleNext} onPrevious={handlePrevious} />
-                );
+                return <Issues OnNext={OnNext} OnPrevious={OnPrevious} />;
             case 6:
-                return <Description formData={formData} />;
+                return <Description OnNext={OnNext} OnPrevious={OnPrevious} />;
             case 7:
-                return <Submission formData={formData} />;
+                return <Submission OnNext={OnNext} OnPrevious={OnPrevious} />;
             case 8:
-                return <Confirmation formData={formData} />;
-            default:
-                return null;
+                return <Confirmation OnNext={OnNext} OnPrevious={OnPrevious} />;
         }
-    };
-
+    }
     return (
-        <div>
-            {renderStep()}
-
-            {currentStep > 1 && (
-                <button onClick={handlePrevious}>Previous</button>
-            )}
-
-            {currentStep < 6 && (
-                <button
-                    onClick={() =>
-                        handleNext(formData[`step${currentStep}Data`])
-                    }
-                >
-                    Next
-                </button>
-            )}
-        </div>
+        <Layout className='max-w-screen'>
+            {/* <TypeOfCounseling OnNext={OnNext} />
+            <RelationshipStatus OnNext={OnNext} />
+            <Therapy OnNext={OnNext} />
+            <CounseQualities OnNext={OnNext} />
+            <Issues OnNext={OnNext} />
+            <Description OnNext={OnNext} />
+            <Submission OnNext={OnNext} /> */}
+            {Step()}
+        </Layout>
     );
 }
 
