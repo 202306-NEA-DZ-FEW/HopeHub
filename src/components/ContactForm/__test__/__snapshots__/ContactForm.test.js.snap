@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="container flex ml-0"
+>
+  <form
+    className="w-full max-w-2xl p-4 flex-1"
+    onSubmit={[Function]}
+  >
+    <div
+      className="login"
+    >
+      <div>
+        <label
+          className="block text-NeutralBlack text-sm font-semibold mb-2 font-poppins"
+          htmlFor="fullName"
+        >
+          Full Name
+        </label>
+        <input
+          className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-Accent shadow-md bg-white"
+          id="fullName"
+          onChange={[Function]}
+          placeholder="Enter your Full Name here..."
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="email mt-4"
+      >
+        <label
+          className="block text-NeutralBlack text-sm font-semibold mb-2 font-poppins"
+          htmlFor="email"
+        >
+          Email
+        </label>
+        <input
+          className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-Accent shadow-md bg-white"
+          id="email"
+          onChange={[Function]}
+          placeholder="Enter your email address here..."
+          required={true}
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        className="mt-4"
+      >
+        <label
+          className="block text-NeutralBlack text-sm font-semibold mb-2 font-poppins"
+          htmlFor="details"
+        >
+          Request Type
+        </label>
+        <select
+          className="select rounded w-full"
+        >
+          <option
+            disabled={true}
+            selected={true}
+          >
+            Select Request Type
+          </option>
+          <option
+            checked={false}
+            id="service"
+            value="service"
+          >
+            I have a question about the service.
+          </option>
+          <option
+            checked={false}
+            id="support"
+            value="support"
+          >
+            I'm a registered client and I need support.
+          </option>
+          <option
+            checked={false}
+            id="counselor"
+            value="counselor"
+          >
+            I'm a counselor interested in joining.
+          </option>
+          <option
+            checked={false}
+            id="counselorSup"
+            value="counselorSup"
+          >
+             
+            I'm a registered counselor and I need support.
+          </option>
+          <option
+            checked={false}
+            id="businessRelated"
+            value="businessRelated"
+          >
+            I have a business-related inquiry.
+          </option>
+          <option
+            checked={false}
+            id="hopehub"
+            value="hopehub"
+          >
+            I'm interested in Hope Hub for my organization.
+          </option>
+          <option
+            checked={false}
+            id="billingRelated"
+            value="billingRelated"
+          >
+            I have a billing-related question.
+          </option>
+        </select>
+      </div>
+      <div
+        className="details mt-4"
+      >
+        <label
+          className="block text-NeutralBlack text-sm font-semibold mb-2 font-poppins"
+          htmlFor="details"
+        >
+          Details
+        </label>
+        <textarea
+          className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-Accent shadow-md bg-white resize-none"
+          id="details"
+          onChange={[Function]}
+          placeholder="Enter your details here..."
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="text-center flex justify-end mt-3"
+    >
+      <button
+        className="bg-Accent hover:bg-Primary text-NeutralBlack font-poppins font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-Accent"
+        type="submit"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+`;

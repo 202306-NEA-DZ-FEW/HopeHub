@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
@@ -11,7 +10,6 @@ import TherapistsInfoSection from "@/components/HomePage/TherapistsInfoSection";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
-import TranslationButton from "@/components/TranslationButton/TranslationButton";
 
 export default function HomePage() {
     const { t } = useTranslation("common");
