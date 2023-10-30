@@ -1,3 +1,4 @@
+import { useTranslation } from "next-i18next";
 import { useState } from "react";
 
 import { useAppcontext } from "@/context/state";
@@ -5,6 +6,7 @@ import { useAppcontext } from "@/context/state";
 import Checkbox from "../Checkbox";
 
 export default function CounseQualities({ OnNext, OnPrevious }) {
+    const { t } = useTranslation("common");
     const [counseQualities, setCounseQualities] = useState([]); // Use an array for multiple selections
     const [error, setError] = useState("");
     const { bookingInfos, setBookingInfos } = useAppcontext();
@@ -15,7 +17,7 @@ export default function CounseQualities({ OnNext, OnPrevious }) {
             setError("");
             OnNext();
         } else {
-            setError("Please select at least one option before proceeding.");
+            setError(t("Please select at least one option before proceeding."));
         }
     };
 
@@ -35,13 +37,12 @@ export default function CounseQualities({ OnNext, OnPrevious }) {
         <div className='bg-NeutralWhite min-w-screen min-h-screen'>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite'>
                 <div className='mb-3 pt-12 font-ogg font-bold text-NeutralBlack uppercase text-2xl lg:text-4xl leading-normal'>
-                    Let us match you with the right therapist
+                    {t("Let's match you with the right therapist")}
                 </div>
                 <div className='font-poppins font-regular text-justify text-NeutralBlack text-base lg:text-lg leading-relaxed'>
-                    Please fill out this short questionnaire to provide some
-                    general and anonymous background about you and the issues
-                    you would like to deal with in online therapy. It would help
-                    us match you with the most suitable therapist for you.
+                    {t(
+                        "Please fill out this short questionnaire to provide some general and anonymous background about you and the issues you'd like to deal with in online therapy. It would help us match you with the most suitable therapist for you."
+                    )}
                 </div>
                 <div className='flex flex-col bg-NeutralWhite lg:w-1/2 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'>
                     {error && (
@@ -50,14 +51,15 @@ export default function CounseQualities({ OnNext, OnPrevious }) {
                         </div>
                     )}
                     <h3 className='py-5 px-4 lg:py-10 lg:px-11 leading-normal text-NeutralBlack text-xl lg:text-2xl font-regular font-poppins capitalize'>
-                        Are there any specific qualities that you would like in
-                        a counselor?
+                        {t(
+                            "Are there any specific qualities that you would like in a counselor?"
+                        )}
                     </h3>
 
                     <div className='flex flex-col'>
                         <div>
                             <Checkbox
-                                label='I prefer a male counselor'
+                                label={t("I prefer a male counselor")}
                                 selected={counseQualities.includes(
                                     "I prefer a male counselor"
                                 )}
@@ -65,7 +67,7 @@ export default function CounseQualities({ OnNext, OnPrevious }) {
                             />
                         </div>
                         <Checkbox
-                            label='I prefer a female counselor'
+                            label={t("I prefer a female counselor")}
                             selected={counseQualities.includes(
                                 "I prefer a female counselor"
                             )}
@@ -73,7 +75,7 @@ export default function CounseQualities({ OnNext, OnPrevious }) {
                         />
                         <div>
                             <Checkbox
-                                label='I prefer an older counselor (45+)'
+                                label={t("I prefer an older counselor (45+)")}
                                 selected={counseQualities.includes(
                                     "I prefer an older counselor (45+)"
                                 )}
@@ -82,7 +84,7 @@ export default function CounseQualities({ OnNext, OnPrevious }) {
                         </div>
                         <div>
                             <Checkbox
-                                label='I prefer a non-religious counselor'
+                                label={t("I prefer a non-religious counselor")}
                                 selected={counseQualities.includes(
                                     "I prefer a non-religious counselor"
                                 )}
@@ -96,7 +98,7 @@ export default function CounseQualities({ OnNext, OnPrevious }) {
                                     className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
                                     onClick={OnPrevious}
                                 >
-                                    Previous
+                                    {t("Previous")}
                                 </button>
                             </div>
                             <div className=' pr-6 py-10 lg:py-10 lg:pr-11 group '>
@@ -104,7 +106,7 @@ export default function CounseQualities({ OnNext, OnPrevious }) {
                                     className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
                                     onClick={handleNextClick}
                                 >
-                                    Next
+                                    {t("Next")}
                                 </button>
                             </div>
                         </div>

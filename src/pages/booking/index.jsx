@@ -1,3 +1,4 @@
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 
 import TypeOfCounseling from "@/components/booking/1TypeOfCounseling";
@@ -66,3 +67,12 @@ function BookingPage() {
 }
 
 export default BookingPage;
+
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ["common"])),
+            // Will be passed to the page component as props
+        },
+    };
+}

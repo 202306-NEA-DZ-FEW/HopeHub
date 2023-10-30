@@ -16,6 +16,12 @@ jest.mock("@/util/firebase", () => {
     };
 });
 
+jest.mock("@/context/state.js", () => {
+    return {
+        useAppcontext: jest.fn(() => {}),
+    };
+});
+
 jest.mock("next/navigation", () => {
     return {
         __esModule: true,

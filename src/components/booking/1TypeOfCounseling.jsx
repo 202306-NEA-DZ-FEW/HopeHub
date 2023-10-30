@@ -23,7 +23,7 @@ export default function TypeOfCounseling({ OnNext }) {
             OnNext();
         } else {
             // Display an error message or handle validation as needed
-            setError(t("Please select an option before proceeding"));
+            setError(t("Please select an option before proceeding."));
         }
     };
 
