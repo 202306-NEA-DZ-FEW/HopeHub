@@ -1,10 +1,10 @@
+import { useTranslation } from "next-i18next";
 import React from "react";
 import {
-    BsTelephoneForward,
-    BsChatLeftText,
     BsCameraVideo,
+    BsChatLeftText,
+    BsTelephoneForward,
 } from "react-icons/bs";
-import { useTranslation } from "next-i18next";
 
 export default function ConnectionSection() {
     //Function used for translations
@@ -25,7 +25,7 @@ export default function ConnectionSection() {
         return (
             <div
                 key={index}
-                className='card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60'
+                className='card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-64'
             >
                 <div className='my-2 lg:my-6'>
                     <IconComponent className='text-3xl md:text-5xl' />

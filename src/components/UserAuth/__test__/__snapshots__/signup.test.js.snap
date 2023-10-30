@@ -23,6 +23,7 @@ exports[`renders correctly 1`] = `
         name=""
         onChange={[Function]}
         placeholder="fname"
+        required={true}
         type="text"
         value=""
       />
@@ -32,6 +33,7 @@ exports[`renders correctly 1`] = `
         name=""
         onChange={[Function]}
         placeholder="lname"
+        required={true}
         type="text"
         value=""
       />
@@ -42,6 +44,7 @@ exports[`renders correctly 1`] = `
       name=""
       onChange={[Function]}
       placeholder="footer_msg_3"
+      required={true}
       type="email"
       value=""
     />
@@ -51,6 +54,7 @@ exports[`renders correctly 1`] = `
       name=""
       onChange={[Function]}
       placeholder="Confirm Email"
+      required={true}
       type="email"
       value=""
     />
@@ -63,6 +67,7 @@ exports[`renders correctly 1`] = `
         name=""
         onChange={[Function]}
         placeholder="enter password"
+        required={true}
         type="password"
         value=""
       />
@@ -72,6 +77,7 @@ exports[`renders correctly 1`] = `
         name=""
         onChange={[Function]}
         placeholder="Confirm Password"
+        required={true}
         type="password"
         value=""
       />
@@ -90,6 +96,7 @@ exports[`renders correctly 1`] = `
         id="bdate"
         name=""
         onChange={[Function]}
+        required={true}
         type="date"
         value=""
       />

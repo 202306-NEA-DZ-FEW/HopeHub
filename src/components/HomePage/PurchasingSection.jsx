@@ -1,6 +1,6 @@
-import React from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import React from "react";
 
 export default function PurchasingSection() {
     //Function used for translations
@@ -15,7 +15,7 @@ export default function PurchasingSection() {
         return (
             <div
                 key={index}
-                className='card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6'
+                className=' card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6'
             >
                 <div className='card-body flex flex-col items-center'>
                     <h1 className='card-title text-xl md:text-3xl uppercase font-extrabold'>
@@ -25,7 +25,7 @@ export default function PurchasingSection() {
                         ${ticketsPrice[index]}
                     </h1>
                     <div className='card-actions justify-end md:mt-4'>
-                        <Link href={`/buyticket/`}>
+                        <Link href='/buyticket/'>
                             <button className='btn bg-Accent hover:bg-Primary'>
                                 {t("Purchase")}
                             </button>
@@ -38,7 +38,7 @@ export default function PurchasingSection() {
 
     //Displaying the cards and the section title
     return (
-        <div className='bg-BgWhite w-full font-poppins font-extrabold flex flex-col pb-8'>
+        <div className=' dark:bg-Dark_Neutral dark:text-NeutralWhite bg-BgWhite w-full font-poppins font-extrabold flex flex-col pb-8'>
             <h1 className='mx-6 mt-4 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase'>
                 {t("Purchase")} {t("Tickets")}
             </h1>
@@ -60,7 +60,7 @@ export default function PurchasingSection() {
                             )}
                         </p>
                         <div className='card-actions justify-around'>
-                            <Link href='/therapistcreate'>
+                            <Link href='/therapist'>
                                 <button className='btn bg-Accent hover:bg-Primary my-2'>
                                     {t("Learn More")}
                                 </button>
