@@ -51,12 +51,10 @@ export default function UserProfile() {
         e.preventDefault();
         setUploadFile(e.target.files[0]);
         const formData = new FormData();
-        formData.append("file", uploadFile);
+        formData.append("file", e.target.files[0]);
         formData.append("upload_preset", "hopehub");
         // formData.append("type", "private");
-        for (let pair of formData.entries()) {
-            console.log(pair[0] + ", " + pair[1]);
-        }
+
         axios
             .post(
                 "https://api.cloudinary.com/v1_1/dxic1agza/image/upload",
