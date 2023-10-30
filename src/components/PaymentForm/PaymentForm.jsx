@@ -9,7 +9,7 @@ const PUBLIC_KEY =
 
 const stripeTestPromise = loadStripe(PUBLIC_KEY);
 
-const AddCardDetails = () => {
+const PaymentForm = () => {
     return (
         <div className='w-full max-w-md mx-auto p-4 bg-white rounded shadow-lg'>
             <div className='text-center'>
@@ -40,7 +40,7 @@ const AddCardDetails = () => {
     );
 };
 
-export default AddCardDetails;
+export default PaymentForm;
 
 const CARD_OPTIONS = {
     iconStyle: "solid",
