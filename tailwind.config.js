@@ -18,6 +18,7 @@ module.exports = {
                 Error: "#BD0B0B",
                 Dark_Primary: "#607595",
                 Dark_Neutral: "#101729",
+                Dark_Accent: "#1E3B59",
             },
             fontFamily: {
                 poppins: ["Poppins"],
