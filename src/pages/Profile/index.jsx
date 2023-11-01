@@ -12,7 +12,9 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
+import { useRef } from "react";
 import { FaLock, FaPlus, FaUser } from "react-icons/fa";
+import { LiaUserEditSolid } from "react-icons/lia";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
@@ -42,6 +44,13 @@ export default function UserProfile() {
 
     const [uploadFile, setUploadFile] = useState("");
     const [cloudinaryImage, setCloudinaryImage] = useState("");
+    const inputRef = useRef(null);
+
+    const handleIconClick = () => {
+        if (inputRef.current) {
+            inputRef.current.click();
+        }
+    };
 
     const oldName = fullName;
     const oldPhone = phone;
@@ -210,7 +219,7 @@ export default function UserProfile() {
         <Layout className=''>
             <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row mt-20 max-w-screen'>
                 <div className=' py-16 lg:w-[30%] md:[40%] flex '>
-                    <div className='bg-NeutralBlack w-60 h-60 rounded-full mx-auto flex flex-col items-center justify-start'>
+                    <div className='bg-NeutralBlack w-64 h-64 rounded-full mx-auto flex flex-col items-center justify-center'>
                         {user.photoURL ? (
                             <Image
                                 src={user.photoURL}
@@ -219,15 +228,24 @@ export default function UserProfile() {
                                 alt={user.name}
                             />
                         ) : (
-                            <FaUser className='fill-white text-7xl mt-8 mb-5 ' />
+                            <FaUser className='fill-NeutralWhite w-32 h-32 mb-5  ' />
                         )}
+
                         <input
-                            className='align-center font-normal ml-32 text-red-300'
+                            ref={inputRef}
+                            className='hidden'
                             type='file'
                             name='userImg'
                             id='userImg'
                             onChange={uploadImage}
                         />
+
+                        <label
+                            className='absolute mt-64 cursor-pointer '
+                            onClick={handleIconClick}
+                        >
+                            <LiaUserEditSolid className='text-NeutralBlack w-16 h-16 bg-NeutralWhite rounded-full border border-NeutralBlack p-2' />
+                        </label>
                     </div>
                 </div>
                 <div className='flex items-center justify-center text-NeutralBlack md:w-2/3 lg:w-[50%] '>
