@@ -2,23 +2,24 @@
 
 import React from "react";
 
-import PaymentForm from "@/components/PaymentForm/PaymentForm";
+import PaymentFormII from "@/components/PaymentForm/PaymentFormII";
 
 import Layout from "@/layout/Layout";
 
 const CardDetailsPage = () => {
     return (
         <Layout>
-            <div className='bg-cover bg-center bg-NeutralWhite flex flex-col'>
-                <h1>Add Card Details</h1>
+            <div className='bg-cover bg-center bg-NeutralWhite w-full h-screen pt-10'>
+                <h1 className='text-black font-poppins font-bold text-[25px]'>
+                    Add Card Details
+                </h1>
                 <p>
                     Please make sure all of the info you enter are the same as
                     your card registration info.
                 </p>
 
-                <div className='flex flex-col gap-4'>
-                    <div className='flex flex-col gap-2'></div>
-                    <PaymentForm />
+                <div className='flex flex-col gap-4 mt-6'>
+                    <PaymentFormII />
                 </div>
             </div>
         </Layout>
