@@ -4,6 +4,7 @@ import countryList from "react-select-country-list";
 
 const PaymentFormII = () => {
     const [isMasterCard, setIsMasterCard] = useState(false);
+    const [cardType, setCardType] = useState("Visa");
     const [cardNumber, setCardNumber] = useState("");
     const [expiryDate, setExpiryDate] = useState("");
     const [cvv, setCvv] = useState("");
@@ -19,6 +20,8 @@ const PaymentFormII = () => {
 
     const handleCardChange = () => {
         setIsMasterCard(!isMasterCard);
+        const card = isMasterCard ? "masterCard" : "Visa";
+        setCardType(card);
     };
 
     const handleExpiryDateChange = (e) => {
@@ -45,25 +48,44 @@ const PaymentFormII = () => {
     };
 
     return (
-        <div className='grid grid-cols-2 gap-2'>
+        <div className='w-full'>
             {/* Left Column */}
-            <div>
-                <form className='justify-center' onSubmit={handleSubmit}>
-                    <div className='w-1/2'>
-                        <label htmlFor='cardType'>Supported Card types</label>
+
+            <form
+                className='flex flex-row justify-start items-center gap-32'
+                onSubmit={handleSubmit}
+            >
+                <div className='w-full flex flex-col justify-start'>
+                    <label htmlFor='cardType' className='text-lg'>
+                        Supported Card types
+                    </label>
+                    <div className='flex flex-row items-center justify-start '>
                         <button
                             onClick={handleCardChange}
-                            className={`block w-full p-2 border-[1px] border-[#2DD3E3] rounded ${
+                            className={`block w-1/2 p-2 border border-Accent rounded rounded-tr-none rounded-br-none ${
                                 isMasterCard
-                                    ? "bg-blue-100 text-[#2DD3E3]"
-                                    : "text-[#2DD3E3]"
+                                    ? "bg-blue-100 text-Accent"
+                                    : "text-blue-400"
                             }`}
                         >
-                            {isMasterCard ? "MasterCard" : "Visa"}
+                            Visa
+                        </button>
+
+                        <button
+                            onClick={handleCardChange}
+                            className={`block w-1/2 p-2 border border-Accent rounded rounded-tl-none rounded-bl-none ${
+                                isMasterCard
+                                    ? "text-Accent "
+                                    : "bg-blue-100 text-Accent"
+                            }`}
+                        >
+                            MasterCard
                         </button>
                     </div>
-                    <div className='w-1/2'>
-                        <label htmlFor='cardNumber'>Card Number:</label>
+                    <div className='mt-4'>
+                        <label htmlFor='cardNumber' className='text-lg'>
+                            Card Number
+                        </label>
                         <input
                             type='number'
                             id='cardNumber'
@@ -73,110 +95,126 @@ const PaymentFormII = () => {
                                     setCardNumber(e.target.value);
                                 }
                             }}
-                            className='block w-full p-2 bg-white rounded border-[1px] border-Accent focus-border-red-500'
+                            className='block w-full p-2  bg-white rounded border border-Accent focus:border-red-500 outline-none'
                             maxLength='14'
                             pattern='[0-9]{14}'
                             title='Card number must be 14 digits'
                             placeholder='**************'
                         />
                     </div>
-                    <div className='flex flex-wrap'>
-                        <div className='w-1/4 pr-2'>
-                            <label htmlFor='expiryDate'>
-                                Expiry Date (MM/YY):
+                    <div className='flex flex-wrap mt-4'>
+                        <div className='w-1/2 pr-2'>
+                            <label
+                                htmlFor='expiryDate mb-2'
+                                className='text-lg'
+                            >
+                                Expiry Date
                             </label>
                             <input
                                 type='text'
                                 id='expiryDate'
                                 value={expiryDate}
                                 onChange={handleExpiryDateChange}
-                                className='block w-full p-2 bg-white rounded border-[1px] border-Accent focus-border-red-500'
+                                className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
                                 placeholder='MM/YY'
                             />
                         </div>
-                        <div className='w-1/4 pl-2'>
-                            <label htmlFor='cvv'>CVV Code:</label>
+                        <div className='w-1/2 pl-2'>
+                            <label htmlFor='cvv' className='text-lg'>
+                                CVV Code
+                            </label>
                             <input
                                 type='number'
                                 id='cvv'
                                 value={cvv}
                                 onChange={(e) => setCvv(e.target.value)}
-                                className='block w-full p-2 bg-white rounded border-[1px] border-Accent focus-border-red-500'
-                                maxLength='3'
+                                className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
+                                maxLength={3}
                                 pattern='[0-9]{3}'
                                 title='CVV number must be 3 digits'
                                 placeholder='***'
                             />
                         </div>
                     </div>
-                    <div className='w-1/2'>
-                        <label htmlFor='nameOnCard'>Name on Card:</label>
+                    <div className='mt-4'>
+                        <label htmlFor='nameOnCard' className='text-lg'>
+                            Name on Card
+                        </label>
                         <input
                             type='text'
                             id='nameOnCard'
                             value={nameOnCard}
                             onChange={(e) => setNameOnCard(e.target.value)}
-                            className='block w-full p-2 bg-white rounded border-[1px] border-Accent focus-border-red-500'
+                            className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
                             placeholder='Name On Card'
                         />
                     </div>
-                    <div>
-                        <button
-                            type='submit'
-                            className='w-1/3 p-2 bg-Accent text-NeutralBlack font-bold rounded mt-8'
-                        >
-                            Add Card
-                        </button>
-                    </div>
-                </form>
-            </div>
-            {/* Right Column */}
-            <div>
-                <div className='w-1/2'>
-                    <label htmlFor='country'>Country:</label>
-                    <Select
-                        id='country'
-                        value={selectedCountry}
-                        onChange={handleCountryChange}
-                        options={countryList().getData()}
-                        // className="block w-full p-2 bg-white rounded border-[1px] border-Accent focus-border-red-500"
-                        placeholder='Your Country Name'
-                    />
-                </div>
-                <div className='w-1/2'>
-                    <label htmlFor='zipCode'>Zip Code:</label>
-                    <input
-                        type='text'
-                        id='zipCode'
-                        value={zipCode}
-                        onChange={(e) => setZipCode(e.target.value)}
-                        className='block w-full p-2 bg-white rounded border-[1px] border-Accent focus-border-red-500'
-                        placeholder='*********'
-                    />
                 </div>
 
-                <div className='w-1/2'>
-                    <label htmlFor='city'>City:</label>
-                    <input
-                        type='text'
-                        id='city'
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                        className='block w-full p-2 bg-white rounded border-[1px] border-Accent focus-border-red-500'
-                        placeholder='Your City Name'
-                    />
+                {/* Right Column */}
+                <div className='w-full flex flex-col justify-start'>
+                    <div className=''>
+                        <label htmlFor='country' className='text-lg'>
+                            Country
+                        </label>
+                        <Select
+                            id='country'
+                            value={selectedCountry}
+                            onChange={handleCountryChange}
+                            options={countryList().getData()}
+                            // className="block w-full p-2 bg-white rounded border-[1px] border-Accent focus-border-red-500"
+                            placeholder='Your Country Name'
+                        />
+                    </div>
+                    <div className='mt-4'>
+                        <label htmlFor='zipCode' className='text-lg'>
+                            Zip Code
+                        </label>
+                        <input
+                            type='text'
+                            id='zipCode'
+                            value={zipCode}
+                            onChange={(e) => setZipCode(e.target.value)}
+                            className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
+                            placeholder='*********'
+                        />
+                    </div>
+
+                    <div className='mt-4'>
+                        <label htmlFor='city' className='text-lg'>
+                            City
+                        </label>
+                        <input
+                            type='text'
+                            id='city'
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                            className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
+                            placeholder='Your City Name'
+                        />
+                    </div>
+                    <div className='mt-4'>
+                        <label htmlFor='address' className='text-lg'>
+                            Address
+                        </label>
+                        <input
+                            type='text'
+                            id='address'
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
+                            placeholder='Your Address'
+                        />
+                    </div>
                 </div>
-                <div className='w-1/2'>
-                    <label htmlFor='address'>Address:</label>
-                    <input
-                        type='text'
-                        id='address'
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        className='block w-full p-2 bg-white rounded border-[1px] border-Accent focus-border-red-500'
-                        placeholder='Your Address'
-                    />
-                </div>
+            </form>
+            <div>
+                <button
+                    type='submit'
+                    className='w-32 p-2 bg-Accent text-NeutralBlack font-bold rounded mt-8'
+                >
+                    Add Card
+                </button>
             </div>
         </div>
     );
