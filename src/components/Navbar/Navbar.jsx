@@ -103,11 +103,14 @@ export default function Navbar() {
                                 {t("Contact")}
                             </Link>
                         </li>
-                        <div class='border-t-2 border-NeutralWhite pb-4'></div>
+                        <div className='border-t-2 border-NeutralWhite pb-4'></div>
                         {/* Conditionally showing the login button or the profile menu for small screens */}
                         {isLogged ? (
                             <li>
-                                <details open>
+                                <details
+                                    open
+                                    onToggle={(e) => e.preventDefault()}
+                                >
                                     <summary
                                         className={`text-Accent text-lg font-bold underline font-poppins ${isPageActive(
                                             "/profile"
@@ -135,7 +138,10 @@ export default function Navbar() {
                                         >
                                             <Link
                                                 className='text-base'
-                                                href='/booking'
+                                                href='/calendar'
+                                                onClick={(e) =>
+                                                    e.preventDefault()
+                                                }
                                             >
                                                 {t("Appointments")}
                                             </Link>
@@ -295,7 +301,7 @@ export default function Navbar() {
                                                     </Link>
                                                 </li>
                                                 <li>
-                                                    <Link href='/booking'>
+                                                    <Link href='/calendar'>
                                                         {t("Appointments")}
                                                     </Link>
                                                 </li>

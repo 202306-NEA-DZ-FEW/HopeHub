@@ -49,7 +49,8 @@ export default function Therapy({ OnNext, OnPrevious }) {
 
                     <div className='px-3 mx-5 mt-1 lg:px-6 group'>
                         <h3
-                            className='rounded-md py-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] pl-2 lg:pl-5 lg:py-5 cursor-pointer text-NeutralBlack  group-hover:text-NeutralWhite group-hover:bg-Accent group-hover:scale-105 duration-300 text-lg lg:text-xl font-regular font-poppins capitalize'
+                            className={`rounded-md py-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] pl-2 lg:pl-5 lg:py-5 cursor-pointer text-NeutralBlack  group-hover:text-NeutralWhite group-hover:bg-Accent group-hover:scale-105 duration-300 text-lg lg:text-xl font-regular font-poppins capitalize
+                                ${therapy === "Yes" ? "bg-Accent" : ""}`}
                             onClick={() => SelectTherapy("Yes")}
                         >
                             {t("Yes")}
@@ -57,7 +58,8 @@ export default function Therapy({ OnNext, OnPrevious }) {
                     </div>
                     <div className='px-3 mx-5 mt-1 lg:px-6  group'>
                         <h3
-                            className='rounded-md py-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] pl-2 lg:pl-5 lg:py-5 cursor-pointer text-NeutralBlack  group-hover:text-NeutralWhite group-hover:bg-Accent group-hover:scale-105 duration-300 text-lg lg:text-xl font-regular font-poppins capitalize'
+                            className={`rounded-md py-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] pl-2 lg:pl-5 lg:py-5 cursor-pointer text-NeutralBlack  group-hover:text-NeutralWhite group-hover:bg-Accent group-hover:scale-105 duration-300 text-lg lg:text-xl font-regular font-poppins capitalize
+                                ${therapy === "No" ? "bg-Accent" : ""}`}
                             onClick={() => SelectTherapy("No")}
                         >
                             {t("No")}
