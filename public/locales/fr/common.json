@@ -153,10 +153,7 @@
     "Excellent writing skills": "Excellentes compétences en écriture",
     "Reliable Internet connection": "Connexion Internet fiable",
     "Currently residing in the US": "Résidant actuellement aux États-Unis",
-<<<<<<< HEAD
-    "Next": "Suivant",
-    "select level": "Choisissez un niveau"
-=======
+    "select level": "Choisissez un niveau",
     "title": "À propos",
     "Who are we": "Qui sommes-nous",
     "Our team": "Notre équipe",
@@ -176,5 +173,4 @@
     "Bio": "bio",
     "Therapist Profile": "Profil de thérapeute",
     "Update": "Mise à jour"
->>>>>>> develop
 }

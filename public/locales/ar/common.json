@@ -154,10 +154,7 @@
     "Excellent writing skills": "مهارات كتابة ممتازة",
     "Reliable Internet connection": "اتصال إنترنت موثوق",
     "Currently residing in the US": "مقيم حالياً في الولايات المتحدة",
-<<<<<<< HEAD
-    "Next": "التالي",
-    "select level": "حدد المستوى"
-=======
+    "select level": "حدد المستوى",
     "title": "عنا",
     "Who are we": "من نحن",
     "Our team": "فريقنا",
@@ -167,5 +164,4 @@
     "Bio": "السيرة الذاتية",
     "Therapist Profile": "الملف الشخصي للمعالج",
     "Update": "تحديث"
->>>>>>> develop
 }
