@@ -11,7 +11,7 @@ export default function Description({ OnNext, OnPrevious }) {
 
     const SubmitDescription = () => {
         // setDescription(text);
-        setBookingInfos({ Description: description, ...bookingInfos });
+        setBookingInfos({ description: description, ...bookingInfos });
     };
 
     const handleNextClick = () => {

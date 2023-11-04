@@ -5,7 +5,7 @@ import React from "react";
 import BookingButton from "../BookingButton/BookingButton";
 import therapists from "../../../public/assets/therapists.svg";
 
-export default function () {
+export default function TherapistsInfoSection() {
     //Function used for translations
     const { t } = useTranslation("common");
 

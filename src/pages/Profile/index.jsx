@@ -13,17 +13,18 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
 import { useRef } from "react";
+import { auth, db } from "@/util/firebase";
 import { FaLock, FaPlus, FaUser } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
-import { auth, db } from "@/util/firebase";
 
 export default function UserProfile() {
     // const pathname = usePathname()
     // const searchParams = useSearchParams()
     const router = useRouter();
+
     const { t } = useTranslation("common");
     const { user, profileUpdated, setProfileUpdated, setUser } =
         useAppcontext();
@@ -45,7 +46,7 @@ export default function UserProfile() {
     const [uploadFile, setUploadFile] = useState("");
     const [cloudinaryImage, setCloudinaryImage] = useState("");
     const inputRef = useRef(null);
-
+    console.log("user profile", user);
     const handleIconClick = () => {
         if (inputRef.current) {
             inputRef.current.click();

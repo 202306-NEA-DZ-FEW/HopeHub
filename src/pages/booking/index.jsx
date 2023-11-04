@@ -1,3 +1,4 @@
+import { collection, getDocs } from "firebase/firestore";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 
@@ -9,16 +10,19 @@ import Issues from "@/components/booking/5Issues";
 import Description from "@/components/booking/6Description";
 import Submission from "@/components/booking/7Submission";
 import Confirmation from "@/components/booking/8Confirmation";
+import PickaDate from "@/components/booking/PickaDate";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
+import { db } from "@/util/firebase";
 
-function BookingPage() {
+function BookingPage({ dates }) {
     const [step, setStep] = useState(1);
     const { bookingInfos } = useAppcontext();
+    // console.log('dates', dates)
     function OnNext() {
         setStep(step + 1);
-        console.log(bookingInfos);
+        // console.log(bookingInfos);
     }
     function OnPrevious() {
         setStep(step - 1);
@@ -46,9 +50,11 @@ function BookingPage() {
                 return <Issues OnNext={OnNext} OnPrevious={OnPrevious} />;
             case 6:
                 return <Description OnNext={OnNext} OnPrevious={OnPrevious} />;
-            case 7:
-                return <Submission OnNext={OnNext} OnPrevious={OnPrevious} />;
             case 8:
+                return <Submission OnNext={OnNext} OnPrevious={OnPrevious} />;
+            case 7:
+                return <PickaDate dates={dates} OnNext={OnNext} />;
+            case 9:
                 return <Confirmation OnNext={OnNext} OnPrevious={OnPrevious} />;
         }
     }
@@ -69,10 +75,17 @@ function BookingPage() {
 export default BookingPage;
 
 export async function getStaticProps({ locale }) {
+    const querySnapshot = await getDocs(collection(db, "dates"));
+    const dates = {};
+    querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        // console.log(doc.id, " => ", doc.data());
+        dates[doc.id] = doc.data();
+    });
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
-            // Will be passed to the page component as props
+            dates,
         },
     };
 }
