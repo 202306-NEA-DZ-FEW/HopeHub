@@ -70,7 +70,7 @@ export default function Navbar() {
 
             {/* Navbar for large screens*/}
             <div className='flex justify-between ml-auto'>
-                <Link href='/Profile'>profile</Link>
+                <Link href='/profile'>profile</Link>
                 <ToggleBtn />
                 <div className='navbar-center hidden lg:flex'>
                     <ul className='menu menu-horizontal'>
