@@ -27,7 +27,7 @@ export default function Issues({ OnNext, OnPrevious }) {
         } else {
             setIssues(issues.filter((option) => option !== label)); // Remove from selected options
         }
-        setBookingInfos({ ...bookingInfos, Issues: issues });
+        setBookingInfos({ ...bookingInfos, issues: issues });
     };
 
     return (

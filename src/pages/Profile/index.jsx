@@ -1,11 +1,15 @@
-import Layout from "@/layout/Layout";
-import React from "react";
 import { useTranslation } from "next-i18next";
-import { FaUser, FaPlus, FaLock } from "react-icons/fa";
-import { LiaUserEditSolid } from "react-icons/lia";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from "react";
+import { FaLock, FaPlus, FaUser } from "react-icons/fa";
+import { LiaUserEditSolid } from "react-icons/lia";
+
+import { useAppcontext } from "@/context/state";
+import Layout from "@/layout/Layout";
 
 export default function UserProfile() {
+    const { user } = useAppcontext();
+    console.log("user profile", user);
     const { t } = useTranslation("common");
     return (
         <Layout>
