@@ -50,7 +50,12 @@ export default function TypeOfCounseling({ OnNext }) {
 
                     <div className='px-3 mx-5 mt-1 lg:px-6  group '>
                         <h3
-                            className='rounded-md py-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] pl-2 lg:px-5 lg:py-5 cursor-pointer text-NeutralBlack group-hover:text-NeutralWhite group-hover:bg-Accent group-hover:scale-105 duration-300 text-lg lg:text-xl font-regular font-poppins capitalize'
+                            className={`rounded-md py-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] pl-2 lg:px-5 lg:py-5 cursor-pointer text-NeutralBlack group-hover:text-NeutralWhite group-hover:bg-Accent group-hover:scale-105 duration-300 text-lg lg:text-xl font-regular font-poppins capitalize
+                            ${
+                                typesOfCounceling === "Individual counseling"
+                                    ? "bg-Accent"
+                                    : ""
+                            }`}
                             onClick={() =>
                                 SelectCouncelingType("Individual counseling")
                             }
@@ -60,7 +65,13 @@ export default function TypeOfCounseling({ OnNext }) {
                     </div>
                     <div className='px-3 mx-5 lg:px-6 mt-1 lg:mt-2 group'>
                         <h3
-                            className='rounded-md py-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] pl-2 lg:pl-5 lg:py-5 cursor-pointer text-NeutralBlack  group-hover:text-NeutralWhite group-hover:bg-Accent group-hover:scale-105 duration-300 text-lg lg:text-xl font-regular font-poppins capitalize'
+                            className={`rounded-md py-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] pl-2 lg:pl-5 lg:py-5 cursor-pointer text-NeutralBlack  group-hover:text-NeutralWhite group-hover:bg-Accent group-hover:scale-105 duration-300 text-lg lg:text-xl font-regular font-poppins capitalize
+                                ${
+                                    typesOfCounceling ===
+                                    "Teen counseling (for my child)"
+                                        ? "bg-Accent"
+                                        : ""
+                                }`}
                             onClick={() =>
                                 SelectCouncelingType(
                                     "Teen counseling (for my child)"

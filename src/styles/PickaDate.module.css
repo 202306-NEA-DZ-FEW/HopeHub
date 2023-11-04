@@ -1,0 +1,9 @@
+.date_input::-webkit-calendar-picker-indicator {
+    /* display: none; */
+    background-image: url("../../public/assets/calendarIcon.svg");
+}
+/* .date_input{
+  background-image: url('../../public/assets/calendarIcon.svg');
+  background-repeat: no-repeat;
+  background-position: right;
+} */

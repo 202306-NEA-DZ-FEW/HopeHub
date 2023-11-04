@@ -1,10 +1,60 @@
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { useTranslation } from "next-i18next";
 
+import { useAppcontext } from "@/context/state";
+import { db } from "@/util/firebase";
 export default function Submission({ OnNext, OnPrevious }) {
+    const { bookingInfos, user, setUser } = useAppcontext();
     const { t } = useTranslation("common");
-    function handleSubmit() {
+    async function handleSubmit() {
         // send request to save the data
         // ...
+        const appointment = {
+            date: bookingInfos.date,
+            time: bookingInfos.start,
+        };
+        const appointments = user.appointments
+            ? [...user.appointments, appointment]
+            : [appointment];
+        setUser({
+            ...user,
+            appointments: appointments,
+        });
+        console.log("user", user?.uid);
+        const userRef = doc(db, "users", user?.uid);
+        await updateDoc(userRef, {
+            appointments: appointments,
+        });
+        const rdvRef = doc(db, "appointments", user?.uid);
+        const docsnap = await getDoc(rdvRef);
+        const key = `${bookingInfos.date}__${bookingInfos.start}`;
+        if (docsnap.exists()) {
+            await updateDoc(rdvRef, {
+                [key]: {
+                    date: bookingInfos.date,
+                    time: bookingInfos.start,
+                    type: bookingInfos.typesOfCounceling,
+                    relationship: bookingInfos.relationshipStatus,
+                    hadTherapy: bookingInfos.therapy,
+                    counselorQualities: bookingInfos.counseQualities,
+                    issues: bookingInfos.issues,
+                    description: bookingInfos.description,
+                },
+            });
+        } else {
+            await setDoc(rdvRef, {
+                [key]: {
+                    date: bookingInfos.date,
+                    time: bookingInfos.start,
+                    type: bookingInfos.typesOfCounceling,
+                    relationship: bookingInfos.relationshipStatus,
+                    hadTherapy: bookingInfos.therapy,
+                    counselorQualities: bookingInfos.counseQualities,
+                    issues: bookingInfos.issues,
+                    description: bookingInfos.description,
+                },
+            });
+        }
         OnNext();
     }
 
