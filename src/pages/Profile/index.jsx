@@ -1,4 +1,3 @@
-
 // import { doc, updateDoc } from "firebase/firestore";
 import axios from "axios";
 import {
@@ -25,7 +24,7 @@ export default function UserProfile() {
     // const pathname = usePathname()
     // const searchParams = useSearchParams()
     const router = useRouter();
-    
+
     const { t } = useTranslation("common");
     const { user, profileUpdated, setProfileUpdated, setUser } =
         useAppcontext();
