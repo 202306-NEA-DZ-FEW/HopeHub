@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="bg-NeutralWhite min-w-screen min-h-screen"
+>
+  <div
+    className="w-full h-full px-8 lg:px-20 bg-NeutralWhite flex flex-col "
+  >
+    <div
+      className="mb-3 pt-12 font-ogg font-bold text-NeutralBlack capitalize text-2xl lg:text-4xl leading-normal"
+    >
+      What brings you here?
+    </div>
+    <div
+      className="font-poppins font-regular text-justify text-NeutralBlack text-base lg:text-lg leading-relaxed"
+    >
+      Please specify (in a few sentences) why you would like counseling. This will give your counselor a good understanding of where to start.
+       
+    </div>
+    <div
+      className="self-center flex flex-col w-full h-[500px] lg:w-[70%] lg:h-[350px] mt-14"
+    >
+      <textarea
+        className="textarea p-4 text-NeutralBlack text-xl font-poppins text-regular bg-NeutralWhite lg:h-full sm:h-full sm:leading-tight shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-md "
+        id="details"
+        onChange={[Function]}
+        placeholder="Tell us what you feel ..."
+        value=""
+      />
+      <div
+        className="flex justify-between "
+      >
+        <div
+          className="py-10 lg:py-10 group "
+        >
+          <button
+            className="w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500"
+          >
+            Previous
+          </button>
+        </div>
+        <div
+          className=" py-10 lg:py-10 group "
+        >
+          <button
+            className="w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500"
+            onClick={[Function]}
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

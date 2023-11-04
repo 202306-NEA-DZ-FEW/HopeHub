@@ -1,13 +1,14 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import { useTheme } from "next-themes";
 import { createContext, useContext, useState } from "react";
-
+import { useTheme } from "next-themes";
 import { auth, db } from "@/util/firebase";
+
 const AppContext = createContext();
 
 export function AppWrapper({ children }) {
     // declare variables with useState in this part and import them in value part
+    const [bookingInfos, setBookingInfos] = useState({});
 
     const [user, setUser] = useState({});
     const [isLogged, setIsLogged] = useState(false);
@@ -53,6 +54,9 @@ export function AppWrapper({ children }) {
         <AppContext.Provider
             value={{
                 //all the values declared here will be accessible for all components
+
+                bookingInfos,
+                setBookingInfos,
                 user,
                 isLogged,
                 authChange,

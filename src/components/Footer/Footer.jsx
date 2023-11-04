@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import React from "react";
+import ToggleButton from "../Navbar/toggleBtn";
+import TranslationButton from "../TranslationButton/TranslationButton";
 
 function Footer() {
     const { t } = useTranslation("common");
@@ -46,20 +48,29 @@ function Footer() {
                 </fieldset>
             </form>
             <div className=' items-center flex flex-col justify-center h-full'>
-                <nav className='footer-title flex gap-8'>
-                    <Link className=' ' href='../Home'>
-                        {t("Home")}
-                    </Link>
-                    <Link className=' ' href='../Blogs'>
-                        {t("Blogs")}
-                    </Link>
-                    <Link className=' ' href='../About'>
-                        {t("About")}
-                    </Link>
-                    <Link className=' ' href='../Contact'>
-                        {t("Contact")}
-                    </Link>
-                </nav>
+                <div className='flex flex-row items-center justify-between'>
+                    <div className='mb-2 px-3'>
+                        <ToggleButton />
+                    </div>
+                    <div className='mb-2.5 px-3'>
+                        <TranslationButton />
+                    </div>
+
+                    <nav className='footer-title flex gap-8'>
+                        <Link className=' ' href='../Home'>
+                            {t("Home")}
+                        </Link>
+                        <Link className=' ' href='../Blogs'>
+                            {t("Blogs")}
+                        </Link>
+                        <Link className=' ' href='../About'>
+                            {t("About")}
+                        </Link>
+                        <Link className=' ' href='../Contact'>
+                            {t("Contact")}
+                        </Link>
+                    </nav>
+                </div>
                 <div className='grid grid-flow-col gap-4'>
                     <a href=''>
                         <svg

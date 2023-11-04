@@ -1,8 +1,9 @@
-import React from "react";
-import therapists from "../../../public/assets/therapists.svg";
 import Image from "next/image";
-import BookingButton from "../BookingButton/BookingButton";
 import { useTranslation } from "next-i18next";
+import React from "react";
+
+import BookingButton from "../BookingButton/BookingButton";
+import therapists from "../../../public/assets/therapists.svg";
 
 export default function () {
     //Function used for translations
@@ -11,7 +12,7 @@ export default function () {
     //Displaying the therapists info section
     return (
         <div className='w-full bg-Primary'>
-            <h1 className='mx-6 mt-4 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-black inline-block'>
+            <h1 className='mx-6 mt-4 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block text-NeutralBlack'>
                 {t(
                     "Professional, licensed, and vetted therapists that you can trust."
                 )}
@@ -26,7 +27,7 @@ export default function () {
                     layout='fixed'
                 />
             </div>
-            <p className='text-xs mx-6 my-4 md:text-xl md:mx-9 font-bold font-poppins'>
+            <p className='text-xs mx-6 my-4 md:text-xl md:mx-9 font-normal text-NeutralBlack font-poppins'>
                 {t(
                     "Tap to the world's largest network of licensed, accredited, and experienced therapists who can help you with a range of issues including depression, anxiety, relationships, trauma, grief, and more. with our therapists, you get the same professionalism and quality you would expect from an in-office therapist, but with the ability to communicate whenever and however you want."
                 )}

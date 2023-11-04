@@ -59,3 +59,17 @@
 .rtl .right-align-text {
     text-align: right;
 }
+
+.search-bar {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.search-bar.open {
+    width: 140px; /* Width of the open search bar */
+}
+
+.darkened-logo {
+    filter: brightness(0.7); /* Adjust the brightness value as needed */
+}

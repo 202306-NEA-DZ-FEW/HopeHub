@@ -2,17 +2,17 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className=" dark:bg-Dark_Neutral dark:text-NeutralWhite bg-BgWhite w-full font-poppins font-extrabold flex flex-col pb-8"
+  className=" dark:bg-Dark_Neutral dark:text-NeutralWhite bg-BgWhite text-NeutralBlack w-full font-poppins flex flex-col pb-8"
 >
   <h1
-    className="mx-6 mt-4 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase"
+    className="mx-6 mt-4 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase font-medium"
   >
     Purchase
      
     Tickets
   </h1>
   <h1
-    className="text-xs mx-6  md:text-xl md:mx-9 uppercase"
+    className="text-xs mx-6  md:text-xl md:mx-9 uppercase font-normal"
   >
     Purchase tickets that can be used to book appointments!
   </h1>
@@ -29,14 +29,14 @@ exports[`renders correctly 1`] = `
           className="card-body flex flex-col items-center"
         >
           <h1
-            className="card-title text-xl md:text-3xl uppercase font-extrabold"
+            className="card-title text-xl md:text-3xl uppercase font-normal"
           >
             5
              
             Tickets
           </h1>
           <h1
-            className="text-gray-400 text-base md:text-xl"
+            className="text-gray-500 font-light text-base md:text-xl"
           >
             $
             10
@@ -51,7 +51,7 @@ exports[`renders correctly 1`] = `
               onTouchStart={[Function]}
             >
               <button
-                className="btn bg-Accent hover:bg-Primary"
+                className="btn font-poppins dark:bg-slate-800 dark:text-NeutralWhite dark:hover:bg-slate-500 font-normal bg-Accent hover:bg-Primary"
               >
                 Purchase
               </button>
@@ -66,14 +66,14 @@ exports[`renders correctly 1`] = `
           className="card-body flex flex-col items-center"
         >
           <h1
-            className="card-title text-xl md:text-3xl uppercase font-extrabold"
+            className="card-title text-xl md:text-3xl uppercase font-normal"
           >
             25
              
             Tickets
           </h1>
           <h1
-            className="text-gray-400 text-base md:text-xl"
+            className="text-gray-500 font-light text-base md:text-xl"
           >
             $
             40
@@ -88,7 +88,7 @@ exports[`renders correctly 1`] = `
               onTouchStart={[Function]}
             >
               <button
-                className="btn bg-Accent hover:bg-Primary"
+                className="btn font-poppins dark:bg-slate-800 dark:text-NeutralWhite dark:hover:bg-slate-500 font-normal bg-Accent hover:bg-Primary"
               >
                 Purchase
               </button>
@@ -103,14 +103,14 @@ exports[`renders correctly 1`] = `
           className="card-body flex flex-col items-center"
         >
           <h1
-            className="card-title text-xl md:text-3xl uppercase font-extrabold"
+            className="card-title text-xl md:text-3xl uppercase font-normal"
           >
             50
              
             Tickets
           </h1>
           <h1
-            className="text-gray-400 text-base md:text-xl"
+            className="text-gray-500 font-light text-base md:text-xl"
           >
             $
             70
@@ -125,7 +125,7 @@ exports[`renders correctly 1`] = `
               onTouchStart={[Function]}
             >
               <button
-                className="btn bg-Accent hover:bg-Primary"
+                className="btn font-poppins dark:bg-slate-800 dark:text-NeutralWhite dark:hover:bg-slate-500 font-normal bg-Accent hover:bg-Primary"
               >
                 Purchase
               </button>
@@ -141,12 +141,12 @@ exports[`renders correctly 1`] = `
         className="card-body items-center"
       >
         <h1
-          className="card-title my-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase text-center"
+          className="card-title my-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase text-center font-normal"
         >
           Are you a counselor?
         </h1>
         <p
-          className="text-xs my-2 md:text-2xl md:mx-9 text-center"
+          className="text-xs my-2 md:text-2xl md:mx-9 text-center font-light"
         >
           Interested in joining our mental health platform? You decide your schedule and how much you want to work, we’ll take care of the client referrals and billing details!
         </p>
@@ -160,7 +160,7 @@ exports[`renders correctly 1`] = `
             onTouchStart={[Function]}
           >
             <button
-              className="btn bg-Accent hover:bg-Primary my-2"
+              className="btn font-normal dark:bg-slate-800 dark:text-NeutralWhite dark:hover:bg-slate-500 bg-Accent hover:bg-Primary my-2"
             >
               Learn More
             </button>

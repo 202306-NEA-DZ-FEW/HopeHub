@@ -30,7 +30,7 @@ const ContactForm = () => {
                 <div className='login'>
                     <div>
                         <label
-                            className='block text-black text-sm font-bold mb-2 font-poppins'
+                            className='block text-NeutralBlack text-sm font-semibold mb-2 font-poppins'
                             htmlFor='fullName'
                         >
                             {t("Full Name")}
@@ -47,7 +47,7 @@ const ContactForm = () => {
                     </div>
                     <div className='email mt-4'>
                         <label
-                            className='block text-black text-sm font-bold mb-2 font-poppins'
+                            className='block text-NeutralBlack text-sm font-semibold mb-2 font-poppins'
                             htmlFor='email'
                         >
                             {t("Email")}
@@ -64,7 +64,7 @@ const ContactForm = () => {
                     </div>
                     <div className='mt-4'>
                         <label
-                            className='block text-white text-sm font-bold mb-2 font-poppins'
+                            className='block text-NeutralBlack text-sm font-semibold mb-2 font-poppins'
                             htmlFor='details'
                         >
                             {t("Request Type")}
@@ -133,7 +133,7 @@ const ContactForm = () => {
                     </div>
                     <div className='details mt-4'>
                         <label
-                            className='block text-black text-sm font-bold mb-2 font-poppins'
+                            className='block text-NeutralBlack text-sm font-semibold mb-2 font-poppins'
                             htmlFor='details'
                         >
                             {t("Details")}
@@ -150,7 +150,7 @@ const ContactForm = () => {
                 <div className='text-center flex justify-end mt-3'>
                     <button
                         type='submit'
-                        className='bg-Accent hover:bg-Primary text-black font-poppins font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-Accent'
+                        className='bg-Accent hover:bg-Primary text-NeutralBlack font-poppins font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-Accent'
                     >
                         {t("Submit")}
                     </button>
