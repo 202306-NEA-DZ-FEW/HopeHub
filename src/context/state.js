@@ -15,6 +15,7 @@ export function AppWrapper({ children }) {
     const [isLogged, setIsLogged] = useState(false);
     const { theme, setTheme } = useTheme();
     const [darkMode, setDarkMode] = useState(false);
+    const [profileUpdated, setProfileUpdated] = useState(false);
 
     async function authChange() {
         try {
@@ -30,7 +31,7 @@ export function AppWrapper({ children }) {
                             ...collection.data(),
                             name: logUser.displayName,
                             email: logUser.email,
-                            photoURL: logUser.photoURL,
+                            // photoURL: logUser.photoURL,
                             uid: logUser.uid,
                             phoneNumber: logUser.phoneNumber,
                         });
@@ -48,7 +49,7 @@ export function AppWrapper({ children }) {
     }
     function toggledarkMode() {
         setDarkMode(!darkMode);
-        console.log("darkmode", darkMode);
+        // console.log("darkmode", darkMode);
     }
     return (
         <AppContext.Provider
@@ -62,6 +63,8 @@ export function AppWrapper({ children }) {
                 authChange,
                 darkMode,
                 toggledarkMode,
+                profileUpdated,
+                setProfileUpdated,
                 setUser,
             }}
         >

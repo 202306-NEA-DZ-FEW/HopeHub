@@ -60,12 +60,10 @@ export default function UserProfile() {
         e.preventDefault();
         setUploadFile(e.target.files[0]);
         const formData = new FormData();
-        formData.append("file", uploadFile);
+        formData.append("file", e.target.files[0]);
         formData.append("upload_preset", "hopehub");
         // formData.append("type", "private");
-        for (let pair of formData.entries()) {
-            console.log(pair[0] + ", " + pair[1]);
-        }
+
         axios
             .post(
                 "https://api.cloudinary.com/v1_1/dxic1agza/image/upload",
@@ -172,7 +170,7 @@ export default function UserProfile() {
         <span className='w-fit p-1 mb-5 mr-2 border rounded-3xl border-gray-500  group relative'>
             {txt}{" "}
             <button
-                className='rounded-full w-6 opacity-0 group-hover:opacity-100 h-6 border absolute right-0 -top-3 border-red-500 text-xs text-red-500'
+                className='rounded-full w-4 opacity-0 group-hover:opacity-100 h-4 align-middle text-center absolute -right-1 -top-2  text-[10px] text-white bg-red-500'
                 onClick={() => deleteHobby(txt)}
             >
                 X
@@ -219,15 +217,18 @@ export default function UserProfile() {
     return (
         <Layout className=''>
             <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row mt-20 max-w-screen'>
-                <div className=' py-16 lg:w-[30%] md:[40%] flex '>
-                    <div className='bg-NeutralBlack w-64 h-64 rounded-full mx-auto flex flex-col items-center justify-center'>
+                <div className=' lg:w-[30%] md:[40%] flex '>
+                    <div className='bg-NeutralBlack w-80 h-80 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>
                         {user.photoURL ? (
-                            <Image
-                                src={user.photoURL}
-                                width={100}
-                                height={100}
-                                alt={user.name}
-                            />
+                            <div className='w-full h-full rounded-full overflow-hidden'>
+                                <Image
+                                    src={user.photoURL}
+                                    width={100}
+                                    height={100}
+                                    alt={user.name}
+                                    className='w-full h-full aspect-square object-cover '
+                                />
+                            </div>
                         ) : (
                             <FaUser className='fill-NeutralWhite w-32 h-32 mb-5  ' />
                         )}
@@ -242,7 +243,7 @@ export default function UserProfile() {
                         />
 
                         <label
-                            className='absolute mt-64 cursor-pointer '
+                            className='absolute -bottom-8 cursor-pointer '
                             onClick={handleIconClick}
                         >
                             <LiaUserEditSolid className='text-NeutralBlack w-16 h-16 bg-NeutralWhite rounded-full border border-NeutralBlack p-2' />
@@ -305,25 +306,27 @@ export default function UserProfile() {
                                     </option>
                                 </select>
                             </div>
-                            <div className='mb-5 flex flex-wrap text-NeutralBlack'>
-                                <label
-                                    htmlFor='name'
-                                    className=' mt-4 mb-3 w-1/2 text-xl'
-                                >
-                                    {t("hobbies")}
-                                </label>
-                                <input
-                                    type='text'
-                                    name='Hobbies'
-                                    id='Hobbies'
-                                    onChange={(e) =>
-                                        setHobbyInput(e.target.value)
-                                    }
-                                    value={hobbyInput}
-                                    className='w-full rounded-md mb-5 lg:text-xl border font-normal px-4 border-slate-300 bg-white py-3 outline-none '
-                                    onKeyDown={addHobby}
-                                />
-                                <div>
+                            <div className='mb-5 flex flex-col text-NeutralBlack'>
+                                <div className='w-full flex'>
+                                    <label
+                                        htmlFor='name'
+                                        className=' mt-4 mb-3 w-3/4 text-xl'
+                                    >
+                                        {t("hobbies")}
+                                    </label>
+                                    <input
+                                        type='text'
+                                        name='Hobbies'
+                                        id='Hobbies'
+                                        onChange={(e) =>
+                                            setHobbyInput(e.target.value)
+                                        }
+                                        value={hobbyInput}
+                                        className='w-full rounded-md mb-5 lg:text-xl border font-normal px-4 border-slate-300 bg-white py-3 outline-none '
+                                        onKeyDown={addHobby}
+                                    />
+                                </div>
+                                <div className='flex flex-row flex-wrap'>
                                     {hobbies?.map((hobby, id) => (
                                         <HobbyBtn key={id} txt={hobby} />
                                     ))}
