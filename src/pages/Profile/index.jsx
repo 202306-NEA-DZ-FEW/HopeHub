@@ -220,13 +220,15 @@ export default function UserProfile() {
                 <div className=' lg:w-[30%] md:[40%] flex '>
                     <div className='bg-NeutralBlack w-80 h-80 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>
                         {user.photoURL ? (
-                            <div className="w-full h-full rounded-full overflow-hidden"><Image
-                                src={user.photoURL}
-                                width={100}
-                                height={100}
-                                alt={user.name}
-                                className="w-full h-full aspect-square object-cover "
-                            /></div>
+                            <div className='w-full h-full rounded-full overflow-hidden'>
+                                <Image
+                                    src={user.photoURL}
+                                    width={100}
+                                    height={100}
+                                    alt={user.name}
+                                    className='w-full h-full aspect-square object-cover '
+                                />
+                            </div>
                         ) : (
                             <FaUser className='fill-NeutralWhite w-32 h-32 mb-5  ' />
                         )}
@@ -305,24 +307,26 @@ export default function UserProfile() {
                                 </select>
                             </div>
                             <div className='mb-5 flex flex-col text-NeutralBlack'>
-                                <div className="w-full flex"><label
-                                    htmlFor='name'
-                                    className=' mt-4 mb-3 w-3/4 text-xl'
-                                >
-                                    {t("hobbies")}
-                                </label>
-                                <input
-                                    type='text'
-                                    name='Hobbies'
-                                    id='Hobbies'
-                                    onChange={(e) =>
-                                        setHobbyInput(e.target.value)
-                                    }
-                                    value={hobbyInput}
-                                    className='w-full rounded-md mb-5 lg:text-xl border font-normal px-4 border-slate-300 bg-white py-3 outline-none '
-                                    onKeyDown={addHobby}
-                                /></div>
-                                <div className="flex flex-row flex-wrap">
+                                <div className='w-full flex'>
+                                    <label
+                                        htmlFor='name'
+                                        className=' mt-4 mb-3 w-3/4 text-xl'
+                                    >
+                                        {t("hobbies")}
+                                    </label>
+                                    <input
+                                        type='text'
+                                        name='Hobbies'
+                                        id='Hobbies'
+                                        onChange={(e) =>
+                                            setHobbyInput(e.target.value)
+                                        }
+                                        value={hobbyInput}
+                                        className='w-full rounded-md mb-5 lg:text-xl border font-normal px-4 border-slate-300 bg-white py-3 outline-none '
+                                        onKeyDown={addHobby}
+                                    />
+                                </div>
+                                <div className='flex flex-row flex-wrap'>
                                     {hobbies?.map((hobby, id) => (
                                         <HobbyBtn key={id} txt={hobby} />
                                     ))}
