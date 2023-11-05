@@ -50,7 +50,7 @@ exports[`renders correctly 1`] = `
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
-          Book An Appointement
+          Book An Appointment
         </a>
       </button>
     </div>

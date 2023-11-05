@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
-export default function BookingButton() {
-    //Function used for translations
+export default function BookingButton({ destination, buttonText }) {
+    // Function used for translations
     const { t } = useTranslation("common");
 
-    //Rendering the button that leads to booking
+    // Rendering the button with dynamic destination and text
     return (
         <div>
             <button
@@ -13,10 +13,10 @@ export default function BookingButton() {
                 data-testid='booking-button'
             >
                 <Link
-                    href='/booking'
+                    href={destination}
                     className='text-xs sm:text-base lg:text-xl text-NeutralBlack uppercase font-extrabold font-poppins'
                 >
-                    {t("Book An Appointement")}
+                    {t(buttonText)}
                 </Link>
             </button>
         </div>
