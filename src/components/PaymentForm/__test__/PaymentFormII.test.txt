@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import BookingButton from "../BookingButton";
+import PaymentFormII from "../PaymentFormII";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<BookingButton />).toJSON();
+    const tree = renderer.create(<PaymentFormII />).toJSON();
     expect(tree).toMatchSnapshot();
 });

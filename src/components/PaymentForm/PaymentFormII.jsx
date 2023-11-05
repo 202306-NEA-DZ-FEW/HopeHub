@@ -1,8 +1,11 @@
+import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
 import Select from "react-select";
 import countryList from "react-select-country-list";
 
 const PaymentFormII = () => {
+    const { t } = useTranslation("common");
+
     const [isMasterCard, setIsMasterCard] = useState(false);
     const [cardType, setCardType] = useState("Visa");
     const [cardNumber, setCardNumber] = useState("");
@@ -57,7 +60,7 @@ const PaymentFormII = () => {
             >
                 <div className='w-full flex flex-col justify-start'>
                     <label htmlFor='cardType' className='text-lg'>
-                        Supported Card types
+                        {t("Supported Card types")}
                     </label>
                     <div className='flex flex-row items-center justify-start '>
                         <button
@@ -68,7 +71,7 @@ const PaymentFormII = () => {
                                     : "text-blue-400"
                             }`}
                         >
-                            Visa
+                            {t("Visa")}
                         </button>
 
                         <button
@@ -79,12 +82,12 @@ const PaymentFormII = () => {
                                     : "bg-blue-100 text-Accent"
                             }`}
                         >
-                            MasterCard
+                            {t("MasterCard")}
                         </button>
                     </div>
                     <div className='mt-4'>
                         <label htmlFor='cardNumber' className='text-lg'>
-                            Card Number
+                            {t("Card Number")}
                         </label>
                         <input
                             type='number'
@@ -108,7 +111,7 @@ const PaymentFormII = () => {
                                 htmlFor='expiryDate mb-2'
                                 className='text-lg'
                             >
-                                Expiry Date
+                                {t("Expiry Date")}
                             </label>
                             <input
                                 type='text'
@@ -116,12 +119,12 @@ const PaymentFormII = () => {
                                 value={expiryDate}
                                 onChange={handleExpiryDateChange}
                                 className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
-                                placeholder='MM/YY'
+                                placeholder={t("MM/YY")}
                             />
                         </div>
                         <div className='w-1/2 pl-2'>
                             <label htmlFor='cvv' className='text-lg'>
-                                CVV Code
+                                {t("CVV Code")}
                             </label>
                             <input
                                 type='number'
@@ -138,7 +141,7 @@ const PaymentFormII = () => {
                     </div>
                     <div className='mt-4'>
                         <label htmlFor='nameOnCard' className='text-lg'>
-                            Name on Card
+                            {t("Name on Card")}
                         </label>
                         <input
                             type='text'
@@ -146,7 +149,7 @@ const PaymentFormII = () => {
                             value={nameOnCard}
                             onChange={(e) => setNameOnCard(e.target.value)}
                             className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
-                            placeholder='Name On Card'
+                            placeholder={t("Name On Card")}
                         />
                     </div>
                 </div>
@@ -155,7 +158,7 @@ const PaymentFormII = () => {
                 <div className='w-full flex flex-col justify-start'>
                     <div className=''>
                         <label htmlFor='country' className='text-lg'>
-                            Country
+                            {t("Country")}
                         </label>
                         <Select
                             id='country'
@@ -163,12 +166,12 @@ const PaymentFormII = () => {
                             onChange={handleCountryChange}
                             options={countryList().getData()}
                             // className="block w-full p-2 bg-white rounded border-[1px] border-Accent focus-border-red-500"
-                            placeholder='Your Country Name'
+                            placeholder={t("Your Country Name")}
                         />
                     </div>
                     <div className='mt-4'>
                         <label htmlFor='zipCode' className='text-lg'>
-                            Zip Code
+                            {t("Zip Code")}
                         </label>
                         <input
                             type='text'
@@ -182,7 +185,7 @@ const PaymentFormII = () => {
 
                     <div className='mt-4'>
                         <label htmlFor='city' className='text-lg'>
-                            City
+                            {t("City")}
                         </label>
                         <input
                             type='text'
@@ -190,12 +193,12 @@ const PaymentFormII = () => {
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                             className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
-                            placeholder='Your City Name'
+                            placeholder={t("Your City Name")}
                         />
                     </div>
                     <div className='mt-4'>
                         <label htmlFor='address' className='text-lg'>
-                            Address
+                            {t("Address")}
                         </label>
                         <input
                             type='text'
@@ -203,7 +206,7 @@ const PaymentFormII = () => {
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                             className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
-                            placeholder='Your Address'
+                            placeholder={t("Your Address")}
                         />
                     </div>
                 </div>
@@ -213,7 +216,7 @@ const PaymentFormII = () => {
                     type='submit'
                     className='w-32 p-2 bg-Accent text-NeutralBlack font-bold rounded mt-8'
                 >
-                    Add Card
+                    {t("Add Card")}
                 </button>
             </div>
         </div>

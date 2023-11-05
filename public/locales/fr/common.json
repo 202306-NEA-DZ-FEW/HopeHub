@@ -95,5 +95,20 @@
     "Thank you": "Merci Beaucoup",
     "Back to Home": "Revenir à l'accueil",
     "Thank text 1": "Votre demande d'inscription a été reçue, vous recevrez bientôt un email de confirmation. Veuillez suivre les étapes indiquées dans l'e-mail pour compléter et activer votre compte.",
-    "Thank text 2": "Votre demande a été envoyée, un membre de l'équipe d'assistance vous contactera via l'e-mail que vous avez fourni dans les plus brefs délais."
+    "Thank text 2": "Votre demande a été envoyée, un membre de l'équipe d'assistance vous contactera via l'e-mail que vous avez fourni dans les plus brefs délais.",
+    "Supported Card types": "Types de cartes pris en charge",
+    "Visa": "Visa",
+    "MasterCard": "MasterCard",
+    "Card Number": "Numéro de carte",
+    "Expiry Date": "Date d'expiration",
+    "CVV Code": "Code CVV",
+    "MM/YY": "MM/AA,",
+    "Name on Card": "Nom sur la carte",
+    "Country": "Pays",
+    "Zip Code": "Code postal",
+    "City": "Ville",
+    "Address": "Adresse",
+    "Add Card": "Ajouter une carte",
+    "Add Card Details": "Ajouter les détails de la carte",
+    "Please make sure all of the info you enter are the same as your card registration info.": "Assurez-vous que toutes les informations que vous saisissez sont identiques à celles de l'enregistrement de votre carte."
 }
