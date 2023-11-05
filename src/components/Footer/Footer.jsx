@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import React from "react";
+
 import ToggleButton from "../Navbar/toggleBtn";
 import TranslationButton from "../TranslationButton/TranslationButton";
 
