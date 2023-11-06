@@ -163,5 +163,19 @@
     "HopeHub was founded by a group of Re:coded students in 2023. It was called HopeHub Online and started as a blog and an online community where some of the worlds therapists shared their research and ideas. We launched the Beginners Guide to Therapy and our first study, and that hub of industry expertise transformed into a small consulting firm and led us to create the Online Therapist of today!": "تأسست HopeHub عام 2023 من قبل مجموعة من طلاب Re:coded. تم تسميتها بـ HopeHub Online وبدأت كمدونة ومجتمع عبر الإنترنت حيث شارك بعض معالجي العالم أبحاثهم وأفكارهم. قمنا بإطلاق دليل المبتدئين للعلاج وأول دراستنا، وتحول ذلك المركز لخبراء الصناعة إلى شركة استشارية صغيرة وأدى بنا إلى إنشاء معالج الإنترنت الحالي!",
     "Bio": "السيرة الذاتية",
     "Therapist Profile": "الملف الشخصي للمعالج",
-    "Update": "تحديث"
+    "Update": "تحديث",
+    "Supported Card types": "أنواع البطاقات المدعومة",
+    "Visa": "فيزا",
+    "MasterCard": "بطاقة ماستركارد",
+    "Card Number": "رقم البطاقة",
+    "Expiry Date": "تاريخ الانتهاء",
+    "CVV Code": "رمز CVV",
+    "MM/YY": "شهر/سنة",
+    "Name on Card": "الاسم على البطاقة",
+    "Country": "البلد",
+    "Zip Code": "الرمز البريدي",
+    "Address": "العنوان",
+    "Add Card": "إضافة بطاقة",
+    "Add Card Details": "إضافة تفاصيل البطاقة",
+    "Please make sure all of the info you enter are the same as your card registration info.": "يرجى التأكد من أن جميع المعلومات التي تدخلها متطابقة مع معلومات تسجيل بطاقتك."
 }
