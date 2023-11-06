@@ -24,11 +24,11 @@ const CardDetailsPage = () => {
                             "Please make sure all of the info you enter are the same as your card registration info."
                         )}
                     </p>
-                    <div className='flex flex-col gap-4 mt-6 md:flex-row md:items-center'>
-                        <div className='w-full md:w-2/3 md:pr-6'>
+                    <div className='flex flex-col gap-4 md:justify-center mt-6 md:flex-row md:items-center'>
+                        <div className='w-full lg:w-2/3 md:pr-6'>
                             <PaymentFormII />
                         </div>
-                        <div className='w-full md:w-1/3 md:pl-6 '>
+                        <div className='w-full hidden lg:block md:w-fit md:pl-6 '>
                             <div className='h-full flex items-center justify-center mt-[-50px]'>
                                 <Image
                                     src={card}

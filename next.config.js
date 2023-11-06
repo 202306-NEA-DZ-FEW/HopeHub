@@ -8,6 +8,13 @@ module.exports = {
     },
     reactStrictMode: true,
     images: {
-        domains: ["media.istockphoto.com"],
+        remotePatterns: [
+            {
+                hostname: "res.cloudinary.com",
+            },
+            {
+                hostname: "lh3.googleusercontent.com",
+            },
+        ],
     },
 };

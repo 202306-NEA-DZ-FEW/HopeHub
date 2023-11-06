@@ -55,7 +55,7 @@ const PaymentFormII = () => {
             {/* Left Column */}
 
             <form
-                className='flex flex-row justify-start items-center gap-32'
+                className='w-full flex flex-col gap-5 md:flex-row justify-start items-center lg:gap-32'
                 onSubmit={handleSubmit}
             >
                 <div className='w-full flex flex-col justify-start'>

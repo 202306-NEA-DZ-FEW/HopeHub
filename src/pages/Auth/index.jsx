@@ -1,22 +1,31 @@
-import Image from "next/image";
-import React, { useState } from "react";
-import hopeText from "../../../public/assets/HopeText.svg";
-import fb from "../../../public/assets/Facebook-icon.svg";
-import google from "../../../public/assets/Google-icon.svg";
-import Login from "@/components/UserAuth/login";
-import Signup from "@/components/UserAuth/signup";
-import Forgot from "@/components/UserAuth/forgot";
-import Layout from "@/layout/Layout";
-import { auth } from "@/util/firebase";
 import {
-    signInWithPopup,
-    GoogleAuthProvider,
     FacebookAuthProvider,
+    GoogleAuthProvider,
+    signInWithPopup,
 } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React, { useState } from "react";
+
+import Forgot from "@/components/UserAuth/forgot";
+import Login from "@/components/UserAuth/login";
+import Signup from "@/components/UserAuth/signup";
+
+import { useAppcontext } from "@/context/state";
+import Layout from "@/layout/Layout";
+import { auth, db } from "@/util/firebase";
+
+import fb from "../../../public/assets/Facebook-icon.svg";
+import google from "../../../public/assets/Google-icon.svg";
+import hopeText from "../../../public/assets/HopeText.svg";
 
 function Auth() {
+    const { authChange } = useAppcontext();
+    const router = useRouter();
+    const pathname = usePathname().slice(1);
     const [checked, setChecked] = useState("login");
     const tab =
         checked === "login" ? (
@@ -42,6 +51,18 @@ function Auth() {
                 // The signed-in user info.
                 const user = result.user;
                 console.log("user", user);
+                setDoc(doc(db, "users", user.uid), {
+                    isTherapist: false,
+                    licenseNumber: null,
+                })
+                    .then((data) => {
+                        console.log("data", data);
+                        router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
+                    })
+                    .then(() => authChange())
+                    .catch((err) => {
+                        console.log("firestore error", err);
+                    });
                 // IdP data available using getAdditionalUserInfo(result)
                 // ...
             })
@@ -91,7 +112,7 @@ function Auth() {
     return (
         <Layout>
             <main
-                className='pt-20 pb-8 relative w-full h-fit bg-no-repeat px-2 bg-cover flex justify-center items-center flex-col gap-4 md:flex-row md:justify-center'
+                className='pt-28 pb-8 relative w-full h-fit bg-no-repeat px-2 bg-cover flex justify-center items-center flex-col gap-4 md:flex-row md:justify-center -mt-24'
                 style={{ backgroundImage: "url('/assets/login-bg.svg')" }}
             >
                 <section className=' flex flex-col items-start justify-center gap-0 p-1 mr-10'>

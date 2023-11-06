@@ -13,7 +13,7 @@ exports[`renders correctly 1`] = `
     >
       <div>
         <label
-          className="block text-black text-sm font-bold mb-2 font-poppins"
+          className="block text-NeutralBlack text-sm font-semibold mb-2 font-poppins"
           htmlFor="fullName"
         >
           Full Name
@@ -32,7 +32,7 @@ exports[`renders correctly 1`] = `
         className="email mt-4"
       >
         <label
-          className="block text-black text-sm font-bold mb-2 font-poppins"
+          className="block text-NeutralBlack text-sm font-semibold mb-2 font-poppins"
           htmlFor="email"
         >
           Email
@@ -51,7 +51,7 @@ exports[`renders correctly 1`] = `
         className="mt-4"
       >
         <label
-          className="block text-black text-sm font-bold mb-2 font-poppins"
+          className="block text-NeutralBlack text-sm font-semibold mb-2 font-poppins"
           htmlFor="details"
         >
           Request Type
@@ -121,7 +121,7 @@ exports[`renders correctly 1`] = `
         className="details mt-4"
       >
         <label
-          className="block text-black text-sm font-bold mb-2 font-poppins"
+          className="block text-NeutralBlack text-sm font-semibold mb-2 font-poppins"
           htmlFor="details"
         >
           Details
@@ -139,7 +139,7 @@ exports[`renders correctly 1`] = `
       className="text-center flex justify-end mt-3"
     >
       <button
-        className="bg-Accent hover:bg-Primary text-black font-poppins font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-Accent"
+        className="bg-Accent hover:bg-Primary text-NeutralBlack font-poppins font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-Accent"
         type="submit"
       >
         Submit
