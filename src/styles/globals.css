@@ -79,6 +79,8 @@
 }
 .ql-toolbar {
     border-color: #363636;
+    background-color: #ffff;
+    border-bottom: #363636;
 }
 .quill {
     background-color: #ffff;

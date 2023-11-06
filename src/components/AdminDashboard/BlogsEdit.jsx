@@ -52,7 +52,6 @@ export default function BlogsEdit() {
                 <label htmlFor='Title'>{t("Title")}</label>
                 <input
                     type='text'
-                    name='Title'
                     id='Title'
                     className='w-full text-NeutralBlack font-normal text-lg px-4 rounded-md border border-slate-300 bg-white py-3 outline-none '
                     value={formData.Title} // Bind the value to the form state
@@ -64,7 +63,6 @@ export default function BlogsEdit() {
                 <label htmlFor='Author'>{t("Author")}</label>
                 <input
                     type='text'
-                    name='Author'
                     id='Author'
                     className='w-full text-NeutralBlack font-normal text-lg px-4 rounded-md border border-slate-300 bg-white py-3 outline-none '
                     value={formData.Author} // Bind the value to the form state
@@ -73,7 +71,12 @@ export default function BlogsEdit() {
             </div>
             <div className='pl-4 mb-4 space-y-1 text-xl flex flex-col'>
                 <span className='text-NeutralBlack'>{t("Post")}</span>
-                <TextEditor value={formData.Post} onChange={handleChange} />
+                <TextEditor
+                    value={formData.Post}
+                    onChange={(value) =>
+                        setFormData({ ...formData, Post: value })
+                    }
+                />
             </div>
             <button
                 onClick={handleButtonClick}

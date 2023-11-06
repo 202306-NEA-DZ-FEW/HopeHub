@@ -170,7 +170,7 @@ export default function AdminDashboard() {
                         <>
                             {Patient.map((member) => (
                                 <Patients
-                                    key={member.name}
+                                    key={member.age}
                                     image={member.image}
                                     name={member.name}
                                     age={member.age}
