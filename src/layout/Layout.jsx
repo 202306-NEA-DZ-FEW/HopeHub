@@ -21,7 +21,7 @@ export default function Layout({ children }) {
     return (
         <div dir={textDirectionClass}>
             <Navbar />
-            <div className='container mx-auto mt-8'>{children}</div>
+            <div className='mt-8'>{children}</div>
             <Footer />
         </div>
     );
