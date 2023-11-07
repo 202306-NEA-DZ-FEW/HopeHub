@@ -8,6 +8,16 @@ module.exports = {
     },
     reactStrictMode: true,
     images: {
+        remotePatterns: [
+            {
+                hostname: "res.cloudinary.com",
+            },
+            {
+                hostname: "lh3.googleusercontent.com",
+            },
+        ],
+    },
+    images: {
         domains: ['res.cloudinary.com'], // Add the domain(s) you want to allow
       },
 };

@@ -60,6 +60,20 @@
     text-align: right;
 }
 
+.search-bar {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.search-bar.open {
+    width: 140px; /* Width of the open search bar */
+}
+
+.darkened-logo {
+    filter: brightness(0.7); /* Adjust the brightness value as needed */
+}
+
 h4 {
     font-weight: 500; /* Reset font-weight to the default value */
     font-size: 0.9rem; /* Reset font-size to the default value */

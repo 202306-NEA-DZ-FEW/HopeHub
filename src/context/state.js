@@ -1,17 +1,21 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import { createContext, useContext, useState } from "react";
 import { useTheme } from "next-themes";
+import { createContext, useContext, useState } from "react";
+
 import { auth, db } from "@/util/firebase";
+
 const AppContext = createContext();
 
 export function AppWrapper({ children }) {
     // declare variables with useState in this part and import them in value part
+    const [bookingInfos, setBookingInfos] = useState({});
 
     const [user, setUser] = useState({});
     const [isLogged, setIsLogged] = useState(false);
     const { theme, setTheme } = useTheme();
     const [darkMode, setDarkMode] = useState(false);
+    const [profileUpdated, setProfileUpdated] = useState(false);
 
     async function authChange() {
         try {
@@ -27,7 +31,7 @@ export function AppWrapper({ children }) {
                             ...collection.data(),
                             name: logUser.displayName,
                             email: logUser.email,
-                            photoURL: logUser.photoURL,
+                            // photoURL: logUser.photoURL,
                             uid: logUser.uid,
                             phoneNumber: logUser.phoneNumber,
                         });
@@ -45,17 +49,23 @@ export function AppWrapper({ children }) {
     }
     function toggledarkMode() {
         setDarkMode(!darkMode);
-        console.log("darkmode", darkMode);
+        // console.log("darkmode", darkMode);
     }
     return (
         <AppContext.Provider
             value={{
                 //all the values declared here will be accessible for all components
+
+                bookingInfos,
+                setBookingInfos,
                 user,
                 isLogged,
                 authChange,
                 darkMode,
                 toggledarkMode,
+                profileUpdated,
+                setProfileUpdated,
+                setUser,
             }}
         >
             {children}
