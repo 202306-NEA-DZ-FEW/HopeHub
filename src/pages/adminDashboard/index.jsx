@@ -1,4 +1,4 @@
-import { collection, getDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
@@ -13,6 +13,7 @@ import { Patient, Therapist } from "@/util/constants";
 import { db } from "@/util/firebase";
 
 export default function AdminDashboard({ blogs }) {
+    console.log("blogs data", blogs);
     const { t } = useTranslation("common");
     const [visibleSection, setVisibleSection] = useState("therapists");
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
@@ -194,7 +195,7 @@ export default function AdminDashboard({ blogs }) {
                     )}
                     {visibleSection === "Posts" &&
                         blogs.map((blog) => (
-                            <Posts key={blog.id} name={blog.name} />
+                            <Posts key={blog.id} name={blog.title} />
                         ))}
                     {visibleSection === "Blogs Edit" && <BlogsEdit />}
                 </div>
@@ -204,10 +205,11 @@ export default function AdminDashboard({ blogs }) {
 }
 
 export async function getStaticProps({ locale }) {
-    const blogSnapshot = await getDoc(collection(db, "blogs"));
+    const blogSnapshot = await getDocs(collection(db, "blogs"));
     const blogs = [];
-    blogSnapshot.foreach((doc) => {
+    blogSnapshot.forEach((doc) => {
         // blogs[doc.id]= doc.data()
+        console.log("doc data", doc.data());
         blogs.push(doc.data());
     });
     return {
