@@ -1,10 +1,10 @@
+import { useTranslation } from "next-i18next";
 import React from "react";
 import {
-    BsTelephoneForward,
-    BsChatLeftText,
     BsCameraVideo,
+    BsChatLeftText,
+    BsTelephoneForward,
 } from "react-icons/bs";
-import { useTranslation } from "next-i18next";
 
 export default function ConnectionSection() {
     //Function used for translations
@@ -25,15 +25,15 @@ export default function ConnectionSection() {
         return (
             <div
                 key={index}
-                className='card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60'
+                className='card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-64 '
             >
                 <div className='my-2 lg:my-6'>
                     <IconComponent className='text-3xl md:text-5xl' />
                 </div>
-                <h3 className='text-lg md:text-xl lg:text-2xl font-poppins font-extrabold text-teal-600'>
+                <h3 className='text-lg md:text-xl lg:text-2xl font-poppins font-medium text-teal-600'>
                     {t(item)}
                 </h3>
-                <p className='text-xs md:text-base lg:text-base text-center m-2 font-poppins font-bold'>
+                <p className='text-xs md:text-base lg:text-base text-center m-2 font-poppins font-normal text-NeutralBlack'>
                     {t(description[index])}
                 </p>
             </div>
@@ -43,7 +43,7 @@ export default function ConnectionSection() {
     //Displaying the cards and the section title
     return (
         <div className='bg-BgWhite w-full pb-6'>
-            <h1 className='text-base mx-6 my-2 md:mx-9 mt-8 mb-2 md:mb-4 md:text-3xl md:mt-10 lg:mx-9 font-poppins uppercase font-extrabold inline-block'>
+            <h1 className='text-base mx-6 my-2 md:mx-9 mt-8 mb-2 md:mb-4 md:text-3xl md:mt-10 lg:mx-9 font-poppins uppercase font-medium inline-block text-NeutralBlack'>
                 {t("Connect with us through")}
             </h1>
             <div className='flex flex-wrap my-2 mx-6 md:mx-28 lg:mx-2 justify-around'>

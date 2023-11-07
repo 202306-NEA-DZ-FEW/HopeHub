@@ -7,4 +7,14 @@ module.exports = {
         dirs: ["src"],
     },
     reactStrictMode: true,
+    images: {
+        remotePatterns: [
+            {
+                hostname: "res.cloudinary.com",
+            },
+            {
+                hostname: "lh3.googleusercontent.com",
+            },
+        ],
+    },
 };

@@ -96,7 +96,7 @@ const BlogsCarousel = () => {
     //Displaying the carousel
     return (
         <div className='bg-Primary pb-9 w-full'>
-            <h1 className='mx-6 mt-4 mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-black inline-block'>
+            <h1 className='mx-6 mt-4 mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block text-NeutralBlack'>
                 {t("RECENT BLOGS")}
             </h1>
             <div className='px-20'>
@@ -117,10 +117,10 @@ const BlogsCarousel = () => {
                                     className='filter brightness-50'
                                 />
                                 <div className='absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4'>
-                                    <h1 className='text-Primary text-base text-center md:text-2xl font-extrabold font-poppins'>
+                                    <h1 className='text-Primary text-base text-center md:text-2xl font-normal font-poppins'>
                                         {blog.content.title}
                                     </h1>
-                                    <h1 className='text-white text-xs text-center md:text-sm font-bold font-poppins'>
+                                    <h1 className='text-NeutralWhite text-xs text-center md:text-sm font-light font-poppins'>
                                         {blog.content.subTitle}
                                     </h1>
                                 </div>

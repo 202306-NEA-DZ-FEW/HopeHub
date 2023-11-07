@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="flex flex-col items-start justify-between gap-1 px-2"
+>
+  <label
+    className=" mt-4 w-full text-left font-poppins text-xl font-semibold text-NeutralBlack "
+    htmlFor="name"
+  />
+  <input
+    className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 outline-none "
+    onChange={[Function]}
+  />
+</div>
+`;

@@ -3,6 +3,24 @@
 @tailwind utilities;
 @import "react-slideshow-image/dist/styles.css";
 
+/* to achieve glassmorph effect on the navbar */
+@layer base {
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"] {
+        -webkit-appearance: none;
+        margin: 0;
+        -moz-appearance: textfield !important;
+    }
+}
+.navbar,
+.menu-s {
+    background: rgba(234, 248, 249, 0.08);
+    box-shadow: -51.53333px 51.53333px 51.53333px 0px rgba(255, 255, 255, 0.08)
+            inset,
+        51.53333px -51.53333px 51.53333px 0px rgba(178, 188, 189, 0.08) inset;
+    backdrop-filter: blur(24.220666885375977px);
+}
 .custom-text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.384);
 }
@@ -40,4 +58,18 @@
 
 .rtl .right-align-text {
     text-align: right;
+}
+
+.search-bar {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.search-bar.open {
+    width: 140px; /* Width of the open search bar */
+}
+
+.darkened-logo {
+    filter: brightness(0.7); /* Adjust the brightness value as needed */
 }
