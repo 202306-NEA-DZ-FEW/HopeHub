@@ -26,9 +26,7 @@ export default function Therapists({
                 />{" "}
             </div>
             <div className='flex-grow space-y-3 px-4'>
-                <h3>
-                    {t("Full Name:")} {name}
-                </h3>
+                <h3>Full Name: {name}</h3>
                 <h3>
                     {t("Age:")} {age}
                 </h3>
@@ -38,9 +36,7 @@ export default function Therapists({
                 <h3>
                     {t("Gender:")} {gender}
                 </h3>
-                <h3>
-                    {t("Phone Number:")} {phoneNumber}
-                </h3>
+                <h3>Phone Number: {phoneNumber}</h3>
             </div>
 
             <div className='flex flex-col items-center space-y-2 py-4'>

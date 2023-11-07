@@ -25,7 +25,7 @@
         "@tiptap/extension-bullet-list": "^2.1.12",
         "@tiptap/extension-list-item": "^2.1.12",
         "clsx": "^1.2.1",
-        "date-fns": "^2.29.1",
+        "date-fns": "^2.30.0",
         "embla-carousel-react": "^8.0.0-rc14",
         "eslint-plugin-jest": "^26.6.0",
         "firebase": "^10.5.0",

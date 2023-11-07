@@ -1,3 +1,4 @@
+import { collection, getDoc } from "firebase/firestore";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
@@ -9,8 +10,9 @@ import Posts from "@/components/AdminDashboard/Posts";
 import Therapists from "@/components/AdminDashboard/Therapists";
 
 import { Patient, Therapist } from "@/util/constants";
+import { db } from "@/util/firebase";
 
-export default function AdminDashboard() {
+export default function AdminDashboard({ blogs }) {
     const { t } = useTranslation("common");
     const [visibleSection, setVisibleSection] = useState("therapists");
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
@@ -27,24 +29,24 @@ export default function AdminDashboard() {
         }
     };
 
-    const allBlogs = [
-        { id: 1, name: "The Benefits of Cognitive Behavioral Therapy" },
-        { id: 2, name: "Exploring Different Types of Talk Therapy" },
-        { id: 3, name: "How to Choose the Right Therapist for You" },
-        { id: 4, name: "Managing Stress and Anxiety Through Mindfulness" },
-        // Add more blog entries as needed
-    ];
+    // const blogs = [
+    //     { id: 1, name: "The Benefits of Cognitive Behavioral Therapy" },
+    //     { id: 2, name: "Exploring Different Types of Talk Therapy" },
+    //     { id: 3, name: "How to Choose the Right Therapist for You" },
+    //     { id: 4, name: "Managing Stress and Anxiety Through Mindfulness" },
+    //     // Add more blog entries as needed
+    // ];
 
     return (
         <div className='flex h-fit  '>
             <div className=' font-poppins pb-64 text-NeutralBlack bg-slate-400 py-10 px-4 rounded-md'>
                 <h1 className='text-xl font-semibold mb-4'>
-                    {t("Admin Dashboard")}
+                    {/* {t("Admin Dashboard")} */} Hope Hub
                 </h1>
 
                 <ul className='menu  w-56 text-lg rounded-md space-y-5 outline-none'>
                     <li>
-                        <a>{t("General")}</a>
+                        <a>{/* {t("General")} */} Dashboard</a>
                     </li>
                     <li className=''>
                         <span
@@ -147,7 +149,7 @@ export default function AdminDashboard() {
                 </ul>
             </div>
 
-            <div>
+            <div className='w-full'>
                 <div className='flex flex-wrap py-2 '>
                     {visibleSection === "therapists" && (
                         // Render Therapists component when 'therapists' link is clicked
@@ -182,7 +184,7 @@ export default function AdminDashboard() {
                         </>
                     )}
                 </div>
-                <div className='py-4 flex flex-col'>
+                <div className='py-4 pr-4 flex flex-col w-full'>
                     {" "}
                     {visibleSection === "Posts" && (
                         <div className='flex font-poppins text-NeutralBlack bg-slate-400 mx-4 py-4 px-2 space-x-2 rounded-md'>
@@ -191,7 +193,7 @@ export default function AdminDashboard() {
                         </div>
                     )}
                     {visibleSection === "Posts" &&
-                        allBlogs.map((blog) => (
+                        blogs.map((blog) => (
                             <Posts key={blog.id} name={blog.name} />
                         ))}
                     {visibleSection === "Blogs Edit" && <BlogsEdit />}
@@ -202,10 +204,16 @@ export default function AdminDashboard() {
 }
 
 export async function getStaticProps({ locale }) {
+    const blogSnapshot = await getDoc(collection(db, "blogs"));
+    const blogs = [];
+    blogSnapshot.foreach((doc) => {
+        // blogs[doc.id]= doc.data()
+        blogs.push(doc.data());
+    });
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
-            // Will be passed to the page component as props
+            blogs,
         },
     };
 }
