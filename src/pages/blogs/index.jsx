@@ -7,8 +7,10 @@ import BookingButton from "@/components/BookingButton/BookingButton";
 import { useTranslation } from "next-i18next";
 
 function BlogsPage({ blogs }) {
+    // Function used for translations
     const { t } = useTranslation("common");
 
+    // Rendering the all blogs pages
     return (
         <Layout>
             <h1 className='mx-6 mt-4 lg:mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block'>
@@ -75,6 +77,7 @@ function BlogsPage({ blogs }) {
 }
 export default BlogsPage;
 
+// This function tells Next.js how to pre-render the page.
 export async function getServerSideProps() {
     try {
         const blogsCollection = collection(db, "blogs");

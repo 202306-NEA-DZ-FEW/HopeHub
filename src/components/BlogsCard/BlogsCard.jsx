@@ -4,8 +4,10 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 
 const BlogCard = ({ image, title, subtitle, author, blogId, summary }) => {
+    // Function used for translations
     const { t } = useTranslation("common");
 
+    // Rendering the blogcard
     return (
         <div className='flex flex-col lg:flex-row'>
             <Link href={`/blogs/${blogId}`}>

@@ -10,7 +10,10 @@ import { format } from "date-fns";
 import { PiPaperPlaneTiltFill } from "react-icons/pi";
 
 function BlogPage({ blog }) {
+    // Function used for translations
     const { t } = useTranslation("common");
+
+    //Next router to navigate to different pages
     const router = useRouter();
 
     // Check if the page is being statically generated
@@ -18,10 +21,12 @@ function BlogPage({ blog }) {
         return <div>Loading...</div>;
     }
 
+    // Replacing breakline tags
     const renderBlogContent = (body) => {
         return { __html: body.replace(/\n/g, "<br />") };
     };
 
+    // to display the date in a specific format
     const date = new Date(blog.date);
     const options = {
         weekday: "long",
@@ -31,6 +36,7 @@ function BlogPage({ blog }) {
     };
     const serverFormattedDate = format(new Date(blog.date), "MMMM dd, yyyy");
 
+    //Rendering the individual blogpage
     return (
         <Layout>
             <div className='relative flex items-center justify-center'>
