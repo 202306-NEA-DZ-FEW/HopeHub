@@ -54,7 +54,7 @@ function BlogPage({ blog }) {
                         {blog.title}
                     </h1>
                     <h1
-                        className={`hidden my-2 mx-4 italic text-xs text-center font-poppins text-NeutralBlack md:block`}
+                        className={`hidden my-2 mx-4 md:mx-20 italic md:text-base text-center font-poppins text-NeutralBlack md:block`}
                     >
                         {blog.summary}
                     </h1>

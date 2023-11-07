@@ -93,10 +93,10 @@ const BlogsCarousel = () => {
                                     className='filter brightness-50'
                                 />
                                 <div className='absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4'>
-                                    <h1 className='text-Primary text-base text-center md:text-2xl font-extrabold font-poppins'>
+                                    <h1 className='text-Primary text-base text-center md:text-2xl font-medium font-poppins'>
                                         {blog.title}
                                     </h1>
-                                    <h1 className='text-white text-xs text-center md:text-sm font-bold font-poppins'>
+                                    <h1 className='text-white text-xs text-center md:text-sm font-normal font-poppins'>
                                         {blog.subTitle}
                                     </h1>
                                 </div>
