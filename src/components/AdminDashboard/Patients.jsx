@@ -1,7 +1,14 @@
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 
-export default function Patients({ name, age, birthday, gender, phoneNumber }) {
+export default function Patients({
+    name,
+    age,
+    birthday,
+    gender,
+    phoneNumber,
+    imgURL,
+}) {
     const { t } = useTranslation("common");
     // const [user] = useAppcontext()
 
@@ -15,7 +22,7 @@ export default function Patients({ name, age, birthday, gender, phoneNumber }) {
                     alt={name}
                     width={80}
                     height={80}
-                    src=''
+                    src={imgURL}
                     className='rounded-full w-24 h-24'
                 />{" "}
             </div>

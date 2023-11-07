@@ -7,6 +7,7 @@ export default function Therapists({
     birthday,
     gender,
     phoneNumber,
+    imgURL,
 }) {
     const { t } = useTranslation("common");
     // const [user] = useAppcontext()
@@ -21,7 +22,7 @@ export default function Therapists({
                     alt={name}
                     width={80}
                     height={80}
-                    src='/assets/Founder.jpg'
+                    src={imgURL}
                     className='rounded-full w-24 h-24'
                 />{" "}
             </div>

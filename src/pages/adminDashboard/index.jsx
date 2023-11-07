@@ -9,11 +9,11 @@ import Patients from "@/components/AdminDashboard/Patients";
 import Posts from "@/components/AdminDashboard/Posts";
 import Therapists from "@/components/AdminDashboard/Therapists";
 
-import { Patient, Therapist } from "@/util/constants";
+// import { Patient, Therapist } from "@/util/constants";
 import { db } from "@/util/firebase";
 
-export default function AdminDashboard({ blogs }) {
-    console.log("blogs data", blogs);
+export default function AdminDashboard({ blogs, users }) {
+    // console.log("users data", users);
     const { t } = useTranslation("common");
     const [visibleSection, setVisibleSection] = useState("therapists");
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
@@ -21,7 +21,8 @@ export default function AdminDashboard({ blogs }) {
     const handleSectionToggle = (section) => {
         setVisibleSection(section);
     };
-
+    const Patient = users.filter((user) => !user.isTherapist);
+    const Therapist = users.filter((user) => user.isTherapist);
     const toggleDropdown = (dropdown) => {
         if (dropdown === "users") {
             setIsUserDropdownOpen(!isUserDropdownOpen);
@@ -157,13 +158,14 @@ export default function AdminDashboard({ blogs }) {
                         <>
                             {Therapist.map((member) => (
                                 <Therapists
-                                    key={member.name}
+                                    key={member.uid}
                                     image={member.image}
                                     name={member.name}
                                     age={member.age}
                                     birthday={member.birthday}
                                     gender={member.gender}
                                     phoneNumber={member.phoneNumber}
+                                    imgURL={member.photoURL}
                                 />
                             ))}
                         </>
@@ -173,13 +175,14 @@ export default function AdminDashboard({ blogs }) {
                         <>
                             {Patient.map((member) => (
                                 <Patients
-                                    key={member.age}
+                                    key={member.uid}
                                     image={member.image}
                                     name={member.name}
                                     age={member.age}
                                     birthday={member.birthday}
                                     gender={member.gender}
                                     phoneNumber={member.phoneNumber}
+                                    imgURL={member.photoURL}
                                 />
                             ))}
                         </>
@@ -209,13 +212,20 @@ export async function getStaticProps({ locale }) {
     const blogs = [];
     blogSnapshot.forEach((doc) => {
         // blogs[doc.id]= doc.data()
-        console.log("doc data", doc.data());
+        // console.log("doc data", doc.data());
         blogs.push(doc.data());
     });
+    const userSnapshot = await getDocs(collection(db, "users"));
+    const users = [];
+    userSnapshot.forEach((doc) => {
+        users.push(doc.data());
+    });
+    // console.log('users', users)
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
             blogs,
+            users,
         },
     };
 }
