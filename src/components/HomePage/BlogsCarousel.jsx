@@ -1,13 +1,14 @@
+import Image from "next/image";
+import Link from "next/link";
+import { useTranslation } from "next-i18next";
 import React from "react";
+import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
 import Slider from "react-slick";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Image from "next/image";
-import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
-import { useTranslation } from "next-i18next";
-import blogsData from "../../data/blogsData";
 
-import Link from "next/link";
+import blogsData from "../../data/blogsData";
 
 const BlogsCarousel = () => {
     //Function used for translations
@@ -56,8 +57,8 @@ const BlogsCarousel = () => {
 
     //Displaying the carousel
     return (
-        <div className='bg-Primary pb-9 w-full'>
-            <h1 className='mx-6 mt-4 mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block text-NeutralBlack'>
+        <div className='bg-Primary dark:bg-Dark_Primary pb-16 w-full'>
+            <h1 className='mx-6 mt-4 mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block dark:text-NeutralWhite text-NeutralBlack'>
                 {t("RECENT BLOGS")}
             </h1>
             <div className='px-20'>
@@ -78,7 +79,7 @@ const BlogsCarousel = () => {
                                     className='filter brightness-50'
                                 />
                                 <div className='absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4'>
-                                    <h1 className='text-Primary text-base text-center md:text-2xl font-normal font-poppins'>
+                                    <h1 className='text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins'>
                                         {blog.content.title}
                                     </h1>
                                     <h1 className='text-NeutralWhite text-xs text-center md:text-sm font-light font-poppins'>

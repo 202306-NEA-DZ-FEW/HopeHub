@@ -2,10 +2,10 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="bg-Primary pb-9 w-full"
+  className="bg-Primary dark:bg-Dark_Primary pb-16 w-full"
 >
   <h1
-    className="mx-6 mt-4 mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block text-NeutralBlack"
+    className="mx-6 mt-4 mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block dark:text-NeutralWhite text-NeutralBlack"
   >
     RECENT BLOGS
   </h1>
@@ -123,7 +123,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       The Work Life Balance
                     </h1>
@@ -188,7 +188,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       Self Isolations
                     </h1>
@@ -253,7 +253,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       Heal From Trauma
                     </h1>
@@ -319,7 +319,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       Couples Therapy
                     </h1>
@@ -385,7 +385,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       Your First Therapy Session
                     </h1>
@@ -451,7 +451,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       Meditation
                     </h1>
@@ -517,7 +517,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       The Work Life Balance
                     </h1>
@@ -583,7 +583,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       Self Isolations
                     </h1>
@@ -649,7 +649,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       Heal From Trauma
                     </h1>
@@ -714,7 +714,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       Couples Therapy
                     </h1>
@@ -779,7 +779,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       Your First Therapy Session
                     </h1>
@@ -844,7 +844,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       Meditation
                     </h1>
@@ -909,7 +909,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       The Work Life Balance
                     </h1>
@@ -974,7 +974,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       Self Isolations
                     </h1>
@@ -1039,7 +1039,7 @@ exports[`renders correctly 1`] = `
                     className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4"
                   >
                     <h1
-                      className="text-Primary text-base text-center md:text-2xl font-normal font-poppins"
+                      className="text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins"
                     >
                       Heal From Trauma
                     </h1>

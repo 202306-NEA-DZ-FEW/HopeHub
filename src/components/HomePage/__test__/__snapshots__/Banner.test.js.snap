@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="Banner-container top-0 relative -mt-24"
+  className="Banner-container top-0 relative dark:brightness-75 -mt-24"
 >
   <img
     alt="Photo by Taryn Elliott: https://www.pexels.com/photo/couple-with-hands-apart-8204503/"
@@ -25,7 +25,7 @@ exports[`renders correctly 1`] = `
     className="flex inset-0 items-center absolute"
   >
     <h1
-      className="text-lg ml-6 mb-2 sm:text-4xl sm:mb-32 sm:ml-8 lg:text-6xl lg:mb-48 lg:ml-8 font-poppins font-semibold text-NeutralBlack"
+      className="text-lg ml-6 mb-2 sm:text-4xl sm:mb-32 sm:ml-8 lg:text-6xl lg:mb-48 lg:ml-8 font-poppins font-semibold text-NeutralBlack "
     >
       WE ARE HERE TO
     </h1>
@@ -36,11 +36,11 @@ exports[`renders correctly 1`] = `
     </h1>
   </div>
   <div
-    className="absolute inset-0 flex items-end justify-end mx-6 md:mx-10 mb-6 sm:m-20 lg:mx-10 lg:mb-32"
+    className="absolute inset-0 flex items-end justify-end mx-6 md:mx-10  sm:m-20 lg:mx-10 lg:mb-16"
   >
     <div>
       <button
-        className="button-container bg-Accent dark:bg-Dark_Accent rounded-md w-36 h-7 sm:w-52 sm:h-12 lg:w-64 lg:h-14 hover:bg-NeutralWhite dark:hover:bg-NeutralBlack"
+        className="w-64 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralBlack dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
         data-testid="booking-button"
       >
         <a
