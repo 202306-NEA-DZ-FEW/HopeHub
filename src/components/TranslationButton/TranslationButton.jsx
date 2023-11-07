@@ -1,17 +1,19 @@
-import React, { useState } from "react";
 import Cookies from "js-cookie";
+import { useTranslation } from "next-i18next";
+import React, { useState } from "react";
 import { BsGlobe } from "react-icons/bs";
 
 const TranslationButton = () => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const { i18n } = useTranslation();
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
 
     const changeLanguage = (newLanguage) => {
         Cookies.set("userLanguage", newLanguage, { expires: 365 });
-        window.location.reload();
+        i18n.changeLanguage(newLanguage);
+        // window.location.reload();
     };
 
     return (
@@ -32,7 +34,8 @@ const TranslationButton = () => {
                     <li>
                         <a
                             href='/en'
-                            onClick={() => {
+                            onClick={(e) => {
+                                e.preventDefault();
                                 changeLanguage("en");
                                 toggleDropdown();
                             }}
@@ -44,7 +47,8 @@ const TranslationButton = () => {
                     <li>
                         <a
                             href='/ar'
-                            onClick={() => {
+                            onClick={(e) => {
+                                e.preventDefault();
                                 changeLanguage("ar");
                                 toggleDropdown();
                             }}
@@ -56,7 +60,8 @@ const TranslationButton = () => {
                     <li>
                         <a
                             href='/fr'
-                            onClick={() => {
+                            onClick={(e) => {
+                                e.preventDefault();
                                 changeLanguage("fr");
                                 toggleDropdown();
                             }}
