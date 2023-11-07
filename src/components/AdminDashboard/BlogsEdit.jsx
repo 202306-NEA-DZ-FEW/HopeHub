@@ -39,7 +39,7 @@ export default function BlogsEdit() {
         const { Title, Author, body } = formData;
 
         // You can perform any actions with the form data, such as sending it to an API, saving it to a database, etc.
-        console.log("Form data submitted:", formData);
+        // console.log("Form data submitted:", formData);
         try {
             await setDoc(doc(db, "blogs", formData.id), formData);
         } catch {

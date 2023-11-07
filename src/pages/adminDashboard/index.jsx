@@ -42,7 +42,7 @@ export default function AdminDashboard({ blogs, users }) {
     return (
         <div className='flex h-fit  '>
             <div className=' font-poppins pb-64 text-NeutralBlack bg-slate-400 py-10 px-4 rounded-md'>
-                <h1 className='text-xl font-semibold mb-4'>
+                <h1 className='text-4xl text-Accent bg-white rounded-md p-4 text-center font-bold mb-4'>
                     {/* {t("Admin Dashboard")} */} Hope Hub
                 </h1>
 
