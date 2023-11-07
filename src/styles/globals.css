@@ -59,3 +59,42 @@
 .rtl .right-align-text {
     text-align: right;
 }
+
+h4 {
+    font-weight: 500; /* Reset font-weight to the default value */
+    font-size: 0.9rem; /* Reset font-size to the default value */
+}
+
+/* Apply the specific style for h4 elements on large screens */
+@media (min-width: 768px) {
+    h4 {
+        font-weight: 600;
+        font-size: 1.2rem;
+    }
+}
+
+/* Default styles for .image-container and .image */
+.image-container {
+    width: auto; /* Reset the width */
+    height: auto; /* Reset the height */
+    overflow: visible; /* Reset the overflow */
+}
+
+.image {
+    width: 100%; /* Reset the width */
+    height: auto; /* Reset the height */
+}
+
+/* Apply the specific size rules for .image-container and .image on large screens (starting from lg) */
+@media (min-width: 768px) {
+    .image-container {
+        width: 300px; /* Set your desired width for lg screens and larger */
+        height: 200px; /* Set your desired height for lg screens and larger */
+        overflow: hidden; /* Ensure the image maintains its aspect ratio */
+    }
+
+    .image {
+        width: 100%; /* Make the image fill the container */
+        height: auto; /* Maintain the image's aspect ratio */
+    }
+}
