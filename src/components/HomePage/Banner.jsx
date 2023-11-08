@@ -30,7 +30,10 @@ export default function Banner() {
 
             {/* Adding the button for booking an appointment */}
             <div className='absolute inset-0 flex items-end justify-end mx-6 md:mx-10 mb-6 sm:m-20 lg:mx-10 lg:mb-32'>
-                <BookingButton />
+                <BookingButton
+                    destination='/booking'
+                    buttonText='Book An Appointment'
+                />
             </div>
         </div>
     );
