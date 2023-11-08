@@ -55,6 +55,28 @@ export default function Navbar() {
             });
     };
 
+    const [searchQuery, setSearchQuery] = useState("");
+    const { blogs } = useAppcontext(); // Access the blogs data from the context
+
+    // Function to handle changes in the search input
+    const handleSearchInputChange = (e) => {
+        setSearchQuery(e.target.value.toLowerCase()); // Convert the search query to lowercase for case-insensitive search
+    };
+
+    // Function to filter blogs based on the search query
+    const filteredBlogs = blogs.filter((blog) => {
+        if (!blog) return false; // Check if blog is defined
+        const blogTitle = (blog.title || "").toLowerCase(); // Check if title is defined
+        const blogSubtitle = (blog.subTitle || "").toLowerCase(); // Check if subTitle is defined
+        const tags = (blog.tags || []).map((tag) => (tag || "").toLowerCase()); // Check if tags is defined
+
+        return (
+            blogTitle.includes(searchQuery) ||
+            blogSubtitle.includes(searchQuery) ||
+            tags.some((tag) => tag.includes(searchQuery))
+        );
+    });
+
     return (
         <div className='navbar h-8 sticky top-0 z-10 dark:bg-NeutralBlack dark:backdrop-blur-lg dark:bg-opacity-30 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b-slate-400'>
             <div className='navbar-start w-auto'>
@@ -209,7 +231,7 @@ export default function Navbar() {
                 </div>
             </div>
             {/* Search bar */}
-            <div className='flex justify-between ml-auto'>
+            <div className='flex justify-between ml-auto dropdown'>
                 <div className='flex items-center'>
                     <div
                         className='search-icon mr-2'
@@ -221,10 +243,27 @@ export default function Navbar() {
                         <input
                             type='text'
                             placeholder='Type here'
-                            className='input input-bordered input-sm w-full max-w-xs'
+                            className='input input-bordered input-sm w-full'
+                            value={searchQuery}
+                            onChange={handleSearchInputChange}
                         />
                     </div>
                 </div>
+
+                {/* Add the "visible" class to enable the pop-in effect */}
+                {searchQuery && filteredBlogs.length > 0 && (
+                    <div className='search-results-dropdown visible absolute bg-NeutralWhite rounded-lg shadow-md z-10 w-full font-poppins pl-8'>
+                        <ul className='p-2 dropdown-content z-[1] menu mt-6 shadow bg-base-100 rounded-md'>
+                            {filteredBlogs.map((blog) => (
+                                <li key={blog.id} className='hover:bg-Primary'>
+                                    <Link href={`/blog/${blog.id}`}>
+                                        {blog.title}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
                 {/* Menu for large screen */}
                 <div className='navbar-center mr-4 hidden lg:flex'>
                     <ul className='menu menu-horizontal'>

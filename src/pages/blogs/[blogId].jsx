@@ -46,7 +46,7 @@ function BlogPage({ blog }) {
                     className='w-full -mt-16 md:-mt-80 object-cover  mx-auto text-NeutralBlack relative'
                     style={{
                         maskImage:
-                            "linear-gradient(to top, transparent, black 50%)",
+                            "linear-gradient(to bottom, transparent, white 50%)",
                     }}
                 />
                 <div className='absolute bottom-0 md:bottom-5 flex flex-col text-NeutralBlack items-center '>
