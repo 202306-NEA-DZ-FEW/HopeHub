@@ -62,8 +62,8 @@ function Footer() {
         }
     }
     return (
-        <footer className='footer px-10 py-5 bg-[#BFDFDC] text-base-content flex flex-col md:flex-row lg:flex-row justify-between items-center'>
-            <form>
+        <footer className='footer px-10 py-5 bg-[#BFDFDC] text-base-content flex flex-col  lg:flex-row justify-between items-center'>
+            <form className=' ml-8'>
                 <header className=' font-bold text-xl mb-[-15px]'>
                     {t("footer_msg_1")}
                 </header>
@@ -110,25 +110,27 @@ function Footer() {
                 </fieldset>
             </form>
             <div className=' items-center flex flex-col justify-center h-full'>
-                <div className='flex flex-row items-center justify-between'>
-                    <div className='mb-2 px-3'>
-                        <ToggleButton />
-                    </div>
-                    <div className='mb-2.5 px-3'>
-                        <TranslationButton />
+                <div className='flex md:flex-row lg:flex-row flex-col items-center justify-between gap-4 '>
+                    <div className='flex flex-row items-center'>
+                        <div className='mb-2 px-3'>
+                            <ToggleButton />
+                        </div>
+                        <div className='mb-2.5 px-3'>
+                            <TranslationButton />
+                        </div>
                     </div>
 
-                    <nav className='footer-title flex gap-8'>
-                        <Link className=' ' href='../Home'>
+                    <nav className='footer-title flex gap-8 font-[13px] md:font-medium lg:font-medium '>
+                        <Link className=' ' href='/'>
                             {t("Home")}
                         </Link>
-                        <Link className=' ' href='../Blogs'>
+                        <Link className=' ' href='../blogs'>
                             {t("Blogs")}
                         </Link>
-                        <Link className=' ' href='../About'>
+                        <Link className=' ' href='../about'>
                             {t("About")}
                         </Link>
-                        <Link className=' ' href='../Contact'>
+                        <Link className=' ' href='../contact'>
                             {t("Contact")}
                         </Link>
                     </nav>
