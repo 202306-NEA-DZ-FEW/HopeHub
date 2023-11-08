@@ -13,6 +13,8 @@ import { auth } from "@/util/firebase";
 import darklogo from "../../../public/assets/darklogo.svg";
 import logo from "../../../public/assets/logo.svg";
 
+import Cookie from "js-cookie";
+
 export default function Navbar() {
     //Function used for translations
     const { t } = useTranslation("common");
@@ -45,15 +47,20 @@ export default function Navbar() {
     };
 
     // Function to handle user logout
-    const handleLogout = () => {
+    function handleLogout() {
+        // Clear the user's session or remove the cookie
+        Cookie.remove("loggedInUser"); // Remove the user cookie
+        // You may also need to sign the user out from your authentication provider
+        // For Firebase, you can use `signOut` from the auth object
         signOut(auth)
             .then(() => {
-                router.push("/");
+                // Redirect the user to the login page or any other appropriate location
+                router.push("/Auth"); // Replace "/login" with the actual login page route
             })
             .catch((error) => {
-                console.error("Error signing out:", error);
+                console.error("Error during logout:", error);
             });
-    };
+    }
 
     const [searchQuery, setSearchQuery] = useState("");
     const { blogs } = useAppcontext(); // Access the blogs data from the context

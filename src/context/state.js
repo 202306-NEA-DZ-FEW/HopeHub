@@ -3,6 +3,7 @@ import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth, db } from "@/util/firebase";
 import { useTheme } from "next-themes";
+import Cookie from "js-cookie";
 
 const AppContext = createContext();
 
@@ -16,6 +17,13 @@ export function AppWrapper({ children }) {
     const [blogs, setBlogs] = useState([]); // Store the blogs data
 
     useEffect(() => {
+        const loggedInUserCookie = Cookie.get("loggedInUser");
+        if (loggedInUserCookie) {
+            // User is logged in, set isLogged to true
+            setIsLogged(true);
+            // You can also fetch the user's data from the cookie and set it to the user state
+            setUser({ uid: loggedInUserCookie });
+        }
         // Fetch blogs data when the component mounts
         async function fetchBlogs() {
             try {
