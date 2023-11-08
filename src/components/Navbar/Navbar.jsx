@@ -226,7 +226,7 @@ export default function Navbar() {
                     </div>
                 </div>
                 {/* Menu for large screen */}
-                <div className='navbar-center -mr-2 hidden lg:flex'>
+                <div className='navbar-center mr-4 hidden lg:flex'>
                     <ul className='menu menu-horizontal'>
                         <li
                             className={`text-Accent font-semibold font-poppins text-base tracking-wider ${isPageActive(
@@ -267,13 +267,14 @@ export default function Navbar() {
                                         onClick={toggleUserMenu}
                                     >
                                         {user.photoURL ? (
-                                            <Image
-                                                src={user.photoURL}
-                                                alt='User'
-                                                width={48}
-                                                height={48}
-                                                layout='fixed'
-                                            />
+                                            <div className='avatar '>
+                                                <div className='w-10 rounded-full '>
+                                                    <img
+                                                        src={user.photoURL}
+                                                        className='object-fill'
+                                                    />
+                                                </div>
+                                            </div>
                                         ) : (
                                             <div className='flex items-center justify-center w-10 h-10 rounded-full bg-violet-400'>
                                                 <span className='text-white text-xl'>
@@ -296,7 +297,7 @@ export default function Navbar() {
                                         {userMenuOpen && (
                                             <ul className='dropdown-content z-[1] menu p-2 shadow bg-Accent rounded-md w-40 mt-1'>
                                                 <li>
-                                                    <Link href='/profile'>
+                                                    <Link href='/Profile'>
                                                         {t("Profile")}
                                                     </Link>
                                                 </li>
@@ -322,7 +323,7 @@ export default function Navbar() {
                                 </div>
                             </div>
                         ) : (
-                            <button className='button-container w-28 h-9 mx-4 md:mr-8 md:w-40 bg-Accent dark:bg-Dark_Accent dark:hover:bg-Dark_Primary hover-bg-Primary rounded-md'>
+                            <button className='button-container w-28 h-9 mx-4 md:mr-2 md:w-40 bg-Accent dark:bg-Dark_Accent dark:hover:bg-Dark_Primary hover-bg-Primary rounded-md'>
                                 <Link
                                     href='/Auth'
                                     className='text-base tracking-wider text-NeutralBlack dark:text-NeutralWhite font-semibold font-poppins'
