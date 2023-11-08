@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // import { doc, updateDoc } from "firebase/firestore";
 import axios from "axios";
 import {
@@ -13,12 +14,12 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
 import { useRef } from "react";
-import { auth, db } from "@/util/firebase";
-import { FaLock, FaPlus, FaUser } from "react-icons/fa";
+import { FaLock, FaUser } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
+import { auth, db } from "@/util/firebase";
 
 export default function UserProfile() {
     // const pathname = usePathname()
@@ -28,7 +29,7 @@ export default function UserProfile() {
     const { t } = useTranslation("common");
     const { user, profileUpdated, setProfileUpdated, setUser } =
         useAppcontext();
-    console.log("user profile", user);
+    // console.log("user profile", user);
     const [hobbyInput, setHobbyInput] = useState("");
     const [fullName, setFullName] = useState(user.name);
     const [education, setEducation] = useState(user.educationLevel || "");
@@ -41,18 +42,16 @@ export default function UserProfile() {
     // const [id, setId]= useState(user.id || '')
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [oldEmail, setOldEmail] = useState(email);
-
+    // const [oldEmail, setOldEmail] = useState(email);
+    const [idcard, setIdcard] = useState(user.idcard || "");
     const [uploadFile, setUploadFile] = useState("");
     const [cloudinaryImage, setCloudinaryImage] = useState("");
     const inputRef = useRef(null);
-    console.log("user profile", user);
     const handleIconClick = () => {
         if (inputRef.current) {
             inputRef.current.click();
         }
     };
-
     const oldName = fullName;
     const oldPhone = phone;
 
@@ -70,18 +69,16 @@ export default function UserProfile() {
                 formData
             )
             .then((response) => {
-                console.log("cloudinary res", response);
                 setCloudinaryImage(response.data.secure_url);
                 setUser({ ...user, photoURL: response.data.secure_url });
-                console.log("user after uploading image", user);
             })
             .catch((error) => {
-                console.log("cloudinary err", error);
+                console.error("cloudinary err", error);
             });
     }
 
     function handleEmailUpdate() {
-        console.log("currentuser", auth.currentUser);
+        // console.log("currentuser", auth.currentUser);
         updateEmail(auth.currentUser, email)
             .then((res) => console.log("email updated", res))
             .catch((err) => console.log("couldn't set email", err));
@@ -99,21 +96,21 @@ export default function UserProfile() {
     }
     function handelNameChange() {
         updateProfile(auth.currentUser, {
-            displayName: user.name,
+            displayName: fullName,
         })
             .then(() => console.log("name changed "))
             .catch((err) => console.log("couldn't change name", err));
     }
     function handlePhoneChange() {
         updateProfile(auth.currentUser, {
-            phoneNumber: user.phoneNumber,
+            phoneNumber: phone,
         })
-            .then(() => console.log("phone changed "))
+            .then(() => console.log("phone changed handle "))
             .catch((err) => console.log("couldn't change phone", err));
     }
     function handlePhotoChange() {
         updateProfile(auth.currentUser, {
-            photoURL: user.photoURL,
+            photoURL: cloudinaryImage,
         })
             .then(() => console.log("photo changed "))
             .catch((err) => console.log("couldn't change photo", err));
@@ -122,32 +119,38 @@ export default function UserProfile() {
     async function handleSubmit(e) {
         setProfileUpdated(true);
         e.preventDefault();
-        if (password !== confirmPassword) {
-            alert("password does not match");
-        } else {
-            await setUser({
-                ...user,
-                name: fullName,
-                educationLevel: education,
-                hobbies: hobbies,
-                familySize: familySize,
-                gender: gender,
-                birthDate: birthDate,
-                email: email,
-                phoneNumber: phone,
-                password: password,
-                photoURL: cloudinaryImage,
-            });
-            await updateUserProfile();
-
-            console.log("new user", user);
+        try {
+            if (password !== confirmPassword) {
+                alert("password does not match");
+            } else {
+                console.log("after update");
+                setUser({
+                    ...user,
+                    name: fullName,
+                    educationLevel: education,
+                    hobbies: hobbies,
+                    familySize: familySize,
+                    gender: gender,
+                    birthDate: birthDate,
+                    email: email,
+                    phoneNumber: phone,
+                    password: password,
+                    photoURL: cloudinaryImage,
+                    idcard: idcard,
+                });
+                await updateUserProfile();
+                alert("profile updated");
+                // console.log("new user", user);
+            }
+        } catch {
+            (err) => console.error(err);
         }
     }
 
     function emailChanged(e) {
         setEmail(e.target.value);
-        console.log(oldEmail, "new", email);
-        console.log("the email", email, email !== oldEmail);
+        // console.log(oldEmail, "new", email);
+        // console.log("the email", email, email !== oldEmail);
     }
 
     function passwordChanged(e) {
@@ -180,20 +183,35 @@ export default function UserProfile() {
 
     async function updateUserProfile() {
         console.log(
-            "updating user profile function",
-            oldEmail !== user.email ? "email changed" : "email not changed"
+            "updating user profile function inside",
+            typeof auth.currentUser.phoneNumber,
+            auth.currentUser.phoneNumber !== phone
+                ? "phone changed"
+                : "phone not changed"
         );
 
         try {
-            if (oldEmail !== user.email) handleEmailUpdate();
+            // if (auth.currentUser.email !== email) handleEmailUpdate();
             if (password !== "") handlePsswordChange();
-            if (user.name !== oldName) handelNameChange();
-            if (user.phoneNumber !== oldPhone) handlePhoneChange();
-            if (uploadFile) handlePhotoChange();
+            if (fullName !== auth.currentUser.displayName) handelNameChange();
+            if (phone !== auth.currentUser.phoneNumber) handlePhoneChange();
+            if (cloudinaryImage !== auth.currentUser.photoURL)
+                handlePhotoChange();
             await updateDoc(doc(db, "users", user.uid), {
                 ...user,
+                name: fullName,
+                educationLevel: education,
+                hobbies: hobbies,
+                familySize: familySize,
+                gender: gender,
+                birthDate: birthDate,
+                email: email,
+                phoneNumber: phone,
+                password: password,
+                photoURL: cloudinaryImage,
+                idcard: idcard,
             });
-            console.log("save for uid", user.uid);
+            console.log("save for uid", auth.currentUser);
         } catch (err) {
             console.error(err);
             console.log("can't update", err);
@@ -205,18 +223,17 @@ export default function UserProfile() {
             deleteUser(auth.currentUser)
                 .then(() => {
                     console.log("user deleted");
+                    alert("sorry to see you leave!");
+                    router.push("/thanks");
                 })
                 .catch((error) => {
                     console.log("couldn't delete user", error);
                 });
-        } else {
-            router.push("/thanks");
-            alert("sorry to see you leave!");
         }
     }
     return (
         <Layout className=''>
-            <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row mt-20 max-w-screen'>
+            <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row mt-20 w-full max-w-full'>
                 <div className=' lg:w-[30%] md:[40%] flex '>
                     <div className='bg-NeutralBlack w-80 h-80 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>
                         {user.photoURL ? (
@@ -253,7 +270,7 @@ export default function UserProfile() {
                 <div className='flex items-center justify-center text-NeutralBlack md:w-2/3 lg:w-[50%] '>
                     <div className='mx-auto w-full max-w-[80%     px-4 mb-20'>
                         <h2 className='  py-5 px-6 text-4xl font-semibold'>
-                            {t("profile info")}
+                            {t("Update profile")}
                         </h2>
                         <form
                             onSubmit={handleSubmit}
@@ -433,23 +450,17 @@ export default function UserProfile() {
                                 >
                                     {t("upload id")}
                                 </label>
-                                <div className='overflow-hidden relative w-full '>
-                                    <button
-                                        disabled
-                                        className='w-full rounded-md border border-[rgb(224,224,224)]  px-6 inline-flex items-center'
-                                    >
-                                        <input
-                                            type='file'
-                                            accept='image/*,.pdf'
-                                            name='IDcard'
-                                            className='w-full rounded-md py-3 outline-none  cursor-pointer  opacity-0 '
-                                        />
-                                        <FaPlus></FaPlus>
-                                    </button>
-                                </div>
+                                <input
+                                    type='text'
+                                    name='IDcard'
+                                    id='IDcard'
+                                    className='w-full rounded-md border lg:text-xl font-normal px-4 border-slate-300 bg-white py-3 outline-none '
+                                    value={idcard}
+                                    onChange={(e) => setIdcard(e.target.value)}
+                                />
                             </div>
                             <label className='mb-5 pt-5 block text-4xl font-semibold '>
-                                {t("security")}
+                                {t("Change Password")}
                             </label>
                             <div className='mb-5 flex'>
                                 <label
