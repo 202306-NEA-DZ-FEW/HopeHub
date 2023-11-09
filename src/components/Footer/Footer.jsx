@@ -62,7 +62,7 @@ function Footer() {
         }
     }
     return (
-        <footer className='footer px-10 py-5 bg-Accent dark:bg-Dark_Primary text-base-content flex flex-col md:flex-row lg:flex-row justify-between items-center'>
+        <footer className='footer mt-20 px-10 py-5 bg-Accent dark:bg-Dark_Primary text-base-content flex flex-col md:flex-row lg:flex-row justify-between items-center'>
             <form>
                 <header className=' font-bold text-xl mb-[-15px] text-NeutralBlack dark:text-NeutralWhite'>
                     {t("footer_msg_1")}
