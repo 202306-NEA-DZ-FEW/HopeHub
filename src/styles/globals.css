@@ -112,3 +112,13 @@ h4 {
         height: auto; /* Maintain the image's aspect ratio */
     }
 }
+
+/* Light mode gradient */
+.gradient-light {
+    background: linear-gradient(to bottom, transparent, #eeeeee 90%);
+}
+
+/* Dark mode gradient */
+.gradient-dark {
+    background: linear-gradient(to bottom, transparent, #101729 90%);
+}
