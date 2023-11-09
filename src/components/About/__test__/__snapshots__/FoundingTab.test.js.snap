@@ -6,7 +6,7 @@ exports[`renders correctly 1`] = `
 >
   <div>
     <div
-      className="flex flex-wrap lg:flex-nowrap lg:w-[70%] lg:mx-auto px-100 justify-center"
+      className="flex flex-wrap lg:flex-nowrap lg:w-[70%] lg:mx-auto px-100 dark:brightness-75 justify-center"
     >
       <img
         alt="Founder"
@@ -28,12 +28,12 @@ exports[`renders correctly 1`] = `
         className="mx-6 lg:mb-10 "
       >
         <h2
-          className="text-4xl lg:text-4xl text-NeutralBlack font-poppins pb-3"
+          className="text-4xl lg:text-4xl text-NeutralBlack dark:text-NeutralWhite font-poppins pb-3"
         >
           Our Founding
         </h2>
         <p
-          className="text-NeutralBlack lg:text-lg font-poppins text-justify indent-8 leading-relaxed"
+          className="text-NeutralBlack dark:text-NeutralWhite lg:text-lg font-poppins text-justify indent-8 leading-relaxed"
         >
           HopeHub was founded by a group of Re:coded students in 2023. It was called HopeHub Online and started as a blog and an online community where some of the worlds therapists shared their research and ideas. We launched the Beginners Guide to Therapy and our first study, and that hub of industry expertise transformed into a small consulting firm and led us to create the Online Therapist of today!
         </p>
