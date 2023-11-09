@@ -53,7 +53,13 @@ function BookingPage({ dates }) {
             case 8:
                 return <Submission OnNext={OnNext} OnPrevious={OnPrevious} />;
             case 7:
-                return <PickaDate dates={dates} OnNext={OnNext} />;
+                return (
+                    <PickaDate
+                        dates={dates}
+                        OnNext={OnNext}
+                        OnPrevious={OnPrevious}
+                    />
+                );
             case 9:
                 return <Confirmation OnNext={OnNext} OnPrevious={OnPrevious} />;
         }

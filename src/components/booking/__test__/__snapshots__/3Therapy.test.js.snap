@@ -2,13 +2,13 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="bg-NeutralWhite min-w-screen min-h-screen"
+  className="bg-NeutralWhite min-w-screen mb-12"
 >
   <div
     className="w-full h-full px-8 lg:px-20 bg-NeutralWhite "
   >
     <div
-      className="mb-3 pt-12 font-ogg font-bold text-NeutralBlack capitalize text-2xl lg:text-4xl leading-normal"
+      className="mb-3 pt-12 font-ogg font-bold text-NeutralBlack uppercase text-2xl lg:text-4xl leading-normal"
     >
       Let's match you with the right therapist
     </div>
@@ -19,7 +19,7 @@ exports[`renders correctly 1`] = `
        
     </div>
     <div
-      className=" flex flex-col bg-NeutralWhite lg:w-1/2 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative"
+      className=" flex flex-col bg-white lg:w-3/5 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative"
     >
       <h3
         className="py-5 px-4 lg:py-10 lg:px-11 leading-normal text-NeutralBlack text-xl lg:text-2xl font-regular font-poppins capitalize "

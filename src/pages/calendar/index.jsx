@@ -16,7 +16,7 @@ function Calendar() {
     console.log("user", user, "events", events);
     return (
         <Layout className='max-w-screen'>
-            <div className='px-32 py-6 bg-white'>
+            <div className='px-32 py-6 h-screen'>
                 <FullCalendar
                     initialView='dayGridMonth'
                     events={events}
@@ -24,7 +24,12 @@ function Calendar() {
                     headerToolbar={{
                         start: "bookApp",
                         center: "title",
-                        end: "timeGridWeek,timeGridDay,dayGridMonth prevYear,prev,today,next,nextYear",
+                        end: "prev,next",
+                    }}
+                    footerToolbar={{
+                        start: "",
+                        center: "",
+                        end: "",
                     }}
                     customButtons={{
                         bookApp: {

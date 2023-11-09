@@ -31,7 +31,7 @@ export default function Issues({ OnNext, OnPrevious }) {
     };
 
     return (
-        <div className='bg-NeutralWhite min-w-screen min-h-screen'>
+        <div className='bg-NeutralWhite min-w-screen min-h-fit mb-12'>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite'>
                 <div className='mb-3 pt-12 font-ogg font-bold text-NeutralBlack uppercase text-2xl lg:text-4xl leading-normal'>
                     {t("Let's match you with the right therapist")}
@@ -41,7 +41,7 @@ export default function Issues({ OnNext, OnPrevious }) {
                         "Please fill out this short questionnaire to provide some general and anonymous background about you and the issues you'd like to deal with in online therapy. It would help us match you with the most suitable therapist for you."
                     )}{" "}
                 </div>
-                <div className='flex flex-col bg-NeutralWhite lg:w-1/2 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'>
+                <div className='flex flex-col bg-white lg:w-3/5 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'>
                     {error && (
                         <div className='text-Error text-center font-poppins text-regular pt-5'>
                             {error}

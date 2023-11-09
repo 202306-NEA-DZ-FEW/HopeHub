@@ -22,7 +22,7 @@ exports[`renders correctly 1`] = `
       className="self-center flex flex-col w-full h-[500px] lg:w-[70%] lg:h-[350px] mt-14"
     >
       <textarea
-        className="textarea p-4 text-NeutralBlack text-xl font-poppins text-regular bg-NeutralWhite lg:h-full sm:h-full sm:leading-tight shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-md "
+        className="textarea p-4 text-NeutralBlack text-xl font-poppins text-regular bg-white lg:h-full h-[300px] sm:leading-tight shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-md "
         id="details"
         onChange={[Function]}
         placeholder="Tell us what you feel ..."
