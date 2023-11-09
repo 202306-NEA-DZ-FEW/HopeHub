@@ -8,7 +8,7 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Forgot from "@/components/UserAuth/forgot";
 import Login from "@/components/UserAuth/login";
@@ -23,7 +23,7 @@ import google from "../../../public/assets/Google-icon.svg";
 import hopeText from "../../../public/assets/HopeText.svg";
 
 function Auth() {
-    const { authChange } = useAppcontext();
+    const { authChange, user } = useAppcontext();
     const router = useRouter();
     const pathname = usePathname().slice(1);
     const [checked, setChecked] = useState("login");

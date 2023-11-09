@@ -8,6 +8,7 @@ module.exports = {
     },
     reactStrictMode: true,
     images: {
+        domains: ["res.cloudinary.com"], // Add the domain(s) you want to allow
         remotePatterns: [
             {
                 hostname: "res.cloudinary.com",

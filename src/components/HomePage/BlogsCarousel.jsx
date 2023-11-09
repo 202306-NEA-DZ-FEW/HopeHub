@@ -1,20 +1,38 @@
+import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
-import React from "react";
-import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
+import React, { useEffect, useState } from "react";
+import { TfiAngleLeft, TfiAngleRight } from "react-icons";
 import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import blogsData from "../../data/blogsData";
+import { db } from "../../util/firebase";
 
 const BlogsCarousel = () => {
-    //Function used for translations
     const { t } = useTranslation("common");
 
-    //Custom arrows to replace the ones used in Slick Carousel
+    const [blogs, setBlogs] = useState([]); // State to store blog data
+
+    // Function to fetch blog data from Firestore
+    const fetchBlogsFromFirestore = async () => {
+        const blogsCollection = collection(db, "blogs");
+        const q = query(blogsCollection, orderBy("date", "desc"), limit(6)); // Sort by date in descending order and limit to the last 6 entries
+        const data = await getDocs(q);
+        const blogData = [];
+        data.forEach((doc) => {
+            const blog = doc.data();
+            blogData.push(blog);
+        });
+        setBlogs(blogData);
+    };
+
+    useEffect(() => {
+        fetchBlogsFromFirestore();
+    }, []); // Fetch data when the component mounts
+
     const CustomPrevArrow = ({ onClick }) => (
         <div className='custom-arrow-l' onClick={onClick}>
             <TfiAngleLeft size={30} color='black' />
@@ -27,7 +45,6 @@ const BlogsCarousel = () => {
         </div>
     );
 
-    //Carousel settings
     const settings = {
         infinite: true,
         speed: 500,
@@ -55,7 +72,6 @@ const BlogsCarousel = () => {
         ],
     };
 
-    //Displaying the carousel
     return (
         <div className='bg-Primary dark:bg-Dark_Primary pb-16 w-full'>
             <h1 className='mx-6 mt-4 mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block dark:text-NeutralWhite text-NeutralBlack'>
@@ -63,9 +79,8 @@ const BlogsCarousel = () => {
             </h1>
             <div className='px-20'>
                 <Slider {...settings}>
-                    {/* Mapping over the articles in blogsData and creating a display card for each in the carousel*/}
-                    {blogsData.map((blog) => (
-                        <Link key={blog.id} href={`/blogs/${blogsData.id}`}>
+                    {blogs.map((blog) => (
+                        <Link key={blog.id} href={`/blogs/${blog.id}`}>
                             <div
                                 key={blog.id}
                                 className='relative px-2 md:mx-4 lg:mx-2 2xl:mx-10'
@@ -82,8 +97,8 @@ const BlogsCarousel = () => {
                                     <h1 className='text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins'>
                                         {blog.content.title}
                                     </h1>
-                                    <h1 className='text-NeutralWhite text-xs text-center md:text-sm font-light font-poppins'>
-                                        {blog.content.subTitle}
+                                    <h1 className='text-white text-xs text-center md:text-sm font-normal font-poppins'>
+                                        {blog.subTitle}
                                     </h1>
                                 </div>
                             </div>

@@ -56,28 +56,37 @@ export default function UserProfile() {
     const oldName = fullName;
     const oldPhone = phone;
 
-    function uploadImage(e) {
+    async function uploadImage(e) {
         e.preventDefault();
-        setUploadFile(e.target.files[0]);
-        const formData = new FormData();
-        formData.append("file", e.target.files[0]);
-        formData.append("upload_preset", "hopehub");
-        // formData.append("type", "private");
+        const file = e.target.files[0];
 
-        axios
-            .post(
+        try {
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("upload_preset", "hopehub");
+
+            const response = await axios.post(
                 "https://api.cloudinary.com/v1_1/dxic1agza/image/upload",
                 formData
-            )
-            .then((response) => {
+            );
+
+            if (response.status === 200) {
+                const secureUrl = response.data.secure_url;
                 console.log("cloudinary res", response);
-                setCloudinaryImage(response.data.secure_url);
-                setUser({ ...user, photoURL: response.data.secure_url });
+                setCloudinaryImage(secureUrl);
+
+                // Assuming setUser is asynchronous, you can use the user object after the image is set
+                await setUser({ ...user, photoURL: secureUrl });
                 console.log("user after uploading image", user);
-            })
-            .catch((error) => {
-                console.log("cloudinary err", error);
-            });
+            } else {
+                console.log(
+                    "Cloudinary upload failed with status:",
+                    response.status
+                );
+            }
+        } catch (error) {
+            console.log("Error uploading image to Cloudinary:", error);
+        }
     }
 
     function handleEmailUpdate() {
@@ -190,8 +199,11 @@ export default function UserProfile() {
             if (user.name !== oldName) handelNameChange();
             if (user.phoneNumber !== oldPhone) handlePhoneChange();
             if (uploadFile) handlePhotoChange();
+
+            // Include 'photoURL' in the user object that you're updating
             await updateDoc(doc(db, "users", user.uid), {
                 ...user,
+                photoURL: cloudinaryImage, // Add the user's photoURL here
             });
             console.log("save for uid", user.uid);
         } catch (err) {
@@ -250,8 +262,8 @@ export default function UserProfile() {
                         </label>
                     </div>
                 </div>
-                <div className='flex items-center justify-center text-NeutralBlack dark:text-NeutralWhite md:w-2/3 lg:w-[100%]'>
-                    <div className='mx-auto w-full lg:max-w-[80%] mb-20'>
+                <div className='flex  text-NeutralBlack md:w-2/3 lg:w-[50%] '>
+                    <div className='mx-auto w-full max-w-[80%     px-4 mb-20'>
                         <h2 className='  py-5 px-6 text-4xl font-semibold'>
                             {t("profile info")}
                         </h2>

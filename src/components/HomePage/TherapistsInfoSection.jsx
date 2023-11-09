@@ -34,8 +34,11 @@ export default function TherapistsInfoSection() {
             </p>
 
             {/* Adding the button for booking an appointment */}
-            <div className='inset-0 flex items-end justify-end mx-6 lg:my-10 md:mx-10 mb-6 sm:mx-20 lg:mx-10'>
-                <BookingButton />
+            <div className='inset-0 flex items-end justify-end mx-6 md:mx-10 mb-6 sm:mx-20 lg:mx-10'>
+                <BookingButton
+                    destination='/booking'
+                    buttonText='Book An Appointment'
+                />
             </div>
         </div>
     );
