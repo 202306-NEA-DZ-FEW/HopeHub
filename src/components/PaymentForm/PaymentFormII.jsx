@@ -59,16 +59,19 @@ const PaymentFormII = () => {
                 onSubmit={handleSubmit}
             >
                 <div className='w-full flex flex-col justify-start'>
-                    <label htmlFor='cardType' className='text-lg'>
+                    <label
+                        htmlFor='cardType'
+                        className='text-lg mb-2 text-NeutralBlack dark:text-NeutralWhite'
+                    >
                         {t("Supported Card types")}
                     </label>
                     <div className='flex flex-row items-center justify-start '>
                         <button
                             onClick={handleCardChange}
-                            className={`block w-1/2 p-2 border border-Accent rounded rounded-tr-none rounded-br-none ${
+                            className={`block w-1/2 p-2 border border-[#879AB8] dark:border-[#3E4E68] rounded rounded-tr-none rounded-br-none ${
                                 isMasterCard
-                                    ? "bg-blue-100 text-Accent"
-                                    : "text-blue-400"
+                                    ? "bg-blue-100 dark:brightness-90 text-Accent  dark:text-Dark_Primary font-semibold"
+                                    : "text-[#879AB8] font-semibold "
                             }`}
                         >
                             {t("Visa")}
@@ -76,17 +79,20 @@ const PaymentFormII = () => {
 
                         <button
                             onClick={handleCardChange}
-                            className={`block w-1/2 p-2 border border-Accent rounded rounded-tl-none rounded-bl-none ${
+                            className={`block w-1/2 p-2 border border-[#879AB8] dark:border-[#3E4E68] rounded rounded-tl-none rounded-bl-none ${
                                 isMasterCard
-                                    ? "text-Accent "
-                                    : "bg-blue-100 text-Accent"
+                                    ? "text-[#879AB8] font-semibold"
+                                    : "bg-blue-100 dark:brightness-90 text-Accent dark:text-Dark_Primary font-semibold"
                             }`}
                         >
                             {t("MasterCard")}
                         </button>
                     </div>
                     <div className='mt-4'>
-                        <label htmlFor='cardNumber' className='text-lg'>
+                        <label
+                            htmlFor='cardNumber'
+                            className='text-lg mb-2 text-NeutralBlack dark:text-NeutralWhite'
+                        >
                             {t("Card Number")}
                         </label>
                         <input
@@ -98,7 +104,7 @@ const PaymentFormII = () => {
                                     setCardNumber(e.target.value);
                                 }
                             }}
-                            className='block w-full p-2  bg-white rounded border border-Accent focus:border-red-500 outline-none'
+                            className='block w-full p-2 text-NeutralBlack  bg-NeutralWhite rounded border border-Accent dark:border-Dark_Primary  outline-none'
                             maxLength='14'
                             pattern='[0-9]{14}'
                             title='Card number must be 14 digits'
@@ -109,7 +115,7 @@ const PaymentFormII = () => {
                         <div className='w-1/2 pr-2'>
                             <label
                                 htmlFor='expiryDate mb-2'
-                                className='text-lg'
+                                className='text-lg mb-2  text-NeutralBlack dark:text-NeutralWhite'
                             >
                                 {t("Expiry Date")}
                             </label>
@@ -118,12 +124,15 @@ const PaymentFormII = () => {
                                 id='expiryDate'
                                 value={expiryDate}
                                 onChange={handleExpiryDateChange}
-                                className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
+                                className='block w-full p-2 text-NeutralBlack  bg-NeutralWhite rounded border border-Accent dark:border-Dark_Primary outline-none'
                                 placeholder={t("MM/YY")}
                             />
                         </div>
                         <div className='w-1/2 pl-2'>
-                            <label htmlFor='cvv' className='text-lg'>
+                            <label
+                                htmlFor='cvv'
+                                className='text-lg mb-2 text-NeutralBlack dark:text-NeutralWhite'
+                            >
                                 {t("CVV Code")}
                             </label>
                             <input
@@ -131,7 +140,7 @@ const PaymentFormII = () => {
                                 id='cvv'
                                 value={cvv}
                                 onChange={(e) => setCvv(e.target.value)}
-                                className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
+                                className='block w-full p-2 text-NeutralBlack  bg-NeutralWhite rounded border border-Accent dark:border-Dark_Primary  outline-none'
                                 maxLength={3}
                                 pattern='[0-9]{3}'
                                 title='CVV number must be 3 digits'
@@ -140,7 +149,10 @@ const PaymentFormII = () => {
                         </div>
                     </div>
                     <div className='mt-4'>
-                        <label htmlFor='nameOnCard' className='text-lg'>
+                        <label
+                            htmlFor='nameOnCard'
+                            className='text-lg mb-2 text-NeutralBlack dark:text-NeutralWhite'
+                        >
                             {t("Name on Card")}
                         </label>
                         <input
@@ -148,7 +160,7 @@ const PaymentFormII = () => {
                             id='nameOnCard'
                             value={nameOnCard}
                             onChange={(e) => setNameOnCard(e.target.value)}
-                            className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
+                            className='block w-full p-2 text-NeutralBlack  bg-NeutralWhite rounded border border-Accent dark:border-Dark_Primary outline-none'
                             placeholder={t("Name On Card")}
                         />
                     </div>
@@ -157,7 +169,10 @@ const PaymentFormII = () => {
                 {/* Right Column */}
                 <div className='w-full flex flex-col justify-start'>
                     <div className=''>
-                        <label htmlFor='country' className='text-lg'>
+                        <label
+                            htmlFor='country'
+                            className='text-lg mb-2 text-NeutralBlack dark:text-NeutralWhite'
+                        >
                             {t("Country")}
                         </label>
                         <Select
@@ -165,26 +180,32 @@ const PaymentFormII = () => {
                             value={selectedCountry}
                             onChange={handleCountryChange}
                             options={countryList().getData()}
-                            // className="block w-full p-2 bg-white rounded border-[1px] border-Accent focus-border-red-500"
+                            className='block w-full text-NeutralBlack  bg-NeutralWhite rounded border-[1px] border-Accent focus-border-red-500'
                             placeholder={t("Your Country Name")}
                         />
                     </div>
                     <div className='mt-4'>
-                        <label htmlFor='zipCode' className='text-lg'>
+                        <label
+                            htmlFor='zipCode'
+                            className='text-lg mb-2 text-NeutralBlack dark:text-NeutralWhite'
+                        >
                             {t("Zip Code")}
                         </label>
                         <input
-                            type='text'
+                            type='number'
                             id='zipCode'
                             value={zipCode}
                             onChange={(e) => setZipCode(e.target.value)}
-                            className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
+                            className='block w-full p-2 text-NeutralBlack  bg-NeutralWhite rounded border border-Accent dark:border-Dark_Primary outline-none'
                             placeholder='*********'
                         />
                     </div>
 
                     <div className='mt-4'>
-                        <label htmlFor='city' className='text-lg'>
+                        <label
+                            htmlFor='city'
+                            className='text-lg mb-2 text-NeutralBlack dark:text-NeutralWhite'
+                        >
                             {t("City")}
                         </label>
                         <input
@@ -192,12 +213,15 @@ const PaymentFormII = () => {
                             id='city'
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
-                            className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
+                            className='block w-full p-2 text-NeutralBlack  bg-NeutralWhite rounded border border-Accent dark:border-Dark_Primary outline-none'
                             placeholder={t("Your City Name")}
                         />
                     </div>
                     <div className='mt-4'>
-                        <label htmlFor='address' className='text-lg'>
+                        <label
+                            htmlFor='address'
+                            className='text-lg mb-2 text-NeutralBlack dark:text-NeutralWhite'
+                        >
                             {t("Address")}
                         </label>
                         <input
@@ -205,16 +229,16 @@ const PaymentFormII = () => {
                             id='address'
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
-                            className='block w-full p-2 bg-white rounded border border-Accent focus:border-red-500 outline-none'
+                            className='block w-full p-2 text-NeutralBlack  bg-NeutralWhite rounded border border-Accent dark:border-Dark_Primary outline-none'
                             placeholder={t("Your Address")}
                         />
                     </div>
                 </div>
             </form>
-            <div>
+            <div className='flex justify-end mt-6'>
                 <button
                     type='submit'
-                    className='w-32 p-2 bg-Accent text-NeutralBlack font-bold rounded mt-8'
+                    className='w-32 p-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                 >
                     {t("Add Card")}
                 </button>

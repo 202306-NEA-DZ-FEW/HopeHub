@@ -9,7 +9,7 @@ export default function BookingButton({ destination, buttonText }) {
     return (
         <div>
             <button
-                className='button-container bg-Accent dark:bg-Dark_Accent rounded-md w-36 h-14 sm:w-52 sm:h-12 lg:w-64 lg:h-14 hover:bg-NeutralWhite'
+                className='w-64 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralBlack dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                 data-testid='booking-button'
             >
                 <Link

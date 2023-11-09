@@ -18,7 +18,7 @@ export default function HomePage() {
 
     return (
         <Layout>
-            <div className='flex flex-col items-center justify-start'>
+            <div className='flex flex-col items-center justify-start dark:bg-Dark_Primary'>
                 <Banner />
                 <TherapistsInfoSection />
                 <ConnectionSection />

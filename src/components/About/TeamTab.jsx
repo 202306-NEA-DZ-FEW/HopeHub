@@ -5,7 +5,7 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 const TeamCard = ({ image, name, linkedin, github }) => {
     return (
-        <div className='card w-64 h-96 mb-4 mx-4 bg-NeutralWhite shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)]'>
+        <div className='card w-64 h-96 mb-4 mx-4 bg-NeutralWhite dark:bg-Dark_Primary shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)]'>
             <figure>
                 <Image
                     src={image}
@@ -16,7 +16,7 @@ const TeamCard = ({ image, name, linkedin, github }) => {
                     className='border-b-4  border-Accent'
                 />
             </figure>
-            <div className='card-body text-NeutralBlack mx-auto'>
+            <div className='card-body text-NeutralBlack dark:text-NeutralWhite mx-auto'>
                 <h2 className='card-title text-xl text-center font-semibold font-poppins '>
                     {name}
                 </h2>

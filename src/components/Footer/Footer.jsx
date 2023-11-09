@@ -31,9 +31,9 @@ function Footer() {
             <html>
               <body style='padding=1rem 2rem;'>
                 <h1 style='font-size=18px; margin=auto;'>Hello!</h1>
-                <p style='font-size=16px;'>Thank you for subscribing to Hope Hub. <br> 
+                <p style='font-size=16px;'>Thank you for subscribing to Hope Hub. <br>
                 Content worth reading awaits you. Sit back, relax, and enjoy the newsletter ride.</p>
-              </body>  
+              </body>
             </html>
           `,
                 }),
@@ -62,14 +62,14 @@ function Footer() {
         }
     }
     return (
-        <footer className='footer px-10 py-5 bg-[#BFDFDC] text-base-content flex flex-col  lg:flex-row justify-between items-center'>
-            <form className=' ml-8'>
-                <header className=' font-bold text-xl mb-[-15px]'>
+        <footer className='footer mt-20 px-10 py-5 bg-Accent dark:bg-Dark_Primary text-base-content flex flex-col md:flex-row lg:flex-row justify-between items-center'>
+            <form>
+                <header className=' font-bold text-xl mb-[-15px] text-NeutralBlack dark:text-NeutralWhite'>
                     {t("footer_msg_1")}
                 </header>
                 <fieldset className='form-control w-96 mt-2'>
                     <label className='label'>
-                        <span className='label-text text-[#718096]'>
+                        <span className='label-text text-NeutralBlack dark:text-NeutralWhite'>
                             {t("footer_msg_2")}
                         </span>
                     </label>
@@ -109,15 +109,13 @@ function Footer() {
                     </div>
                 </fieldset>
             </form>
-            <div className=' items-center flex flex-col justify-center h-full'>
-                <div className='flex md:flex-row lg:flex-row flex-col items-center justify-between gap-4 '>
-                    <div className='flex flex-row items-center'>
-                        <div className='mb-2 px-3'>
-                            <ToggleButton />
-                        </div>
-                        <div className='mb-2.5 px-3'>
-                            <TranslationButton />
-                        </div>
+            <div className=' items-center flex flex-col justify-center h-full text-NeutralBlack dark:text-NeutralWhite'>
+                <div className='flex flex-row items-center justify-between'>
+                    <div className='mb-2 px-3'>
+                        <ToggleButton />
+                    </div>
+                    <div className='mb-2.5 px-3'>
+                        <TranslationButton />
                     </div>
 
                     <nav className='footer-title flex gap-8 font-[13px] md:font-medium lg:font-medium '>

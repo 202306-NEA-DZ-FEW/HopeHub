@@ -13,7 +13,7 @@ const TeamCard = ({ image, name, position }) => {
                     layout='responsive'
                 />
             </figure>
-            <div className='card-body text-NeutralBlack'>
+            <div className='card-body text-NeutralBlack dark:text-NeutralWhite'>
                 <h2 className='card-title text-l'>{name}</h2>
                 <p>{position}</p>
             </div>
