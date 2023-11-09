@@ -19,7 +19,10 @@ export default function Layout({ children }) {
     }
 
     return (
-        <div dir={textDirectionClass}>
+        <div
+            dir={textDirectionClass}
+            className='bg-NeutralWhite dark:bg-Dark_Neutral'
+        >
             <Navbar />
             <div className='mt-8'>{children}</div>
             <Footer />

@@ -12,14 +12,14 @@ function BlogsPage() {
 
     return (
         <Layout>
-            <h1 className='mx-6 mt-4 lg:mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block'>
+            <h1 className='mx-6 mt-4 lg:mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block text-NeutralBlack dark:text-NeutralWhite'>
                 {t("Our Blog Posts")}
             </h1>
             <div className='flex flex-col xl:flex-row mx-5 mb-6'>
                 <div className='flex flex-col'>
                     {blogs.map((blog, index) => (
                         <div key={index} className='p-4'>
-                            <div className='border border-solid mb-5 border-Primary'></div>
+                            <div className='border border-solid mb-5 border-Primary dark:border-Dark_Primary'></div>
 
                             <BlogCard
                                 image={blog.imageURL}
@@ -33,7 +33,7 @@ function BlogsPage() {
                     ))}
                 </div>
                 <div className='flex flex-col w-10/12 mx-auto'>
-                    <div className='card w-auto h-min my-3 mx-5 bg-Primary shadow-xl'>
+                    <div className='card w-auto h-min my-3 mx-5 bg-Primary dark:bg-Dark_Primary text-NeutralBlack dark:text-NeutralWhite shadow-xl'>
                         <div className='card-body'>
                             <h2 className='card-title text-lg lg:text-5xl font-poppins font-semibold'>
                                 HopeHub
@@ -51,7 +51,7 @@ function BlogsPage() {
                             </div>
                         </div>
                     </div>
-                    <div className='card w-auto h-min my-3 mx-5 bg-gray-300 shadow-xl'>
+                    <div className='card w-auto h-min my-3 mx-5 bg-gray-300 text-NeutralBlack dark:bg-gray-700 dark:text-NeutralWhite shadow-xl'>
                         <div className='card-body'>
                             <h2 className='card-title text-lg lg:text-5xl font-poppins font-semibold'>
                                 {t("Our Newsletter Is Waiting For You")}
