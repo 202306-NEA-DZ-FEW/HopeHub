@@ -4,6 +4,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 
 import Layout from "@/layout/Layout";
+import Link from "next/link";
 
 function Thanks() {
     const query = useSearchParams();
@@ -32,9 +33,12 @@ function Thanks() {
                         {t("Thank text 2")}
                     </p>
                 )}
-                <button className='btn ml-auto font-poppins border-none font-medium text-2xl bg-Accent text-NeutralBlack'>
+                <Link
+                    href={"../"}
+                    className='btn ml-auto font-poppins border-none font-medium text-2xl bg-Accent text-NeutralBlack'
+                >
                     {t("Back to Home")}
-                </button>
+                </Link>
             </main>
         </Layout>
     );
