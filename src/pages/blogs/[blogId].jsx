@@ -8,10 +8,14 @@ import BlogsCarousel from "@/components/HomePage/BlogsCarousel";
 import { useTranslation } from "next-i18next";
 import { format } from "date-fns";
 import { PiPaperPlaneTiltFill } from "react-icons/pi";
+import { useAppcontext } from "@/context/state";
 
 function BlogPage({ blog }) {
     // Function used for translations
     const { t } = useTranslation("common");
+
+    // Using context to get darkmode
+    const { darkMode } = useAppcontext();
 
     //Next router to navigate to different pages
     const router = useRouter();
@@ -43,22 +47,27 @@ function BlogPage({ blog }) {
                 <img
                     src={blog.imageURL}
                     alt={blog.title}
-                    className='w-full -mt-16 md:-mt-80 object-cover  mx-auto text-NeutralBlack relative'
+                    className='w-full -mt-16 md:-mt-80 object-cover  mx-auto text-NeutralBlack dark:text-NeutralWhite relative'
                     style={{
                         maskImage:
-                            "linear-gradient(to top, transparent, black 50%)",
+                            "linear-gradient(to bottom, transparent, white 50%)",
                     }}
                 />
-                <div className='absolute bottom-0 md:bottom-5 flex flex-col text-NeutralBlack items-center '>
-                    <h1 className='my-1 mx-auto text-lg md:text-4xl font-poppins text-NeutralBlack font-semibold'>
+                <div
+                    className={`absolute w-full h-full top-0 left-0 ${
+                        darkMode ? "gradient-dark" : "gradient-light"
+                    }`}
+                ></div>
+                <div className='absolute bottom-0 md:bottom-5 flex flex-col text-NeutralBlack dark:text-NeutralWhite items-center '>
+                    <h1 className='my-1 mx-auto text-lg md:text-4xl font-poppins text-NeutralBlack dark:text-NeutralWhite font-semibold'>
                         {blog.title}
                     </h1>
                     <h1
-                        className={`hidden my-2 mx-4 md:mx-20 italic md:text-base text-center font-poppins text-NeutralBlack md:block`}
+                        className={`hidden my-2 mx-4 md:mx-20 italic md:text-base text-center font-poppins text-NeutralBlack dark:text-NeutralWhite md:block`}
                     >
                         {blog.summary}
                     </h1>
-                    <div className='my-1 font-poppins text-NeutralBlack items-center mx-auto flex flex-col text-xs md:text-base'>
+                    <div className='my-1 font-poppins text-NeutralBlack dark:text-NeutralWhite items-center mx-auto flex flex-col text-xs md:text-base'>
                         <h1>
                             {t("Written by")} {blog.author}
                         </h1>
@@ -70,16 +79,16 @@ function BlogPage({ blog }) {
             </div>
 
             <div
-                className='my-6 mx-8 text-xs md:text-base font-poppins text-NeutralBlack'
+                className='my-6 mx-8 text-xs md:text-base font-poppins text-NeutralBlack dark:text-NeutralWhite'
                 dangerouslySetInnerHTML={renderBlogContent(blog.body)}
             />
 
             <BlogsCarousel />
             <div className='flex justify-center mx-auto items-center text-center flex-col my-14'>
-                <h1 className='my-2 mx-8 text-base md:text-4xl font-poppins  text-NeutralBlack font-semibold'>
+                <h1 className='my-2 mx-8 text-base md:text-4xl font-poppins  text-NeutralBlack dark:text-NeutralWhite font-semibold'>
                     {t("Subscribe to Our Newsletter")}
                 </h1>
-                <h1 className='my-2 mx-8 text-xs md:text-base font-poppins text-NeutralBlack'>
+                <h1 className='my-2 mx-8 text-xs md:text-base font-poppins text-NeutralBlack dark:text-NeutralWhite'>
                     {t(
                         "A weekly, ad-free Newsletter that helps you stay in the know."
                     )}
@@ -92,8 +101,8 @@ function BlogPage({ blog }) {
                             placeholder={t("Enter your e-mail")}
                             className='input input-bordered'
                         />
-                        <span className='bg-Primary'>
-                            <PiPaperPlaneTiltFill className='fill-Accent' />
+                        <span className='bg-Primary dark:bg-Dark_Primary'>
+                            <PiPaperPlaneTiltFill className='fill-Accent dark:fill-D' />
                         </span>
                     </label>
                 </div>
