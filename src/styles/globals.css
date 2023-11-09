@@ -140,7 +140,7 @@ h4 {
         transparent 0%,
         rgba(255, 255, 255, 0.7) 100%
     );
-
+}
 /* Light mode gradient */
 .gradient-light {
     background: linear-gradient(to bottom, transparent, #eeeeee 90%);
