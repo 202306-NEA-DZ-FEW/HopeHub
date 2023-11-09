@@ -48,6 +48,10 @@ function BlogPage({ blog }) {
                     src={blog.imageURL}
                     alt={blog.title}
                     className='w-full -mt-16 md:-mt-80 object-cover  mx-auto text-NeutralBlack dark:text-NeutralWhite relative'
+                    style={{
+                        maskImage:
+                            "linear-gradient(to bottom, transparent, white 50%)",
+                    }}
                 />
                 <div
                     className={`absolute w-full h-full top-0 left-0 ${
