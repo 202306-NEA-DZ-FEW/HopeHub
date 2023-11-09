@@ -31,23 +31,23 @@ export default function Issues({ OnNext, OnPrevious }) {
     };
 
     return (
-        <div className='bg-NeutralWhite min-w-screen min-h-screen'>
-            <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite'>
-                <div className='mb-3 pt-12 font-ogg font-bold text-NeutralBlack uppercase text-2xl lg:text-4xl leading-normal'>
+        <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen min-h-screen'>
+            <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent'>
+                <div className='mb-3 pt-6 font-ogg font-bold text-NeutralBlack dark:text-NeutralWhite uppercase text-2xl lg:text-4xl leading-normal'>
                     {t("Let's match you with the right therapist")}
                 </div>
-                <div className='font-poppins font-regular text-justify text-NeutralBlack text-base lg:text-lg leading-relaxed'>
+                <div className='font-poppins font-regular text-justify text-NeutralBlack dark:text-NeutralWhite text-base lg:text-lg leading-relaxed'>
                     {t(
                         "Please fill out this short questionnaire to provide some general and anonymous background about you and the issues you'd like to deal with in online therapy. It would help us match you with the most suitable therapist for you."
                     )}{" "}
                 </div>
-                <div className='flex flex-col bg-NeutralWhite lg:w-1/2 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'>
+                <div className='flex flex-col bg-NeutralWhite dark:bg-Dark_Accent lg:w-1/2 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'>
                     {error && (
                         <div className='text-Error text-center font-poppins text-regular pt-5'>
                             {error}
                         </div>
                     )}
-                    <h3 className='py-5 px-4 lg:py-10 lg:px-11 leading-normal text-NeutralBlack text-xl lg:text-2xl font-regular font-poppins capitalize'>
+                    <h3 className='py-5 px-4 lg:py-10 lg:px-11 leading-normal text-NeutralBlack dark:text-NeutralWhite text-xl lg:text-2xl font-regular font-poppins capitalize'>
                         {t("Are there any issues you would like to focus on?")}
                     </h3>
                     <div className='flex flex-col'>
@@ -130,7 +130,7 @@ export default function Issues({ OnNext, OnPrevious }) {
                     <div className='flex justify-between '>
                         <div className=' pl-6 py-10 lg:py-10 lg:pl-11 group '>
                             <button
-                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
+                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                 onClick={OnPrevious}
                             >
                                 {t("Previous")}
@@ -138,7 +138,7 @@ export default function Issues({ OnNext, OnPrevious }) {
                         </div>
                         <div className=' pr-6 py-10 lg:py-10 lg:pr-11 group '>
                             <button
-                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
+                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                 onClick={handleNextClick}
                             >
                                 {t("Next")}

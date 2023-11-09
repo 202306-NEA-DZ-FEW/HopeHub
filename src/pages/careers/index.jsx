@@ -1,8 +1,11 @@
 // Import necessary modules and components
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Layout from "@/layout/Layout";
+
 import JobCard from "@/components/JobCard/JobCard";
+
+import Layout from "@/layout/Layout";
+
 import jobsData from "./jobdata";
 // Define the Requirement component
 export default function Careers() {
@@ -10,28 +13,28 @@ export default function Careers() {
 
     return (
         <Layout>
-            <div className=' font-poppins p-8 lg:p-12 bg-BgWhite'>
-                <div className=' py-5 flex justify-center flex-col text-[#424A4F]'>
-                    <h2 className='text-5xl leading-[59.8px]'>
+            <div className=' font-poppins px-8 lg:px-9 lg:pb-20 bg-NeutralWHite dark:bg-Dark_Accent'>
+                <div className=' py-2 flex justify-center flex-col text-NeutralBlack dark:text-NeutralWhite '>
+                    <h2 className='text-4xl leading-relaxed'>
                         {t("CAREERS AT")} Hope Hub
                     </h2>
-                    <p className='shrink-0  text-base leading-[26px] pt-2'>
+                    <p className='shrink-0  text-base leading-relaxed pt-2'>
                         {t("careers desc 1")}
                     </p>
                 </div>
-                <div className='py-5 flex justify-center flex-col text-[#424A4F]'>
-                    <h2 className='text-5xl leading-[59.8px]'>
+                <div className='py-5 flex justify-center flex-col text-NeutralBlack dark:text-NeutralWhite '>
+                    <h2 className='text-4xl leading-relaxed'>
                         {t("OUR HIRING PHILOSOPHY")}
                     </h2>
-                    <p className='shrink-0  text-base leading-[26px] pt-2'>
+                    <p className='shrink-0  text-base leading-relaxed pt-2'>
                         {t("carrers desc 2")}
                     </p>
                 </div>
-                <div className='py-5 flex justify-center flex-col text-[#424A4F]'>
-                    <h2 className='text-5xl leading-[59.8px]'>
+                <div className='py-5 flex justify-center flex-col text-NeutralBlack dark:text-NeutralWhite '>
+                    <h2 className='text-4xl leading-relaxed '>
                         {t("CURRENT OPEN POSITIONS")}
                     </h2>
-                    <p className='shrink-0  text-base leading-[26px] pt-2'>
+                    <p className='shrink-0  text-base leading-relaxed pt-2'>
                         {t("careers desc 3")}
                     </p>
                 </div>

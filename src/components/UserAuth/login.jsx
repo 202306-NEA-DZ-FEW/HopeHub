@@ -43,41 +43,39 @@ function Login({ isChecked, setChecked }) {
     return (
         <>
             <div className='font-poppins flex flex-col items-start justify-center w-full '>
-                <h2 className=' font-extrabold text-4xl text-black my-5'>
+                <h2 className=' font-extrabold text-4xl text-NeutralBlack my-8'>
                     {t("Log In")}
                 </h2>
                 <form
                     onSubmit={handleLogin}
-                    className='text-4xl p-3 w-full bg-NeutralWhite rounded-md shadow-md flex flex-col gap-4'
+                    className='text-4xl p-6 w-full bg-NeutralWhite dark:bg-Dark_Primary rounded-md shadow-md flex flex-col gap-4'
                 >
                     <input
                         type='email'
                         placeholder={t("footer_msg_3")}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className='input input-bordered w-full  h-16'
+                        className='input input-bordered w-full bg-NeutralWhite text-NeutralBlack mb-2 mt-1   '
                     />
                     <input
                         type='password'
                         placeholder={t("enter password")}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className='input input-bordered w-full h-16 '
+                        className='input input-bordered w-full bg-NeutralWhite text-NeutralBlack mb-2 '
                     />
                     <div className='flex flex-row justify-between items-center gap-4'>
                         <button
                             type='submit'
-                            className={`btn font-bold hover:text-Accent flex-1 ${
-                                isChecked === "login"
-                                    ? "bg-Accent text-white"
-                                    : "text-Accent border-Accent"
+                            className={`btn font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500  flex-1 ${
+                                isChecked === "login" ? "" : ""
                             }`}
                         >
                             {t("Log In")}{" "}
                         </button>
                         <button
                             type=''
-                            className='btn font-bold  text-Accent border-Accent flex-1'
+                            className='btn font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500  flex-1'
                             onClick={() => {
                                 setChecked("signup");
                             }}
@@ -86,7 +84,7 @@ function Login({ isChecked, setChecked }) {
                         </button>
                     </div>
                     <span
-                        className='text-Accent font-semibold text-lg text-right cursor-pointer'
+                        className='text-Accent font-semibold text-lg text-right cursor-pointer m mt-1 mb-2 focus:border-b-2 border-Accent'
                         onClick={() => {
                             setChecked("forgot");
                         }}

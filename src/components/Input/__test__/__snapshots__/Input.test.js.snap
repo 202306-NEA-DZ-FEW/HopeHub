@@ -5,11 +5,11 @@ exports[`renders correctly 1`] = `
   className="flex flex-col items-start justify-between gap-1 px-2"
 >
   <label
-    className=" mt-4 w-full text-left font-poppins text-xl font-semibold text-NeutralBlack "
+    className=" mt-4 w-full text-left font-poppins text-xl font-semibold text-NeutralBlack dark:text-NeutralWhite"
     htmlFor="name"
   />
   <input
-    className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 outline-none "
+    className="w-full rounded-md border text-NeutralBlack  dark:border-NeutralBlack bg-NeutralWhite p-3  outline-none "
     onChange={[Function]}
   />
 </div>

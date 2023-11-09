@@ -13,12 +13,12 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
 import { useRef } from "react";
-import { auth, db } from "@/util/firebase";
 import { FaLock, FaPlus, FaUser } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
+import { auth, db } from "@/util/firebase";
 
 export default function UserProfile() {
     // const pathname = usePathname()
@@ -176,7 +176,7 @@ export default function UserProfile() {
         setHobbies(newArr);
     }
     const HobbyBtn = ({ txt }) => (
-        <span className='w-fit p-1 mb-5 mr-2 border rounded-3xl border-gray-500  group relative'>
+        <span className='w-fit p-1 mb-5 mr-2 border rounded-3xl border-gray-500  text-NeutralBlack dark:text-NeutralWhite group relative'>
             {txt}{" "}
             <button
                 className='rounded-full w-4 opacity-0 group-hover:opacity-100 h-4 align-middle text-center absolute -right-1 -top-2  text-[10px] text-white bg-red-500'
@@ -228,11 +228,11 @@ export default function UserProfile() {
     }
     return (
         <Layout className=''>
-            <div className='flex font-semibold mx-auto px-28 font-poppins flex-col md:flex-row mt-20'>
-                <div className=' lg:w-[30%] md:[40%] flex '>
-                    <div className='bg-NeutralBlack w-80 h-80 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>
+            <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row mt-10 lg:mt-20 max-w-screen mr-0 pr-48'>
+                <div className='pb-12 lg:py-16 lg:w-[30%] md:[60%] flex'>
+                    <div className='bg-NeutralBlack dark:bg-NeutralWhite w-40 h-40 md:w-52 lg:h-52 md:h-52 rounded-full mx-auto flex flex-col items-center justify-center'>
                         {user.photoURL ? (
-                            <div className='w-full h-full rounded-full overflow-hidden'>
+                            <div className='w-[70%] h-full rounded-full overflow-hidden'>
                                 <Image
                                     src={user.photoURL}
                                     width={100}
@@ -242,7 +242,7 @@ export default function UserProfile() {
                                 />
                             </div>
                         ) : (
-                            <FaUser className='fill-NeutralWhite w-32 h-32 mb-5  ' />
+                            <FaUser className='fill-NeutralWhite dark:fill-NeutralBlack w-16 h-16 md:w-24 md:h-24 mb-5 ' />
                         )}
 
                         <input
@@ -255,10 +255,10 @@ export default function UserProfile() {
                         />
 
                         <label
-                            className='absolute -bottom-8 cursor-pointer '
+                            className='absolute mt-44 lg:mt-56 cursor-pointer'
                             onClick={handleIconClick}
                         >
-                            <LiaUserEditSolid className='text-NeutralBlack w-16 h-16 bg-NeutralWhite rounded-full border border-NeutralBlack p-2' />
+                            <LiaUserEditSolid className='text-NeutralBlack dark:text-NeutralWhite  w-12 h-12 md:w-14 md:h-14 bg-NeutralWhite dark:bg-NeutralBlack rounded-full border border-NeutralBlack p-2' />
                         </label>
                     </div>
                 </div>
@@ -274,7 +274,7 @@ export default function UserProfile() {
                             <div className='mb-5 text-xl flex'>
                                 <label
                                     htmlFor='name'
-                                    className=' mt-4 w-3/4   '
+                                    className=' mt-4 w-3/4 text-NeutralBlack dark:text-NeutralWhite  '
                                 >
                                     {t("full name")}
                                 </label>
@@ -292,7 +292,7 @@ export default function UserProfile() {
                             <div className='mb-5 text-xl flex'>
                                 <label
                                     htmlFor='name'
-                                    className=' mt-4 w-3/4 text-NeutralBlack '
+                                    className=' mt-4 w-3/4 text-NeutralBlack dark:text-NeutralWhite '
                                 >
                                     {t("education level")}
                                 </label>
@@ -318,11 +318,11 @@ export default function UserProfile() {
                                     </option>
                                 </select>
                             </div>
-                            <div className='mb-5 flex flex-col text-NeutralBlack'>
+                            <div className='mb-5 flex flex-col '>
                                 <div className='w-full flex'>
                                     <label
                                         htmlFor='name'
-                                        className=' mt-4 mb-3 w-3/4 text-xl'
+                                        className=' mt-4 mb-3 w-3/4 text-xl text-NeutralBlack dark:text-NeutralWhite '
                                     >
                                         {t("hobbies")}
                                     </label>
@@ -347,7 +347,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='Family Size'
-                                    className=' mt-4 text-xl w-3/4 '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite'
                                 >
                                     {t("family size")}
                                 </label>
@@ -373,7 +373,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='gender'
-                                    className=' mt-4 text-xl w-3/4 '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite'
                                 >
                                     {t("gender")}
                                 </label>
@@ -392,7 +392,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='Birth Date'
-                                    className=' mt-4 text-xl w-3/4 '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite'
                                 >
                                     {t("birth date")}
                                 </label>
@@ -409,7 +409,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='email'
-                                    className=' mt-4 text-xl w-3/4  '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite '
                                 >
                                     {t("email")}
                                 </label>
@@ -425,7 +425,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='phone'
-                                    className=' mt-4 text-xl w-3/4  '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite '
                                 >
                                     {t("phone number")}
                                 </label>
@@ -441,7 +441,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='IDcard'
-                                    className=' mt-4 text-xl w-3/4  '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite '
                                 >
                                     {t("upload id")}
                                 </label>
@@ -460,13 +460,13 @@ export default function UserProfile() {
                                     </button>
                                 </div>
                             </div>
-                            <label className='mb-5 pt-5 block text-4xl font-semibold '>
+                            <label className='mb-5 pt-5 block text-4xl font-semibold text-NeutralBlack dark:text-NeutralWhite'>
                                 {t("security")}
                             </label>
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='password'
-                                    className=' mt-4 text-xl w-3/4  '
+                                    className=' mt-4 text-xl w-3/4  text-NeutralBlack dark:text-NeutralWhite'
                                 >
                                     {t("password")}
                                 </label>
@@ -487,7 +487,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='Confirm Password'
-                                    className=' mt-4 text-xl w-3/4  '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite '
                                 >
                                     {t("confirm password")}
                                 </label>
@@ -507,33 +507,33 @@ export default function UserProfile() {
                                 </div>
                             </div>
                             <div className='flex gap-4'>
-                                <button className='w-full bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500 rounded-md h-12'>
+                                <button className='w-full h-11   rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
                                     {t("save changes")}
                                 </button>
                                 <button
-                                    className='w-full bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500 rounded-md h-12'
+                                    className='w-full h-11  rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                     onClick={handleDelete}
                                 >
                                     {t("delete account")}
                                 </button>
-                                <button className='w-full bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500 rounded-md h-12'>
+                                <button className='w-full h-11 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
                                     {t("cancel")}
                                 </button>
                             </div>
-                            <h2 className=' mb-5 pt-8 block text-4xl font-semibold '>
+                            <h2 className=' mb-5 pt-8 block text-4xl font-semibold text-NeutralBlack dark:text-NeutralWhite '>
                                 {t("payment section")}
                             </h2>
                             <div className='flex'>
                                 <div className='mb-6 group w-1/3'>
                                     <label
                                         htmlFor='SHOW CARDS'
-                                        className=' text-NeutralBlack text-xl pt-5 '
+                                        className=' text-NeutralBlack text-xl pt-5  dark:text-NeutralWhite'
                                     >
                                         {t("cards added")}
                                     </label>
                                     <button
                                         name='SHOW CARDS'
-                                        className='w-[94%] rounded-md h-12 mt-5 bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500 '
+                                        className='w-[94%] h-11 mt-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                     >
                                         {t("show cards")}
                                     </button>
@@ -541,13 +541,13 @@ export default function UserProfile() {
                                 <div className='mb-5 group 1/3'>
                                     <label
                                         htmlFor='BUY TICKETS'
-                                        className=' mt-4 text-xl w-3/4 pt-5 '
+                                        className=' mt-4 text-xl w-3/4 pt-5  text-NeutralBlack dark:text-NeutralWhite'
                                     >
                                         {t("tickets remaining")}
                                     </label>
                                     <button
                                         name='BUY TICKETS'
-                                        className='w-[80%] rounded-md h-12 mt-5 bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
+                                        className='w-[80%] h-11 mt-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                     >
                                         {t("buy tickets")}
                                     </button>
