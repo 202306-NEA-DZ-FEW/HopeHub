@@ -36,15 +36,11 @@ exports[`renders correctly 1`] = `
     </h1>
   </div>
   <div
-    className="absolute inset-0 flex items-end justify-end mx-6 md:mx-10  sm:m-20 lg:mx-10 lg:mb-16"
+    className="absolute inset-0 flex items-end justify-end mx-6 md:mx-10 mb-6 sm:m-20 lg:mx-10 lg:mb-32"
   >
     <div>
       <button
-<<<<<<< HEAD
         className="w-64 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralBlack dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
-=======
-        className="button-container bg-Accent dark:bg-Dark_Accent rounded-md w-36 h-14 sm:w-52 sm:h-12 lg:w-64 lg:h-14 hover:bg-NeutralWhite"
->>>>>>> 12033847db51836ce40c23ce1dd6d2e6a544a14c
         data-testid="booking-button"
       >
         <a

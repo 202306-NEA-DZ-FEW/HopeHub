@@ -36,15 +36,11 @@ exports[`renders correctly 1`] = `
     Tap to the world's largest network of licensed, accredited, and experienced therapists who can help you with a range of issues including depression, anxiety, relationships, trauma, grief, and more. with our therapists, you get the same professionalism and quality you would expect from an in-office therapist, but with the ability to communicate whenever and however you want.
   </p>
   <div
-    className="inset-0 flex items-end justify-end mx-6 lg:my-10 md:mx-10 mb-6 sm:mx-20 lg:mx-10"
+    className="inset-0 flex items-end justify-end mx-6 md:mx-10 mb-6 sm:mx-20 lg:mx-10"
   >
     <div>
       <button
-<<<<<<< HEAD
         className="w-64 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralBlack dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
-=======
-        className="button-container bg-Accent dark:bg-Dark_Accent rounded-md w-36 h-14 sm:w-52 sm:h-12 lg:w-64 lg:h-14 hover:bg-NeutralWhite"
->>>>>>> 12033847db51836ce40c23ce1dd6d2e6a544a14c
         data-testid="booking-button"
       >
         <a
