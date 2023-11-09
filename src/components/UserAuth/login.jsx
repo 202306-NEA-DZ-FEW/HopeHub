@@ -6,14 +6,20 @@ import { useState } from "react";
 import { useAppcontext } from "@/context/state";
 import { auth } from "@/util/firebase";
 
+import Cookie from "js-cookie";
+
+// After successful login
+
 function Login({ isChecked, setChecked }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [user, setUser] = useState({});
     const router = useRouter();
     const { t } = useTranslation("common");
     const { authChange } = useAppcontext();
 
     function handleLogin(e) {
+        Cookie.set("loggedInUser", user.uid, { expires: 7 }); // Set cookie for 7 days
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
