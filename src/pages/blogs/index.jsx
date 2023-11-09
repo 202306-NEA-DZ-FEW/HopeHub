@@ -1,26 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { db } from "../../util/firebase";
-import { getDocs, collection } from "firebase/firestore";
+import React from "react";
 import Layout from "@/layout/Layout";
 import BlogCard from "@/components/BlogsCard/BlogsCard";
 import BookingButton from "@/components/BookingButton/BookingButton";
 import { useTranslation } from "next-i18next";
+import { useAppcontext } from "../../context/state"; // Replace with the actual path to your context file.
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-function BlogsPage({ blogs }) {
-    // Function used for translations
+function BlogsPage() {
     const { t } = useTranslation("common");
+    const { blogs } = useAppcontext(); // Access the blogs data from the context.
 
-    // Rendering the all blogs pages
     return (
         <Layout>
-            <h1 className='mx-6 mt-4 lg:mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block'>
+            <h1 className='mx-6 mt-4 lg:mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block text-NeutralBlack dark:text-NeutralWhite'>
                 {t("Our Blog Posts")}
             </h1>
             <div className='flex flex-col xl:flex-row mx-5 mb-6'>
                 <div className='flex flex-col'>
                     {blogs.map((blog, index) => (
                         <div key={index} className='p-4'>
-                            <div className='border border-solid mb-5 border-Primary'></div>
+                            <div className='border border-solid mb-5 border-Primary dark:border-Dark_Primary'></div>
 
                             <BlogCard
                                 image={blog.imageURL}
@@ -34,7 +33,7 @@ function BlogsPage({ blogs }) {
                     ))}
                 </div>
                 <div className='flex flex-col w-10/12 mx-auto'>
-                    <div className='card w-auto h-min my-3 mx-5 bg-Primary shadow-xl'>
+                    <div className='card w-auto h-min my-3 mx-5 bg-Primary dark:bg-Dark_Primary text-NeutralBlack dark:text-NeutralWhite shadow-xl'>
                         <div className='card-body'>
                             <h2 className='card-title text-lg lg:text-5xl font-poppins font-semibold'>
                                 HopeHub
@@ -52,7 +51,7 @@ function BlogsPage({ blogs }) {
                             </div>
                         </div>
                     </div>
-                    <div className='card w-auto h-min my-3 mx-5 bg-gray-300 shadow-xl'>
+                    <div className='card w-auto h-min my-3 mx-5 bg-gray-300 text-NeutralBlack dark:bg-gray-700 dark:text-NeutralWhite shadow-xl'>
                         <div className='card-body'>
                             <h2 className='card-title text-lg lg:text-5xl font-poppins font-semibold'>
                                 {t("Our Newsletter Is Waiting For You")}
@@ -75,20 +74,14 @@ function BlogsPage({ blogs }) {
         </Layout>
     );
 }
+
 export default BlogsPage;
 
-// This function tells Next.js how to pre-render the page.
-export async function getServerSideProps() {
-    try {
-        const blogsCollection = collection(db, "blogs");
-        const data = await getDocs(blogsCollection);
-        const blogs = [];
-        data.forEach((doc) => {
-            const blog = doc.data();
-            blogs.push(blog);
-        });
-        return { props: { blogs } };
-    } catch (error) {
-        console.log("error fetching blogs:", error);
-    }
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ["common"])),
+            // Will be passed to the page component as props
+        },
+    };
 }
