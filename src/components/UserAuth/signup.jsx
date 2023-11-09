@@ -77,12 +77,12 @@ function Signup({ isChecked, setChecked }) {
     return (
         <>
             <div className='font-poppins flex flex-col items-start justify-center w-full '>
-                <h2 className=' font-extrabold text-4xl text-black my-5'>
+                <h2 className=' font-extrabold text-4xl text-NeutralBlack my-8'>
                     {t("Sign Up")}{" "}
                 </h2>
                 <form
                     onSubmit={handleSignup}
-                    className='text-4xl p-3 w-full bg-NeutralWhite rounded-md shadow-md flex flex-col gap-4'
+                    className='text-4xl  p-6 w-full bg-NeutralWhite dark:bg-Dark_Primary rounded-md shadow-md flex flex-col gap-4'
                 >
                     <div className='flex flex-row justify-between items-center gap-4'>
                         <input
@@ -92,7 +92,7 @@ function Signup({ isChecked, setChecked }) {
                             placeholder={t("fname")}
                             value={firstname}
                             onChange={(e) => setFirstname(e.target.value)}
-                            className='flex-1 input input-bordered w-full  h-16'
+                            className='flex-1 input input-bordered w-full bg-NeutralWhite text-NeutralBlack  h-16'
                             required
                         />
                         <input
@@ -102,7 +102,7 @@ function Signup({ isChecked, setChecked }) {
                             placeholder={t("lname")}
                             value={lastname}
                             onChange={(e) => setLastname(e.target.value)}
-                            className='flex-1 input input-bordered w-full h-16 '
+                            className='flex-1 input input-bordered w-full bg-NeutralWhite text-NeutralBlack  h-16 '
                             required
                         />
                     </div>
@@ -113,7 +113,7 @@ function Signup({ isChecked, setChecked }) {
                         placeholder={t("footer_msg_3")}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className='input input-bordered w-full  h-16'
+                        className='input input-bordered w-full bg-NeutralWhite text-NeutralBlack  h-16'
                         required
                     />
                     <input
@@ -123,7 +123,7 @@ function Signup({ isChecked, setChecked }) {
                         placeholder={t("Confirm Email")}
                         value={confirmemail}
                         onChange={(e) => setConfirmemail(e.target.value)}
-                        className='input input-bordered w-full h-16 '
+                        className='input input-bordered w-full bg-NeutralWhite text-NeutralBlack  h-16 '
                         required
                     />
                     <div className='flex flex-row justify-between items-center gap-4'>
@@ -134,7 +134,7 @@ function Signup({ isChecked, setChecked }) {
                             placeholder={t("enter password")}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className='flex-1 input input-bordered w-full  h-16'
+                            className='flex-1 input input-bordered w-full bg-NeutralWhite text-NeutralBlack h-16'
                             required
                         />
                         <input
@@ -144,12 +144,15 @@ function Signup({ isChecked, setChecked }) {
                             placeholder={t("Confirm Password")}
                             value={confirmpassword}
                             onChange={(e) => setConfirmpassword(e.target.value)}
-                            className='flex-1 input input-bordered w-full h-16 '
+                            className='flex-1 input input-bordered w-full bg-NeutralWhite text-NeutralBlack h-16 '
                             required
                         />
                     </div>
                     <div className='flex flex-row justify-between items-center text-lg gap-4'>
-                        <label htmlFor='bdate' className='text-right w-1/2'>
+                        <label
+                            htmlFor='bdate'
+                            className='text-right w-1/2  text-NeutralBlack dark:text-NeutralWhite '
+                        >
                             {t("bdate")}
                         </label>
                         <input
@@ -158,14 +161,14 @@ function Signup({ isChecked, setChecked }) {
                             id='bdate'
                             value={bdate}
                             onChange={(e) => setBdate(e.target.value)}
-                            className=' w-1/2 input h-16 border'
+                            className=' w-1/2 input h-16 bg-NeutralWhite text-NeutralBlack border'
                             required
                         />
                     </div>
                     <div className='flex flex-row justify-between items-center gap-4'>
                         <button
-                            type=''
-                            className='btn font-bold  text-Accent border-Accent flex-1'
+                            type='submit'
+                            className='btn font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite  dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500  flex-1'
                             onClick={() => {
                                 setChecked("login");
                             }}
@@ -173,8 +176,8 @@ function Signup({ isChecked, setChecked }) {
                             {t("Log In")}{" "}
                         </button>
                         <button
-                            type='submit'
-                            className={`btn font-bold flex-1 ${
+                            type=''
+                            className={`btn font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite  dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500  flex-1 ${
                                 isChecked === "signup"
                                     ? "bg-Accent text-white"
                                     : "text-Accent border-Accent"

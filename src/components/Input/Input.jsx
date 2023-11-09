@@ -7,7 +7,7 @@ function Input({ label, type, id, name, state, setstate }) {
         <div className='flex flex-col items-start justify-between gap-1 px-2'>
             <label
                 htmlFor='name'
-                className=' mt-4 w-full text-left font-poppins text-xl font-semibold text-NeutralBlack '
+                className=' mt-4 w-full text-left font-poppins text-xl font-semibold text-NeutralBlack dark:text-NeutralWhite'
             >
                 {t(label)}
             </label>
@@ -16,7 +16,7 @@ function Input({ label, type, id, name, state, setstate }) {
                 type={type}
                 name={name}
                 id={id}
-                className='w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 outline-none '
+                className='w-full rounded-md border text-NeutralBlack  dark:border-NeutralBlack bg-NeutralWhite p-3  outline-none '
                 onChange={(e) => setstate(e.target.value)}
             />
         </div>

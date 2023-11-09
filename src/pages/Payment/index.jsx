@@ -13,13 +13,13 @@ const CardDetailsPage = () => {
     const { t } = useTranslation("common");
 
     return (
-        <div className='bg-cover bg-NeutralWhite bg-center  flex flex-col'>
+        <div className='bg-cover bg-NeutralWhite dark:bg-Dark_Accent bg-center  flex flex-col'>
             <Layout>
                 <div className=' flex flex-col ml-8 mr-10 my-12 '>
-                    <h1 className='text-black font-poppins font-bold text-[25px]'>
+                    <h1 className='text-NeutralBlack dark:text-NeutralWhite font-poppins font-bold text-3xl'>
                         {t("Add Card Details")}
                     </h1>
-                    <p className='text-gray-500 font-poppins  text-lg'>
+                    <p className='text-NeutralBlack dark:text-NeutralWhite font-poppins  text-lg'>
                         {t(
                             "Please make sure all of the info you enter are the same as your card registration info."
                         )}
@@ -29,7 +29,7 @@ const CardDetailsPage = () => {
                             <PaymentFormII />
                         </div>
                         <div className='w-full hidden lg:block md:w-fit md:pl-6 '>
-                            <div className='h-full flex items-center justify-center mt-[-50px]'>
+                            <div className='h-full flex items-center justify-center -mt-4 dark:brightness-90'>
                                 <Image
                                     src={card}
                                     alt='payment cards'

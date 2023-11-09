@@ -2,18 +2,18 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="bg-NeutralWhite min-w-screen min-h-screen"
+  className="bg-NeutralWhite dark:bg-Dark_Accent min-w-screen min-h-screen"
 >
   <div
-    className="w-full h-full px-8 lg:px-20 bg-NeutralWhite flex flex-col "
+    className="w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent flex flex-col "
   >
     <div
-      className="mb-3 pt-12 font-ogg font-bold text-NeutralBlack capitalize text-2xl lg:text-4xl leading-normal"
+      className="mb-3 pt-6 font-poppins font-bold text-NeutralBlack dark:text-NeutralWhite  capitalize text-2xl lg:text-4xl leading-normal"
     >
       What brings you here?
     </div>
     <div
-      className="font-poppins font-regular text-justify text-NeutralBlack text-base lg:text-lg leading-relaxed"
+      className="font-poppins font-regular text-justify text-NeutralBlack dark:text-NeutralWhite text-base lg:text-lg leading-relaxed"
     >
       Please specify (in a few sentences) why you would like counseling. This will give your counselor a good understanding of where to start.
        
@@ -22,7 +22,7 @@ exports[`renders correctly 1`] = `
       className="self-center flex flex-col w-full h-[500px] lg:w-[70%] lg:h-[350px] mt-14"
     >
       <textarea
-        className="textarea p-4 text-NeutralBlack text-xl font-poppins text-regular bg-NeutralWhite lg:h-full sm:h-full sm:leading-tight shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-md "
+        className="textarea p-4 dark:brightness-90 text-NeutralBlack text-xl font-poppins text-regular bg-NeutralWhite lg:h-full sm:h-full sm:leading-tight shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-md "
         id="details"
         onChange={[Function]}
         placeholder="Tell us what you feel ..."
@@ -32,19 +32,19 @@ exports[`renders correctly 1`] = `
         className="flex justify-between "
       >
         <div
-          className="py-10 lg:py-10 group "
+          className="pt-10 lg:py-8 group "
         >
           <button
-            className="w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500"
+            className="w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
           >
             Previous
           </button>
         </div>
         <div
-          className=" py-10 lg:py-10 group "
+          className="pt-10 lg:py-8 group "
         >
           <button
-            className="w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500"
+            className="w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
             onClick={[Function]}
           >
             Next
