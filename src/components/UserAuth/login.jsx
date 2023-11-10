@@ -21,6 +21,11 @@ function Login({ isChecked, setChecked }) {
     function handleLogin(e) {
         Cookie.set("loggedInUser", user.uid, { expires: 7 }); // Set cookie for 7 days
         e.preventDefault();
+        if (email === "admin@hopehub.com") {
+            if (password === "hopehub2023") router.push("/adminDashboard");
+            else alert("wrong password");
+            return;
+        }
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // if (userCredential.user.emailVerified) {
