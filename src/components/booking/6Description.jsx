@@ -48,7 +48,7 @@ export default function Description({ OnNext, OnPrevious }) {
                     <textarea
                         id='details'
                         value={description}
-                        className='textarea p-4 dark:brightness-90 text-NeutralBlack text-xl font-poppins text-regular bg-NeutralWhite lg:h-full sm:h-full sm:leading-tight shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-md '
+                        className='textarea p-4 dark:brightness-90 text-NeutralBlack text-xl font-poppins text-regular bg-NeutralWhite lg:h-full h-[300px] sm:h-full sm:leading-tight shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-md '
                         onChange={(e) => setDescription(e.target.value)}
                         placeholder={t("Tell us what you feel ...")}
                     ></textarea>

@@ -187,7 +187,6 @@
     "Written by": "تأليف",
     "A weekly, ad-free Newsletter that helps you stay in the know.": ".نشرة إخبارية أسبوعية خالية من الإعلانات تساعدك على البقاء على دراية",
     "Enter your e-mail": "إدخال بريدك الإلكتروني",
-    "Update": "تحديث",
     "Admin Dashboard": "لوحة التحكم للمشرف",
     "General": "عام",
     "Users": "المستخدمين",
@@ -205,5 +204,6 @@
     "Delete": "حذف",
     "Title": "العنوان",
     "Author": "الكاتب",
-    "Post": "مقال"
+    "Post": "مقال",
+    "Please select at least one option before proceeding.": "الرجاء تحديد خيار واحد على الأقل قبل المتابعة."
 }

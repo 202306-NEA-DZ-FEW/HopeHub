@@ -2,7 +2,7 @@ import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { useTranslation } from "next-i18next";
 
 import { useAppcontext } from "@/context/state";
-import { db } from "@/util/firebase";
+import { auth, db } from "@/util/firebase";
 export default function Submission({ OnNext, OnPrevious }) {
     const { bookingInfos, user, setUser } = useAppcontext();
     const { t } = useTranslation("common");
@@ -26,6 +26,8 @@ export default function Submission({ OnNext, OnPrevious }) {
             appointments: appointments,
         });
         const rdvRef = doc(db, "appointments", user?.uid);
+        const dateRef = doc(db, "dates", bookingInfos?.date);
+        const dateDoc = await getDoc(dateRef);
         const docsnap = await getDoc(rdvRef);
         const key = `${bookingInfos.date}__${bookingInfos.start}`;
         if (docsnap.exists()) {
@@ -55,11 +57,39 @@ export default function Submission({ OnNext, OnPrevious }) {
                 },
             });
         }
+        if (dateDoc.exists()) {
+            await updateDoc(dateRef, {
+                bookedHours: [
+                    ...dateDoc.data().bookedHours,
+                    bookingInfos.start,
+                ],
+            });
+        } else {
+            await setDoc(dateRef, {
+                bookedHours: [bookingInfos.start],
+            });
+        }
+        fetch("https://sendmail-api-docs.vercel.app/api/send", {
+            method: "POST",
+            body: JSON.stringify({
+                to: auth.currentUser.email,
+                subject: "Appointment confirmed",
+                message: `
+            <html>
+              <body style='padding=1rem 2rem;'>
+                <h1 style='font-size=18px; margin=auto;'>Hello!</h1>
+                <p style='font-size=16px;'> <br> 
+                your appointment is confirmed for ${bookingInfos.date} at ${bookingInfos.start} </p>
+              </body>  
+            </html>
+          `,
+            }),
+        });
         OnNext();
     }
 
     return (
-        <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen min-h-screen'>
+        <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12'>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent flex flex-col'>
                 <div className='mb-3 pt-12 font-poppins font-bold tracking-wideer text-NeutralBlack dark:text-NeutralWhite capitalize text-2xl lg:text-4xl leading-normal'>
                     {t("Submit your appointment")}
@@ -68,7 +98,7 @@ export default function Submission({ OnNext, OnPrevious }) {
                     {t("Click Submit if you are sure of all your choices.")}
                 </div>
 
-                <div className=" bg-NeutralWhite dark:bg-Dark_Accent lg:w-1/2 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'">
+                <div className=" bg-NeutralWhite dark:bg-Dark_Accent lg:w-3/5 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'">
                     <div className='flex flex-col justify-center items-center text-center'>
                         <h3 className=' rounded-md py-12 text-NeutralBlack dark:text-NeutralWhite text-2xl font-semibold font-poppins capitalize'>
                             {t("Please be aware that this action")}
