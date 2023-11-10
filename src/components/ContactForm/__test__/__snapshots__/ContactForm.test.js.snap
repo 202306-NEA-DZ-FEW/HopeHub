@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="container flex ml-0"
+>
+  <form
+    className="w-full max-w-2xl p-4 flex-1"
+    onSubmit={[Function]}
+  >
+    <div
+      className="login"
+    >
+      <div>
+        <label
+          className="block text-NeutralBlack dark:text-NeutralWhite text-base font-semibold mb-2 font-poppins"
+          htmlFor="fullName"
+        >
+          Full Name
+        </label>
+        <input
+          className="w-full px-3 py-2 border text-NeutralBlack font-medium rounded focus:outline-none focus:ring-2 focus:ring-Accent shadow-md bg-NeutralWhite"
+          id="fullName"
+          onChange={[Function]}
+          placeholder="Enter your Full Name here..."
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="email mt-4"
+      >
+        <label
+          className="block text-NeutralBlack dark:text-NeutralWhite text-base font-semibold mb-2 font-poppins"
+          htmlFor="email"
+        >
+          Email
+        </label>
+        <input
+          className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 text-NeutralBlack font-medium focus:ring-Accent shadow-md bg-NeutralWhite"
+          id="email"
+          onChange={[Function]}
+          placeholder="Enter your email address here..."
+          required={true}
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        className="mt-4"
+      >
+        <label
+          className="block text-NeutralBlack dark:text-NeutralWhite text-base font-semibold mb-2 font-poppins"
+          htmlFor="details"
+        >
+          Request Type
+        </label>
+        <select
+          className="select rounded w-full bg-NeutralWhite"
+        >
+          <option
+            className="text-NeutralBlack font-medium"
+            disabled={true}
+            selected={true}
+          >
+            Select Request Type
+          </option>
+          <option
+            checked={false}
+            className="text-NeutralBlack font-medium"
+            id="service"
+            value="service"
+          >
+            I have a question about the service.
+          </option>
+          <option
+            checked={false}
+            className="text-NeutralBlack font-medium"
+            id="support"
+            value="support"
+          >
+            I'm a registered client and I need support.
+          </option>
+          <option
+            checked={false}
+            className="text-NeutralBlack font-medium"
+            id="counselor"
+            value="counselor"
+          >
+            I'm a counselor interested in joining.
+          </option>
+          <option
+            checked={false}
+            className="text-NeutralBlack font-medium"
+            id="counselorSup"
+            value="counselorSup"
+          >
+             
+            I'm a registered counselor and I need support.
+          </option>
+          <option
+            checked={false}
+            className="text-NeutralBlack font-medium"
+            id="businessRelated"
+            value="businessRelated"
+          >
+            I have a business-related inquiry.
+          </option>
+          <option
+            checked={false}
+            className="text-NeutralBlack font-medium"
+            id="hopehub"
+            value="hopehub"
+          >
+            I'm interested in Hope Hub for my organization.
+          </option>
+          <option
+            checked={false}
+            className="text-NeutralBlack font-medium"
+            id="billingRelated"
+            value="billingRelated"
+          >
+            I have a billing-related question.
+          </option>
+        </select>
+      </div>
+      <div
+        className="details mt-4"
+      >
+        <label
+          className="block text-NeutralBlack dark:text-NeutralWhite text-base font-semibold mb-2 font-poppins"
+          htmlFor="details"
+        >
+          Details
+        </label>
+        <textarea
+          className="w-full px-3 py-2 text-NeutralBlack font-medium border rounded focus:outline-none focus:ring-2 focus:ring-Accent shadow-md bg-NeutralWhite resize-none"
+          id="details"
+          onChange={[Function]}
+          placeholder="Enter your details here..."
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="text-center flex justify-end mt-3"
+    >
+      <button
+        className="w-36 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
+        type="submit"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+`;

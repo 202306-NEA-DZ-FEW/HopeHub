@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="w-full bg-Primary dark:bg-Dark_Primary lg:pb-10"
+>
+  <h1
+    className="mx-6 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block text-NeutralBlack dark:text-NeutralWhite "
+  >
+    Professional, licensed, and vetted therapists that you can trust.
+  </h1>
+  <div
+    className="mx-6 w-64 md:w-96 lg:w-auto md:mx-9"
+  >
+    <img
+      alt="therapists"
+      data-nimg="1"
+      decoding="async"
+      height={60}
+      loading="lazy"
+      onError={[Function]}
+      onLoad={[Function]}
+      src="/_next/image?url=%2Fimg.jpg&w=1080&q=75"
+      srcSet="/_next/image?url=%2Fimg.jpg&w=640&q=75 1x, /_next/image?url=%2Fimg.jpg&w=1080&q=75 2x"
+      style={
+        Object {
+          "color": "transparent",
+        }
+      }
+      width={500}
+    />
+  </div>
+  <p
+    className="text-xs mx-6 my-4 md:text-xl md:mx-9 font-normal text-NeutralBlack dark:text-NeutralWhite font-poppins"
+  >
+    Tap to the world's largest network of licensed, accredited, and experienced therapists who can help you with a range of issues including depression, anxiety, relationships, trauma, grief, and more. with our therapists, you get the same professionalism and quality you would expect from an in-office therapist, but with the ability to communicate whenever and however you want.
+  </p>
+  <div
+    className="inset-0 flex items-end justify-end mx-6 md:mx-10 mb-6 sm:mx-20 lg:mx-10"
+  >
+    <div>
+      <button
+        className="w-64 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralBlack dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
+        data-testid="booking-button"
+      >
+        <a
+          className="text-xs sm:text-base lg:text-xl text-NeutralBlack dark:text-NeutralWhite uppercase font-semibold font-poppins"
+          href="/booking"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          Book An Appointment
+        </a>
+      </button>
+    </div>
+  </div>
+</div>
+`;

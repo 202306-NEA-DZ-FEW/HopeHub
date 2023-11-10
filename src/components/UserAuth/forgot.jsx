@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { FiArrowLeft } from "react-icons/fi";
-import { auth } from "@/util/firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
+import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
+import React, { useState } from "react";
+import { FiArrowLeft } from "react-icons/fi";
+
+import { auth } from "@/util/firebase";
 
 function Forgot({ isChecked, setChecked }) {
     const router = useRouter();
@@ -26,13 +27,13 @@ function Forgot({ isChecked, setChecked }) {
     return (
         <>
             <div className='font-poppins flex flex-col items-start justify-center w-full '>
-                <h2 className=' font-extrabold text-4xl text-black my-5'>
+                <h2 className=' font-extrabold text-4xl text-NeutralBlack  my-5'>
                     {" "}
                     {t("forgot")}{" "}
                 </h2>
                 <form
                     onSubmit={handleForgot}
-                    className='text-4xl p-3 w-full bg-NeutralWhite rounded-md shadow-md flex flex-col gap-4'
+                    className='text-4xl p-6 w-full bg-NeutralWhite dark:bg-Dark_Primary rounded-md shadow-md flex flex-col gap-4'
                 >
                     <button
                         type=''
@@ -49,11 +50,11 @@ function Forgot({ isChecked, setChecked }) {
                         placeholder={t("footer_msg_3")}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className='input input-bordered w-full  h-16'
+                        className='input input-bordered w-full bg-NeutralWhite text-NeutralBlack h-16'
                     />
                     <button
                         type='submit'
-                        className='btn bg-Accent text-center ml-auto text-white flex flex-row justify-start items-center  gap-2 font-bold hover:text-Accent hover:border-Accent'
+                        className='btn bg-Accent text-NeutralBlack dark:text-NeutralWhite  dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8]  hover:scale-105 duration-500 text-center ml-auto flex flex-row justify-start items-center  gap-2 font-bold hover:text-Accent hover:border-Accent'
                     >
                         {t("Send Email")}
                     </button>

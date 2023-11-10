@@ -1,28 +1,29 @@
-import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
 
+import Banner from "@/components/HomePage/Banner";
+import ConnectionSection from "@/components/HomePage/ConnectionSection";
+import PurchasingSection from "@/components/HomePage/PurchasingSection";
+import TherapistsInfoSection from "@/components/HomePage/TherapistsInfoSection";
+
+import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
 
 export default function HomePage() {
     const { t } = useTranslation("common");
+    const { user } = useAppcontext();
+    console.log("logged user data", user);
 
     return (
         <Layout>
-            <p>{t("test")}</p>
-            <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
-                <Link href='/' locale='en'>
-                    English
-                </Link>
-                <Link href='/' locale='ar'>
-                    العربية
-                </Link>
-                <Link href='/' locale='fr'>
-                    French
-                </Link>
+            <div className='flex flex-col items-center justify-start dark:bg-Dark_Primary'>
+                <Banner />
+                <TherapistsInfoSection />
+                <ConnectionSection />
+                {/* <BlogsCarousel /> */}
+                <PurchasingSection />
             </div>
-            <h1>hope Hub</h1>
         </Layout>
     );
 }
