@@ -60,7 +60,7 @@ export default function PurchasingSection() {
                             )}
                         </p>
                         <div className='card-actions justify-around'>
-                            <Link href='/therapist'>
+                            <Link href='/requirement'>
                                 <button className='w-36 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
                                     {t("Learn More")}
                                 </button>

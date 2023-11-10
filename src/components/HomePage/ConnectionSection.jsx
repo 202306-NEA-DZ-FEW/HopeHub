@@ -25,7 +25,7 @@ export default function ConnectionSection() {
         return (
             <div
                 key={index}
-                className='card flex flex-col items-center my-2 p-3 md:px-5 rounded-xl dark:bg-Dark_Accent shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-64 '
+                className='card flex flex-col items-center cursor-pointer my-2 p-3 md:px-5 rounded-xl dark:bg-Dark_Accent shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-64 '
             >
                 <div className='my-2 lg:my-6'>
                     <IconComponent className='text-3xl md:text-5xl' />

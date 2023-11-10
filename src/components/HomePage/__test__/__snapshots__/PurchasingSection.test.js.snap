@@ -154,7 +154,7 @@ exports[`renders correctly 1`] = `
           className="card-actions justify-around"
         >
           <a
-            href="/therapist"
+            href="/requirement"
             onClick={[Function]}
             onMouseEnter={[Function]}
             onTouchStart={[Function]}
