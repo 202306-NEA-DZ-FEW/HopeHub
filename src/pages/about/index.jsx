@@ -29,15 +29,9 @@ const About = () => {
                 </Head>
 
                 <div className=' lg:pt-4 justify-center'>
-
                     <header className='mb-12 font-aclonica font-bold tracking-wider text-center text-NeutralBlack capitalize text-2xl lg:text-4xl leading-normal'>
                         <h1 className='text-4xl lg:text-[3.5rem] text-NeutralBlack dark:text-NeutralWhite font-extrabold '>
                             Hope Hub
-
-                    <header className='mb-12 font-poppins font-bold tracking-wider text-center text-NeutralBlack capitalize text-2xl lg:text-4xl leading-normal'>
-                        <h1 className='text-4xl lg:text-[3.5rem] text-NeutralBlack dark:text-NeutralWhite font-extrabold t'>
-                            HopeHub
-
                         </h1>
                         <h3 className='capitalize text-xl text-stone-500 font-poppins mt-4 font-light'>
                             {" "}
@@ -108,10 +102,8 @@ const About = () => {
                     </div>
 
                     {visibleSection === "text" && (
-
                         <div className='text-justify mx-12 lg:mx-56  bg-NeutralWhite dark:bg-Dark_Accent font-poppins text-xl lg:text-[1.35rem] tracking-wide leading-8  py-8'>
                             <p className='text-NeutralBlack dark:text-NeutralWhite indent-8'>
-
                                 {t(
                                     "At HopeHub, we believe there is a better way to do things. A more valuable way where customers are earned rather than bought. We are obsessively passionate about it, and our mission is to help people achieve it. We focus on search engine optimization. It is one of the least understood and least transparent aspects of great marketing, and we see that as an opportunity. We are excited to simplify SEO for everyone through our software, education, and community"
                                 )}

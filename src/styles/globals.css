@@ -109,12 +109,6 @@ h4 {
     width: 100%; /* Reset the width */
     height: auto; /* Reset the height */
 }
-.bg-image-container {
-    position: relative;
-    height: 100vh;
-    background-size: cover;
-    background-position: center center;
-}
 
 /* Apply the specific size rules for .image-container and .image on large screens (starting from lg) */
 @media (min-width: 768px) {
