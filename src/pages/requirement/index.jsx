@@ -13,7 +13,7 @@ export default function Requirement() {
 
     return (
         <Layout>
-            <div className='bg-NeutralWhite min-w-screen min-h-screen flex flex-row-reverse'>
+            <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen min-h-screen flex flex-row-reverse lg:mb-12'>
                 {/* Image component for RequirementFrame */}
                 <Image
                     className='hidden lg:block px-20 pb-[32rem] '
@@ -22,30 +22,30 @@ export default function Requirement() {
                     height={400}
                     alt=''
                 ></Image>
-                <div className='w-full h-full lg:w-[70%] px-8 lg:px-20 bg-NeutralWhite pt-4 pb-12 flex flex-col group'>
-                    <h1 className='mb-5 font-poppins font-bold tracking-wider text-NeutralBlack capitalize text-2xl lg:text-4xl leading-normal'>
+                <div className='w-full h-full lg:w-[70%] px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent pt-4 pb-12 flex flex-col group'>
+                    <h1 className='mb-5 font-poppins font-bold tracking-wider text-NeutralBlack dark:text-NeutralWhite capitalize text-2xl lg:text-4xl leading-normal'>
                         {t("Why work with HopeHub?")}
                     </h1>
-                    <div className='Capitalize text-NeutralBlack text-lg lg:text-2xl font-semibold font- mb-2'>
+                    <div className='Capitalize text-NeutralBlack dark:text-NeutralWhite text-lg lg:text-2xl font-semibold font- mb-2'>
                         {t("Reliable Income")}
                     </div>
-                    <p className='text-NeutralBlack text-lg font-poppins text-justify mb-6'>
+                    <p className='text-NeutralBlack dark:text-NeutralWhite text-lg font-poppins text-justify mb-6'>
                         {t(
                             "Over 10,000 people sign up on HopeHub every day looking for a counselor to help with life challenges. HopeHub can be your main source of income (full time) or a supplement to your current work."
                         )}
                     </p>
-                    <div className='Capitalize text-NeutralBlack text-lg lg:text-2xl font-semibold font-poppins mb-2'>
+                    <div className='Capitalize text-NeutralBlack dark:text-NeutralWhite text-lg lg:text-2xl font-semibold font-poppins mb-2'>
                         {t("Focus on Counseling")}
                     </div>
-                    <p className='text-NeutralBlack text-lg font-poppins text-justify mb-6'>
+                    <p className='text-NeutralBlack dark:text-NeutralWhite text-lg font-poppins text-justify mb-6'>
                         {t(
                             "No need to worry about costs from acquiring clients, billing, support, or operations. Let us handle the fees and paperwork so you can focus on what you do best!"
                         )}
                     </p>
-                    <h1 className='mb-5 pt-4 font-poppins font-bold tracking-wider text-NeutralBlack capitalize text-2xl lg:text-4xl'>
+                    <h1 className='mb-5 pt-4 font-poppins font-bold tracking-wider text-NeutralBlack dark:text-NeutralWhite capitalize text-2xl lg:text-4xl'>
                         {t("Requirements")}
                     </h1>
-                    <ul className='text-NeutralBlack text-lg font-poppins mb-6'>
+                    <ul className='text-NeutralBlack dark:text-NeutralWhite text-lg font-poppins mb-6'>
                         <li className='mb-2'>
                             {"\u25CF "}
                             {t(
@@ -81,11 +81,11 @@ export default function Requirement() {
                         </li>
                     </ul>{" "}
                     {/*Add more list items for requirements here */}
-                    <Link href='/therapist'>
-                        <button className=' mt-6 self-end w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'>
-                            {t("Next")}
-                        </button>
-                    </Link>
+
+                    <button className=' mt-3 self-end w-28 h-10 rounded-md text-base font-poppins font-regular dark:text-NeutralWhite dark:bg-Dark_Primary dark:group-hover:bg-[#3E4E68]  bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'>
+                        {t("Next")}
+                    </button>
+
                 </div>
             </div>
         </Layout>

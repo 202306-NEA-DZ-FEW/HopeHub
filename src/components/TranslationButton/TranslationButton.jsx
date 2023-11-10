@@ -30,7 +30,7 @@ const TranslationButton = () => {
                 className='absolute bottom-10 w-36'
                 style={{ display: isOpen ? "block" : "none" }}
             >
-                <ul className='dropdown menu py-2 bg-NeutralWhite rounded-md '>
+                <ul className='dropdown menu py-2 bg-NeutralWhite dark:bg-Dark_Primary rounded-md '>
                     <li>
                         <a
                             href='/en'
@@ -39,7 +39,7 @@ const TranslationButton = () => {
                                 changeLanguage("en");
                                 toggleDropdown();
                             }}
-                            className='block px-3 py-2'
+                            className='block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite '
                         >
                             English
                         </a>
@@ -52,7 +52,7 @@ const TranslationButton = () => {
                                 changeLanguage("ar");
                                 toggleDropdown();
                             }}
-                            className='block px-3 py-2'
+                            className='block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite'
                         >
                             العربية
                         </a>
@@ -65,7 +65,7 @@ const TranslationButton = () => {
                                 changeLanguage("fr");
                                 toggleDropdown();
                             }}
-                            className='block px-3 py-2'
+                            className='block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite'
                         >
                             French
                         </a>

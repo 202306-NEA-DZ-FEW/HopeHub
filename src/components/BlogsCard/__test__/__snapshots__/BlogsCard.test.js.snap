@@ -40,20 +40,17 @@ exports[`renders correctly 1`] = `
       onTouchStart={[Function]}
     >
       <h2
-        className="text-sm lg:text-xl font-semibold"
+        className="text-sm lg:text-xl font-semibold text-NeutralBlack dark:text-NeutralWhite"
       />
     </a>
     <p
-      className="text-gray-500 font-normal text-xs lg:text-sm"
+      className="text-gray-500 dark:text-gray-400 font-light text-xs lg:text-sm"
     >
       Written by
        
     </p>
     <p
-      className="text-gray-600 text-xs lg:text-base font-semibold mt-2"
-    />
-    <p
-      className="text-gray-600 text-xs lg:text-base"
+      className="text-NeutralBlack dark:text-NeutralWhite font-light text-xs lg:text-base py-2"
     />
   </div>
 </div>
