@@ -1,16 +1,18 @@
 import { JitsiMeeting } from "@jitsi/react-sdk";
 import React from "react";
 
+import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
 
-function index() {
+function CallRoom() {
+    const { user } = useAppcontext();
     return (
         <>
             <Layout>
                 <main className='pl-60 mt-10 border-red-500 border-8'>
                     <JitsiMeeting
                         //  domain = "localhost:3000"
-                        roomName='PleaseUseAGoodRoomName'
+                        roomName='HopeHubOnlineTherapy'
                         configOverwrite={{
                             startWithAudioMuted: true,
                             disableModeratorIndicator: true,
@@ -21,7 +23,7 @@ function index() {
                             DISABLE_JOIN_LEAVE_NOTIFICATIONS: true,
                         }}
                         userInfo={{
-                            displayName: "YOUR_USERNAME",
+                            displayName: `${user.name || "Hope Hub"}`,
                         }}
                         onApiReady={(externalApi) => {
                             // here you can attach custom event listeners to the Jitsi Meet External API
@@ -37,4 +39,4 @@ function index() {
     );
 }
 
-export default index;
+export default CallRoom;
