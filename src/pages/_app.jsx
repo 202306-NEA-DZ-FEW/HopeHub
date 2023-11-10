@@ -1,8 +1,10 @@
 import { appWithTranslation } from "next-i18next";
-import { AppWrapper } from "@/context/state";
 import { ThemeProvider } from "next-themes";
 
+import "react-quill/dist/quill.snow.css";
 import "@/styles/globals.css";
+
+import { AppWrapper } from "@/context/state";
 
 function MyApp({ Component, pageProps }) {
     return (

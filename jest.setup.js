@@ -48,3 +48,7 @@ useRouter.mockImplementation(() => ({
 jest.mock("next-i18next", () => ({
     useTranslation: () => ({ t: (key) => key }),
 }));
+
+jest.mock("axios", () => ({
+    axios: jest.fn(),
+}));

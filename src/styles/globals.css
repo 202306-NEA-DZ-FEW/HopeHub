@@ -150,3 +150,18 @@ h4 {
 .gradient-dark {
     background: linear-gradient(to bottom, transparent, #101729 90%);
 }
+
+.tab.active {
+    border-bottom: 2px solid #d3d3d3;
+}
+.ql-toolbar {
+    border-color: #363636;
+    background-color: #ffff;
+    border-bottom: #363636;
+}
+.quill {
+    background-color: #ffff;
+    font-size: 3rem;
+    color: #363636;
+    height: 14rem;
+}
