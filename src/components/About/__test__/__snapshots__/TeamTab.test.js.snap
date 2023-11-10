@@ -3,7 +3,6 @@
 exports[`renders correctly 1`] = `
 <div
   className="card w-60 h-96 mb-4 mr-5 bg-NeutralWhite dark:bg-Dark_Primary shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] hover:scale-105 delay-75"
-
 >
   <figure>
     <img
@@ -24,9 +23,7 @@ exports[`renders correctly 1`] = `
     />
   </figure>
   <div
-
-    className=" text-NeutralBlack dark:text-NeutralWhite mx-auto "
-
+    className=" text-NeutralBlack mx-auto "
   >
     <h2
       className="card-title text-xl text-center font-semibold font-poppins flex flex-col py-5 "
