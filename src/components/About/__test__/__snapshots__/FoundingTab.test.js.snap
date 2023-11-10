@@ -6,14 +6,14 @@ exports[`renders correctly 1`] = `
 >
   <div>
     <div
-      className="flex flex-wrap lg:flex-nowraplg:w-[80%] lg:h-[15%] lg:mx-auto px-100 dark:brightness-75 justify-center"
+      className="flex flex-wraplg:flex-nowrap lg:w-[80%] lg:h-[20%] lg:mx-auto px-100 dark:brightness-75 justify-center"
     >
       <img
         alt="Founder"
         className="w-[30%] pb-12 rounded-md"
         data-nimg="1"
         decoding="async"
-        height={10}
+        height={50}
         loading="lazy"
         onError={[Function]}
         onLoad={[Function]}
