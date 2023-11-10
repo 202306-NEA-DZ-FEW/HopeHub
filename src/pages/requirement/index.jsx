@@ -81,11 +81,13 @@ export default function Requirement() {
                         </li>
                     </ul>{" "}
                     {/*Add more list items for requirements here */}
-
-                    <button className=' mt-3 self-end w-28 h-10 rounded-md text-base font-poppins font-regular dark:text-NeutralWhite dark:bg-Dark_Primary dark:group-hover:bg-[#3E4E68]  bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'>
+                    <Link
+                        href='/therapist'
+                        className=' mt-3 self-end w-28 h-10 rounded-md text-base font-poppins font-regular dark:text-NeutralWhite dark:bg-Dark_Primary dark:group-hover:bg-[#3E4E68]  bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
+                    >
+                        {" "}
                         {t("Next")}
-                    </button>
-
+                    </Link>
                 </div>
             </div>
         </Layout>
