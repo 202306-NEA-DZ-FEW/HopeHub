@@ -11,7 +11,7 @@ import { LiaUserEditSolid } from "react-icons/lia";
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
 
-export default function UserProfile() {
+export default function TherapistProfile() {
     const { t } = useTranslation("common");
     const { user, setProfileUpdated, updateUserProfile, setUser } =
         useAppcontext();
