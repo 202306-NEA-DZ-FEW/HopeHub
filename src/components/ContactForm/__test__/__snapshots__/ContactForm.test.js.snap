@@ -58,6 +58,8 @@ exports[`renders correctly 1`] = `
         </label>
         <select
           className="select rounded w-full"
+          onChange={[Function]}
+          value=""
         >
           <option
             disabled={true}
@@ -66,28 +68,24 @@ exports[`renders correctly 1`] = `
             Select Request Type
           </option>
           <option
-            checked={false}
             id="service"
             value="service"
           >
             I have a question about the service.
           </option>
           <option
-            checked={false}
             id="support"
             value="support"
           >
             I'm a registered client and I need support.
           </option>
           <option
-            checked={false}
             id="counselor"
             value="counselor"
           >
             I'm a counselor interested in joining.
           </option>
           <option
-            checked={false}
             id="counselorSup"
             value="counselorSup"
           >
@@ -95,21 +93,18 @@ exports[`renders correctly 1`] = `
             I'm a registered counselor and I need support.
           </option>
           <option
-            checked={false}
             id="businessRelated"
             value="businessRelated"
           >
             I have a business-related inquiry.
           </option>
           <option
-            checked={false}
             id="hopehub"
             value="hopehub"
           >
             I'm interested in Hope Hub for my organization.
           </option>
           <option
-            checked={false}
             id="billingRelated"
             value="billingRelated"
           >

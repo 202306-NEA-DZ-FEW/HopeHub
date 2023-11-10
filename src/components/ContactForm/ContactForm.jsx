@@ -17,9 +17,52 @@ const ContactForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Name:", Name);
+        console.log("Contact Type:", Name);
         console.log("Contact Type:", ContactType);
+        console.log("Contact Type:", Details);
+        handleSubscribe(e);
         router.push(`/thanks?from=${pathname}`);
     };
+    const handleSelectChange = (event) => {
+        // Get the selected value from the event
+        const selectedValue = event.target.value;
+
+        // Update the state with the selected value
+        setContactType(selectedValue);
+    };
+
+    async function handleSubscribe(e) {
+        e.preventDefault();
+        // console.log('email',email)
+
+        fetch("https://sendmail-api-docs.vercel.app/api/send", {
+            method: "POST",
+            body: JSON.stringify({
+                to: "hope.hub.dz@gmail.com",
+                subject: ContactType,
+                message: `
+            <html>
+              <body style='padding=1rem 2rem;'>
+                <h1 style='font-size=18px; margin=auto;'>Need a help !!!</h1>
+                <p style='font-size=16px;'>From :${Name} <br> email: ${Email} <br> 
+                I have issue on ${ContactType}  <br>
+                 ${Details}
+                </p>
+              </body>  
+            </html>
+          `,
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.success) {
+                    alert("Your messag was sent successfuly");
+                } else {
+                    alert(`Error: ${data.message}`);
+                }
+            });
+        setEmail("");
+    }
 
     return (
         <div className='container flex ml-0'>
@@ -69,38 +112,26 @@ const ContactForm = () => {
                         >
                             {t("Request Type")}
                         </label>
-                        <select className='select rounded w-full'>
+                        <select
+                            className='select rounded w-full'
+                            value={ContactType}
+                            onChange={handleSelectChange}
+                        >
                             <option disabled selected>
                                 {t("Select Request Type")}
                             </option>
-                            <option
-                                id='service'
-                                value='service'
-                                checked={ContactType === "service"}
-                            >
+                            <option id='service' value='service'>
                                 {t("I have a question about the service.")}
                             </option>
-                            <option
-                                id='support'
-                                value='support'
-                                checked={ContactType === "support"}
-                            >
+                            <option id='support' value='support'>
                                 {t(
                                     "I'm a registered client and I need support."
                                 )}
                             </option>
-                            <option
-                                id='counselor'
-                                value='counselor'
-                                checked={ContactType === "counselor"}
-                            >
+                            <option id='counselor' value='counselor'>
                                 {t("I'm a counselor interested in joining.")}
                             </option>
-                            <option
-                                id='counselorSup'
-                                value='counselorSup'
-                                checked={ContactType === "counselorSup"}
-                            >
+                            <option id='counselorSup' value='counselorSup'>
                                 {" "}
                                 {t(
                                     "I'm a registered counselor and I need support."
@@ -109,24 +140,15 @@ const ContactForm = () => {
                             <option
                                 id='businessRelated'
                                 value='businessRelated'
-                                checked={ContactType === "businessRelated"}
                             >
                                 {t("I have a business-related inquiry.")}
                             </option>
-                            <option
-                                id='hopehub'
-                                value='hopehub'
-                                checked={ContactType === "hopehub"}
-                            >
+                            <option id='hopehub' value='hopehub'>
                                 {t(
                                     "I'm interested in Hope Hub for my organization."
                                 )}
                             </option>
-                            <option
-                                id='billingRelated'
-                                value='billingRelated'
-                                checked={ContactType === "billingRelated"}
-                            >
+                            <option id='billingRelated' value='billingRelated'>
                                 {t("I have a billing-related question.")}
                             </option>
                         </select>
