@@ -11,7 +11,7 @@ import { teamMembers } from "@/util/constants";
 
 const About = () => {
     const { t } = useTranslation("common");
-    const [visibleSection, setVisibleSection] = useState("text");
+    const [visibleSection, setVisibleSection] = useState("team");
 
     const handleSectionToggle = (section) => {
         if (visibleSection === section) {
