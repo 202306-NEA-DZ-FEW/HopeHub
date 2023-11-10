@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="Banner-container top-0 relative -mt-24"
+  className="Banner-container top-0 relative dark:brightness-75 -mt-24"
 >
   <img
     alt="Photo by Taryn Elliott: https://www.pexels.com/photo/couple-with-hands-apart-8204503/"
@@ -25,7 +25,7 @@ exports[`renders correctly 1`] = `
     className="flex inset-0 items-center absolute"
   >
     <h1
-      className="text-lg ml-6 mb-2 sm:text-4xl sm:mb-32 sm:ml-8 lg:text-6xl lg:mb-48 lg:ml-8 font-poppins font-semibold text-NeutralBlack"
+      className="text-lg ml-6 mb-2 sm:text-4xl sm:mb-32 sm:ml-8 lg:text-6xl lg:mb-48 lg:ml-8 font-poppins font-semibold text-NeutralBlack "
     >
       WE ARE HERE TO
     </h1>
@@ -40,11 +40,11 @@ exports[`renders correctly 1`] = `
   >
     <div>
       <button
-        className="button-container bg-Accent rounded-md w-36 h-14 sm:w-52 sm:h-12 lg:w-64 lg:h-14 hover:bg-NeutralWhite"
+        className="w-64 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralBlack dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
         data-testid="booking-button"
       >
         <a
-          className="text-xs sm:text-base lg:text-xl text-NeutralBlack uppercase font-extrabold font-poppins"
+          className="text-xs sm:text-base lg:text-xl text-NeutralBlack dark:text-NeutralWhite uppercase font-semibold font-poppins"
           href="/booking"
           onClick={[Function]}
           onMouseEnter={[Function]}

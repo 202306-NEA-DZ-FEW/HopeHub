@@ -64,18 +64,7 @@ function BookingPage({ dates }) {
                 return <Confirmation OnNext={OnNext} OnPrevious={OnPrevious} />;
         }
     }
-    return (
-        <Layout className='max-w-screen'>
-            {/* <TypeOfCounseling OnNext={OnNext} />
-            <RelationshipStatus OnNext={OnNext} />
-            <Therapy OnNext={OnNext} />
-            <CounseQualities OnNext={OnNext} />
-            <Issues OnNext={OnNext} />
-            <Description OnNext={OnNext} />
-            <Submission OnNext={OnNext} /> */}
-            {Step()}
-        </Layout>
-    );
+    return <Layout className='max-w-screen'>{Step()}</Layout>;
 }
 
 export default BookingPage;

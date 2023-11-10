@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="card w-64 h-96 mb-4 mx-4 bg-NeutralWhite shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)]"
+  className="card w-64 h-96 mb-4 mx-4 bg-NeutralWhite dark:bg-Dark_Primary shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)]"
 >
   <figure>
     <img
@@ -24,7 +24,7 @@ exports[`renders correctly 1`] = `
     />
   </figure>
   <div
-    className="card-body text-NeutralBlack mx-auto"
+    className="card-body text-NeutralBlack dark:text-NeutralWhite mx-auto"
   >
     <h2
       className="card-title text-xl text-center font-semibold font-poppins "

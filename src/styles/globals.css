@@ -70,6 +70,17 @@
     width: 140px; /* Width of the open search bar */
 }
 
+/* Define a transition for the opacity property */
+.search-results-dropdown {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Apply the pop-in effect when the dropdown is visible */
+.search-results-dropdown.visible {
+    opacity: 1;
+}
+
 .darkened-logo {
     filter: brightness(0.7); /* Adjust the brightness value as needed */
 }
@@ -111,6 +122,48 @@ h4 {
         width: 100%; /* Make the image fill the container */
         height: auto; /* Maintain the image's aspect ratio */
     }
+}
+
+.image-with-fade {
+    position: relative;
+}
+
+.image-with-fade::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Adjust this value to control the height of the fade effect */
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 255, 255, 0.7) 100%
+    );
+}
+/* Light mode gradient */
+.gradient-light {
+    background: linear-gradient(to bottom, transparent, #eeeeee 90%);
+}
+
+/* Dark mode gradient */
+.gradient-dark {
+    background: linear-gradient(to bottom, transparent, #101729 90%);
+}
+
+.tab.active {
+    border-bottom: 2px solid #d3d3d3;
+}
+.ql-toolbar {
+    border-color: #363636;
+    background-color: #ffff;
+    border-bottom: #363636;
+}
+.quill {
+    background-color: #ffff;
+    font-size: 3rem;
+    color: #363636;
+    height: 14rem;
 }
 @media (max-width: 768px) {
     .fc-toolbar {

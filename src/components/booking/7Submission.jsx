@@ -89,27 +89,27 @@ export default function Submission({ OnNext, OnPrevious }) {
     }
 
     return (
-        <div className='bg-NeutralWhite min-w-screen mb-12'>
-            <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite flex flex-col'>
-                <div className='mb-3 pt-12 font-ogg font-bold tracking-wideer text-NeutralBlack uppercase text-2xl lg:text-4xl leading-normal'>
+        <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12'>
+            <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent flex flex-col'>
+                <div className='mb-3 pt-12 font-poppins font-bold tracking-wideer text-NeutralBlack dark:text-NeutralWhite capitalize text-2xl lg:text-4xl leading-normal'>
                     {t("Submit your appointment")}
                 </div>
-                <div className='font-poppins font-regular text-justify text-NeutralBlack text-base lg:text-lg'>
+                <div className='font-poppins font-regular text-justify text-NeutralBlack dark:text-NeutralWhite text-base lg:text-lg'>
                     {t("Click Submit if you are sure of all your choices.")}
                 </div>
 
-                <div className=" bg-white lg:w-3/5 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'">
-                    <div className='flex flex-col justify-center items-center'>
-                        <h3 className=' rounded-md py-12 text-NeutralBlack text-xl font-bold font-poppins capitalize'>
-                            {t(
-                                "Please be aware that this action will cost you a ticket!"
-                            )}
+                <div className=" bg-NeutralWhite dark:bg-Dark_Accent lg:w-3/5 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'">
+                    <div className='flex flex-col justify-center items-center text-center'>
+                        <h3 className=' rounded-md py-12 text-NeutralBlack dark:text-NeutralWhite text-2xl font-semibold font-poppins capitalize'>
+                            {t("Please be aware that this action")}
+                            <br />
+                            {t("will cost you a ticket!")}
                         </h3>
                     </div>
                     <div className='flex justify-between '>
                         <div className=' pl-6 py-10 lg:py-10 lg:pl-11 group '>
                             <button
-                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
+                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                 onClick={OnPrevious}
                             >
                                 {t("Previous")}
@@ -117,10 +117,8 @@ export default function Submission({ OnNext, OnPrevious }) {
                         </div>
                         <div className=' pr-6 py-10 lg:py-10 lg:pr-11 group '>
                             <button
-                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
-                                onClick={
-                                    handleSubmit // Call the handleSubmit function
-                                }
+                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
+                                onClick={handleSubmit}
                             >
                                 {t("Submit")}
                             </button>
