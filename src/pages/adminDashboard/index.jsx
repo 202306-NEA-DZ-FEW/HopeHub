@@ -31,14 +31,6 @@ export default function AdminDashboard({ blogs, users }) {
         }
     };
 
-    // const blogs = [
-    //     { id: 1, name: "The Benefits of Cognitive Behavioral Therapy" },
-    //     { id: 2, name: "Exploring Different Types of Talk Therapy" },
-    //     { id: 3, name: "How to Choose the Right Therapist for You" },
-    //     { id: 4, name: "Managing Stress and Anxiety Through Mindfulness" },
-    //     // Add more blog entries as needed
-    // ];
-
     return (
         <div className='flex h-fit  '>
             <div className=' font-poppins pb-64 text-NeutralBlack bg-slate-400 py-10 px-4 rounded-md'>

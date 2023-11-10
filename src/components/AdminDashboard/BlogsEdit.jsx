@@ -17,6 +17,7 @@ export default function BlogsEdit() {
     const [tags, setTags] = useState([]);
     const [formData, setFormData] = useState({
         title: "",
+        subtitle: "",
         author: "",
         body: "",
         tags: [],
@@ -34,12 +35,6 @@ export default function BlogsEdit() {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // You can access the form data from the formData state
-        const { Title, Author, body } = formData;
-
-        // You can perform any actions with the form data, such as sending it to an API, saving it to a database, etc.
-        // console.log("Form data submitted:", formData);
         try {
             await setDoc(doc(db, "blogs", formData.id), formData);
         } catch {
@@ -48,6 +43,7 @@ export default function BlogsEdit() {
         // Clear the form fields after submission
         setFormData({
             title: "",
+            subtitle: "",
             author: "",
             body: "",
             tags: [],
@@ -78,8 +74,6 @@ export default function BlogsEdit() {
     }
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        // console.log('changing',e.target[name],' to ',e.target[value])
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
@@ -138,6 +132,20 @@ export default function BlogsEdit() {
                         value={formData.title} // Bind the value to the form state
                         onChange={handleChange}
                         name='title'
+                    />
+                </div>
+                <div className='pl-4 mb-4 space-y-1 text-xl flex flex-col'>
+                    {/* <span className='text-NeutralBlack tracking-wider'>
+                    {t("Title")}
+                </span> */}
+                    <label htmlFor='subtitleitle'>{t("Subtitle")}</label>
+                    <input
+                        type='text'
+                        id='subtitle'
+                        className='w-full text-NeutralBlack font-normal text-lg px-4 rounded-md border border-slate-300 bg-white py-3 outline-none '
+                        value={formData.subtitle} // Bind the value to the form state
+                        onChange={handleChange}
+                        name='subtitle'
                     />
                 </div>
                 <div className='pl-4 mb-4 space-y-1 text-xl flex flex-col'>

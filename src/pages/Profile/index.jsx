@@ -24,6 +24,7 @@ export default function UserProfile() {
     // const pathname = usePathname()
     // const searchParams = useSearchParams()
     const router = useRouter();
+
     const { t } = useTranslation("common");
     const { user, profileUpdated, setProfileUpdated, setUser } =
         useAppcontext();
@@ -45,7 +46,7 @@ export default function UserProfile() {
     const [uploadFile, setUploadFile] = useState("");
     const [cloudinaryImage, setCloudinaryImage] = useState("");
     const inputRef = useRef(null);
-
+    console.log("user profile", user);
     const handleIconClick = () => {
         if (inputRef.current) {
             inputRef.current.click();
@@ -55,30 +56,37 @@ export default function UserProfile() {
     const oldName = fullName;
     const oldPhone = phone;
 
-    function uploadImage(e) {
+    async function uploadImage(e) {
         e.preventDefault();
-        setUploadFile(e.target.files[0]);
-        const formData = new FormData();
-        formData.append("file", uploadFile);
-        formData.append("upload_preset", "hopehub");
-        // formData.append("type", "private");
-        for (let pair of formData.entries()) {
-            console.log(pair[0] + ", " + pair[1]);
-        }
-        axios
-            .post(
+        const file = e.target.files[0];
+
+        try {
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("upload_preset", "hopehub");
+
+            const response = await axios.post(
                 "https://api.cloudinary.com/v1_1/dxic1agza/image/upload",
                 formData
-            )
-            .then((response) => {
+            );
+
+            if (response.status === 200) {
+                const secureUrl = response.data.secure_url;
                 console.log("cloudinary res", response);
-                setCloudinaryImage(response.data.secure_url);
-                setUser({ ...user, photoURL: response.data.secure_url });
+                setCloudinaryImage(secureUrl);
+
+                // Assuming setUser is asynchronous, you can use the user object after the image is set
+                await setUser({ ...user, photoURL: secureUrl });
                 console.log("user after uploading image", user);
-            })
-            .catch((error) => {
-                console.log("cloudinary err", error);
-            });
+            } else {
+                console.log(
+                    "Cloudinary upload failed with status:",
+                    response.status
+                );
+            }
+        } catch (error) {
+            console.log("Error uploading image to Cloudinary:", error);
+        }
     }
 
     function handleEmailUpdate() {
@@ -168,10 +176,10 @@ export default function UserProfile() {
         setHobbies(newArr);
     }
     const HobbyBtn = ({ txt }) => (
-        <span className='w-fit p-1 mb-5 mr-2 border rounded-3xl border-gray-500  group relative'>
+        <span className='w-fit p-1 mb-5 mr-2 border rounded-3xl border-gray-500  text-NeutralBlack dark:text-NeutralWhite group relative'>
             {txt}{" "}
             <button
-                className='rounded-full w-6 opacity-0 group-hover:opacity-100 h-6 border absolute right-0 -top-3 border-red-500 text-xs text-red-500'
+                className='rounded-full w-4 opacity-0 group-hover:opacity-100 h-4 align-middle text-center absolute -right-1 -top-2  text-[10px] text-white bg-red-500'
                 onClick={() => deleteHobby(txt)}
             >
                 X
@@ -191,8 +199,11 @@ export default function UserProfile() {
             if (user.name !== oldName) handelNameChange();
             if (user.phoneNumber !== oldPhone) handlePhoneChange();
             if (uploadFile) handlePhotoChange();
+
+            // Include 'photoURL' in the user object that you're updating
             await updateDoc(doc(db, "users", user.uid), {
                 ...user,
+                photoURL: cloudinaryImage, // Add the user's photoURL here
             });
             console.log("save for uid", user.uid);
         } catch (err) {
@@ -217,18 +228,21 @@ export default function UserProfile() {
     }
     return (
         <Layout className=''>
-            <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row mt-20 max-w-screen'>
-                <div className=' py-16 lg:w-[30%] md:[40%] flex '>
-                    <div className='bg-NeutralBlack w-64 h-64 rounded-full mx-auto flex flex-col items-center justify-center'>
+            <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row mt-10 lg:mt-20 max-w-screen mr-0 pr-48'>
+                <div className='pb-12 lg:py-16 lg:w-[30%] md:[60%] flex'>
+                    <div className='bg-NeutralBlack dark:bg-NeutralWhite w-40 h-40 md:w-52 lg:h-52 md:h-52 rounded-full mx-auto flex flex-col items-center justify-center'>
                         {user.photoURL ? (
-                            <Image
-                                src={user.photoURL}
-                                width={100}
-                                height={100}
-                                alt={user.name}
-                            />
+                            <div className='w-[70%] h-full rounded-full overflow-hidden'>
+                                <Image
+                                    src={user.photoURL}
+                                    width={100}
+                                    height={100}
+                                    alt={user.name}
+                                    className='w-full h-full aspect-square object-cover '
+                                />
+                            </div>
                         ) : (
-                            <FaUser className='fill-NeutralWhite w-32 h-32 mb-5  ' />
+                            <FaUser className='fill-NeutralWhite dark:fill-NeutralBlack w-16 h-16 md:w-24 md:h-24 mb-5 ' />
                         )}
 
                         <input
@@ -241,14 +255,14 @@ export default function UserProfile() {
                         />
 
                         <label
-                            className='absolute mt-64 cursor-pointer '
+                            className='absolute mt-44 lg:mt-56 cursor-pointer'
                             onClick={handleIconClick}
                         >
-                            <LiaUserEditSolid className='text-NeutralBlack w-16 h-16 bg-NeutralWhite rounded-full border border-NeutralBlack p-2' />
+                            <LiaUserEditSolid className='text-NeutralBlack dark:text-NeutralWhite  w-12 h-12 md:w-14 md:h-14 bg-NeutralWhite dark:bg-NeutralBlack rounded-full border border-NeutralBlack p-2' />
                         </label>
                     </div>
                 </div>
-                <div className='flex items-center justify-center text-NeutralBlack md:w-2/3 lg:w-[50%] '>
+                <div className='flex  text-NeutralBlack md:w-2/3 lg:w-[50%] '>
                     <div className='mx-auto w-full max-w-[80%     px-4 mb-20'>
                         <h2 className='  py-5 px-6 text-4xl font-semibold'>
                             {t("profile info")}
@@ -260,7 +274,7 @@ export default function UserProfile() {
                             <div className='mb-5 text-xl flex'>
                                 <label
                                     htmlFor='name'
-                                    className=' mt-4 w-3/4   '
+                                    className=' mt-4 w-3/4 text-NeutralBlack dark:text-NeutralWhite  '
                                 >
                                     {t("full name")}
                                 </label>
@@ -278,7 +292,7 @@ export default function UserProfile() {
                             <div className='mb-5 text-xl flex'>
                                 <label
                                     htmlFor='name'
-                                    className=' mt-4 w-3/4 text-NeutralBlack '
+                                    className=' mt-4 w-3/4 text-NeutralBlack dark:text-NeutralWhite '
                                 >
                                     {t("education level")}
                                 </label>
@@ -304,25 +318,27 @@ export default function UserProfile() {
                                     </option>
                                 </select>
                             </div>
-                            <div className='mb-5 flex flex-wrap text-NeutralBlack'>
-                                <label
-                                    htmlFor='name'
-                                    className=' mt-4 mb-3 w-1/2 text-xl'
-                                >
-                                    {t("hobbies")}
-                                </label>
-                                <input
-                                    type='text'
-                                    name='Hobbies'
-                                    id='Hobbies'
-                                    onChange={(e) =>
-                                        setHobbyInput(e.target.value)
-                                    }
-                                    value={hobbyInput}
-                                    className='w-full rounded-md mb-5 lg:text-xl border font-normal px-4 border-slate-300 bg-white py-3 outline-none '
-                                    onKeyDown={addHobby}
-                                />
-                                <div>
+                            <div className='mb-5 flex flex-col '>
+                                <div className='w-full flex'>
+                                    <label
+                                        htmlFor='name'
+                                        className=' mt-4 mb-3 w-3/4 text-xl text-NeutralBlack dark:text-NeutralWhite '
+                                    >
+                                        {t("hobbies")}
+                                    </label>
+                                    <input
+                                        type='text'
+                                        name='Hobbies'
+                                        id='Hobbies'
+                                        onChange={(e) =>
+                                            setHobbyInput(e.target.value)
+                                        }
+                                        value={hobbyInput}
+                                        className='w-full rounded-md mb-5 lg:text-xl border font-normal px-4 border-slate-300 bg-white py-3 outline-none '
+                                        onKeyDown={addHobby}
+                                    />
+                                </div>
+                                <div className='flex flex-row flex-wrap'>
                                     {hobbies?.map((hobby, id) => (
                                         <HobbyBtn key={id} txt={hobby} />
                                     ))}
@@ -331,7 +347,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='Family Size'
-                                    className=' mt-4 text-xl w-3/4 '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite'
                                 >
                                     {t("family size")}
                                 </label>
@@ -357,7 +373,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='gender'
-                                    className=' mt-4 text-xl w-3/4 '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite'
                                 >
                                     {t("gender")}
                                 </label>
@@ -376,7 +392,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='Birth Date'
-                                    className=' mt-4 text-xl w-3/4 '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite'
                                 >
                                     {t("birth date")}
                                 </label>
@@ -393,7 +409,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='email'
-                                    className=' mt-4 text-xl w-3/4  '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite '
                                 >
                                     {t("email")}
                                 </label>
@@ -409,7 +425,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='phone'
-                                    className=' mt-4 text-xl w-3/4  '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite '
                                 >
                                     {t("phone number")}
                                 </label>
@@ -425,7 +441,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='IDcard'
-                                    className=' mt-4 text-xl w-3/4  '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite '
                                 >
                                     {t("upload id")}
                                 </label>
@@ -444,13 +460,13 @@ export default function UserProfile() {
                                     </button>
                                 </div>
                             </div>
-                            <label className='mb-5 pt-5 block text-4xl font-semibold '>
+                            <label className='mb-5 pt-5 block text-4xl font-semibold text-NeutralBlack dark:text-NeutralWhite'>
                                 {t("security")}
                             </label>
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='password'
-                                    className=' mt-4 text-xl w-3/4  '
+                                    className=' mt-4 text-xl w-3/4  text-NeutralBlack dark:text-NeutralWhite'
                                 >
                                     {t("password")}
                                 </label>
@@ -471,7 +487,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='Confirm Password'
-                                    className=' mt-4 text-xl w-3/4  '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite '
                                 >
                                     {t("confirm password")}
                                 </label>
@@ -491,33 +507,33 @@ export default function UserProfile() {
                                 </div>
                             </div>
                             <div className='flex gap-4'>
-                                <button className='w-full bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500 rounded-md h-12'>
+                                <button className='w-full h-11   rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
                                     {t("save changes")}
                                 </button>
                                 <button
-                                    className='w-full bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500 rounded-md h-12'
+                                    className='w-full h-11  rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                     onClick={handleDelete}
                                 >
                                     {t("delete account")}
                                 </button>
-                                <button className='w-full bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500 rounded-md h-12'>
+                                <button className='w-full h-11 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
                                     {t("cancel")}
                                 </button>
                             </div>
-                            <h2 className=' mb-5 pt-8 block text-4xl font-semibold '>
+                            <h2 className=' mb-5 pt-8 block text-4xl font-semibold text-NeutralBlack dark:text-NeutralWhite '>
                                 {t("payment section")}
                             </h2>
                             <div className='flex'>
                                 <div className='mb-6 group w-1/3'>
                                     <label
                                         htmlFor='SHOW CARDS'
-                                        className=' text-NeutralBlack text-xl pt-5 '
+                                        className=' text-NeutralBlack text-xl pt-5  dark:text-NeutralWhite'
                                     >
                                         {t("cards added")}
                                     </label>
                                     <button
                                         name='SHOW CARDS'
-                                        className='w-[94%] rounded-md h-12 mt-5 bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500 '
+                                        className='w-[94%] h-11 mt-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                     >
                                         {t("show cards")}
                                     </button>
@@ -525,13 +541,13 @@ export default function UserProfile() {
                                 <div className='mb-5 group 1/3'>
                                     <label
                                         htmlFor='BUY TICKETS'
-                                        className=' mt-4 text-xl w-3/4 pt-5 '
+                                        className=' mt-4 text-xl w-3/4 pt-5  text-NeutralBlack dark:text-NeutralWhite'
                                     >
                                         {t("tickets remaining")}
                                     </label>
                                     <button
                                         name='BUY TICKETS'
-                                        className='w-[80%] rounded-md h-12 mt-5 bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
+                                        className='w-[80%] h-11 mt-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                     >
                                         {t("buy tickets")}
                                     </button>

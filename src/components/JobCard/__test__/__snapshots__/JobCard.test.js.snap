@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="shrink-0 shadow-[5px_12px_12px_0px_rgba(0,0,0,0.61)] rounded-[11px] p-4"
+  className="shrink-0 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary rounded-md p-4 hover:scale-105 delay-75 cursor-pointer"
 >
   <div
     className="flex gap-2 py-3"
@@ -50,7 +50,7 @@ exports[`renders correctly 1`] = `
     <span />
   </div>
   <div
-    className=" font-bold py-3"
+    className=" font-bold flex-1 py-3"
   >
     <span>
        | 

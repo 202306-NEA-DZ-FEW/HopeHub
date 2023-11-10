@@ -1,19 +1,46 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-import { createContext, useContext, useState } from "react";
-import { useTheme } from "next-themes";
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
+import { createContext, useContext, useEffect, useState } from "react";
 import { auth, db } from "@/util/firebase";
+import { useTheme } from "next-themes";
+import Cookie from "js-cookie";
 
 const AppContext = createContext();
 
 export function AppWrapper({ children }) {
-    // declare variables with useState in this part and import them in value part
     const [bookingInfos, setBookingInfos] = useState({});
-
     const [user, setUser] = useState({});
     const [isLogged, setIsLogged] = useState(false);
     const { theme, setTheme } = useTheme();
     const [darkMode, setDarkMode] = useState(false);
+    const [profileUpdated, setProfileUpdated] = useState(false);
+    const [blogs, setBlogs] = useState([]); // Store the blogs data
+
+    useEffect(() => {
+        const loggedInUserCookie = Cookie.get("loggedInUser");
+        if (loggedInUserCookie) {
+            // User is logged in, set isLogged to true
+            setIsLogged(true);
+            // You can also fetch the user's data from the cookie and set it to the user state
+            setUser({ uid: loggedInUserCookie });
+        }
+        // Fetch blogs data when the component mounts
+        async function fetchBlogs() {
+            try {
+                const blogsCollection = collection(db, "blogs");
+                const data = await getDocs(blogsCollection);
+                const blogsData = [];
+                data.forEach((doc) => {
+                    const blog = doc.data();
+                    blogsData.push(blog);
+                });
+                setBlogs(blogsData);
+            } catch (error) {
+                console.log("error fetching blogs:", error);
+            }
+        }
+        fetchBlogs();
+    }, []);
 
     async function authChange() {
         try {
@@ -21,15 +48,12 @@ export function AppWrapper({ children }) {
                 if (logUser) {
                     console.log("logUser true", logUser);
                     setIsLogged(true);
-                    const collection = await getDoc(
-                        doc(db, "users", logUser.uid)
-                    );
-                    if (collection.exists()) {
+                    const userDoc = await getDoc(doc(db, "users", logUser.uid));
+                    if (userDoc.exists()) {
                         setUser({
-                            ...collection.data(),
+                            ...userDoc.data(),
                             name: logUser.displayName,
                             email: logUser.email,
-                            photoURL: logUser.photoURL,
                             uid: logUser.uid,
                             phoneNumber: logUser.phoneNumber,
                         });
@@ -45,15 +69,16 @@ export function AppWrapper({ children }) {
             console.log("AuthChange error", err);
         }
     }
+
     function toggledarkMode() {
         setDarkMode(!darkMode);
-        console.log("darkmode", darkMode);
+        // console.log("darkmode", darkMode);
     }
+
     return (
         <AppContext.Provider
             value={{
-                //all the values declared here will be accessible for all components
-
+                // All the values declared here will be accessible for all components
                 bookingInfos,
                 setBookingInfos,
                 user,
@@ -61,12 +86,17 @@ export function AppWrapper({ children }) {
                 authChange,
                 darkMode,
                 toggledarkMode,
+                profileUpdated,
+                setProfileUpdated,
+                setUser,
+                blogs, // Make blogs data accessible in your context
             }}
         >
             {children}
         </AppContext.Provider>
     );
 }
+
 export function useAppcontext() {
     return useContext(AppContext);
 }
