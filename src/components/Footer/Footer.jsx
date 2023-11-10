@@ -118,17 +118,17 @@ function Footer() {
                         <TranslationButton />
                     </div>
 
-                    <nav className='footer-title flex gap-8'>
-                        <Link className=' ' href='../Home'>
+                    <nav className='footer-title flex gap-8 font-[13px] md:font-medium lg:font-medium '>
+                        <Link className=' ' href='/'>
                             {t("Home")}
                         </Link>
-                        <Link className=' ' href='../Blogs'>
+                        <Link className=' ' href='../blogs'>
                             {t("Blogs")}
                         </Link>
-                        <Link className=' ' href='../About'>
+                        <Link className=' ' href='../about'>
                             {t("About")}
                         </Link>
-                        <Link className=' ' href='../Contact'>
+                        <Link className=' ' href='../contact'>
                             {t("Contact")}
                         </Link>
                     </nav>
