@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import styles from "../../styles/toggleBtn.module.css";
-import { useAppcontext } from "@/context/state";
 import { useTheme } from "next-themes";
+import React, { useState } from "react";
+
+import styles from "../../styles/toggleBtn.module.css";
+
+import { useAppcontext } from "@/context/state";
 
 export default function ToggleButton() {
     const { theme, setTheme } = useTheme();

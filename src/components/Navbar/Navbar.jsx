@@ -1,4 +1,5 @@
 import { signOut } from "firebase/auth";
+import Cookie from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -45,15 +46,42 @@ export default function Navbar() {
     };
 
     // Function to handle user logout
-    const handleLogout = () => {
+    function handleLogout() {
+        // Clear the user's session or remove the cookie
+        Cookie.remove("loggedInUser"); // Remove the user cookie
+        // You may also need to sign the user out from your authentication provider
+        // For Firebase, you can use `signOut` from the auth object
         signOut(auth)
             .then(() => {
-                router.push("/");
+                // Redirect the user to the login page or any other appropriate location
+                router.push("/Auth"); // Replace "/login" with the actual login page route
             })
             .catch((error) => {
-                console.error("Error signing out:", error);
+                console.error("Error during logout:", error);
             });
+    }
+
+    const [searchQuery, setSearchQuery] = useState("");
+    const { blogs } = useAppcontext(); // Access the blogs data from the context
+
+    // Function to handle changes in the search input
+    const handleSearchInputChange = (e) => {
+        setSearchQuery(e.target.value.toLowerCase()); // Convert the search query to lowercase for case-insensitive search
     };
+
+    // Function to filter blogs based on the search query
+    const filteredBlogs = blogs.filter((blog) => {
+        if (!blog) return false; // Check if blog is defined
+        const blogTitle = (blog.title || "").toLowerCase(); // Check if title is defined
+        const blogSubtitle = (blog.subTitle || "").toLowerCase(); // Check if subTitle is defined
+        const tags = (blog.tags || []).map((tag) => (tag || "").toLowerCase()); // Check if tags is defined
+
+        return (
+            blogTitle.includes(searchQuery) ||
+            blogSubtitle.includes(searchQuery) ||
+            tags.some((tag) => tag.includes(searchQuery))
+        );
+    });
 
     return (
         <div className='navbar h-8 sticky top-0 z-10 dark:bg-NeutralBlack dark:backdrop-blur-lg dark:bg-opacity-30 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b-slate-400'>
@@ -126,7 +154,7 @@ export default function Navbar() {
                                         >
                                             <Link
                                                 className='text-base'
-                                                href='/Profile'
+                                                href='/profile'
                                             >
                                                 {t("Profile")}
                                             </Link>
@@ -209,7 +237,7 @@ export default function Navbar() {
                 </div>
             </div>
             {/* Search bar */}
-            <div className='flex justify-between ml-auto'>
+            <div className='flex justify-between ml-auto dropdown'>
                 <div className='flex items-center'>
                     <div
                         className='search-icon mr-2'
@@ -221,12 +249,29 @@ export default function Navbar() {
                         <input
                             type='text'
                             placeholder='Type here'
-                            className='input input-bordered input-sm w-full max-w-xs'
+                            className='input input-bordered input-sm w-full'
+                            value={searchQuery}
+                            onChange={handleSearchInputChange}
                         />
                     </div>
                 </div>
+
+                {/* Add the "visible" class to enable the pop-in effect */}
+                {searchQuery && filteredBlogs.length > 0 && (
+                    <div className='search-results-dropdown visible absolute bg-NeutralWhite rounded-lg shadow-md z-10 w-full font-poppins pl-8'>
+                        <ul className='p-2 dropdown-content z-[1] menu mt-6 shadow bg-base-100 rounded-md'>
+                            {filteredBlogs.map((blog) => (
+                                <li key={blog.id} className='hover:bg-Primary'>
+                                    <Link href={`/blog/${blog.id}`}>
+                                        {blog.title}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
                 {/* Menu for large screen */}
-                <div className='navbar-center -mr-2 hidden lg:flex'>
+                <div className='navbar-center mr-4 hidden lg:flex'>
                     <ul className='menu menu-horizontal'>
                         <li
                             className={`text-Accent font-semibold font-poppins text-base tracking-wider ${isPageActive(
@@ -267,13 +312,14 @@ export default function Navbar() {
                                         onClick={toggleUserMenu}
                                     >
                                         {user.photoURL ? (
-                                            <Image
-                                                src={user.photoURL}
-                                                alt='User'
-                                                width={48}
-                                                height={48}
-                                                layout='fixed'
-                                            />
+                                            <div className='avatar '>
+                                                <div className='w-10 rounded-full '>
+                                                    <img
+                                                        src={user.photoURL}
+                                                        className='object-fill'
+                                                    />
+                                                </div>
+                                            </div>
                                         ) : (
                                             <div className='flex items-center justify-center w-10 h-10 rounded-full bg-violet-400'>
                                                 <span className='text-white text-xl'>
@@ -322,7 +368,7 @@ export default function Navbar() {
                                 </div>
                             </div>
                         ) : (
-                            <button className='button-container w-28 h-9 mx-4 md:mr-8 md:w-40 bg-Accent dark:bg-Dark_Accent dark:hover:bg-Dark_Primary hover-bg-Primary rounded-md'>
+                            <button className='button-container w-28 h-9 mx-4 md:mr-2 md:w-40 bg-Accent dark:bg-Dark_Accent dark:hover:bg-Dark_Primary hover-bg-Primary rounded-md'>
                                 <Link
                                     href='/Auth'
                                     className='text-base tracking-wider text-NeutralBlack dark:text-NeutralWhite font-semibold font-poppins'

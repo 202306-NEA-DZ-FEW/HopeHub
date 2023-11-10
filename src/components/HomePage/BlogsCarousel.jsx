@@ -1,14 +1,15 @@
+import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
+import Image from "next/image";
+import Link from "next/link";
+import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
-import { db } from "../../util/firebase";
-import { getDocs, collection, query, orderBy, limit } from "firebase/firestore";
+// import { TfiAngleLeft, TfiAngleRight } from "react-icons";
 import Slider from "react-slick";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Image from "next/image";
-import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
-import { useTranslation } from "next-i18next";
 
-import Link from "next/link";
+import { db } from "../../util/firebase";
 
 const BlogsCarousel = () => {
     const { t } = useTranslation("common");
@@ -32,25 +33,25 @@ const BlogsCarousel = () => {
         fetchBlogsFromFirestore();
     }, []); // Fetch data when the component mounts
 
-    const CustomPrevArrow = ({ onClick }) => (
-        <div className='custom-arrow-l' onClick={onClick}>
-            <TfiAngleLeft size={30} color='black' />
-        </div>
-    );
+    // const CustomPrevArrow = ({ onClick }) => (
+    //     <div className='custom-arrow-l' onClick={onClick}>
+    //         <TfiAngleLeft size={30} color='black' />
+    //     </div>
+    // );
 
-    const CustomNextArrow = ({ onClick }) => (
-        <div className='custom-arrow-r' onClick={onClick}>
-            <TfiAngleRight size={30} color='black' />
-        </div>
-    );
+    // const CustomNextArrow = ({ onClick }) => (
+    //     <div className='custom-arrow-r' onClick={onClick}>
+    //         <TfiAngleRight size={30} color='black' />
+    //     </div>
+    // );
 
     const settings = {
         infinite: true,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
-        prevArrow: <CustomPrevArrow />,
-        nextArrow: <CustomNextArrow />,
+        // prevArrow: <CustomPrevArrow />,
+        // nextArrow: <CustomNextArrow />,
         responsive: [
             {
                 breakpoint: 1024,
@@ -72,8 +73,8 @@ const BlogsCarousel = () => {
     };
 
     return (
-        <div className='bg-Primary pb-9 w-full'>
-            <h1 className='mx-6 mt-4 mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block text-NeutralBlack'>
+        <div className='bg-Primary dark:bg-Dark_Primary pb-16 w-full'>
+            <h1 className='mx-6 mt-4 mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block dark:text-NeutralWhite text-NeutralBlack'>
                 {t("RECENT BLOGS")}
             </h1>
             <div className='px-20'>
@@ -93,7 +94,7 @@ const BlogsCarousel = () => {
                                     className='filter brightness-50'
                                 />
                                 <div className='absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4'>
-                                    <h1 className='text-Primary text-base text-center md:text-2xl font-medium font-poppins'>
+                                    <h1 className='text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins'>
                                         {blog.title}
                                     </h1>
                                     <h1 className='text-white text-xs text-center md:text-sm font-normal font-poppins'>

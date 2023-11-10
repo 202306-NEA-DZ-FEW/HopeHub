@@ -23,17 +23,16 @@ const BlogCard = ({ image, title, subtitle, author, blogId, summary }) => {
             </Link>
             <div className='flex flex-col my-2 lg:px-6 text-poppins'>
                 <Link href={`/blogs/${blogId}`}>
-                    <h2 className='text-sm lg:text-xl font-semibold'>
+                    <h2 className='text-sm lg:text-xl font-semibold text-NeutralBlack dark:text-NeutralWhite'>
                         {title}
                     </h2>
                 </Link>
-                <p className='text-gray-500 font-normal text-xs lg:text-sm'>
+                <p className='text-gray-500 dark:text-gray-400 font-light text-xs lg:text-sm'>
                     {t("Written by")} {author}
                 </p>
-                <p className='text-gray-600 text-xs lg:text-base font-semibold mt-2'>
-                    {subtitle}
+                <p className='text-NeutralBlack dark:text-NeutralWhite font-light text-xs lg:text-base py-2'>
+                    {summary}
                 </p>
-                <p className='text-gray-600 text-xs lg:text-base'>{summary}</p>
             </div>
         </div>
     );
