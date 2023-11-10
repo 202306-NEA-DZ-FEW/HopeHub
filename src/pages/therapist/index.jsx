@@ -128,22 +128,22 @@ function Therapist() {
     return (
         <Layout>
             <main className='flex flex-col  w-full h-fit py-4 '>
-                <h1 className='text-NeutralBlack text-center px-4 text-4xl md:text-6xl font-poppins font-semibold md:font-bold w-full'>
+                <h1 className='text-NeutralBlack dark:text-NeutralWhite text-center px-4 text-4xl md:text-6xl font-poppins font-semibold md:font-bold w-full'>
                     {/* Create{" "}
                         <span className='text-Accent font-aclonica font-medium'>
                             Therapist
                         </span>{" "}
                         account */}
-                    {t("Create")}{" "}
+                    {t("Create a")}{" "}
                     <span className='text-Accent font-aclonica font-medium'>
                         {t("Therapist")}
                     </span>{" "}
                     {t("account")}
                 </h1>
-                <div className='w-11/12 mx-auto px-8 shadow-[4px_8px_8px_rgba(0,0,0,42%)] flex flex-row justify-center gap-5 items-center mt-5  border-NeutralBlack bg-[rgba(255,255,255,.8)]  rounded-md py-4'>
+                <div className='w-[70%] mx-auto  shadow-[4px_8px_8px_rgba(0,0,0,42%)] flex flex-row justify-center gap-5 items-center mt-5  border-NeutralBlack bg-NeutralWhite dark:bg-Dark_Accent rounded-md py-4'>
                     <form
                         onSubmit={handleSubmit}
-                        className=' flex flex-col gap-3 w-full md:w-3/4 lg:w-1/2 '
+                        className=' flex flex-col gap-3 w-full md:w-3/4 lg:w-1/2 pl-6 '
                     >
                         {infos.map((info) => (
                             <Input
@@ -156,18 +156,20 @@ function Therapist() {
                                 setstate={info.setstate}
                             />
                         ))}
-                        <button
-                            type='submit'
-                            className='btn md:w-36 text-xl text-NeutralBlack mx-auto bg-Accent'
-                        >
-                            Create
-                        </button>
+                        <div className='flex justify-end py-4 pr-2'>
+                            <button
+                                type='submit'
+                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
+                            >
+                                Create
+                            </button>
+                        </div>
                     </form>
                     <Image
                         src={therapistPic}
                         alt='Hope Hub'
                         width={420}
-                        className='hidden lg:block rounded-md '
+                        className='hidden lg:block rounded-lg pr-6 pb-9 brightness-90'
                     />
                 </div>
             </main>

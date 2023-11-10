@@ -21,7 +21,7 @@ export default function Layout({ children }) {
     return (
         <div
             dir={textDirectionClass}
-            className='bg-NeutralWhite dark:bg-Dark_Neutral'
+            className='bg-NeutralWhite dark:bg-Dark_Accent'
         >
             <Navbar />
             <div className='mt-8'>{children}</div>

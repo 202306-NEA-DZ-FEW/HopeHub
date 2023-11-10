@@ -73,7 +73,7 @@ const ContactForm = () => {
                 <div className='login'>
                     <div>
                         <label
-                            className='block text-NeutralBlack text-sm font-semibold mb-2 font-poppins'
+                            className='block text-NeutralBlack dark:text-NeutralWhite text-base font-semibold mb-2 font-poppins'
                             htmlFor='fullName'
                         >
                             {t("Full Name")}
@@ -81,7 +81,7 @@ const ContactForm = () => {
                         <input
                             type='text'
                             id='fullName'
-                            className='w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-Accent shadow-md bg-white'
+                            className='w-full px-3 py-2 border text-NeutralBlack font-medium rounded focus:outline-none focus:ring-2 focus:ring-Accent shadow-md bg-NeutralWhite'
                             placeholder={t("Enter your Full Name here...")}
                             value={Name}
                             onChange={(e) => setName(e.target.value)}
@@ -90,7 +90,7 @@ const ContactForm = () => {
                     </div>
                     <div className='email mt-4'>
                         <label
-                            className='block text-NeutralBlack text-sm font-semibold mb-2 font-poppins'
+                            className='block text-NeutralBlack dark:text-NeutralWhite text-base font-semibold mb-2 font-poppins'
                             htmlFor='email'
                         >
                             {t("Email")}
@@ -98,7 +98,7 @@ const ContactForm = () => {
                         <input
                             type='email'
                             id='email'
-                            className='w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-Accent shadow-md bg-white'
+                            className='w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 text-NeutralBlack font-medium focus:ring-Accent shadow-md bg-NeutralWhite'
                             placeholder={t("Enter your email address here...")}
                             value={Email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -107,32 +107,51 @@ const ContactForm = () => {
                     </div>
                     <div className='mt-4'>
                         <label
-                            className='block text-NeutralBlack text-sm font-semibold mb-2 font-poppins'
+                            className='block text-NeutralBlack dark:text-NeutralWhite text-base font-semibold mb-2 font-poppins'
                             htmlFor='details'
                         >
                             {t("Request Type")}
                         </label>
                         <select
-                            className='select rounded w-full'
+                            className='select rounded w-full bg-NeutralWhite'
                             value={ContactType}
                             onChange={handleSelectChange}
                         >
-                            <option disabled selected>
+                            <option
+                                disabled
+                                selected
+                                className='text-NeutralBlack font-medium'
+                            >
                                 {t("Select Request Type")}
                             </option>
-                            <option id='service' value='service'>
+                            <option
+                                id='service'
+                                value='service'
+                                className='text-NeutralBlack font-medium'
+                            >
                                 {t("I have a question about the service.")}
                             </option>
-                            <option id='support' value='support'>
+                            <option
+                                id='support'
+                                value='support'
+                                className='text-NeutralBlack font-medium'
+                            >
                                 {t(
                                     "I'm a registered client and I need support."
                                 )}
                             </option>
-                            <option id='counselor' value='counselor'>
+                            <option
+                                id='counselor'
+                                value='counselor'
+                                className='text-NeutralBlack font-medium'
+                            >
                                 {t("I'm a counselor interested in joining.")}
                             </option>
-                            <option id='counselorSup' value='counselorSup'>
-                                {" "}
+                            <option
+                                id='counselorSup'
+                                value='counselorSup'
+                                className='text-NeutralBlack font-medium'
+                            >
                                 {t(
                                     "I'm a registered counselor and I need support."
                                 )}
@@ -140,29 +159,38 @@ const ContactForm = () => {
                             <option
                                 id='businessRelated'
                                 value='businessRelated'
+                                className='text-NeutralBlack font-medium'
                             >
                                 {t("I have a business-related inquiry.")}
                             </option>
-                            <option id='hopehub' value='hopehub'>
+                            <option
+                                id='hopehub'
+                                value='hopehub'
+                                className='text-NeutralBlack font-medium'
+                            >
                                 {t(
                                     "I'm interested in Hope Hub for my organization."
                                 )}
                             </option>
-                            <option id='billingRelated' value='billingRelated'>
+                            <option
+                                id='billingRelated'
+                                value='billingRelated'
+                                className='text-NeutralBlack font-medium'
+                            >
                                 {t("I have a billing-related question.")}
                             </option>
                         </select>
                     </div>
                     <div className='details mt-4'>
                         <label
-                            className='block text-NeutralBlack text-sm font-semibold mb-2 font-poppins'
+                            className='block text-NeutralBlack dark:text-NeutralWhite text-base font-semibold mb-2 font-poppins'
                             htmlFor='details'
                         >
                             {t("Details")}
                         </label>
                         <textarea
                             id='details'
-                            className='w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-Accent shadow-md bg-white resize-none'
+                            className='w-full px-3 py-2 text-NeutralBlack font-medium border rounded focus:outline-none focus:ring-2 focus:ring-Accent shadow-md bg-NeutralWhite resize-none'
                             value={Details}
                             onChange={(e) => setDetails(e.target.value)}
                             placeholder={t("Enter your details here...")}
@@ -172,7 +200,7 @@ const ContactForm = () => {
                 <div className='text-center flex justify-end mt-3'>
                     <button
                         type='submit'
-                        className='bg-Accent hover:bg-Primary text-NeutralBlack font-poppins font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-Accent'
+                        className='w-36 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                     >
                         {t("Submit")}
                     </button>

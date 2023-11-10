@@ -1,18 +1,21 @@
 import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
 import { BsGlobe } from "react-icons/bs";
-
 const TranslationButton = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { i18n } = useTranslation();
+    const router = useRouter();
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
 
     const changeLanguage = (newLanguage) => {
         Cookies.set("userLanguage", newLanguage, { expires: 365 });
+        // i18n.changeLanguage(newLanguage);
         i18n.changeLanguage(newLanguage);
+        router.push(router.pathname, router.asPath, { locale: newLanguage });
         // window.location.reload();
     };
 
@@ -30,7 +33,7 @@ const TranslationButton = () => {
                 className='absolute bottom-10 w-36'
                 style={{ display: isOpen ? "block" : "none" }}
             >
-                <ul className='dropdown menu py-2 bg-NeutralWhite rounded-md '>
+                <ul className='dropdown menu py-2 bg-NeutralWhite dark:bg-Dark_Primary rounded-md '>
                     <li>
                         <a
                             href='/en'
@@ -39,7 +42,7 @@ const TranslationButton = () => {
                                 changeLanguage("en");
                                 toggleDropdown();
                             }}
-                            className='block px-3 py-2'
+                            className='block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite '
                         >
                             English
                         </a>
@@ -52,7 +55,7 @@ const TranslationButton = () => {
                                 changeLanguage("ar");
                                 toggleDropdown();
                             }}
-                            className='block px-3 py-2'
+                            className='block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite'
                         >
                             العربية
                         </a>
@@ -65,7 +68,7 @@ const TranslationButton = () => {
                                 changeLanguage("fr");
                                 toggleDropdown();
                             }}
-                            className='block px-3 py-2'
+                            className='block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite'
                         >
                             French
                         </a>
