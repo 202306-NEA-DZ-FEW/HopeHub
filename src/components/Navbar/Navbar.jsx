@@ -1,4 +1,5 @@
 import { signOut } from "firebase/auth";
+import Cookie from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -12,8 +13,6 @@ import { auth } from "@/util/firebase";
 
 import darklogo from "../../../public/assets/darklogo.svg";
 import logo from "../../../public/assets/logo.svg";
-
-import Cookie from "js-cookie";
 
 export default function Navbar() {
     //Function used for translations
@@ -155,7 +154,7 @@ export default function Navbar() {
                                         >
                                             <Link
                                                 className='text-base'
-                                                href='/Profile'
+                                                href='/profile'
                                             >
                                                 {t("Profile")}
                                             </Link>
@@ -343,7 +342,7 @@ export default function Navbar() {
                                         {userMenuOpen && (
                                             <ul className='dropdown-content z-[1] menu p-2 shadow bg-Accent rounded-md w-40 mt-1'>
                                                 <li>
-                                                    <Link href='/Profile'>
+                                                    <Link href='/profile'>
                                                         {t("Profile")}
                                                     </Link>
                                                 </li>

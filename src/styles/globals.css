@@ -243,3 +243,10 @@ tbody tr[role="row"]:nth-child(6) {
     max-height: 100px;
     height: 80px !important;
 }
+.fc .fc-daygrid-day.fc-day-today {
+    background: #bfdfdc;
+}
+.fc-h-event {
+    background: #99b4df;
+    border-color: #99b4df;
+}

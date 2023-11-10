@@ -21,6 +21,9 @@ function Calendar() {
                     initialView='dayGridMonth'
                     events={events}
                     plugins={[dayGridPlugin, timeGridPlugin]}
+                    expandRows={false}
+                    // aspectRatio={2}
+                    contentHeight='auto'
                     headerToolbar={{
                         start: "bookApp",
                         center: "title",

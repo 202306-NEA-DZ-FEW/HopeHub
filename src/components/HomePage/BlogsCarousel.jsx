@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
-import { TfiAngleLeft, TfiAngleRight } from "react-icons";
+// import { TfiAngleLeft, TfiAngleRight } from "react-icons";
 import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
@@ -33,25 +33,25 @@ const BlogsCarousel = () => {
         fetchBlogsFromFirestore();
     }, []); // Fetch data when the component mounts
 
-    const CustomPrevArrow = ({ onClick }) => (
-        <div className='custom-arrow-l' onClick={onClick}>
-            <TfiAngleLeft size={30} color='black' />
-        </div>
-    );
+    // const CustomPrevArrow = ({ onClick }) => (
+    //     <div className='custom-arrow-l' onClick={onClick}>
+    //         <TfiAngleLeft size={30} color='black' />
+    //     </div>
+    // );
 
-    const CustomNextArrow = ({ onClick }) => (
-        <div className='custom-arrow-r' onClick={onClick}>
-            <TfiAngleRight size={30} color='black' />
-        </div>
-    );
+    // const CustomNextArrow = ({ onClick }) => (
+    //     <div className='custom-arrow-r' onClick={onClick}>
+    //         <TfiAngleRight size={30} color='black' />
+    //     </div>
+    // );
 
     const settings = {
         infinite: true,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
-        prevArrow: <CustomPrevArrow />,
-        nextArrow: <CustomNextArrow />,
+        // prevArrow: <CustomPrevArrow />,
+        // nextArrow: <CustomNextArrow />,
         responsive: [
             {
                 breakpoint: 1024,
@@ -95,7 +95,7 @@ const BlogsCarousel = () => {
                                 />
                                 <div className='absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4'>
                                     <h1 className='text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins'>
-                                        {blog.content.title}
+                                        {blog.title}
                                     </h1>
                                     <h1 className='text-white text-xs text-center md:text-sm font-normal font-poppins'>
                                         {blog.subTitle}
