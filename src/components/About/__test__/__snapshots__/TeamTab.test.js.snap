@@ -6,6 +6,7 @@ exports[`renders correctly 1`] = `
 >
   <figure>
     <img
+      className="dark:brightness-90"
       data-nimg="1"
       decoding="async"
       height={80}
@@ -23,7 +24,7 @@ exports[`renders correctly 1`] = `
     />
   </figure>
   <div
-    className=" text-NeutralBlack mx-auto "
+    className=" text-NeutralBlack dark:text-NeutralWhite mx-auto "
   >
     <h2
       className="card-title text-xl text-center font-semibold font-poppins flex flex-col py-5 "

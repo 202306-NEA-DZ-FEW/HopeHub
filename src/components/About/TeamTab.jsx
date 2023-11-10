@@ -13,10 +13,11 @@ const TeamCard = ({ image, name, linkedin, github }) => {
                     width={42}
                     height={80}
                     layout='responsive'
+                    className='dark:brightness-90'
                 />
             </figure>
 
-            <div className=' text-NeutralBlack mx-auto '>
+            <div className=' text-NeutralBlack dark:text-NeutralWhite mx-auto '>
                 <h2 className='card-title text-xl text-center font-semibold font-poppins flex flex-col py-5 '>
                     {name}
                 </h2>

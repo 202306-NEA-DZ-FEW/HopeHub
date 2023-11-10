@@ -2,18 +2,18 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import React from "react";
 
-import Founding from "../../../public/assets/Our-Founding.png";
+import Founding from "../../../public/assets/Our-Founding2.png";
 const FoundingCard = () => {
     const { t } = useTranslation("common");
     return (
         <div className='card mt-12'>
             <div>
-                <div className='flex flex-wrap lg:flex-nowraplg:w-[80%] lg:h-[15%] lg:mx-auto px-100 dark:brightness-75 justify-center'>
+                <div className='flex flex-wraplg:flex-nowrap lg:w-[80%] lg:h-[20%] lg:mx-auto px-100 dark:brightness-75 justify-center'>
                     <Image
                         src={Founding}
                         alt='Founder'
                         width={400}
-                        height={10}
+                        height={50}
                         className='w-[30%] pb-12 rounded-md'
                     />
                     <div className='mx-6 lg:mb-10 '>
