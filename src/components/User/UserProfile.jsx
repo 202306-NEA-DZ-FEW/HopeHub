@@ -11,7 +11,6 @@ import { doc, updateDoc } from "firebase/firestore";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
 import { useRef } from "react";
 import { FaLock, FaUser } from "react-icons/fa";
@@ -36,7 +35,7 @@ export default function UserProfile() {
     const [hobbies, setHobbies] = useState(user.hobbies || []);
     const [familySize, setFamilySize] = useState(user.familySize || 0);
     const [gender, setGender] = useState(user.gender || "");
-    const [birthDate, setBirthDate] = useState(user.birthDate);
+    const [birthDate, setBirthDate] = useState(user.birthDate || "");
     const [email, setEmail] = useState(user.email);
     const [phone, setPhone] = useState(user.phoneNumber || "");
     // const [id, setId]= useState(user.id || '')
@@ -233,9 +232,9 @@ export default function UserProfile() {
     }
     return (
         <Layout className=''>
-            <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row mt-20 w-full max-w-full'>
-                <div className=' lg:w-[30%] md:[40%] flex '>
-                    <div className='bg-NeutralBlack dark:bg-NeutralWhite w-80 h-80 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>
+            <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row  max-w-screen bg-NeutralWhite dark:bg-NeutralBlack'>
+                <div className='pb-12 lg:py-16 lg:w-[60%] md:[60%] flex '>
+                    <div className='bg-NeutralBlack  dark:border-NeutralWhite border-2 w-80 h-80 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>
                         {user.photoURL ? (
                             <div className='w-[70%] h-full rounded-full overflow-hidden'>
                                 <Image
@@ -247,7 +246,7 @@ export default function UserProfile() {
                                 />
                             </div>
                         ) : (
-                            <FaUser className='fill-NeutralWhite dark:fill-NeutralBlack w-16 h-16 md:w-24 md:h-24 mb-5 ' />
+                            <FaUser className='fill-NeutralWhite  w-16 h-16 md:w-24 md:h-24 mb-5 ' />
                         )}
 
                         <input
@@ -260,15 +259,15 @@ export default function UserProfile() {
                         />
 
                         <label
-                            className='absolute mt-44 lg:mt-56 cursor-pointer'
+                            className='absolute -mb-[19rem] cursor-pointer'
                             onClick={handleIconClick}
                         >
-                            <LiaUserEditSolid className='text-NeutralBlack dark:text-NeutralWhite  w-12 h-12 md:w-14 md:h-14 bg-NeutralWhite dark:bg-NeutralBlack rounded-full border border-NeutralBlack p-2' />
+                            <LiaUserEditSolid className='text-NeutralBlack dark:text-NeutralWhite dark:border-NeutralWhite w-12 h-12 md:w-14 md:h-14 bg-NeutralWhite dark:bg-NeutralBlack rounded-full border-2 border-NeutralBlack p-2' />
                         </label>
                     </div>
                 </div>
-                <div className='flex  text-NeutralBlack md:w-2/3 lg:w-[50%] '>
-                    <div className='mx-auto w-full max-w-[80%     px-4 mb-20'>
+                <div className='flex items-center justify-center text-NeutralBlack dark:text-NeutralWhite md:w-2/3 lg:w-full'>
+                    <div className='mx-auto w-full lg:max-w-[80%]  mb-20'>
                         <h2 className='  py-5 px-6 text-4xl font-semibold'>
                             {t("Update profile")}
                         </h2>
@@ -558,13 +557,4 @@ export default function UserProfile() {
             </div>
         </Layout>
     );
-}
-
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common"])),
-            // Will be passed to the page component as props
-        },
-    };
 }

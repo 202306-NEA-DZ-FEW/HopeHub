@@ -1,9 +1,10 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, collection, getDocs } from "firebase/firestore";
-import { createContext, useContext, useEffect, useState } from "react";
-import { auth, db } from "@/util/firebase";
-import { useTheme } from "next-themes";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import Cookie from "js-cookie";
+import { useTheme } from "next-themes";
+import { createContext, useContext, useEffect, useState } from "react";
+
+import { auth, db } from "@/util/firebase";
 
 const AppContext = createContext();
 
@@ -46,7 +47,7 @@ export function AppWrapper({ children }) {
         try {
             await onAuthStateChanged(auth, async (logUser) => {
                 if (logUser) {
-                    console.log("logUser true", logUser);
+                    // console.log("logUser true", logUser);
                     setIsLogged(true);
                     const userDoc = await getDoc(doc(db, "users", logUser.uid));
                     if (userDoc.exists()) {
