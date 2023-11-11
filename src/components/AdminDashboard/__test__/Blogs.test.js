@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import FoundingCard from "../FoundingCard";
+import Blogs from "../Blogs";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<FoundingCard />).toJSON();
+    const tree = renderer.create(<Blogs />).toJSON();
     expect(tree).toMatchSnapshot();
 });

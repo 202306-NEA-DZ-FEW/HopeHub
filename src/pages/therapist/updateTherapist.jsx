@@ -77,7 +77,7 @@ export default function UserProfile() {
         <Layout className=''>
             <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row mt-10 lg:mt-20 max-w-screen'>
                 <div className='pb-12 lg:py-16 lg:w-[60%] md:[60%] flex '>
-                    <div className='bg-NeutralBlack w-44 h-44 md:w-56 lg:h-56 md:h-56 rounded-full mx-auto flex flex-col items-center justify-center'>
+                    <div className='bg-NeutralBlack dark:bg-NeutralWhite w-40 h-40 md:w-52 lg:h-52 md:h-52 rounded-full mx-auto flex flex-col items-center justify-center'>
                         {user.photoURL ? (
                             <Image
                                 src={user.photoURL}
@@ -86,7 +86,7 @@ export default function UserProfile() {
                                 alt={user.name}
                             />
                         ) : (
-                            <FaUser className='fill-NeutralWhite w-20 h-20 md:w-28 md:h-28 mb-5  ' />
+                            <FaUser className='fill-NeutralWhite dark:fill-NeutralBlack w-16 h-16 md:w-24 md:h-24 mb-5  ' />
                         )}
 
                         <input
@@ -102,23 +102,23 @@ export default function UserProfile() {
                             className='absolute mt-44 lg:mt-56 cursor-pointer '
                             onClick={handleIconClick}
                         >
-                            <LiaUserEditSolid className='text-NeutralBlack  w-12 h-12 md:w-14 md:h-14 bg-NeutralWhite rounded-full border border-NeutralBlack p-2' />
+                            <LiaUserEditSolid className='text-NeutralBlack dark:text-NeutralWhite  w-12 h-12 md:w-14 md:h-14 bg-NeutralWhite dark:bg-NeutralBlack rounded-full border border-NeutralBlack p-2' />
                         </label>
                     </div>
                 </div>
-                <div className='flex items-center justify-center text-NeutralBlack md:w-2/3 lg:w-full '>
-                    <div className='mx-auto w-full lg:max-w-[80%] px-4 mb-20'>
+                <div className='flex items-center justify-center text-NeutralBlack dark:text-NeutralWhite md:w-2/3 lg:w-full '>
+                    <div className='mx-auto w-full lg:max-w-[80%]  mb-20'>
                         <h2 className='lg:pt-5 pb-10 text-5xl font-semibold'>
                             {t("Therapist Profile")}
                         </h2>
                         <form
                             // onSubmit={handleSubmit}
-                            className='px-6text-NeutralBlack'
+                            className=''
                         >
                             <div className='mb-5 text-xl flex'>
                                 <label
                                     htmlFor='name'
-                                    className=' mt-4 w-3/4   '
+                                    className=' mt-4 w-3/4 text-NeutralBlack dark:text-NeutralWhite  '
                                 >
                                     {t("full name")}
                                 </label>
@@ -130,13 +130,13 @@ export default function UserProfile() {
                                     onChange={(e) =>
                                         setFullName(e.target.value)
                                     }
-                                    className='w-full text-NeutralBlack font-normal text-lg px-4 rounded-md border border-slate-300 bg-white py-3 outline-none '
+                                    className='w-full text-NeutralBlack  font-normal text-lg px-4 rounded-md border border-slate-300 bg-NeutralWhite py-3 outline-none '
                                 />
                             </div>
                             <div className='mb-5 text-xl flex'>
                                 <label
                                     htmlFor='Bio'
-                                    className=' mt-4 w-2/4 text-NeutralBlack '
+                                    className=' mt-4 w-2/4 text-NeutralBlack dark:text-NeutralWhite '
                                 >
                                     {t("Bio")}
                                 </label>
@@ -145,7 +145,7 @@ export default function UserProfile() {
                                     id='bio'
                                     name='bio'
                                     value={bio}
-                                    className='p-4 text-NeutralBlack w-[68%] h-[40%] text-xl font-poppins font-normal border border-slate-300 bg-white outline-none lg:h-full sm:h-full sm:leading-tight rounded-md '
+                                    className='p-4 text-NeutralBlack  w-[68%] h-[40%] text-xl font-poppins font-normal border border-slate-300 bg-NeutralWhite outline-none lg:h-full sm:h-full sm:leading-tight rounded-md '
                                     onChange={(e) => setBio(e.target.value)}
                                     placeholder=''
                                 ></textarea>
@@ -154,14 +154,14 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='Birth Date'
-                                    className=' mt-4 text-xl w-3/4 '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite'
                                 >
                                     {t("birth date")}
                                 </label>
                                 <input
                                     type='date'
                                     name='Birth Date'
-                                    className='w-full rounded-md border  font-normal lg:text-xl px-4 border-slate-300 bg-white py-3 outline-none '
+                                    className='w-full rounded-md border text-NeutralBlack  font-normal lg:text-xl px-4 border-slate-300 bg-NeutralWhite py-3 outline-none '
                                     value={birthDate}
                                     onChange={(e) =>
                                         setBirthDate(e.target.value)
@@ -171,7 +171,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='email'
-                                    className=' mt-4 text-xl w-3/4  '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite '
                                 >
                                     {t("email")}
                                 </label>
@@ -179,7 +179,7 @@ export default function UserProfile() {
                                     type='email'
                                     name='email'
                                     id='email'
-                                    className='w-full rounded-md border font-normal lg:text-xl px-4 border-slate-300 bg-white py-3 outline-none '
+                                    className='w-full rounded-md border text-NeutralBlack  font-normal lg:text-xl px-4 border-slate-300 bg-NeutralWhite py-3 outline-none '
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
@@ -187,7 +187,7 @@ export default function UserProfile() {
                             <div className='mb-5 flex'>
                                 <label
                                     htmlFor='phone'
-                                    className=' mt-4 text-xl w-3/4  '
+                                    className=' mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite  '
                                 >
                                     {t("phone number")}
                                 </label>
@@ -195,15 +195,15 @@ export default function UserProfile() {
                                     type='number'
                                     name='phone'
                                     id='phone'
-                                    className='w-full rounded-md border lg:text-xl font-normal px-4 border-slate-300 bg-white py-3 outline-none '
+                                    className='w-full rounded-md text-NeutralBlack  border lg:text-xl font-normal px-4 border-slate-300 bg-NeutralWhite py-3 outline-none '
                                     value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
                                 />
                             </div>
                         </form>
-                        <div className=' py-4 lg:py-10 flex justify-end '>
+                        <div className=' py-4  flex justify-end '>
                             <button
-                                className='w-32 h-12 rounded-md text-lg font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
+                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                 onClick={handleSubmit}
                             >
                                 {t("Update")}

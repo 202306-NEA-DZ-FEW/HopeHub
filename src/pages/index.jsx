@@ -3,7 +3,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
 
 import Banner from "@/components/HomePage/Banner";
-import BlogsCarousel from "@/components/HomePage/BlogsCarousel";
 import ConnectionSection from "@/components/HomePage/ConnectionSection";
 import PurchasingSection from "@/components/HomePage/PurchasingSection";
 import TherapistsInfoSection from "@/components/HomePage/TherapistsInfoSection";
@@ -18,11 +17,11 @@ export default function HomePage() {
 
     return (
         <Layout>
-            <div className='flex flex-col items-center justify-start'>
+            <div className='flex flex-col items-center justify-start dark:bg-Dark_Primary'>
                 <Banner />
                 <TherapistsInfoSection />
                 <ConnectionSection />
-                <BlogsCarousel />
+                {/* <BlogsCarousel /> */}
                 <PurchasingSection />
             </div>
         </Layout>

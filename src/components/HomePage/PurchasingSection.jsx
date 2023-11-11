@@ -33,7 +33,7 @@ const PurchasingSection = () => {
         return (
             <div
                 key={index}
-                className='card flex flex-col items-center my-2 p-3 md:px-5 border-2 rounded-xl shadow-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6'
+                className=' card flex flex-col items-center my-2 p-3 md:px-5 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6'
             >
                 <div className='card-body flex flex-col items-center'>
                     <h1 className='card-title text-xl md:text-3xl uppercase font-normal'>
@@ -45,7 +45,7 @@ const PurchasingSection = () => {
                     <div className='card-actions justify-end md:mt-4'>
                         <button
                             onClick={() => handlePurchase(priceIds[index])}
-                            className='btn font-poppins bg-Accent hover:bg-Primary font-normal ...'
+                            className='w-36 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                         >
                             {t("Purchase")}
                         </button>
@@ -55,8 +55,8 @@ const PurchasingSection = () => {
         );
     });
     return (
-        <div className='dark:bg-Dark_Neutral dark:text-NeutralWhite bg-BgWhite text-NeutralBlack w-full font-poppins flex flex-col pb-8'>
-            <h1 className='mx-6 mt-4 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase font-medium'>
+        <div className=' dark:bg-Dark_Neutral dark:text-NeutralWhite  bg-NeutralWhite text-NeutralBlack  w-full font-poppins flex flex-col lg:pb-16'>
+            <h1 className='mx-6 mt-6 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase font-medium'>
                 {t("Purchase Tickets")}
             </h1>
             <h1 className='text-xs mx-6 md:text-xl md:mx-9 uppercase font-normal'>
@@ -66,7 +66,7 @@ const PurchasingSection = () => {
                 <div className='flex flex-wrap my-8 mx-2 md:mx-28 lg:mx-2 justify-around w-full'>
                     {cards}
                 </div>
-                <div className='card items-center my-2 border-2 rounded-xl shadow-xl w-10/12 h-auto'>
+                <div className='card items-center my-2 rounded-xl shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] w-10/12 h-auto'>
                     <div className='card-body items-center'>
                         <h1 className='card-title my-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase text-center font-normal'>
                             {t("Are you a counselor?")}
@@ -77,8 +77,8 @@ const PurchasingSection = () => {
                             )}
                         </p>
                         <div className='card-actions justify-around'>
-                            <Link href='/therapist'>
-                                <button className='btn font-normal dark:bg-slate-800 dark:text-NeutralWhite dark:hover:bg-slate-500 bg-Accent hover:bg-Primary my-2'>
+                            <Link href='/requirement'>
+                                <button className='w-36 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
                                     {t("Learn More")}
                                 </button>
                             </Link>

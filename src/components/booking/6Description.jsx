@@ -28,12 +28,12 @@ export default function Description({ OnNext, OnPrevious }) {
         }
     };
     return (
-        <div className='bg-NeutralWhite min-w-screen min-h-screen'>
-            <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite flex flex-col '>
-                <div className='mb-3 pt-12 font-ogg font-bold text-NeutralBlack capitalize text-2xl lg:text-4xl leading-normal'>
+        <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen min-h-screen'>
+            <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent flex flex-col '>
+                <div className='mb-3 pt-6 font-poppins font-bold text-NeutralBlack dark:text-NeutralWhite  capitalize text-2xl lg:text-4xl leading-normal'>
                     {t("What brings you here?")}
                 </div>
-                <div className='font-poppins font-regular text-justify text-NeutralBlack text-base lg:text-lg leading-relaxed'>
+                <div className='font-poppins font-regular text-justify text-NeutralBlack dark:text-NeutralWhite text-base lg:text-lg leading-relaxed'>
                     {t(
                         "Please specify (in a few sentences) why you would like counseling. This will give your counselor a good understanding of where to start."
                     )}{" "}
@@ -48,22 +48,22 @@ export default function Description({ OnNext, OnPrevious }) {
                     <textarea
                         id='details'
                         value={description}
-                        className='textarea p-4 text-NeutralBlack text-xl font-poppins text-regular bg-NeutralWhite lg:h-full sm:h-full sm:leading-tight shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-md '
+                        className='textarea p-4 dark:brightness-90 text-NeutralBlack text-xl font-poppins text-regular bg-NeutralWhite lg:h-full h-[300px] sm:h-full sm:leading-tight shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-md '
                         onChange={(e) => setDescription(e.target.value)}
                         placeholder={t("Tell us what you feel ...")}
                     ></textarea>
                     <div className='flex justify-between '>
-                        <div className='py-10 lg:py-10 group '>
+                        <div className='pt-10 lg:py-8 group '>
                             <button
-                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
+                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                 onClick={OnPrevious}
                             >
                                 {t("Previous")}
                             </button>
                         </div>
-                        <div className=' py-10 lg:py-10 group '>
+                        <div className='pt-10 lg:py-8 group '>
                             <button
-                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
+                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                 onClick={handleNextClick}
                             >
                                 {t("Next")}

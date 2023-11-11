@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import PaymentFormII from "../PaymentFormII";
+import Patients from "../Patients";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<PaymentFormII />).toJSON();
+    const tree = renderer.create(<Patients />).toJSON();
     expect(tree).toMatchSnapshot();
 });

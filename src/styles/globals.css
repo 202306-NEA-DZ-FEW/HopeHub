@@ -150,3 +150,103 @@ h4 {
 .gradient-dark {
     background: linear-gradient(to bottom, transparent, #101729 90%);
 }
+
+.tab.active {
+    border-bottom: 2px solid #d3d3d3;
+}
+.ql-toolbar {
+    border-color: #363636;
+    background-color: #ffff;
+    border-bottom: #363636;
+}
+.quill {
+    background-color: #ffff;
+    font-size: 3rem;
+    color: #363636;
+    height: 14rem;
+}
+@media (max-width: 768px) {
+    .fc-toolbar {
+        background: red;
+        flex-direction: column;
+    }
+}
+.fc-view-harness {
+    background: white;
+}
+.fc .fc-button-primary {
+    background-color: #99b4df;
+    border-color: #99b4df;
+}
+@media (min-width: 768px) {
+    .fc-day .fc-day-wed .fc-day-past .fc-daygrid-day {
+        height: 200px;
+        width: 200px;
+    }
+}
+table.fc-scrollgrid-section-body .fc {
+    height: 100%;
+}
+.fc-daygrid-body .fc-daygrid-body-unbalanced {
+    height: 100%;
+}
+.fc-scroller .fc-scroller-liquid-absolute {
+    height: 100%;
+}
+.fc-scroller-harness .fc-scroller-harness-liquid {
+    height: 100%;
+}
+.fc .fc-scrollgrid-section-liquid > td {
+    height: 100%;
+}
+.fc .fc-scrollgrid-liquid {
+    height: 100%;
+}
+.fc .fc-view-harness-active > .fc-view {
+    height: 100%;
+}
+.fc .fc-media-screen .fc-direction-ltr .fc-theme-standard {
+    height: 100%;
+}
+.fc-view-harness .fc-view-harness-active {
+    max-height: 100%;
+    height: 600px !important;
+}
+.fc .fc-view-harness {
+    max-height: 100%;
+}
+.fc-day .fc-day-tue .fc-day-future .fc-daygrid-day {
+    height: 100px;
+}
+tbody tr[role="row"]:first-child {
+    max-height: 100px;
+    height: 80px !important;
+    /* background: red; */
+}
+tbody tr[role="row"]:nth-child(2) {
+    max-height: 100px;
+    height: 80px !important;
+}
+tbody tr[role="row"]:nth-child(3) {
+    max-height: 100px;
+    height: 80px !important;
+}
+tbody tr[role="row"]:nth-child(4) {
+    max-height: 100px;
+    height: 80px !important;
+}
+tbody tr[role="row"]:nth-child(5) {
+    max-height: 100px;
+    height: 80px !important;
+}
+tbody tr[role="row"]:nth-child(6) {
+    max-height: 100px;
+    height: 80px !important;
+}
+.fc .fc-daygrid-day.fc-day-today {
+    background: #bfdfdc;
+}
+.fc-h-event {
+    background: #99b4df;
+    border-color: #99b4df;
+}
