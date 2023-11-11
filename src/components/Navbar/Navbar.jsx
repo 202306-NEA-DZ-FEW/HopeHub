@@ -19,8 +19,8 @@ export default function Navbar() {
     const { t } = useTranslation("common");
     //Using variables from context to set up dark mode, router, and navbar changes once a user is logged in
     const { darkMode } = useAppcontext();
-    const { isLogged, user } = useAppcontext();
-
+    const { isLogged, user, blogs } = useAppcontext();
+    console.log("all blogs from context", blogs);
     //Initializing the Next.js router
     const router = useRouter();
 
@@ -62,7 +62,7 @@ export default function Navbar() {
     }
 
     const [searchQuery, setSearchQuery] = useState("");
-    const { blogs } = useAppcontext(); // Access the blogs data from the context
+    // const { blogs } = useAppcontext(); // Access the blogs data from the context
 
     // Function to handle changes in the search input
     const handleSearchInputChange = (e) => {

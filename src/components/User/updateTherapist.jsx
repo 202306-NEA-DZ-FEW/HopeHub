@@ -1,8 +1,10 @@
 // import { doc, updateDoc } from "firebase/firestore";
 import axios from "axios";
+import { updateProfile } from "firebase/auth";
+import { doc, updateDoc } from "firebase/firestore";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
 import { useRef } from "react";
 import { FaUser } from "react-icons/fa";
@@ -11,17 +13,16 @@ import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
+import { auth, db } from "@/util/firebase";
 
-export default function UserProfile() {
+export default function TherapistProfile() {
     const { t } = useTranslation("common");
-    const { user, setProfileUpdated, updateUserProfile, setUser } =
-        useAppcontext();
-    const [fullName, setFullName] = useState("");
-    const [birthDate, setBirthDate] = useState("");
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
-    const [bio, setBio] = useState("");
-    const [uploadFile, setUploadFile] = useState("");
+    const { user, setProfileUpdated, setUser } = useAppcontext();
+    const [fullName, setFullName] = useState(user.name || "");
+    const [birthDate, setBirthDate] = useState(user.birthDate || "");
+    const [email, setEmail] = useState(user.email);
+    const [phone, setPhone] = useState(user.phoneNumber);
+    const [bio, setBio] = useState(user.bio || "");
     const [cloudinaryImage, setCloudinaryImage] = useState("");
     const inputRef = useRef(null);
 
@@ -50,30 +51,66 @@ export default function UserProfile() {
                 email: email,
                 phoneNumber: phone,
                 photoURL: cloudinaryImage,
+                bio: bio,
             });
             await updateUserProfile();
+            toast.success("profile updated", {
+                position: toast.POSITION.BOTTOM_CENTER,
+                autoClose: 2500,
+                transition: Slide,
+                className:
+                    "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+            });
+        }
+    }
+    function handleNameChange() {
+        updateProfile(auth.currentUser, {
+            displayName: fullName,
+        })
+            .then(() => console.log("name changed "))
+            .catch((err) => console.log("couldn't change name", err));
+    }
+    function handlePhotoChange() {
+        updateProfile(auth.currentUser, {
+            photoURL: cloudinaryImage,
+        })
+            .then(() => console.log("photo changed "))
+            .catch((err) => console.log("couldn't change photo", err));
+    }
+    async function updateUserProfile() {
+        try {
+            if (fullName !== auth.currentUser.displayName) handleNameChange();
+            if (cloudinaryImage !== auth.currentUser.photoURL)
+                handlePhotoChange();
+            await updateDoc(doc(db, "users", user.uid), {
+                ...user,
+                name: fullName,
+                birthDate: birthDate,
+                email: email,
+                phoneNumber: phone,
+                photoURL: cloudinaryImage,
+                bio: bio,
+            });
+            console.log("saved for user", auth.currentUser);
+        } catch (err) {
+            console.error("couldn't update", err);
         }
     }
     function uploadImage(e) {
         e.preventDefault();
-        setUploadFile(e.target.files[0]);
+        const file = e.target.files[0];
         const formData = new FormData();
-        formData.append("file", uploadFile);
+        formData.append("file", file);
         formData.append("upload_preset", "hopehub");
-        // formData.append("type", "private");
-        for (let pair of formData.entries()) {
-            console.log(pair[0] + ", " + pair[1]);
-        }
+
         axios
             .post(
                 "https://api.cloudinary.com/v1_1/dxic1agza/image/upload",
                 formData
             )
             .then((response) => {
-                console.log("cloudinary res", response);
                 setCloudinaryImage(response.data.secure_url);
                 setUser({ ...user, photoURL: response.data.secure_url });
-                console.log("user after uploading image", user);
             })
             .catch((error) => {
                 console.log("cloudinary err", error);
@@ -82,16 +119,19 @@ export default function UserProfile() {
 
     return (
         <Layout className=''>
-            <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row mt-10 lg:mt-20 max-w-screen'>
+            <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row  max-w-screen bg-NeutralWhite dark:bg-NeutralBlack'>
                 <div className='pb-12 lg:py-16 lg:w-[60%] md:[60%] flex '>
-                    <div className='bg-NeutralBlack dark:bg-NeutralWhite w-40 h-40 md:w-52 lg:h-52 md:h-52 rounded-full mx-auto flex flex-col items-center justify-center'>
+                    <div className='bg-NeutralBlack dark:bg-NeutralWhite border-2 w-80 h-80 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>
                         {user.photoURL ? (
-                            <Image
-                                src={user.photoURL}
-                                width={100}
-                                height={100}
-                                alt={user.name}
-                            />
+                            <div className='w-full h-full rounded-full overflow-hidden'>
+                                <Image
+                                    src={user.photoURL}
+                                    width={100}
+                                    height={100}
+                                    alt={user.name}
+                                    className='w-full h-full aspect-square object-cover '
+                                />
+                            </div>
                         ) : (
                             <FaUser className='fill-NeutralWhite dark:fill-NeutralBlack w-16 h-16 md:w-24 md:h-24 mb-5  ' />
                         )}
@@ -106,10 +146,10 @@ export default function UserProfile() {
                         />
 
                         <label
-                            className='absolute mt-44 lg:mt-56 cursor-pointer '
+                            className='absolute -mb-[19rem] cursor-pointer '
                             onClick={handleIconClick}
                         >
-                            <LiaUserEditSolid className='text-NeutralBlack dark:text-NeutralWhite  w-12 h-12 md:w-14 md:h-14 bg-NeutralWhite dark:bg-NeutralBlack rounded-full border border-NeutralBlack p-2' />
+                            <LiaUserEditSolid className='text-NeutralBlack dark:text-NeutralWhite  w-12 h-12 md:w-14 md:h-14 bg-NeutralWhite dark:bg-NeutralBlack rounded-full border-2 dark:border-NeutralWhite border-NeutralBlack p-2' />
                         </label>
                     </div>
                 </div>
@@ -223,11 +263,11 @@ export default function UserProfile() {
     );
 }
 
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common"])),
-            // Will be passed to the page component as props
-        },
-    };
-}
+// export async function getStaticProps({ locale }) {
+//     return {
+//         props: {
+//             ...(await serverSideTranslations(locale, ["common"])),
+//             // Will be passed to the page component as props
+//         },
+//     };
+// }
