@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
+import { Slide, toast } from "react-toastify";
 
 import Input from "@/components/Input/Input";
 
@@ -26,7 +27,13 @@ function Therapist() {
     function handleSubmit(e) {
         e.preventDefault();
         if (password !== confirmpassword) {
-            alert("Password does not match");
+            toast.warning("password does not match", {
+                position: toast.POSITION.BOTTOM_CENTER,
+                autoClose: 2500,
+                transition: Slide,
+                className:
+                    "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+            });
         } else {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {

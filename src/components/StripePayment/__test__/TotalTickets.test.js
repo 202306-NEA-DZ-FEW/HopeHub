@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import FoundingCard from "../FoundingCard";
+import TotalTickets from "../TotalTickets";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<FoundingCard />).toJSON();
+    const tree = renderer.create(<TotalTickets />).toJSON();
     expect(tree).toMatchSnapshot();
 });

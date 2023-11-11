@@ -1,5 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 
@@ -10,14 +11,23 @@ export default function CounseQualities({ OnNext, OnPrevious }) {
     const [counseQualities, setCounseQualities] = useState([]); // Use an array for multiple selections
     const [error, setError] = useState("");
     const { bookingInfos, setBookingInfos } = useAppcontext();
-
+    const toastifyError = (message) => {
+        toast.error(message, {
+            position: toast.POSITION.BOTTOM_CENTER,
+            autoClose: 2500,
+            transition: Slide,
+            className:
+                "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+        });
+    };
     const handleNextClick = () => {
         if (counseQualities.length > 0) {
             // Check if at least one option is selected
-            setError("");
+
             OnNext();
         } else {
-            setError(t("Please select at least one option before proceeding."));
+            // Display an error toast message using toastifyError
+            toastifyError(t("Please select an option before proceeding."));
         }
     };
 

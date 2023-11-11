@@ -15,6 +15,7 @@ import React, { useState } from "react";
 import { useRef } from "react";
 import { FaLock, FaUser } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
+import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
@@ -120,7 +121,13 @@ export default function UserProfile() {
         e.preventDefault();
         try {
             if (password !== confirmPassword) {
-                alert("password does not match");
+                toast.warning("password does not match", {
+                    position: toast.POSITION.BOTTOM_CENTER,
+                    autoClose: 2500,
+                    transition: Slide,
+                    className:
+                        "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+                });
             } else {
                 console.log("after update");
                 setUser({
@@ -138,7 +145,13 @@ export default function UserProfile() {
                     idcard: idcard,
                 });
                 await updateUserProfile();
-                alert("profile updated");
+                toast.success("profile updated", {
+                    position: toast.POSITION.BOTTOM_CENTER,
+                    autoClose: 2500,
+                    transition: Slide,
+                    className:
+                        "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+                });
                 // console.log("new user", user);
             }
         } catch {
@@ -222,7 +235,13 @@ export default function UserProfile() {
             deleteUser(auth.currentUser)
                 .then(() => {
                     console.log("user deleted");
-                    alert("sorry to see you leave!");
+                    toast.warning("sorry to see you leave!", {
+                        position: toast.POSITION.BOTTOM_CENTER,
+                        autoClose: 2500,
+                        transition: Slide,
+                        className:
+                            "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+                    });
                     router.push("/thanks");
                 })
                 .catch((error) => {

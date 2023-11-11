@@ -4,9 +4,12 @@ import { doc, setDoc } from "firebase/firestore";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
+
+import Cookie from "js-cookie";
 
 function Signup({ isChecked, setChecked }) {
     const [email, setEmail] = useState("");
@@ -24,7 +27,13 @@ function Signup({ isChecked, setChecked }) {
     function handleSignup(e) {
         e.preventDefault();
         if (email !== confirmemail || password !== confirmpassword) {
-            alert("Email or password does not match");
+            toast.warning("Email or password does not match", {
+                position: toast.POSITION.BOTTOM_CENTER,
+                autoClose: 2500,
+                transition: Slide,
+                className:
+                    "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+            });
         } else {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
@@ -47,6 +56,11 @@ function Signup({ isChecked, setChecked }) {
                             })
                                 .then((data) => {
                                     console.log("data", data);
+                                    Cookie.set(
+                                        "loggedInUser",
+                                        userCredential.user.uid,
+                                        { expires: 7 }
+                                    );
                                     router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
                                 })
                                 .then(() => authChange())
@@ -58,11 +72,11 @@ function Signup({ isChecked, setChecked }) {
                             console.log("updating profile error", err);
                         });
                 })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log("can't sign up", errorMessage, " ", errorCode);
-                    // ..
+                .catch(() => {
+                    toast.error("Can't Sign up", {
+                        position: toast.POSITION.BOTTOM_CENTER,
+                        autoClose: 2500,
+                    });
                 });
             // reset the fields
             setEmail("");

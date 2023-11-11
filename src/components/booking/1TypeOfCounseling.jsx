@@ -1,29 +1,36 @@
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 
 export default function TypeOfCounseling({ OnNext }) {
     const { t } = useTranslation("common");
     const [typesOfCounceling, setTypesOfCounceling] = useState(""); // You can initialize it with a default value if needed
-    const [error, setError] = useState(""); // Initialize error state
+
     const { bookingInfos, setBookingInfos } = useAppcontext();
 
     const SelectCouncelingType = (text) => {
         setTypesOfCounceling(text);
         setBookingInfos({ typesOfCounceling: text });
     };
+    const toastifyError = (message) => {
+        toast.error(message, {
+            position: toast.POSITION.BOTTOM_CENTER,
+            autoClose: 2500,
+            transition: Slide,
+            className:
+                "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite ",
+        });
+    };
     const handleNextClick = () => {
         // Validate user input if necessary
         if (typesOfCounceling) {
-            // Reset the error message if there's no error
-            setError("");
-
             // Call the onNext function and pass the data to it
             OnNext();
         } else {
-            // Display an error message or handle validation as needed
-            setError(t("Please select an option before proceeding."));
+            // Display an error toast message using toastifyError
+            toastifyError(t("Please select an option before proceeding."));
         }
     };
 
@@ -39,11 +46,6 @@ export default function TypeOfCounseling({ OnNext }) {
                     )}
                 </div>
                 <div className=' flex flex-col bg-NeutralWhite dark:bg-Dark_Accent lg:w-3/5 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14  shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'>
-                    {error && (
-                        <div className='text-Error text-center pt-5'>
-                            {t(error)}
-                        </div>
-                    )}
                     <h3 className='py-5 px-4 lg:py-10 lg:px-11 leading-normal text-NeutralBlack dark:text-NeutralWhite lg:text-2xl text-2xl font-regular font-poppins capitalize '>
                         {t("What type of counseling are you looking for?")}
                     </h3>

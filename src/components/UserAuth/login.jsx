@@ -1,12 +1,12 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
+import Cookie from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 import { auth } from "@/util/firebase";
-
-import Cookie from "js-cookie";
 
 // After successful login
 
@@ -38,10 +38,14 @@ function Login({ isChecked, setChecked }) {
                 // }
             })
             .then(() => authChange())
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log("can't log in", errorMessage, " ", errorCode);
+            .catch(() => {
+                toast.error("Can't log in", {
+                    position: toast.POSITION.BOTTOM_CENTER,
+                    autoClose: 2500,
+                    transition: Slide,
+                    className:
+                        "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+                });
             });
     }
 

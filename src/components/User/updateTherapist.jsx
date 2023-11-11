@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import { useRef } from "react";
 import { FaUser } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
+import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
@@ -35,7 +36,13 @@ export default function TherapistProfile() {
         setProfileUpdated(true);
         e.preventDefault();
         if (!fullName || !email) {
-            alert("Full name and email are required");
+            toast.warning("Full name and email are required", {
+                position: toast.POSITION.BOTTOM_CENTER,
+                autoClose: 2500,
+                transition: Slide,
+                className:
+                    "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+            });
         } else {
             await setUser({
                 ...user,
@@ -47,7 +54,13 @@ export default function TherapistProfile() {
                 bio: bio,
             });
             await updateUserProfile();
-            alert("profile updated");
+            toast.success("profile updated", {
+                position: toast.POSITION.BOTTOM_CENTER,
+                autoClose: 2500,
+                transition: Slide,
+                className:
+                    "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+            });
         }
     }
     function handleNameChange() {

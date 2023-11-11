@@ -44,6 +44,7 @@ jobs:
 
             - name: 🔎 Type check
               run: yarn format:check
+
     test:
         name: 🃏 Test
         runs-on: ubuntu-latest

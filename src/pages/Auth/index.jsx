@@ -9,6 +9,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState, useEffect } from "react";
+import Cookie from "js-cookie";
 
 import Forgot from "@/components/UserAuth/forgot";
 import Login from "@/components/UserAuth/login";
@@ -40,44 +41,35 @@ function Auth() {
     const { t } = useTranslation("common");
 
     function handleGoogleAuth() {
-        // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-        auth.useDeviceLanguage(); // user' browser default language
+        auth.useDeviceLanguage(); // user's browser default language
         signInWithPopup(auth, provider)
-            .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
+            .then(async (result) => {
                 const credential =
                     GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
-                // The signed-in user info.
                 const user = result.user;
-                console.log("user", user);
-                setDoc(doc(db, "users", user.uid), {
+
+                // Update Firestore document with user details
+                const userDocRef = doc(db, "users", user.uid);
+                await setDoc(userDocRef, {
                     isTherapist: false,
                     licenseNumber: null,
-                })
-                    .then((data) => {
-                        console.log("data", data);
-                        router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
-                    })
-                    .then(() => authChange())
-                    .catch((err) => {
-                        console.log("firestore error", err);
-                    });
-                // IdP data available using getAdditionalUserInfo(result)
-                // ...
+                });
+
+                // Set cookie for 7 days upon successful sign-up
+                Cookie.set("loggedInUser", user.uid, { expires: 7 });
+
+                router.push(`/thanks?from=${pathname}`);
+                authChange();
             })
             .catch((error) => {
-                // Handle Errors here.
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage);
-                // The email of the user's account used.
                 const email = error.customData.email;
-                // The AuthCredential type that was used.
                 const credential =
                     GoogleAuthProvider.credentialFromError(error);
                 console.log(credential);
-                // ...
             });
     }
     function handleFbAuth() {

@@ -19,10 +19,10 @@ function Contact() {
         >
             <Layout>
                 <div className='flex flex-col ml-8 mr-10 lg:mb-24 my-12'>
-                    <h1 className='text-NeutralBlack  font-semibold font-poppins text-2xl md:text-3xl lg:py-0 lg:mb-3 py-4'>
+                    <h1 className='text-NeutralBlack dark:text-NeutralWhite font-semibold font-poppins text-2xl md:text-3xl lg:py-0 lg:mb-3 py-4'>
                         {t("SEND US YOUR REQUEST!")}
                     </h1>
-                    <p className='text-NeutralBlack font-normal font-poppins lg:mb-14 text-sm md:text-lg mb-4'>
+                    <p className='text-NeutralBlack dark:text-NeutralWhite font-normal font-poppins lg:mb-14 text-sm md:text-lg mb-4'>
                         {t(
                             "Do you have a question, concern, idea, feedback, or problem? If you need assistance, please fill out the form below, and we'd be happy to help!"
                         )}
