@@ -8,6 +8,8 @@ import { useState } from "react";
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
 
+import Cookie from "js-cookie";
+
 function Signup({ isChecked, setChecked }) {
     const [email, setEmail] = useState("");
     const [confirmemail, setConfirmemail] = useState("");
@@ -47,6 +49,11 @@ function Signup({ isChecked, setChecked }) {
                             })
                                 .then((data) => {
                                     console.log("data", data);
+                                    Cookie.set(
+                                        "loggedInUser",
+                                        userCredential.user.uid,
+                                        { expires: 7 }
+                                    );
                                     router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
                                 })
                                 .then(() => authChange())
