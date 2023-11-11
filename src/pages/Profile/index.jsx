@@ -16,6 +16,7 @@ import React, { useState } from "react";
 import { useRef } from "react";
 import { FaLock, FaUser } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
+import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
@@ -121,7 +122,13 @@ export default function UserProfile() {
         e.preventDefault();
         try {
             if (password !== confirmPassword) {
-                alert("password does not match");
+                toast.warning("password does not match", {
+                    position: toast.POSITION.BOTTOM_CENTER,
+                    autoClose: 2500,
+                    transition: Slide,
+                    className:
+                        "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+                });
             } else {
                 console.log("after update");
                 setUser({
@@ -139,7 +146,13 @@ export default function UserProfile() {
                     idcard: idcard,
                 });
                 await updateUserProfile();
-                alert("profile updated");
+                toast.success("profile updated", {
+                    position: toast.POSITION.BOTTOM_CENTER,
+                    autoClose: 2500,
+                    transition: Slide,
+                    className:
+                        "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+                });
                 // console.log("new user", user);
             }
         } catch {
@@ -223,7 +236,13 @@ export default function UserProfile() {
             deleteUser(auth.currentUser)
                 .then(() => {
                     console.log("user deleted");
-                    alert("sorry to see you leave!");
+                    toast.warning("sorry to see you leave!", {
+                        position: toast.POSITION.BOTTOM_CENTER,
+                        autoClose: 2500,
+                        transition: Slide,
+                        className:
+                            "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+                    });
                     router.push("/thanks");
                 })
                 .catch((error) => {
@@ -235,7 +254,7 @@ export default function UserProfile() {
         <Layout className=''>
             <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row mt-20 w-full max-w-full'>
                 <div className=' lg:w-[30%] md:[40%] flex '>
-                    <div className='bg-NeutralBlack dark:bg-NeutralWhite w-80 h-80 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>
+                    <div className='bg-NeutralBlack dark:bg-NeutralWhite w-40 h-40 md:w-52 lg:h-52 md:h-52 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>
                         {user.photoURL ? (
                             <div className='w-[70%] h-full rounded-full overflow-hidden'>
                                 <Image
@@ -268,8 +287,8 @@ export default function UserProfile() {
                     </div>
                 </div>
                 <div className='flex  text-NeutralBlack md:w-2/3 lg:w-[50%] '>
-                    <div className='mx-auto w-full max-w-[80%     px-4 mb-20'>
-                        <h2 className='  py-5 px-6 text-4xl font-semibold'>
+                    <div className='mx-auto w-full px-4 mb-20'>
+                        <h2 className=' text-NeutralBlack dark:text-NeutralWhite py-5 px-6 text-4xl font-semibold'>
                             {t("Update profile")}
                         </h2>
                         <form
@@ -459,7 +478,7 @@ export default function UserProfile() {
                                     onChange={(e) => setIdcard(e.target.value)}
                                 />
                             </div>
-                            <label className='mb-5 pt-5 block text-4xl font-semibold '>
+                            <label className='mb-5 pt-5 text-NeutralBlack dark:text-NeutralWhite block text-4xl font-semibold '>
                                 {t("Change Password")}
                             </label>
                             <div className='mb-5 flex'>
