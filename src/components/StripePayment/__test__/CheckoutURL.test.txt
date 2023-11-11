@@ -1,0 +1,20 @@
+import React from "react";
+import renderer from "react-test-renderer";
+import CheckoutURL from "../../components/StripePayment/CheckoutURL";
+
+describe("CheckoutURL Component", () => {
+  it("renders correctly", () => {
+    // Mock auth object
+    const auth = {
+      currentUser: {
+        uid: "mockUserId",
+      },
+    };
+
+    // Mock priceId
+    const priceId = "mockPriceId";
+
+    const tree = renderer.create(<CheckoutURL auth={auth} priceId={priceId} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
