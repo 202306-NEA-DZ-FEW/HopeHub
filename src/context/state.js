@@ -15,8 +15,23 @@ export function AppWrapper({ children }) {
     const { theme, setTheme } = useTheme();
     const [darkMode, setDarkMode] = useState(false);
     const [profileUpdated, setProfileUpdated] = useState(false);
-    const [blogs, setBlogs] = useState([]); // Store the blogs data
+    const [blogs, setBlogs] = useState([{}]); // Store the blogs data
 
+    async function fetchBlogs() {
+        try {
+            const blogsCollection = collection(db, "blogs");
+            const data = await getDocs(blogsCollection);
+            const blogsData = [];
+            data.forEach((doc) => {
+                const blog = doc.data();
+                blogsData.push(blog);
+            });
+            setBlogs(blogsData);
+            // return blogsData
+        } catch (error) {
+            console.log("error fetching blogs:", error);
+        }
+    }
     useEffect(() => {
         const loggedInUserCookie = Cookie.get("loggedInUser");
         if (loggedInUserCookie) {
@@ -26,20 +41,7 @@ export function AppWrapper({ children }) {
             setUser({ uid: loggedInUserCookie });
         }
         // Fetch blogs data when the component mounts
-        async function fetchBlogs() {
-            try {
-                const blogsCollection = collection(db, "blogs");
-                const data = await getDocs(blogsCollection);
-                const blogsData = [];
-                data.forEach((doc) => {
-                    const blog = doc.data();
-                    blogsData.push(blog);
-                });
-                setBlogs(blogsData);
-            } catch (error) {
-                console.log("error fetching blogs:", error);
-            }
-        }
+
         fetchBlogs();
     }, []);
 

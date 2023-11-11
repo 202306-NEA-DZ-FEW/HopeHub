@@ -31,13 +31,13 @@ export default function UserProfile() {
         useAppcontext();
     // console.log("user profile", user);
     const [hobbyInput, setHobbyInput] = useState("");
-    const [fullName, setFullName] = useState(user.name);
+    const [fullName, setFullName] = useState(user.name || "");
     const [education, setEducation] = useState(user.educationLevel || "");
     const [hobbies, setHobbies] = useState(user.hobbies || []);
     const [familySize, setFamilySize] = useState(user.familySize || 0);
     const [gender, setGender] = useState(user.gender || "");
     const [birthDate, setBirthDate] = useState(user.birthDate || "");
-    const [email, setEmail] = useState(user.email);
+    const [email, setEmail] = useState(user.email || "");
     const [phone, setPhone] = useState(user.phoneNumber || "");
     // const [id, setId]= useState(user.id || '')
     const [password, setPassword] = useState("");

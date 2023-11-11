@@ -20,7 +20,11 @@ jest.mock("@/util/firebase", () => {
 jest.mock("@/context/state.js", () => {
     return {
         useAppcontext: jest.fn(() => {
-            return { setBookingInfos: jest.fn(() => {}) };
+            return {
+                setBookingInfos: jest.fn(() => {}),
+                user: jest.fn(() => {}),
+                blogs: [{ title: "blog 1" }, { title: "blog 2" }],
+            };
         }),
     };
 });
