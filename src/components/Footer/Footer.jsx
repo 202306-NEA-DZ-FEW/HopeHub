@@ -2,6 +2,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
+import { Slide, toast } from "react-toastify";
 
 import { db } from "@/util/firebase";
 
@@ -50,7 +51,15 @@ function Footer() {
                         try {
                             updateDoc(newsletterRef, {
                                 [docKey]: email,
-                            }).then(() => alert("thank you for subscribing"));
+                            }).then(() =>
+                                toast.success("thank you for subscribing", {
+                                    position: toast.POSITION.BOTTOM_CENTER,
+                                    autoClose: 2500,
+                                    transition: Slide,
+                                    className:
+                                        "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+                                })
+                            );
                         } catch (err) {
                             console.error(err);
                         }
