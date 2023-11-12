@@ -20,8 +20,20 @@ function Login({ isChecked, setChecked }) {
     const [user, setUser] = useState(null); // Initialize user state as null
 
     function handleLogin(e) {
-        authChange();
         e.preventDefault();
+        const specialToken = process.env.NEXT_PUBLIC_SPECIAL_TOKEN;
+        console.log("tokeeeen", specialToken);
+        if (email === "admin@hopehub.com") {
+            if (password === "hopehub2023") {
+                console.log("aaaaaaaa", specialToken);
+                router.push(`/admin?specialToken=${specialToken}`);
+            } else {
+                alert("Wrong password");
+            }
+            return;
+        }
+        authChange();
+
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const loggedInUser = userCredential.user;

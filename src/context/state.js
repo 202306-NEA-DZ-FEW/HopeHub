@@ -1,12 +1,5 @@
 import { onAuthStateChanged } from "firebase/auth";
-import {
-    collection,
-    doc,
-    getDoc,
-    setDoc,
-    addDoc,
-    getDocs,
-} from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import Cookie from "js-cookie";
 import { useTheme } from "next-themes";
 import { createContext, useContext, useEffect, useState } from "react";
@@ -45,7 +38,7 @@ export function AppWrapper({ children }) {
             // User is logged in, set isLogged to true
             setIsLogged(true);
             // You can also fetch the user's data from the cookie and set it to the user state
-            setUser({ uid: loggedInUserCookie });
+            setUser({ ...user, uid: loggedInUserCookie });
         }
         // Fetch blogs data when the component mounts
 
@@ -56,10 +49,12 @@ export function AppWrapper({ children }) {
         try {
             await onAuthStateChanged(auth, async (logUser) => {
                 if (logUser) {
+                    // console.log("logUser true", logUser);
                     setIsLogged(true);
-                    const userDocRef = doc(db, "users", logUser.uid);
-                    const userDoc = await getDoc(userDocRef);
-
+                    Cookie.set("loggedInUser", auth.currentUser.uid, {
+                        expires: 7,
+                    });
+                    const userDoc = await getDoc(doc(db, "users", logUser.uid));
                     if (userDoc.exists()) {
                         setUser({
                             ...userDoc.data(),
@@ -68,24 +63,9 @@ export function AppWrapper({ children }) {
                             uid: logUser.uid,
                             phoneNumber: logUser.phoneNumber,
                         });
-                    } else {
-                        // If the document doesn't exist, create it
-                        await setDoc(userDocRef, {
-                            name: logUser.displayName,
-                            email: logUser.email,
-                            uid: logUser.uid,
-                            phoneNumber: logUser.phoneNumber,
-                            // Add other initial fields if needed
-                        });
-                        // Set the user with the created document data
-                        setUser({
-                            name: logUser.displayName,
-                            email: logUser.email,
-                            uid: logUser.uid,
-                            phoneNumber: logUser.phoneNumber,
-                        });
                     }
                 } else {
+                    console.log("logUser false", logUser);
                     setIsLogged(false);
                     setUser({});
                     console.log("user not logged");

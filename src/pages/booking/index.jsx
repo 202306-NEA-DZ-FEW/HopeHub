@@ -1,6 +1,6 @@
 import { collection, getDocs } from "firebase/firestore";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { use, useState } from "react";
+import { useState } from "react";
 
 import TypeOfCounseling from "@/components/booking/1TypeOfCounseling";
 import RelationshipStatus from "@/components/booking/2RelationshipStatus";
@@ -14,19 +14,11 @@ import PickaDate from "@/components/booking/PickaDate";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
-import { db, isLoggedIn } from "@/util/firebase";
-import { usePathname, useRouter } from "next/navigation";
-import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute";
+import { db } from "@/util/firebase";
 
 function BookingPage({ dates }) {
     const [step, setStep] = useState(1);
     const { bookingInfos } = useAppcontext();
-    const { authChange, user } = useAppcontext();
-    const router = useRouter();
-
-    console.log("yo", user);
-    console.log("router", router);
-
     // console.log('dates', dates)
     function OnNext() {
         setStep(step + 1);
@@ -72,27 +64,45 @@ function BookingPage({ dates }) {
                 return <Confirmation OnNext={OnNext} OnPrevious={OnPrevious} />;
         }
     }
-    return (
-        <ProtectedRoute>
-            <Layout className='max-w-screen'>{Step()}</Layout>
-        </ProtectedRoute>
-    );
+    return <Layout className='max-w-screen'>{Step()}</Layout>;
 }
 
 export default BookingPage;
 
-export async function getStaticProps({ locale }) {
-    const querySnapshot = await getDocs(collection(db, "dates"));
-    const dates = {};
-    querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        // console.log(doc.id, " => ", doc.data());
-        dates[doc.id] = doc.data();
-    });
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common"])),
-            dates,
-        },
-    };
+// export async function getStaticProps({ locale }) {
+//     const querySnapshot = await getDocs(collection(db, "dates"));
+//     const dates = {};
+//     querySnapshot.forEach((doc) => {
+//         // doc.data() is never undefined for query doc snapshots
+//         // console.log(doc.id, " => ", doc.data());
+//         dates[doc.id] = doc.data();
+//     });
+//     return {
+//         props: {
+//             ...(await serverSideTranslations(locale, ["common"])),
+//             dates,
+//         },
+//     };
+// }
+export async function getServerSideProps({ locale, query }) {
+    const userId = query.userid; // Assuming the user ID is provided in the query parameter
+
+    if (!userId || userId == "undefined") {
+        return { redirect: { destination: "/Auth", permanent: false } };
+    } else {
+        console.log("fetch the dates");
+        const querySnapshot = await getDocs(collection(db, "dates"));
+        const dates = {};
+
+        querySnapshot.forEach((doc) => {
+            dates[doc.id] = doc.data();
+        });
+
+        return {
+            props: {
+                ...(await serverSideTranslations(locale, ["common"])),
+                dates,
+            },
+        };
+    }
 }

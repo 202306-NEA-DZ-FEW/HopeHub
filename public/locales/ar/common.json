@@ -60,7 +60,7 @@
     "show cards": "عرض البطاقات",
     "tickets remaining": "التذاكر المتبقية",
     "buy tickets": "شراء تذاكر",
-    "Book An Appointement": "إحجز موعد",
+    "Book An Appointment": "إحجز موعد",
     "WE ARE HERE TO": "نحن هنا لتقديم",
     "HELP": "المساعدة",
     "RECENT BLOGS": "المدونات الأخيرة",
@@ -180,7 +180,7 @@
     "Add Card Details": "إضافة تفاصيل البطاقة",
     "Please make sure all of the info you enter are the same as your card registration info.": "يرجى التأكد من أن جميع المعلومات التي تدخلها متطابقة مع معلومات تسجيل بطاقتك.",
     "If you're looking for support, see how HopeHub can help.": "إذا كنت تبحث عن الدعم، فانظر كيف يمكننا المساعدة",
-    "Subscribe to Our Newsletter": "اشترك في نشرتنا الإخبارية",
+    "Subscribe": "اشترك ",
     "Our Blog Posts": "مدوناتنا",
     "Our Newsletter Is Waiting For You": "رسالتنا الإخبارية تنتظرك",
     "Get Inspired Weekly: Start Your Journey to Improved Mental Health and Personal Growth by Subscribing to Our Newsletter Today, and Connect with HopeHub's Community of Support and Healing.": ".احصل على إلهام أسبوعيًا: ابدأ رحلتك لتحسين الصحة العقلية والنمو الشخصي من خلال الاشتراك في رسالتنا الإخبارية اليوم، وتواصل مع مجتمع الدعم والشفاء لدينا",
@@ -206,5 +206,8 @@
     "Title": "العنوان",
     "Author": "الكاتب",
     "Post": "مقال",
-    "Please select at least one option before proceeding.": "الرجاء تحديد خيار واحد على الأقل قبل المتابعة."
+    "Please select at least one option before proceeding.": "الرجاء تحديد خيار واحد على الأقل قبل المتابعة.",
+    "Calendar": "أجندة",
+    "Profile": "صفحة حساب",
+    "Log Out": "تسجيل الخروج"
 }
