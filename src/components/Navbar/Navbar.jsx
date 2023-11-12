@@ -20,7 +20,7 @@ export default function Navbar() {
     //Using variables from context to set up dark mode, router, and navbar changes once a user is logged in
     const { darkMode } = useAppcontext();
     const { isLogged, user, blogs } = useAppcontext();
-    console.log("all blogs from context", blogs);
+
     //Initializing the Next.js router
     const router = useRouter();
 
@@ -53,6 +53,7 @@ export default function Navbar() {
         // For Firebase, you can use `signOut` from the auth object
         signOut(auth)
             .then(() => {
+                window.location.reload();
                 // Redirect the user to the login page or any other appropriate location
                 router.push("/Auth"); // Replace "/login" with the actual login page route
             })

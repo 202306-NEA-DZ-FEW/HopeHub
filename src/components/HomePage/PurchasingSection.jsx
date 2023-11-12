@@ -4,10 +4,12 @@ import React from "react";
 import { CheckoutURL } from "../../components/StripePayment/CheckoutURL";
 import { auth, db } from "@/util/firebase";
 import { useAppcontext } from "@/context/state";
+import { useRouter } from "next/navigation";
 
 const PurchasingSection = () => {
     const { t } = useTranslation("common");
-    const { user, setUser } = useAppcontext();
+    const router = useRouter();
+    const { isLogged } = useAppcontext();
 
     const ticketsNum = [5, 25, 50];
     const ticketsPrice = [10, 40, 70];
@@ -19,11 +21,17 @@ const PurchasingSection = () => {
 
     const handlePurchase = async (priceId, ticketsNum) => {
         try {
+            // If there is no user, redirect to /Auth
+            if (isLogged != true) {
+                window.location.replace("/Auth");
+                return;
+            }
+
             // Set up the listener and wait for the checkout URL
             const url = await CheckoutURL(auth, priceId);
 
             // Redirect to Stripe Checkout
-            window.location.href = url;
+            window.location.replace(url);
         } catch (error) {
             console.error(error);
         }

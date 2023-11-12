@@ -5,11 +5,16 @@ import TherapistProfile from "@/components/User/updateTherapist";
 import UserProfile from "@/components/User/UserProfile";
 
 import { useAppcontext } from "@/context/state";
+import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute";
 
 function Profile() {
     const { user } = useAppcontext();
     console.log("therapist", user);
-    return <>{user?.isTherapist ? <TherapistProfile /> : <UserProfile />}</>;
+    return (
+        <ProtectedRoute>
+            {user?.isTherapist ? <TherapistProfile /> : <UserProfile />}
+        </ProtectedRoute>
+    );
 }
 
 export default Profile;

@@ -1,6 +1,6 @@
 import { collection, getDocs } from "firebase/firestore";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState } from "react";
+import { use, useState } from "react";
 
 import TypeOfCounseling from "@/components/booking/1TypeOfCounseling";
 import RelationshipStatus from "@/components/booking/2RelationshipStatus";
@@ -14,11 +14,19 @@ import PickaDate from "@/components/booking/PickaDate";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
-import { db } from "@/util/firebase";
+import { db, isLoggedIn } from "@/util/firebase";
+import { usePathname, useRouter } from "next/navigation";
+import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute";
 
 function BookingPage({ dates }) {
     const [step, setStep] = useState(1);
     const { bookingInfos } = useAppcontext();
+    const { authChange, user } = useAppcontext();
+    const router = useRouter();
+
+    console.log("yo", user);
+    console.log("router", router);
+
     // console.log('dates', dates)
     function OnNext() {
         setStep(step + 1);
@@ -64,7 +72,11 @@ function BookingPage({ dates }) {
                 return <Confirmation OnNext={OnNext} OnPrevious={OnPrevious} />;
         }
     }
-    return <Layout className='max-w-screen'>{Step()}</Layout>;
+    return (
+        <ProtectedRoute>
+            <Layout className='max-w-screen'>{Step()}</Layout>
+        </ProtectedRoute>
+    );
 }
 
 export default BookingPage;
