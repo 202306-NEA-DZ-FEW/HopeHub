@@ -20,7 +20,7 @@ export default function Navbar() {
     //Using variables from context to set up dark mode, router, and navbar changes once a user is logged in
     const { darkMode } = useAppcontext();
     const { isLogged, user, blogs } = useAppcontext();
-    console.log("all blogs from context", blogs);
+
     //Initializing the Next.js router
     const router = useRouter();
 
@@ -49,12 +49,12 @@ export default function Navbar() {
     function handleLogout() {
         // Clear the user's session or remove the cookie
         Cookie.remove("loggedInUser"); // Remove the user cookie
-        // You may also need to sign the user out from your authentication provider
-        // For Firebase, you can use `signOut` from the auth object
+
         signOut(auth)
             .then(() => {
-                // Redirect the user to the login page or any other appropriate location
+                // Refresh the page and then redirect the user
                 router.push("/Auth"); // Replace "/login" with the actual login page route
+                window.location.href;
             })
             .catch((error) => {
                 console.error("Error during logout:", error);
@@ -147,41 +147,23 @@ export default function Navbar() {
                                         {user.name || "User"}
                                     </summary>
                                     <ul className='menu w-32 text-NeutralBlack font-medium font-poppins'>
-                                        <li
-                                            className={` ${isPageActive(
-                                                "/Profile"
-                                            )}`}
-                                        >
+                                        <li>
                                             <Link
-                                                className='text-base'
-                                                href='/profile'
+                                                href={`/Profile?userid=${user.uid}`}
                                             >
                                                 {t("Profile")}
                                             </Link>
                                         </li>
-                                        <li
-                                            className={` ${isPageActive(
-                                                "/booking"
-                                            )}`}
-                                        >
+                                        <li>
                                             <Link
-                                                className='text-base'
-                                                href='/calendar'
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
+                                                href={`/calendar?userid=${user.uid}`}
                                             >
-                                                {t("Appointments")}
+                                                {t("Calendar")}
                                             </Link>
                                         </li>
-                                        <li
-                                            className={` ${isPageActive(
-                                                "/payment"
-                                            )}`}
-                                        >
+                                        <li>
                                             <Link
-                                                className='text-base'
-                                                href='/payment'
+                                                href={`/Payment?userid=${user.uid}`}
                                             >
                                                 {t("Payments")}
                                             </Link>
@@ -342,17 +324,23 @@ export default function Navbar() {
                                         {userMenuOpen && (
                                             <ul className='dropdown-content z-[1] menu p-2 shadow bg-Accent rounded-md w-40 mt-1'>
                                                 <li>
-                                                    <Link href='/profile'>
+                                                    <Link
+                                                        href={`/Profile?userid=${user.uid}`}
+                                                    >
                                                         {t("Profile")}
                                                     </Link>
                                                 </li>
                                                 <li>
-                                                    <Link href='/calendar'>
-                                                        {t("Appointments")}
+                                                    <Link
+                                                        href={`/calendar?userid=${user.uid}`}
+                                                    >
+                                                        {t("Calendar")}
                                                     </Link>
                                                 </li>
                                                 <li>
-                                                    <Link href='/payment'>
+                                                    <Link
+                                                        href={`/Payments?userid=${user.uid}`}
+                                                    >
                                                         {t("Payments")}
                                                     </Link>
                                                 </li>

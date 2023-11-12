@@ -199,20 +199,27 @@ export default function AdminDashboard({ blogs, users }) {
     );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale, query }) {
+    const specialToken = query.specialToken;
+    console.log("queryyyyyyyyyyyyyyy", query);
+    console.log("im token", specialToken);
+    // Check if there is a valid special token
+    if (specialToken !== process.env.NEXT_PUBLIC_SPECIAL_TOKEN) {
+        return { redirect: { destination: "/Auth", permanent: false } };
+    }
+
     const blogSnapshot = await getDocs(collection(db, "blogs"));
     const blogs = [];
     blogSnapshot.forEach((doc) => {
-        // blogs[doc.id]= doc.data()
-        // console.log("doc data", doc.data());
         blogs.push(doc.data());
     });
+
     const userSnapshot = await getDocs(collection(db, "users"));
     const users = [];
     userSnapshot.forEach((doc) => {
         users.push(doc.data());
     });
-    // console.log('users', users)
+
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),

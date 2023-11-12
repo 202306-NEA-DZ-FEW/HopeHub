@@ -38,7 +38,7 @@
     "show cards": "SHOW CARDS",
     "tickets remaining": "10 Tickets Remaining",
     "buy tickets": "BUY TICKETS",
-    "Book An Appointement": "Book An Appointement",
+    "Book An Appointment": "Book An Appointement",
     "WE ARE HERE TO": "We are here to",
     "HELP": "Help",
     "RECENT BLOGS": "Recent Blogs",
@@ -178,5 +178,6 @@
     "Delete": "Delete",
     "Title": "Title",
     "Author": "Author",
-    "Post": "Post"
+    "Post": "Post",
+    "Calendar": "Calendar"
 }

@@ -4,10 +4,12 @@ import React from "react";
 
 import BookingButton from "../BookingButton/BookingButton";
 import therapists from "../../../public/assets/therapists.svg";
+import { useAppcontext } from "@/context/state";
 
 export default function TherapistsInfoSection() {
     //Function used for translations
     const { t } = useTranslation("common");
+    const { user } = useAppcontext();
 
     //Displaying the therapists info section
     return (
@@ -36,7 +38,11 @@ export default function TherapistsInfoSection() {
             {/* Adding the button for booking an appointment */}
             <div className='inset-0 flex items-end justify-end mx-6 md:mx-10 mb-6 sm:mx-20 lg:mx-10'>
                 <BookingButton
-                    destination='/booking'
+                    destination={
+                        user !== undefined
+                            ? `/booking?userid=${user.uid}`
+                            : "/Auth"
+                    }
                     buttonText='Book An Appointment'
                 />
             </div>

@@ -13,31 +13,39 @@ import { auth } from "@/util/firebase";
 function Login({ isChecked, setChecked }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [user, setUser] = useState({});
     const router = useRouter();
     const { t } = useTranslation("common");
     const { authChange } = useAppcontext();
 
+    const [user, setUser] = useState(null); // Initialize user state as null
+
     function handleLogin(e) {
-        Cookie.set("loggedInUser", user.uid, { expires: 7 }); // Set cookie for 7 days
         e.preventDefault();
+        const specialToken = process.env.NEXT_PUBLIC_SPECIAL_TOKEN;
+        console.log("tokeeeen", specialToken);
         if (email === "admin@hopehub.com") {
-            if (password === "hopehub2023") router.push("/adminDashboard");
-            else alert("wrong password");
+            if (password === "hopehub2023") {
+                console.log("aaaaaaaa", specialToken);
+                router.push(`/admin?specialToken=${specialToken}`);
+            } else {
+                alert("Wrong password");
+            }
             return;
         }
+        authChange();
+
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // if (userCredential.user.emailVerified) {
-                // console.log("user", userCredential);
+                const loggedInUser = userCredential.user;
+
+                // Set cookie for 7 days
+                Cookie.set("loggedInUser", loggedInUser.uid, { expires: 7 });
+
+                // Update the user state
+                setUser(loggedInUser);
 
                 router.push("/");
-
-                // } else {
-                //     console.log("verify email");
-                // }
             })
-            .then(() => authChange())
             .catch(() => {
                 toast.error("Can't log in", {
                     position: toast.POSITION.BOTTOM_CENTER,

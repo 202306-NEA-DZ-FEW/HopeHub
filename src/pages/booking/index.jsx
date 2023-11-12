@@ -69,18 +69,40 @@ function BookingPage({ dates }) {
 
 export default BookingPage;
 
-export async function getStaticProps({ locale }) {
-    const querySnapshot = await getDocs(collection(db, "dates"));
-    const dates = {};
-    querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        // console.log(doc.id, " => ", doc.data());
-        dates[doc.id] = doc.data();
-    });
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common"])),
-            dates,
-        },
-    };
+// export async function getStaticProps({ locale }) {
+//     const querySnapshot = await getDocs(collection(db, "dates"));
+//     const dates = {};
+//     querySnapshot.forEach((doc) => {
+//         // doc.data() is never undefined for query doc snapshots
+//         // console.log(doc.id, " => ", doc.data());
+//         dates[doc.id] = doc.data();
+//     });
+//     return {
+//         props: {
+//             ...(await serverSideTranslations(locale, ["common"])),
+//             dates,
+//         },
+//     };
+// }
+export async function getServerSideProps({ locale, query }) {
+    const userId = query.userid; // Assuming the user ID is provided in the query parameter
+
+    if (!userId || userId == "undefined") {
+        return { redirect: { destination: "/Auth", permanent: false } };
+    } else {
+        console.log("fetch the dates");
+        const querySnapshot = await getDocs(collection(db, "dates"));
+        const dates = {};
+
+        querySnapshot.forEach((doc) => {
+            dates[doc.id] = doc.data();
+        });
+
+        return {
+            props: {
+                ...(await serverSideTranslations(locale, ["common"])),
+                dates,
+            },
+        };
+    }
 }

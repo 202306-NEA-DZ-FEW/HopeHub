@@ -8,7 +8,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 function BlogsPage() {
     const { t } = useTranslation("common");
-    const { blogs } = useAppcontext(); // Access the blogs data from the context.
+    const { blogs, user } = useAppcontext(); // Access the blogs data from the context.
 
     return (
         <Layout>
@@ -45,7 +45,11 @@ function BlogsPage() {
                             </p>
                             <div className='flex justify-center'>
                                 <BookingButton
-                                    destination='/booking'
+                                    destination={
+                                        user !== undefined
+                                            ? `/booking?userid=${user.uid}`
+                                            : "/Auth"
+                                    }
                                     buttonText='Book An Appointment'
                                 />
                             </div>
@@ -64,7 +68,7 @@ function BlogsPage() {
                             <div className='flex justify-center'>
                                 <BookingButton
                                     destination='/newsletter'
-                                    buttonText='Subscribe to Our Newsletter'
+                                    buttonText='Subscribe'
                                 />
                             </div>
                         </div>

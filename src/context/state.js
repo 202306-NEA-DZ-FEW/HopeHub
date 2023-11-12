@@ -10,8 +10,8 @@ const AppContext = createContext();
 
 export function AppWrapper({ children }) {
     const [bookingInfos, setBookingInfos] = useState({});
-    const [user, setUser] = useState({});
-    const [isLogged, setIsLogged] = useState(false);
+    const [user, setUser] = useState();
+    const [isLogged, setIsLogged] = useState();
     const { theme, setTheme } = useTheme();
     const [darkMode, setDarkMode] = useState(false);
     const [profileUpdated, setProfileUpdated] = useState(false);
@@ -38,7 +38,7 @@ export function AppWrapper({ children }) {
             // User is logged in, set isLogged to true
             setIsLogged(true);
             // You can also fetch the user's data from the cookie and set it to the user state
-            setUser({ uid: loggedInUserCookie });
+            setUser({ ...user, uid: loggedInUserCookie });
         }
         // Fetch blogs data when the component mounts
 
@@ -51,6 +51,9 @@ export function AppWrapper({ children }) {
                 if (logUser) {
                     // console.log("logUser true", logUser);
                     setIsLogged(true);
+                    Cookie.set("loggedInUser", auth.currentUser.uid, {
+                        expires: 7,
+                    });
                     const userDoc = await getDoc(doc(db, "users", logUser.uid));
                     if (userDoc.exists()) {
                         setUser({
