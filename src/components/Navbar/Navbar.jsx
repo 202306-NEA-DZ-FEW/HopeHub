@@ -149,7 +149,7 @@ export default function Navbar() {
                                     <ul className='menu w-32 text-NeutralBlack font-medium font-poppins'>
                                         <li>
                                             <Link
-                                                href={`/Profile?userid=${user.uid}`}
+                                                href={`/profile?userid=${user.uid}`}
                                             >
                                                 {t("Profile")}
                                             </Link>
@@ -325,7 +325,7 @@ export default function Navbar() {
                                             <ul className='dropdown-content z-[1] menu p-2 shadow bg-Accent rounded-md w-40 mt-1'>
                                                 <li>
                                                     <Link
-                                                        href={`/Profile?userid=${user.uid}`}
+                                                        href={`/profile?userid=${user.uid}`}
                                                     >
                                                         {t("Profile")}
                                                     </Link>
