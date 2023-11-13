@@ -6,7 +6,7 @@ import JobCard from "@/components/JobCard/JobCard";
 
 import Layout from "@/layout/Layout";
 
-import jobsData from "./jobdata";
+import jobsData from "../../data/jobdata";
 // Define the Requirement component
 export default function Careers() {
     const { t } = useTranslation("common");
