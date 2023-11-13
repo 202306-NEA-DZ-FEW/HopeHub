@@ -1,57 +1,40 @@
-import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
-import React, { useEffect, useState } from "react";
-// import { TfiAngleLeft, TfiAngleRight } from "react-icons";
+import React from "react";
+import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
 import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { db } from "../../util/firebase";
-
-const BlogsCarousel = () => {
+const BlogsCarousel = ({ blogs }) => {
     const { t } = useTranslation("common");
 
-    const [blogs, setBlogs] = useState([]); // State to store blog data
+    // Fetch data when the component mounts
 
-    // Function to fetch blog data from Firestore
-    const fetchBlogsFromFirestore = async () => {
-        const blogsCollection = collection(db, "blogs");
-        const q = query(blogsCollection, orderBy("date", "desc"), limit(6)); // Sort by date in descending order and limit to the last 6 entries
-        const data = await getDocs(q);
-        const blogData = [];
-        data.forEach((doc) => {
-            const blog = doc.data();
-            blogData.push(blog);
-        });
-        setBlogs(blogData);
-    };
+    const CustomPrevArrow = ({ onClick }) => (
+        <div className='custom-arrow-l' onClick={onClick}>
+            <TfiAngleLeft size={30} color='black' />
+        </div>
+    );
 
-    useEffect(() => {
-        fetchBlogsFromFirestore();
-    }, []); // Fetch data when the component mounts
-
-    // const CustomPrevArrow = ({ onClick }) => (
-    //     <div className='custom-arrow-l' onClick={onClick}>
-    //         <TfiAngleLeft size={30} color='black' />
-    //     </div>
-    // );
-
-    // const CustomNextArrow = ({ onClick }) => (
-    //     <div className='custom-arrow-r' onClick={onClick}>
-    //         <TfiAngleRight size={30} color='black' />
-    //     </div>
-    // );
+    const CustomNextArrow = ({ onClick }) => (
+        <div className='custom-arrow-r' onClick={onClick}>
+            <TfiAngleRight size={30} color='black' />
+        </div>
+    );
 
     const settings = {
         infinite: true,
-        speed: 500,
+        centerMode: true,
+        centerPadding: "0px",
+        className: "center",
+        speed: 700,
         slidesToShow: 3,
         slidesToScroll: 1,
-        // prevArrow: <CustomPrevArrow />,
-        // nextArrow: <CustomNextArrow />,
+        prevArrow: <CustomPrevArrow />,
+        nextArrow: <CustomNextArrow />,
         responsive: [
             {
                 breakpoint: 1024,
@@ -84,13 +67,13 @@ const BlogsCarousel = () => {
                             <div
                                 key={blog.id}
                                 className='relative px-2 md:mx-4 lg:mx-2 2xl:mx-10'
+                                style={{ aspectRatio: "16/9" }} // Set a fixed aspect ratio
                             >
                                 <Image
                                     src={blog.imageURL}
                                     alt='therapists'
-                                    width={500}
-                                    height={60}
-                                    layout='fixed'
+                                    layout='fill' // Fill the container with the image
+                                    objectFit='cover' // Maintain aspect ratio and cover the container
                                     className='filter brightness-50'
                                 />
                                 <div className='absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4'>

@@ -4,22 +4,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiLogOutCircle } from "react-icons/bi";
 import { PiMagnifyingGlass } from "react-icons/pi";
 
 import { useAppcontext } from "@/context/state";
-import { auth } from "@/util/firebase";
+import { auth, db } from "@/util/firebase";
 
 import darklogo from "../../../public/assets/darklogo.svg";
 import logo from "../../../public/assets/logo.svg";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 
 export default function Navbar() {
     //Function used for translations
     const { t } = useTranslation("common");
     //Using variables from context to set up dark mode, router, and navbar changes once a user is logged in
     const { darkMode } = useAppcontext();
-    const { isLogged, user, blogs } = useAppcontext();
+    const { isLogged, user } = useAppcontext();
+
+    //Defining blogs
+    const [blogs, setBlogs] = useState([]);
 
     //Initializing the Next.js router
     const router = useRouter();
@@ -69,19 +73,42 @@ export default function Navbar() {
         setSearchQuery(e.target.value.toLowerCase()); // Convert the search query to lowercase for case-insensitive search
     };
 
-    // Function to filter blogs based on the search query
-    const filteredBlogs = blogs.filter((blog) => {
-        if (!blog) return false; // Check if blog is defined
-        const blogTitle = (blog.title || "").toLowerCase(); // Check if title is defined
-        const blogSubtitle = (blog.subTitle || "").toLowerCase(); // Check if subTitle is defined
-        const tags = (blog.tags || []).map((tag) => (tag || "").toLowerCase()); // Check if tags is defined
+    // Function to fetch blog data from Firestore
+    const fetchBlogsFromFirestore = async () => {
+        try {
+            const blogsCollection = collection(db, "blogs");
+            const q = query(blogsCollection, orderBy("date", "desc"));
+            const data = await getDocs(q);
+            const blogData = data.docs.map((doc) => doc.data());
+            setBlogs(blogData);
+        } catch (error) {
+            console.error("Error fetching blogs:", error);
+        }
+    };
 
-        return (
-            blogTitle.includes(searchQuery) ||
-            blogSubtitle.includes(searchQuery) ||
-            tags.some((tag) => tag.includes(searchQuery))
-        );
-    });
+    // Function to filter blogs based on the search query
+    const filterBlogs = (blogsData, query) => {
+        return blogsData.filter((blog) => {
+            if (!blog) return false;
+            const blogTitle = (blog.title || "").toLowerCase();
+            const blogSubtitle = (blog.subTitle || "").toLowerCase();
+            const tags = (blog.tags || []).map((tag) =>
+                (tag || "").toLowerCase()
+            );
+
+            return (
+                blogTitle.includes(query) ||
+                blogSubtitle.includes(query) ||
+                tags.some((tag) => tag.includes(query))
+            );
+        });
+    };
+
+    useEffect(() => {
+        fetchBlogsFromFirestore();
+    }, []);
+
+    const filteredBlogs = filterBlogs(blogs, searchQuery);
 
     return (
         <div className='navbar h-8 sticky top-0 z-10 dark:bg-NeutralBlack dark:backdrop-blur-lg dark:bg-opacity-30 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b-slate-400'>
@@ -238,7 +265,6 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                {/* Add the "visible" class to enable the pop-in effect */}
                 {searchQuery && filteredBlogs.length > 0 && (
                     <div className='search-results-dropdown visible absolute bg-NeutralWhite rounded-lg shadow-md z-10 w-full font-poppins pl-8'>
                         <ul className='p-2 dropdown-content z-[1] menu mt-6 shadow bg-base-100 rounded-md'>

@@ -5,10 +5,13 @@ import BookingButton from "@/components/BookingButton/BookingButton";
 import { useTranslation } from "next-i18next";
 import { useAppcontext } from "../../context/state"; // Replace with the actual path to your context file.
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/util/firebase";
 
-function BlogsPage() {
+function BlogsPage({ blogs }) {
     const { t } = useTranslation("common");
-    const { blogs, user } = useAppcontext(); // Access the blogs data from the context.
+    const { user } = useAppcontext(); // Access the blogs data from the context.
+    console.log("im blogs", blogs);
 
     return (
         <Layout>
@@ -81,11 +84,17 @@ function BlogsPage() {
 
 export default BlogsPage;
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale, query }) {
+    const blogSnapshot = await getDocs(collection(db, "blogs"));
+    const blogs = [];
+    blogSnapshot.forEach((doc) => {
+        blogs.push(doc.data());
+    });
+
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
-            // Will be passed to the page component as props
+            blogs,
         },
     };
 }

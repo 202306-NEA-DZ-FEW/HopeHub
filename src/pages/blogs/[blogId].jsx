@@ -3,14 +3,14 @@ import React from "react";
 import { useRouter } from "next/router";
 import Layout from "@/layout/Layout"; // Import your layout component here
 import { db } from "../../util/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import BlogsCarousel from "@/components/HomePage/BlogsCarousel";
 import { useTranslation } from "next-i18next";
 import { format } from "date-fns";
 import { PiPaperPlaneTiltFill } from "react-icons/pi";
 import { useAppcontext } from "@/context/state";
 
-function BlogPage({ blog }) {
+function BlogPage({ blog, blogs }) {
     // Function used for translations
     const { t } = useTranslation("common");
 
@@ -83,7 +83,7 @@ function BlogPage({ blog }) {
                 dangerouslySetInnerHTML={renderBlogContent(blog.body)}
             />
 
-            <BlogsCarousel />
+            <BlogsCarousel blogs={blogs} />
             <div className='flex justify-center mx-auto items-center text-center flex-col my-14'>
                 <h1 className='my-2 mx-8 text-base md:text-4xl font-poppins  text-NeutralBlack dark:text-NeutralWhite font-semibold'>
                     {t("Subscribe to Our Newsletter")}
@@ -116,23 +116,32 @@ export async function getServerSideProps(context) {
     const { blogId } = context.query;
 
     try {
-        const blogDoc = doc(db, "blogs", blogId);
-        const blogSnapshot = await getDoc(blogDoc);
-        const blog = blogSnapshot.data();
+        // Fetch all blogs
+        const blogsSnapshot = await getDocs(collection(db, "blogs"));
+        const blogs = blogsSnapshot.docs.map((doc) => doc.data());
 
-        if (!blog) {
+        // Fetch the specific blog using the provided blogId
+        const blogDocRef = doc(db, "blogs", blogId);
+        const blogSnapshot = await getDoc(blogDocRef);
+
+        // Check if the requested blog exists
+        if (!blogSnapshot.exists()) {
             return {
                 notFound: true, // Return a 404 page if the blog is not found
             };
         }
 
+        const blog = blogSnapshot.data();
+
         return {
             props: {
                 blog,
+                blogs,
             },
         };
     } catch (error) {
         console.error("Error fetching blog:", error);
+
         return {
             notFound: true, // Return a 404 page if an error occurs
         };
