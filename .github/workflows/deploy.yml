@@ -1,0 +1,7 @@
+name: deploy nexturl to vercel
+on: [push, pull_request]
+jobs:
+    vercel:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
