@@ -8,12 +8,24 @@ export default function Patients({
     gender,
     phoneNumber,
     imgURL,
+    onDelete,
+    member,
 }) {
     const { t } = useTranslation("common");
+
     // const [user] = useAppcontext()
 
     // if (user.isTherapist) {
     //     const { name, age, birthday, gender, phoneNumber } = user;
+
+    const handlePatientDeleteClick = async () => {
+        try {
+            // Trigger the onDelete function with the blog ID
+            await onDelete(member);
+        } catch (error) {
+            console.error("Error deleting blog:", error);
+        }
+    };
 
     return (
         <div className='card flex w-64 h-110 mb-4 mx-auto font-poppins text-NeutralBlack bg-NeutralWhite shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)]'>
@@ -45,7 +57,10 @@ export default function Patients({
             </div>
 
             <div className='flex flex-col items-center space-y-2 py-4'>
-                <button className='w-56 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
+                <button
+                    onClick={handlePatientDeleteClick}
+                    className='w-56 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
+                >
                     {t("Delete")}
                 </button>
                 <button className='w-56 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>

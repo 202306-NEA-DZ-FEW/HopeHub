@@ -9,6 +9,7 @@ import { useTranslation } from "next-i18next";
 import { format } from "date-fns";
 import { PiPaperPlaneTiltFill } from "react-icons/pi";
 import { useAppcontext } from "@/context/state";
+import styles from "../../styles/BlogContent.module.css";
 
 function BlogPage({ blog, blogs }) {
     // Function used for translations
@@ -47,7 +48,7 @@ function BlogPage({ blog, blogs }) {
                 <img
                     src={blog.imageURL}
                     alt={blog.title}
-                    className='w-full -mt-16 md:-mt-80 object-cover  mx-auto text-NeutralBlack dark:text-NeutralWhite relative'
+                    className='w-full -mt-16 md:-mt-36 object-cover  mx-auto text-NeutralBlack dark:text-NeutralWhite relative'
                     style={{
                         maskImage:
                             "linear-gradient(to bottom, transparent, white 50%)",
@@ -64,9 +65,10 @@ function BlogPage({ blog, blogs }) {
                     </h1>
                     <h1
                         className={`hidden my-2 mx-4 md:mx-20 italic md:text-base text-center font-poppins text-NeutralBlack dark:text-NeutralWhite md:block`}
-                    >
-                        {blog.summary}
-                    </h1>
+                        dangerouslySetInnerHTML={{
+                            __html: blog.body.split("</p")[0],
+                        }}
+                    ></h1>
                     <div className='my-1 font-poppins text-NeutralBlack dark:text-NeutralWhite items-center mx-auto flex flex-col text-xs md:text-base'>
                         <h1>
                             {t("Written by")} {blog.author}
@@ -79,8 +81,14 @@ function BlogPage({ blog, blogs }) {
             </div>
 
             <div
-                className='my-6 mx-8 text-xs md:text-base font-poppins text-NeutralBlack dark:text-NeutralWhite'
-                dangerouslySetInnerHTML={renderBlogContent(blog.body)}
+                className={`${styles["blog-content"]} my-6 mx-8 text-base font-poppins text-NeutralBlack dark:text-NeutralWhite`}
+                dangerouslySetInnerHTML={{
+                    __html: blog.body
+                        .replace(/<p[^>]*>/, "")
+                        .split("</p>")
+                        .slice(1)
+                        .join("</p>"),
+                }}
             />
 
             <BlogsCarousel blogs={blogs} />
@@ -120,6 +128,10 @@ export async function getServerSideProps(context) {
         const blogsSnapshot = await getDocs(collection(db, "blogs"));
         const blogs = blogsSnapshot.docs.map((doc) => doc.data());
 
+        const sortedBlogs = blogs.sort(
+            (a, b) => new Date(b.date) - new Date(a.date)
+        );
+
         // Fetch the specific blog using the provided blogId
         const blogDocRef = doc(db, "blogs", blogId);
         const blogSnapshot = await getDoc(blogDocRef);
@@ -136,7 +148,7 @@ export async function getServerSideProps(context) {
         return {
             props: {
                 blog,
-                blogs,
+                blogs: sortedBlogs,
             },
         };
     } catch (error) {

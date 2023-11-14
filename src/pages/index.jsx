@@ -38,10 +38,14 @@ export async function getServerSideProps({ locale, query }) {
         blogs.push(doc.data());
     });
 
+    const sortedBlogs = blogs.sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+    );
+
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
-            blogs,
+            blogs: sortedBlogs,
         },
     };
 }

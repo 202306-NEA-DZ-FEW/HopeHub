@@ -50,6 +50,9 @@ const formats = [
 
 const TextEditor = ({ value, onChange }) => {
     // const { t } = useTranslation("common");
+    const handleChange = (content, delta, source, editor) => {
+        onChange(content); // Ensure that you are updating the parent state
+    };
 
     return typeof window !== "undefined" ? (
         <div>
@@ -64,7 +67,11 @@ const TextEditor = ({ value, onChange }) => {
             /> */}
             <QuillNoSSRWrapper
                 value={value}
-                onChange={onChange}
+                onChange={(content, _, __, editor) => {
+                    // Call the onChange prop with the HTML content of the editor
+                    onChange(editor.getHTML());
+                    console.log("Editor content changed:", content);
+                }}
                 className='h-fit'
                 modules={modules}
                 formats={formats}

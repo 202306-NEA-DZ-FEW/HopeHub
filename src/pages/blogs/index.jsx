@@ -11,7 +11,6 @@ import { db } from "@/util/firebase";
 function BlogsPage({ blogs }) {
     const { t } = useTranslation("common");
     const { user } = useAppcontext(); // Access the blogs data from the context.
-    console.log("im blogs", blogs);
 
     return (
         <Layout>
@@ -28,9 +27,9 @@ function BlogsPage({ blogs }) {
                                 image={blog.imageURL}
                                 title={blog.title}
                                 subtitle={blog.subTitle}
-                                summary={blog.summary}
                                 author={blog.author}
                                 blogId={blog.id}
+                                body={blog.body}
                             />
                         </div>
                     ))}
@@ -91,10 +90,14 @@ export async function getServerSideProps({ locale, query }) {
         blogs.push(doc.data());
     });
 
+    const sortedBlogs = blogs.sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+    );
+
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
-            blogs,
+            blogs: sortedBlogs,
         },
     };
 }

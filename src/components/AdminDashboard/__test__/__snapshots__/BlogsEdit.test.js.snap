@@ -8,7 +8,6 @@ exports[`renders correctly 1`] = `
     className="flex flex-col w-1/2"
     onSubmit={[Function]}
   >
-     
     <div
       className="pl-4 mb-4 space-y-1 text-xl flex flex-col"
     >
@@ -30,14 +29,14 @@ exports[`renders correctly 1`] = `
       className="pl-4 mb-4 space-y-1 text-xl flex flex-col"
     >
       <label
-        htmlFor="subtitleitle"
+        htmlFor="subTitle"
       >
         Subtitle
       </label>
       <input
         className="w-full text-NeutralBlack font-normal text-lg px-4 rounded-md border border-slate-300 bg-white py-3 outline-none "
-        id="subtitle"
-        name="subtitle"
+        id="subTitle"
+        name="subTitle"
         onChange={[Function]}
         type="text"
         value=""
@@ -67,7 +66,6 @@ exports[`renders correctly 1`] = `
         id="imageURL"
         name="imageURL"
         onChange={[Function]}
-        placeholder="Upload Image"
         type="file"
       />
     </div>

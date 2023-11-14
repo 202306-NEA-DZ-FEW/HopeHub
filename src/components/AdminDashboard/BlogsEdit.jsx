@@ -1,57 +1,135 @@
+import dynamic from "next/dynamic";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import format from "date-fns/format";
 import { doc, setDoc } from "firebase/firestore";
 import { useTranslation } from "next-i18next";
-import { useState } from "react";
-import { useRef } from "react";
 
 import styles from "../../styles/BlogdEdit.module.css";
-
 import { db } from "@/util/firebase";
 
-import TextEditor from "./TextEditor";
+const QuillNoSSRWrapper = dynamic(import("react-quill"), {
+    ssr: false,
+    loading: () => <p>Loading ...</p>,
+});
 
-export default function BlogsEdit() {
+const modules = {
+    toolbar: [
+        [{ header: "1" }, { header: "2" }, { font: [] }],
+        [{ size: [] }],
+        ["bold", "italic", "underline", "strike", "blockquote"],
+        [
+            { list: "ordered" },
+            { list: "bullet" },
+            { indent: "-1" },
+            { indent: "+1" },
+        ],
+        ["link", "image", "video"],
+        ["clean"],
+    ],
+    clipboard: {
+        matchVisual: false,
+    },
+};
+
+const formats = [
+    "header",
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "video",
+];
+
+const TextEditor = ({ value, onChange }) => {
+    const handleChange = (content, _, __, editor) => {
+        onChange(editor.getHTML()); // Use editor.getHTML() to get the HTML content
+    };
+
+    return typeof window !== "undefined" ? (
+        <div>
+            <QuillNoSSRWrapper
+                value={value}
+                onChange={handleChange}
+                className='h-fit'
+                modules={modules}
+                formats={formats}
+            />
+        </div>
+    ) : (
+        <p>Loading...</p>
+    );
+};
+export default function BlogsEdit({ blog }) {
     const { t } = useTranslation("common");
+    const fileInputRef = useRef(null);
     const [tag, setTag] = useState("");
     const [tags, setTags] = useState([]);
+    const [editorContent, setEditorContent] = useState("");
     const [formData, setFormData] = useState({
         title: "",
-        subtitle: "",
+        subTitle: "",
         author: "",
-        body: "",
         tags: [],
         imageURL: "",
         date: format(new Date(), "yyyy-MM-dd"),
         id: uniqueID(),
     });
+
+    useEffect(() => {
+        if (blog) {
+            setFormData({
+                title: blog.title || "",
+                subTitle: blog.subTitle || "",
+                author: blog.author || "",
+                tags: blog.tags || [],
+                imageURL: blog.imageURL || "",
+                date: blog.date || format(new Date(), "yyyy-MM-dd"),
+                id: blog.id || uniqueID(),
+            });
+            setTags(blog.tags || []);
+            setEditorContent(blog.body || "");
+        }
+    }, [blog]);
+
     function uniqueID() {
         return (
             Math.random().toString(36).substring(2) + Date.now().toString(36)
         );
-        // return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-        //     (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-        // );
     }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             await setDoc(doc(db, "blogs", formData.id), formData);
-        } catch {
-            (err) => console.error("error adding the blog", err);
+        } catch (err) {
+            console.error("error adding the blog", err);
         }
-        // Clear the form fields after submission
         setFormData({
             title: "",
-            subtitle: "",
+            subTitle: "",
             author: "",
-            body: "",
             tags: [],
             imageURL: "",
+            date: format(new Date(), "yyyy-MM-dd"),
+            id: uniqueID(),
         });
         setTags([]);
+        setEditorContent("");
+        if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+        }
     };
-    function handleImage(e) {
+
+    const handleImage = (e) => {
         e.preventDefault();
         const img = e.target.files[0];
         const formD = new FormData();
@@ -67,25 +145,26 @@ export default function BlogsEdit() {
                     ...formData,
                     imageURL: response.data.secure_url,
                 });
-                // console.log('cloudinary res', response.data.secure_url)
             })
             .catch((err) => console.error("upload image error", err));
-        console.log("image uploaded", formData);
-    }
+    };
 
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
         });
-        // console.log('handle change formdata', formData)
     };
-    const handleButtonClick = () => {
-        // Manually trigger form submission when the button is clicked
-        formRef.current.dispatchEvent(new Event("submit"));
+
+    const handleChangeEditor = (content) => {
+        setEditorContent(content);
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            body: content,
+        }));
     };
-    const formRef = useRef(null);
-    function addTag(e) {
+
+    const addTag = (e) => {
         if (e.key === "Enter") {
             e.preventDefault();
             setTags([...tags, e.target.value]);
@@ -95,11 +174,13 @@ export default function BlogsEdit() {
             });
             setTag("");
         }
-    }
-    function deleteTag(txt) {
+    };
+
+    const deleteTag = (txt) => {
         let newArr = tags.filter((tag) => tag !== txt);
         setTags(newArr);
-    }
+    };
+
     const TagBtn = ({ txt }) => (
         <span className='w-fit p-1 mb-5 mr-2 border rounded-3xl border-gray-500  group relative'>
             {txt}{" "}
@@ -111,76 +192,54 @@ export default function BlogsEdit() {
             </button>
         </span>
     );
+
     return (
         <div className='flex flex-col md:flex-row md:w-full '>
-            <form
-                onSubmit={handleSubmit}
-                ref={formRef}
-                className='flex flex-col w-1/2'
-            >
-                {" "}
-                {/* Use onSubmit to handle form submission */}
+            <form onSubmit={handleSubmit} className='flex flex-col w-1/2'>
                 <div className='pl-4 mb-4 space-y-1 text-xl flex flex-col'>
-                    {/* <span className='text-NeutralBlack tracking-wider'>
-                    {t("Title")}
-                </span> */}
                     <label htmlFor='Title'>{t("Title")}</label>
                     <input
                         type='text'
                         id='Title'
                         className='w-full text-NeutralBlack font-normal text-lg px-4 rounded-md border border-slate-300 bg-white py-3 outline-none '
-                        value={formData.title} // Bind the value to the form state
+                        value={formData.title}
                         onChange={handleChange}
                         name='title'
                     />
                 </div>
                 <div className='pl-4 mb-4 space-y-1 text-xl flex flex-col'>
-                    {/* <span className='text-NeutralBlack tracking-wider'>
-                    {t("Title")}
-                </span> */}
-                    <label htmlFor='subtitleitle'>{t("Subtitle")}</label>
+                    <label htmlFor='subTitle'>{t("Subtitle")}</label>
                     <input
                         type='text'
-                        id='subtitle'
+                        id='subTitle'
                         className='w-full text-NeutralBlack font-normal text-lg px-4 rounded-md border border-slate-300 bg-white py-3 outline-none '
-                        value={formData.subtitle} // Bind the value to the form state
+                        value={formData.subTitle}
                         onChange={handleChange}
-                        name='subtitle'
+                        name='subTitle'
                     />
                 </div>
                 <div className='pl-4 mb-4 space-y-1 text-xl flex flex-col'>
-                    {/* <span className='text-NeutralBlack'>{t("Author")}</span> */}
                     <label htmlFor='Author'>{t("Author")}</label>
                     <input
                         type='text'
                         id='Author'
                         className='w-full text-NeutralBlack font-normal text-lg px-4 rounded-md border border-slate-300 bg-white py-3 outline-none '
-                        value={formData.author} // Bind the value to the form state
+                        value={formData.author}
                         onChange={handleChange}
                         name='author'
                     />
                 </div>
-                {/* <div className='pl-4 mb-4 h-fit space-y-1 text-xl flex flex-col'>
-                <span className='text-NeutralBlack'>{t("body")}</span>
-                <TextEditor
-                    value={formData.body}
-                    onChange={(value) =>
-                        setFormData({ ...formData, body: value })
-                    }
-                />
-            </div> */}
                 <div className={styles.input_file}>
                     <input
                         type='file'
-                        // value={formData.imageURL}
-                        placeholder='Upload Image'
+                        ref={fileInputRef}
                         name='imageURL'
                         id='imageURL'
                         onChange={handleImage}
                     />
                 </div>
                 <button
-                    onClick={handleButtonClick}
+                    onClick={handleSubmit}
                     className='w-32 h-10 self-start ml-4 mt-20 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                 >
                     {t("Submit")}
@@ -207,10 +266,8 @@ export default function BlogsEdit() {
                 <div className='pl-4 mb-4 h-fit space-y-1 text-xl flex flex-col'>
                     <span className='text-NeutralBlack'>{t("body")}</span>
                     <TextEditor
-                        value={formData.body}
-                        onChange={(value) =>
-                            setFormData({ ...formData, body: value })
-                        }
+                        value={editorContent}
+                        onChange={handleChangeEditor}
                     />
                 </div>
             </div>

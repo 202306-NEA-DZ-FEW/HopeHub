@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
@@ -11,12 +11,18 @@ import Therapists from "@/components/AdminDashboard/Therapists";
 
 // import { Patient, Therapist } from "@/util/constants";
 import { db } from "@/util/firebase";
+import Blogs from "@/components/AdminDashboard/Blogs";
 
-export default function AdminDashboard({ blogs, users }) {
-    // console.log("users data", users);
+export default function AdminDashboard({ blogs: initialBlogs, users }) {
+    console.log("users data", users);
     const { t } = useTranslation("common");
     const [visibleSection, setVisibleSection] = useState("therapists");
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+    const [selectedBlog, setSelectedBlog] = useState(null);
+    const [blogs, setBlogs] = useState(initialBlogs);
+    const [patients, setPatients] = useState(
+        users.filter((user) => !user.isTherapist)
+    ); // Initialize state with initial patients
     const [isBlogsDropdownOpen, setIsBlogsDropdownOpen] = useState(false); // Correct the variable name
     const handleSectionToggle = (section) => {
         setVisibleSection(section);
@@ -28,6 +34,57 @@ export default function AdminDashboard({ blogs, users }) {
             setIsUserDropdownOpen(!isUserDropdownOpen);
         } else if (dropdown === "blogs") {
             setIsBlogsDropdownOpen(!isBlogsDropdownOpen); // Correct the variable name
+        }
+    };
+
+    const handleEditBlog = (blog) => {
+        // Set the selected blog in the state
+        setSelectedBlog(blog);
+        // Switch to the 'Blogs Edit' section
+        setVisibleSection("Blogs Edit");
+    };
+
+    const handleDelete = async (blog) => {
+        try {
+            // Delete the blog from Firestore
+            const blogRef = doc(collection(db, "blogs"), blog.id);
+            await deleteDoc(blogRef);
+
+            // Update the state to remove the deleted blog
+            const updatedBlogs = blogs.filter((b) => b.id !== blog.id);
+            setBlogs(updatedBlogs);
+
+            // Handle any additional logic after deletion if needed
+            console.log("Blog deleted successfully!");
+        } catch (error) {
+            console.error("Error deleting blog:", error);
+            throw error;
+        }
+    };
+
+    const handleDeletePatient = async (patient) => {
+        try {
+            console.log("im patient", patient);
+            if (!patient.uid) {
+                console.error("Invalid uid for patient:", patient.uid);
+                return;
+            }
+            // Delete the patient from Firestore
+            const patientRef = doc(collection(db, "users"), patient.uid);
+            await deleteDoc(patientRef);
+
+            // Update the state to remove the deleted patient
+            const updatedPatients = patients.filter(
+                (p) => p.uid !== patient.uid
+            );
+            setPatients(updatedPatients);
+
+            // Handle any additional logic after deletion if needed
+            console.log("Patient deleted successfully!");
+        } catch (error) {
+            console.error("Error deleting patient:", error);
+            console.log("im a patient", patient);
+            throw error;
         }
     };
 
@@ -175,6 +232,8 @@ export default function AdminDashboard({ blogs, users }) {
                                     gender={member.gender}
                                     phoneNumber={member.phoneNumber}
                                     imgURL={member.photoURL}
+                                    member={member}
+                                    onDelete={() => handleDeletePatient(member)}
                                 />
                             ))}
                         </>
@@ -190,9 +249,16 @@ export default function AdminDashboard({ blogs, users }) {
                     )}
                     {visibleSection === "Posts" &&
                         blogs.map((blog) => (
-                            <Posts key={blog.id} name={blog.title} />
+                            <Blogs
+                                key={blog.id}
+                                blog={blog}
+                                onEdit={handleEditBlog}
+                                onDelete={handleDelete}
+                            />
                         ))}
-                    {visibleSection === "Blogs Edit" && <BlogsEdit />}
+                    {visibleSection === "Blogs Edit" && (
+                        <BlogsEdit blog={selectedBlog} />
+                    )}
                 </div>
             </div>
         </div>

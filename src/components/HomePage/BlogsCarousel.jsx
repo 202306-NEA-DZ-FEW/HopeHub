@@ -11,7 +11,10 @@ import "slick-carousel/slick/slick-theme.css";
 const BlogsCarousel = ({ blogs }) => {
     const { t } = useTranslation("common");
 
-    // Fetch data when the component mounts
+    // Sort blogs by date in descending order
+
+    // Take the last 6 blogs
+    const lastSixBlogs = blogs.slice(0, 6);
 
     const CustomPrevArrow = ({ onClick }) => (
         <div className='custom-arrow-l' onClick={onClick}>
@@ -24,12 +27,9 @@ const BlogsCarousel = ({ blogs }) => {
             <TfiAngleRight size={30} color='black' />
         </div>
     );
-
     const settings = {
         infinite: true,
-        centerMode: true,
         centerPadding: "0px",
-        className: "center",
         speed: 700,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -62,7 +62,7 @@ const BlogsCarousel = ({ blogs }) => {
             </h1>
             <div className='px-20'>
                 <Slider {...settings}>
-                    {blogs.map((blog) => (
+                    {lastSixBlogs.map((blog) => (
                         <Link key={blog.id} href={`/blogs/${blog.id}`}>
                             <div
                                 key={blog.id}
