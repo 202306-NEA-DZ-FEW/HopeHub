@@ -201,8 +201,8 @@ export default function AdminDashboard({ blogs, users }) {
 
 export async function getServerSideProps({ locale, query }) {
     const specialToken = query.specialToken;
-    console.log("queryyyyyyyyyyyyyyy", query);
-    console.log("im token", specialToken);
+    // console.log("queryyyyyyyyyyyyyyy", query);
+    // console.log("im token", specialToken);
     // Check if there is a valid special token
     if (specialToken !== process.env.NEXT_PUBLIC_SPECIAL_TOKEN) {
         return { redirect: { destination: "/Auth", permanent: false } };
