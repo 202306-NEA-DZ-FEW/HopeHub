@@ -108,11 +108,9 @@ exports[`renders correctly 1`] = `
       >
         body
       </span>
-      <div>
-        <p>
-          Loading ...
-        </p>
-      </div>
+      <p>
+        loading...
+      </p>
     </div>
   </div>
 </div>
