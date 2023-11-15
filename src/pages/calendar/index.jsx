@@ -5,25 +5,32 @@ import { collection, getDocs } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import EvenetModal from "@/components/events/EvenetModal";
+import EventModal from "@/components/calendarEvents/EventModal";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
 function Calendar({ appointments }) {
+    // console.log('client appointments', appointments)
     const router = useRouter();
     const { user } = useAppcontext();
     const { t } = useTranslation("common");
     const events = user.isTherapist
-        ? appointments.map((obj, id) => {
-              const key = Object.keys(obj)[id];
-              // console.log('objjjj',obj[key])
-              return { title: obj[key]?.time, id: key, ...obj[key] };
-          })
+        ? appointments /* .map((ev)=>{
+            return { title: ev.time, id: ev.uid, ...ev };
+        }) */
         : user?.appointments?.map((d) => ({ title: d.time, ...d }));
-    // console.log("appointments", events);
+    console.log("calender ave", events);
+    // console.log("appointments", appointments);
+    // if(user.isTherapist){
+    //     appointments.forEach((obj, id) => {
+    //         const key = Object.keys(obj)[id];
+    //         // console.log('objjjj',obj[key])
+    //         return { title: obj[key]?.time, id: key, ...obj[key] };
+    //     })
+    // }
 
     const [modalOpen, setModalOpen] = useState(false);
     const [eventData, setEventData] = useState(null);
@@ -54,10 +61,11 @@ function Calendar({ appointments }) {
         });
         setModalOpen(!modalOpen);
     }
+    useEffect(() => {}, []);
     return (
         <Layout className='max-w-screen'>
             {modalOpen && (
-                <EvenetModal
+                <EventModal
                     event={eventData}
                     position={modalPosition}
                     closeModal={() => {
@@ -88,7 +96,7 @@ function Calendar({ appointments }) {
                         bookApp: {
                             text: "Book appointment",
                             click: function () {
-                                router.push("/booking");
+                                router.push(`/booking?userid=${user.uid}`);
                             },
                         },
                     }}
@@ -111,10 +119,24 @@ export async function getServerSideProps({ locale, query }) {
         const appointmentSnapshot = await getDocs(
             collection(db, "appointments")
         );
+        const events = {};
         const appointments = [];
         appointmentSnapshot.forEach((doc) => {
-            appointments.push(doc.data());
+            // events.push(doc.data());
+            events[doc.id] = doc.data();
+            // console.log('each doc', doc.id, doc.data())
         });
+        // console.log('server appoin', events)
+        for (let index in events) {
+            for (let key in events[index]) {
+                appointments.push({
+                    title: events[index][key].time,
+                    id: index,
+                    ...events[index][key],
+                });
+            }
+        }
+        console.log("appointments..............", appointments);
         return {
             props: {
                 ...(await serverSideTranslations(locale, ["common"])),

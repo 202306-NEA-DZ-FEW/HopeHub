@@ -41,6 +41,7 @@ export default function Submission({ OnNext, OnPrevious }) {
                     counselorQualities: bookingInfos.counseQualities,
                     issues: bookingInfos.issues,
                     description: bookingInfos.description,
+                    name: auth.currentUser.displayName,
                 },
             });
         } else {
@@ -54,6 +55,7 @@ export default function Submission({ OnNext, OnPrevious }) {
                     counselorQualities: bookingInfos.counseQualities,
                     issues: bookingInfos.issues,
                     description: bookingInfos.description,
+                    name: auth.currentUser.displayName,
                 },
             });
         }

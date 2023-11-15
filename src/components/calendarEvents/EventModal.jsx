@@ -1,6 +1,6 @@
 import React from "react";
 
-function EvenetModal({ event, position, closeModal }) {
+function EventModal({ event, position, closeModal }) {
     return (
         <>
             <div
@@ -58,4 +58,4 @@ function EvenetModal({ event, position, closeModal }) {
     );
 }
 
-export default EvenetModal;
+export default EventModal;
