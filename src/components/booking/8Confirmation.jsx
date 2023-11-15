@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
+import { auth } from "@/util/firebase";
+
 export default function Confirmation() {
     const { t } = useTranslation("common");
     return (
@@ -31,7 +33,7 @@ export default function Confirmation() {
 
                     <div className=' self-center py-10 group '>
                         <Link
-                            href='/calendar'
+                            href={`/calendar?userId=${auth.currentUser?.uid}`}
                             className='w-28 h-10 px-5 py-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
                         >
                             {t("Back to Calendar")}

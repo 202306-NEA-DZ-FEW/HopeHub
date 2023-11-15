@@ -1,10 +1,10 @@
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 
 import Layout from "@/layout/Layout";
-import Link from "next/link";
 
 function Thanks() {
     const query = useSearchParams();
@@ -33,7 +33,10 @@ function Thanks() {
                         {t("Thank text 2")}
                     </p>
                 )}
-                <Link className='btn ml-auto font-poppins border-none font-medium text-2xl bg-Accent text-NeutralBlack dark:text-NeutralWhite  dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
+                <Link
+                    href='/'
+                    className='btn ml-auto font-poppins border-none font-medium text-2xl bg-Accent text-NeutralBlack dark:text-NeutralWhite  dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
+                >
                     {t("Back to Home")}
                 </Link>
             </main>

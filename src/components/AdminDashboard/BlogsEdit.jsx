@@ -1,17 +1,25 @@
 import axios from "axios";
 import format from "date-fns/format";
 import { doc, setDoc } from "firebase/firestore";
+import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
-import { useState } from "react";
-import { useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import styles from "../../styles/BlogdEdit.module.css";
 
 import { db } from "@/util/firebase";
 
-import TextEditor from "./TextEditor";
+// import TextEditor from "./TextEditor";
 
 export default function BlogsEdit() {
+    const TextEditor = useMemo(() => {
+        return dynamic(() => import("@/components/AdminDashboard/TextEditor"), {
+            loading: () => <p>loading...</p>,
+
+            ssr: false,
+        });
+    }, []);
+
     const { t } = useTranslation("common");
     const [tag, setTag] = useState("");
     const [tags, setTags] = useState([]);
