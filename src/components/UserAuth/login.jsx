@@ -6,7 +6,8 @@ import { useState } from "react";
 import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
-import { auth } from "@/util/firebase";
+import { auth, db } from "@/util/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 // After successful login
 
@@ -19,34 +20,34 @@ function Login({ isChecked, setChecked }) {
 
     const [user, setUser] = useState(null); // Initialize user state as null
 
-    function handleLogin(e) {
+    async function handleLogin(e, email, password, router, setUser) {
         e.preventDefault();
         const specialToken = process.env.NEXT_PUBLIC_SPECIAL_TOKEN;
-        console.log("tokeeeen", specialToken);
+        const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
         if (email === "admin@hopehub.com") {
-            if (password === "hopehub2023") {
-                console.log("aaaaaaaa", specialToken);
+            if (password === adminPassword) {
                 router.push(`/admin?specialToken=${specialToken}`);
             } else {
                 alert("Wrong password");
             }
             return;
         }
-        authChange();
+        try {
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+            const loggedInUser = userCredential.user;
 
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const loggedInUser = userCredential.user;
+            // Check if the user exists in the Firestore users collection
+            const userDocRef = doc(db, "users", loggedInUser.uid);
+            const userDoc = await getDoc(userDocRef);
 
-                // Set cookie for 7 days
-                Cookie.set("loggedInUser", loggedInUser.uid, { expires: 7 });
-
-                // Update the user state
-                setUser(loggedInUser);
-
-                router.push("/");
-            })
-            .catch(() => {
+            if (!userDoc.exists()) {
+                // User doesn't exist in Firestore users collection
+                // Delete user from Firebase Authentication
+                await auth.currentUser.delete();
                 toast.error("Can't log in", {
                     position: toast.POSITION.BOTTOM_CENTER,
                     autoClose: 2500,
@@ -54,7 +55,25 @@ function Login({ isChecked, setChecked }) {
                     className:
                         "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
                 });
+            } else {
+                // User exists in Firestore users collection, proceed to dashboard or homepage
+                // Set cookie for 7 days
+                authChange();
+                Cookie.set("loggedInUser", loggedInUser.uid, { expires: 7 });
+                router.push("/");
+                // Update the user state
+                setUser(loggedInUser);
+            }
+        } catch (error) {
+            console.log("im error", error);
+            toast.error("Can't log in", {
+                position: toast.POSITION.BOTTOM_CENTER,
+                autoClose: 2500,
+                transition: Slide,
+                className:
+                    "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
             });
+        }
     }
 
     return (
@@ -64,7 +83,9 @@ function Login({ isChecked, setChecked }) {
                     {t("Log In")}
                 </h2>
                 <form
-                    onSubmit={handleLogin}
+                    onSubmit={(e) =>
+                        handleLogin(e, email, password, router, setUser)
+                    }
                     className='text-4xl p-6 w-full bg-NeutralWhite dark:bg-Dark_Primary rounded-md shadow-md flex flex-col gap-4'
                 >
                     <input

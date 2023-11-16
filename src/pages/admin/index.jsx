@@ -1,4 +1,11 @@
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import {
+    collection,
+    deleteDoc,
+    doc,
+    getDocs,
+    query,
+    where,
+} from "firebase/firestore";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
@@ -6,7 +13,6 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 import BlogsEdit from "@/components/AdminDashboard/BlogsEdit";
 import Patients from "@/components/AdminDashboard/Patients";
-import Posts from "@/components/AdminDashboard/Posts";
 import Therapists from "@/components/AdminDashboard/Therapists";
 
 // import { Patient, Therapist } from "@/util/constants";
@@ -23,12 +29,15 @@ export default function AdminDashboard({ blogs: initialBlogs, users }) {
     const [patients, setPatients] = useState(
         users.filter((user) => !user.isTherapist)
     ); // Initialize state with initial patients
+    const [therapists, setTherapists] = useState(
+        users.filter((user) => user.isTherapist)
+    );
     const [isBlogsDropdownOpen, setIsBlogsDropdownOpen] = useState(false); // Correct the variable name
     const handleSectionToggle = (section) => {
         setVisibleSection(section);
     };
-    const Patient = users.filter((user) => !user.isTherapist);
-    const Therapist = users.filter((user) => user.isTherapist);
+    // const Patient = users.filter((user) => !user.isTherapist);
+    // const Therapist = users.filter((user) => user.isTherapist);
     const toggleDropdown = (dropdown) => {
         if (dropdown === "users") {
             setIsUserDropdownOpen(!isUserDropdownOpen);
@@ -65,25 +74,107 @@ export default function AdminDashboard({ blogs: initialBlogs, users }) {
     const handleDeletePatient = async (patient) => {
         try {
             console.log("im patient", patient);
-            if (!patient.uid) {
-                console.error("Invalid uid for patient:", patient.uid);
-                return;
-            }
-            // Delete the patient from Firestore
-            const patientRef = doc(collection(db, "users"), patient.uid);
-            await deleteDoc(patientRef);
 
-            // Update the state to remove the deleted patient
-            const updatedPatients = patients.filter(
-                (p) => p.uid !== patient.uid
+            // Check if the patient has a uid
+            if (patient.uid) {
+                // Delete the patient from Firestore using uid
+                const patientRef = doc(collection(db, "users"), patient.uid);
+                await deleteDoc(patientRef);
+            } else {
+                // Fetch all documents and filter based on some condition
+                const querySnapshot = await getDocs(collection(db, "users"));
+                const docToDelete = querySnapshot.docs.find((doc) => {
+                    // Customize this logic based on your requirements
+                    // In this example, I'm checking if all key-value pairs match
+                    const patientData = doc.data();
+                    return Object.keys(patient).every(
+                        (key) => patientData[key] === patient[key]
+                    );
+                });
+                if (docToDelete) {
+                    await deleteDoc(docToDelete.ref);
+                } else {
+                    console.error("User not found for deletion:", patient);
+                    return;
+                }
+            }
+            // Fetch the updated collection after deletion
+            const q = query(
+                collection(db, "users"),
+                where("isTherapist", "==", false)
             );
+            const updatedPatientsSnapshot = await getDocs(q);
+            const updatedPatients = updatedPatientsSnapshot.docs.map((doc) =>
+                doc.data()
+            );
+
+            // Update the state with the new collection
             setPatients(updatedPatients);
+
+            // Verify the state immediately after the update
+            console.log("State after update:", patients);
 
             // Handle any additional logic after deletion if needed
             console.log("Patient deleted successfully!");
         } catch (error) {
             console.error("Error deleting patient:", error);
             console.log("im a patient", patient);
+            throw error;
+        }
+    };
+
+    const handleDeleteTherapist = async (therapist) => {
+        try {
+            console.log("im patient", therapist);
+
+            // Check if the patient has a uid
+            if (therapist.uid) {
+                // Delete the patient from Firestore using uid
+                const therapistRef = doc(
+                    collection(db, "users"),
+                    therapist.uid
+                );
+                await deleteDoc(therapistRef);
+            } else {
+                // Fetch all documents and filter based on some condition
+                const querySnapshot = await getDocs(collection(db, "users"));
+                const docToDelete = querySnapshot.docs.find((doc) => {
+                    // Customize this logic based on your requirements
+                    // In this example, I'm checking if all key-value pairs match
+                    const therapistData = doc.data();
+                    return Object.keys(therapist).every(
+                        (key) => therapistData[key] === therapist[key]
+                    );
+                });
+
+                if (docToDelete) {
+                    await deleteDoc(docToDelete.ref);
+                } else {
+                    console.error("User not found for deletion:", therapist);
+                    return;
+                }
+            }
+            // Fetch the updated collection after deletion
+            const q = query(
+                collection(db, "users"),
+                where("isTherapist", "==", true)
+            );
+            const updatedTherapistsSnapshot = await getDocs(q);
+            const updatedTherapists = updatedTherapistsSnapshot.docs.map(
+                (doc) => doc.data()
+            );
+
+            // Update the state with the new collection
+            setTherapists(updatedTherapists);
+
+            // Verify the state immediately after the update
+            console.log("State after update:", therapists);
+
+            // Handle any additional logic after deletion if needed
+            console.log("Therapist deleted successfully!");
+        } catch (error) {
+            console.error("Error deleting therapist:", error);
+            console.log("im a therapist", therapist);
             throw error;
         }
     };
@@ -205,7 +296,7 @@ export default function AdminDashboard({ blogs: initialBlogs, users }) {
                     {visibleSection === "therapists" && (
                         // Render Therapists component when 'therapists' link is clicked
                         <>
-                            {Therapist.map((member) => (
+                            {therapists.map((member) => (
                                 <Therapists
                                     key={member.uid}
                                     image={member.image}
@@ -215,6 +306,11 @@ export default function AdminDashboard({ blogs: initialBlogs, users }) {
                                     gender={member.gender}
                                     phoneNumber={member.phoneNumber}
                                     imgURL={member.photoURL}
+                                    email={member.email}
+                                    therapist={member}
+                                    onDelete={() =>
+                                        handleDeleteTherapist(member)
+                                    }
                                 />
                             ))}
                         </>
@@ -222,7 +318,7 @@ export default function AdminDashboard({ blogs: initialBlogs, users }) {
                     {visibleSection === "patients" && (
                         // Render Patients component when 'patients' link is clicked
                         <>
-                            {Patient.map((member) => (
+                            {patients.map((member) => (
                                 <Patients
                                     key={member.uid}
                                     image={member.image}
@@ -232,7 +328,7 @@ export default function AdminDashboard({ blogs: initialBlogs, users }) {
                                     gender={member.gender}
                                     phoneNumber={member.phoneNumber}
                                     imgURL={member.photoURL}
-                                    member={member}
+                                    patient={member}
                                     onDelete={() => handleDeletePatient(member)}
                                 />
                             ))}
@@ -267,8 +363,7 @@ export default function AdminDashboard({ blogs: initialBlogs, users }) {
 
 export async function getServerSideProps({ locale, query }) {
     const specialToken = query.specialToken;
-    console.log("queryyyyyyyyyyyyyyy", query);
-    console.log("im token", specialToken);
+
     // Check if there is a valid special token
     if (specialToken !== process.env.NEXT_PUBLIC_SPECIAL_TOKEN) {
         return { redirect: { destination: "/Auth", permanent: false } };

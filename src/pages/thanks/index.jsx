@@ -3,10 +3,12 @@ import { useSearchParams } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
-
+import { parse } from "cookie";
 import Layout from "@/layout/Layout";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/util/firebase";
 
-function Thanks() {
+function Thanks({ user }) {
     const query = useSearchParams();
     const from = query.get("from");
     const { t } = useTranslation("common");
@@ -41,7 +43,7 @@ function Thanks() {
     }
 
     return (
-        <Layout>
+        <Layout user={user}>
             <main
                 className='h-fit -mt-16 py-48 px-20 flex flex-col items-center bg-no-repeat bg-cover text-NeutralWhite dark:text-NeutralBlack font-poppins'
                 style={{
@@ -66,12 +68,40 @@ function Thanks() {
 }
 
 export default Thanks;
+export async function getServerSideProps({ locale, req }) {
+    // Check if there is a logged-in user
+    const cookies = parse(req.headers.cookie || "");
+    const userId = cookies.loggedInUser;
 
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common"])),
-            // Will be passed to the page component as props
-        },
-    };
+    try {
+        if (userId) {
+            // Fetch user data from Firestore based on user ID
+            const userDoc = await getDoc(doc(db, "users", userId));
+
+            if (!userDoc.exists()) {
+                // Handle the case when the user with the specified ID is not found
+                return { notFound: true };
+            }
+
+            // Extract user data from the document
+            const user = userDoc.data();
+
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                    user,
+                },
+            };
+        } else {
+            // User is not logged in
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                },
+            };
+        }
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+        return { props: { error: "Error fetching user data" } };
+    }
 }

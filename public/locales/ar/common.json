@@ -95,7 +95,6 @@
     "Back to Home": "الصفحة الرئيسية",
     "Thank text 1": "لقد تم استلام طلب التسجيل الخاص بك، وستتلقى قريبًا رسالة تأكيد عبر البريد الإلكتروني. يرجى اتباع الخطوات الواردة في البريد الإلكتروني لإكمال حسابك وتنشيطه.",
     "Thank text 2": "لقد تم إرسال طلبك، وسيتواصل معك أحد أعضاء فريق الدعم عبر البريد الإلكتروني الذي قدمته في أقرب وقت ممكن.",
-
     "Please select an option before proceeding.": "الرجاء تحديد خيار قبل المتابعة.",
     "Let's match you with the right therapist": "دعنا نطابقك مع المعالج المناسب",
     "Please fill out this short questionnaire to provide some general and anonymous background about you and the issues you'd like to deal with in online therapy. It would help us match you with the most suitable therapist for you.": "يرجى ملء هذا الاستبيان القصير لتوفير معلومات عامة ومجهولة عنك والقضايا التي ترغب في التعامل معها في العلاج عبر الإنترنت. سيساعدنا ذلك في مطابقتك مع أنسب معالج لك.",
@@ -209,5 +208,7 @@
     "Please select at least one option before proceeding.": "الرجاء تحديد خيار واحد على الأقل قبل المتابعة.",
     "Calendar": "أجندة",
     "Profile": "صفحة حساب",
-    "Log Out": "تسجيل الخروج"
+    "Log Out": "تسجيل الخروج",
+    "Reset": "إعادة تعيين",
+    "We promise to never spam you, or share your email.": ".نعد ألا نرسل لك البريد العشوائي أو مشاركة بريدك الإلكتروني"
 }

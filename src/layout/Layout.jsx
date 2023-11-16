@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar/Navbar";
 
 import i18n from "../../i18n";
 
-export default function Layout({ children }) {
+export default function Layout({ children, user }) {
     const userLanguage = Cookies.get("userLanguage");
 
     i18n.changeLanguage(userLanguage);
@@ -23,7 +23,7 @@ export default function Layout({ children }) {
             dir={textDirectionClass}
             className='bg-NeutralWhite dark:bg-Dark_Accent'
         >
-            <Navbar />
+            <Navbar user={user} />
             <div className='mt-8'>{children}</div>
             <Footer />
         </div>

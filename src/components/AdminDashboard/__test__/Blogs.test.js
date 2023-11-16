@@ -1,5 +1,5 @@
+// Import useTranslation for mocking
 import renderer from "react-test-renderer";
-import { useTranslation } from "next-i18next"; // Import useTranslation for mocking
 
 import Blogs from "../Blogs";
 

@@ -66,15 +66,26 @@ exports[`renders correctly 1`] = `
         id="imageURL"
         name="imageURL"
         onChange={[Function]}
+        onClick={[Function]}
         type="file"
       />
     </div>
-    <button
-      className="w-32 h-10 self-start ml-4 mt-20 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
-      onClick={[Function]}
+    <div
+      className="flex flex-row"
     >
-      Submit
-    </button>
+      <button
+        className="w-32 h-10 self-start ml-4 mt-20 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
+        onClick={[Function]}
+      >
+        Reset
+      </button>
+      <button
+        className="w-32 h-10 self-start ml-4 mt-20 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
+        onClick={[Function]}
+      >
+        Submit
+      </button>
+    </div>
   </form>
   <div
     className="flex flex-col w-1/2"
@@ -113,5 +124,8 @@ exports[`renders correctly 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="Toastify"
+  />
 </div>
 `;

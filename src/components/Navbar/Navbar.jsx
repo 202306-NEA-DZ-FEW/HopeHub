@@ -15,12 +15,12 @@ import darklogo from "../../../public/assets/darklogo.svg";
 import logo from "../../../public/assets/logo.svg";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 
-export default function Navbar() {
+export default function Navbar({ user }) {
     //Function used for translations
     const { t } = useTranslation("common");
     //Using variables from context to set up dark mode, router, and navbar changes once a user is logged in
     const { darkMode } = useAppcontext();
-    const { isLogged, user } = useAppcontext();
+    const { isLogged, setIsLogged } = useAppcontext();
 
     //Defining blogs
     const [blogs, setBlogs] = useState([]);
@@ -59,6 +59,7 @@ export default function Navbar() {
                 // Refresh the page and then redirect the user
                 router.push("/Auth"); // Replace "/login" with the actual login page route
                 window.location.href;
+                setIsLogged(false);
             })
             .catch((error) => {
                 console.error("Error during logout:", error);
@@ -66,7 +67,6 @@ export default function Navbar() {
     }
 
     const [searchQuery, setSearchQuery] = useState("");
-    // const { blogs } = useAppcontext(); // Access the blogs data from the context
 
     // Function to handle changes in the search input
     const handleSearchInputChange = (e) => {
@@ -160,7 +160,7 @@ export default function Navbar() {
                         </li>
                         <div className='border-t-2 border-NeutralWhite pb-4'></div>
                         {/* Conditionally showing the login button or the profile menu for small screens */}
-                        {isLogged ? (
+                        {user ? (
                             <li>
                                 <details
                                     open
@@ -176,7 +176,7 @@ export default function Navbar() {
                                     <ul className='menu w-32 text-NeutralBlack font-medium font-poppins'>
                                         <li>
                                             <Link
-                                                href={`/profile?userid=${user.uid}`}
+                                                href={`/Profile?userid=${user.uid}`}
                                             >
                                                 {t("Profile")}
                                             </Link>
@@ -309,7 +309,7 @@ export default function Navbar() {
                         >
                             <Link href='/contact'>{t("Contact")}</Link>
                         </li>
-                        {isLogged ? (
+                        {user ? (
                             <div className='dropdown dropdown-end dropdown-bottom'>
                                 <div
                                     tabIndex={0}
@@ -351,7 +351,7 @@ export default function Navbar() {
                                             <ul className='dropdown-content z-[1] menu p-2 shadow bg-Accent rounded-md w-40 mt-1'>
                                                 <li>
                                                     <Link
-                                                        href={`/profile?userid=${user.uid}`}
+                                                        href={`/Profile?userid=${user.uid}`}
                                                     >
                                                         {t("Profile")}
                                                     </Link>

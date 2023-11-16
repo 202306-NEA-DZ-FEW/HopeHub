@@ -23,9 +23,6 @@
     "Bakhtiyari Street 40m": "Rue Bakhtiyari, 40 mètres",
     "Algiers, Algeria": "Alger, Algérie",
     "44001": "44001",
-    "footer_msg_1": "S'abonner",
-    "footer_msg_2": "Nous ne partagerons jamais votre adresse e-mail",
-    "footer_msg_3": "Entrez votre e-mail",
     "Home": "Accueil",
     "Contact": "Contact",
     "Blogs": "Articles",
@@ -215,5 +212,7 @@
     "Author": "Auteur",
     "Post": "Posts",
     "Please select at least one option before proceeding.": "Veuillez sélectionner au moins une option avant de continuer.",
-    "Calendar": "Calendrier"
+    "Calendar": "Calendrier",
+    "Reset": "Réinitialiser",
+    "We promise to never spam you, or share your email.": "Nous vous promettons de ne jamais vous envoyer de spams, ni de partager votre adresse électronique"
 }
