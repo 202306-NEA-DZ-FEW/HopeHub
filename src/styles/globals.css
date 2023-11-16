@@ -167,12 +167,15 @@ h4 {
 }
 @media (max-width: 768px) {
     .fc-toolbar {
-        background: red;
+        /* background: red; */
         flex-direction: column;
     }
 }
 .fc-view-harness {
-    background: white;
+    background: #fff;
+}
+.dark .fc-view-harness {
+    background: #9b9a9a;
 }
 .fc .fc-button-primary {
     background-color: #99b4df;

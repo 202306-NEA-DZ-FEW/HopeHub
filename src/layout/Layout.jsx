@@ -14,7 +14,7 @@ export default function Layout({ children, user }) {
     let textDirectionClass = "ltr";
 
     if (userLanguage === "ar") {
-        console.log(userLanguage);
+        // console.log(userLanguage);
         textDirectionClass = "ltr";
     }
 
