@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import Cookie from "js-cookie";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
@@ -8,8 +9,6 @@ import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
-
-import Cookie from "js-cookie";
 
 function Signup({ isChecked, setChecked }) {
     const [email, setEmail] = useState("");
@@ -53,6 +52,7 @@ function Signup({ isChecked, setChecked }) {
                                 birthDate: bdate,
                                 isTherapist: false,
                                 licenseNumber: null,
+                                displayName: firstname + " " + lastname,
                             })
                                 .then((data) => {
                                     console.log("data", data);

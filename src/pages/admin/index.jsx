@@ -8,16 +8,31 @@ import BlogsEdit from "@/components/AdminDashboard/BlogsEdit";
 import Patients from "@/components/AdminDashboard/Patients";
 import Posts from "@/components/AdminDashboard/Posts";
 import Therapists from "@/components/AdminDashboard/Therapists";
+import Bar from "@/components/charts/Bar";
+import SingleDate from "@/components/charts/singleDate";
+import Widget from "@/components/charts/Widget";
 
 // import { Patient, Therapist } from "@/util/constants";
 import { db } from "@/util/firebase";
 
-export default function AdminDashboard({ blogs, users }) {
+export default function AdminDashboard({
+    blogs,
+    users,
+    datesBarData,
+    blogsCount,
+    patientsCount,
+    therapistsCount,
+    newsletterCount,
+    datesAppointments,
+}) {
     // console.log("users data", users);
+
     const { t } = useTranslation("common");
     const [visibleSection, setVisibleSection] = useState("therapists");
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [isBlogsDropdownOpen, setIsBlogsDropdownOpen] = useState(false); // Correct the variable name
+    const [selectedDate, setSelectedDate] = useState("");
+    console.log("appointments", datesAppointments[selectedDate]);
     const handleSectionToggle = (section) => {
         setVisibleSection(section);
     };
@@ -40,7 +55,14 @@ export default function AdminDashboard({ blogs, users }) {
 
                 <ul className='menu  w-56 text-lg rounded-md space-y-5 outline-none'>
                     <li>
-                        <a>{/* {t("General")} */} Dashboard</a>
+                        <a
+                            className={`menu-dropdown-show ${
+                                visibleSection === "dashboard" ? "active" : ""
+                            }`}
+                            onClick={() => handleSectionToggle("dashboard")}
+                        >
+                            {/* {t("General")} */} Dashboard
+                        </a>
                     </li>
                     <li className=''>
                         <span
@@ -144,6 +166,23 @@ export default function AdminDashboard({ blogs, users }) {
             </div>
 
             <div className='w-full'>
+                <div
+                    className={`w-11/12 mx-auto p-4 border rounded-md grid-cols-[3fr_2fr] gap-x-1 gap-y-7 bg-white mt-6 ${
+                        visibleSection === "dashboard" ? "grid" : "hidden"
+                    }`}
+                >
+                    <div className='w-full h-fit p-4 flex flex-row justify-between col-start-1 col-span-2 row-start-1'>
+                        <Widget title='Therapists' value={therapistsCount} />
+                        <Widget title='Patients' value={patientsCount} />
+                        <Widget title='Blogs' value={blogsCount} />
+                        <Widget title='Subscription' value={newsletterCount} />
+                    </div>
+                    <Bar
+                        data={datesBarData}
+                        setSelectedDate={setSelectedDate}
+                    />
+                    <SingleDate data={datesAppointments[selectedDate]} />
+                </div>
                 <div className='flex flex-wrap py-2 '>
                     {visibleSection === "therapists" && (
                         // Render Therapists component when 'therapists' link is clicked
@@ -216,15 +255,58 @@ export async function getServerSideProps({ locale, query }) {
 
     const userSnapshot = await getDocs(collection(db, "users"));
     const users = [];
+    const datesAppointments = {};
     userSnapshot.forEach((doc) => {
         users.push(doc.data());
+        const rdv = doc.data().appointments || [];
+        rdv.forEach((el) => {
+            datesAppointments[el.date] === undefined
+                ? (datesAppointments[el.date] = [
+                      { name: doc.data().name || doc.id, time: el.time },
+                  ])
+                : datesAppointments[el.date].push({
+                      name: doc.data().name || doc.id,
+                      time: el.time,
+                  });
+        });
     });
 
+    console.log("server user", datesAppointments);
+    const dateSnapshot = await getDocs(collection(db, "dates"));
+    const dates = {};
+    dateSnapshot.forEach((doc) => {
+        // dates.push(doc.data())
+        dates[doc.id] = doc.data();
+    });
+    const newsletterSnapshot = await getDocs(collection(db, "dates"));
+    const newsletter = [];
+    newsletterSnapshot.forEach((doc) => {
+        newsletter.push(doc.data());
+    });
+    const allDates = [];
+    for (let date in dates) {
+        allDates.push({
+            date: date,
+            count: dates[date].bookedHours.length,
+        });
+    }
+    const datesBarData = allDates.slice(-7);
+    const blogsCount = blogs.length;
+    const patientsCount = users.filter((user) => !user.isTherapist).length;
+    const therapistsCount = users.filter((user) => user.isTherapist).length;
+    const newsletterCount = newsletter.length;
+    console.log("counts server", newsletterCount);
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
             blogs,
             users,
+            datesBarData,
+            blogsCount,
+            patientsCount,
+            therapistsCount,
+            newsletterCount,
+            datesAppointments,
         },
     };
 }

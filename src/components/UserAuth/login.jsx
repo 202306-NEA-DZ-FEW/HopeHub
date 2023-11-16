@@ -22,10 +22,10 @@ function Login({ isChecked, setChecked }) {
     function handleLogin(e) {
         e.preventDefault();
         const specialToken = process.env.NEXT_PUBLIC_SPECIAL_TOKEN;
-        console.log("tokeeeen", specialToken);
+        // console.log("tokeeeen", specialToken);
         if (email === "admin@hopehub.com") {
             if (password === "hopehub2023") {
-                console.log("aaaaaaaa", specialToken);
+                // console.log("aaaaaaaa", specialToken);
                 router.push(`/admin?specialToken=${specialToken}`);
             } else {
                 alert("Wrong password");
