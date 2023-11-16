@@ -1,4 +1,5 @@
 import { collection, getDocs } from "firebase/firestore";
+import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
@@ -166,6 +167,20 @@ export default function AdminDashboard({
             </div>
 
             <div className='w-full'>
+                <div className='flex items-center justify-end w-full gap-5 p-4 mb-5'>
+                    <button
+                        className='w-28 h-10 shadow-md rounded-md text-lg font-medium bg-white'
+                        onClick={() => location.reload()}
+                    >
+                        Refresh
+                    </button>
+                    <Link
+                        className='w-28 h-10 shadow-md rounded-md text-lg font-medium items-center justify-center bg-red-500 text-white text-center flex'
+                        href='/'
+                    >
+                        Close{" "}
+                    </Link>
+                </div>
                 <div
                     className={`w-11/12 mx-auto p-4 border rounded-md grid-cols-[3fr_2fr] gap-x-1 gap-y-7 bg-white mt-6 ${
                         visibleSection === "dashboard" ? "grid" : "hidden"

@@ -28,9 +28,22 @@ function Bar({ data, setSelectedDate }) {
             .attr("transform", "translate(0," + 350 + ")")
             .call(d3.axisBottom(xScale).tickFormat((i) => i));
 
-        svg.append("g").call(
-            d3.axisLeft(yScale).ticks(d3.max(data, (d) => d.count))
-        );
+        svg.append("g")
+            .attr("id", "yline")
+            .call(d3.axisLeft(yScale).ticks(d3.max(data, (d) => d.count)));
+
+        svg.select("#yline")
+            .selectAll(".label")
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("class", "label")
+            .attr("id", (d) => "date" + d.date)
+            .text((d) => d.count)
+            .attr("x", (d) => xScale(d.date) + xScale.bandwidth() / 2)
+            .attr("y", (d) => yScale(d.count) - 5)
+            .attr("text-anchor", "middle")
+            .attr("fill", "grey");
 
         svg.selectAll("rect")
             .data(data)
@@ -44,17 +57,21 @@ function Bar({ data, setSelectedDate }) {
             .attr("rx", 5)
             .attr("ry", 5)
             .on("click", (e, d) => {
-                // console.log('dddddd', d, e)
+                console.log("dddddd", d, e);
                 setSelectedDate(d.date);
+                d3.selectAll("rect").attr("fill", "#99B4DF");
+                d3.select(e.target).attr("fill", "#ac60ff");
+                svg.selectAll(".label").attr("fill", "grey");
+                svg.select(`#date${d.date}`).attr("fill", "#ac60ff");
             });
 
-        svg.selectAll("rect")
-            .append("text")
-            .text((d) => d.count)
-            .attr("x", (d) => xScale(d.date) + xScale.bandwidth() / 2)
-            .attr("y", (d) => yScale(d.count) - 30)
-            .attr("text-anchor", "middle")
-            .attr("fill", "red");
+        // svg.select("g").data(data)
+        //     .append("text")
+        //     .text((d) => d.count)
+        //     .attr("x", (d) => xScale(d.date) )
+        //     .attr("y", (d) => yScale( d.count) )
+        //     .attr("text-anchor", "middle")
+        //     .attr("fill", "red");
 
         // Add x-axis label
         svg.append("text")
