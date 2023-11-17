@@ -1,4 +1,3 @@
-
 import {
     collection,
     deleteDoc,
@@ -13,6 +12,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
+import Blogs from "@/components/AdminDashboard/Blogs";
 import BlogsEdit from "@/components/AdminDashboard/BlogsEdit";
 import Patients from "@/components/AdminDashboard/Patients";
 import Therapists from "@/components/AdminDashboard/Therapists";
@@ -22,10 +22,9 @@ import Widget from "@/components/charts/Widget";
 
 // import { Patient, Therapist } from "@/util/constants";
 import { db } from "@/util/firebase";
-import Blogs from "@/components/AdminDashboard/Blogs";
 
 export default function AdminDashboard({
-    blogs,
+    Allblogs: initialBlogs,
     users,
     datesBarData,
     blogsCount,
@@ -424,9 +423,9 @@ export async function getServerSideProps({ locale, query }) {
     }
 
     const blogSnapshot = await getDocs(collection(db, "blogs"));
-    const blogs = [];
+    const Allblogs = [];
     blogSnapshot.forEach((doc) => {
-        blogs.push(doc.data());
+        Allblogs.push(doc.data());
     });
 
     const userSnapshot = await getDocs(collection(db, "users"));
@@ -467,7 +466,7 @@ export async function getServerSideProps({ locale, query }) {
         });
     }
     const datesBarData = allDates.slice(-7);
-    const blogsCount = blogs.length;
+    const blogsCount = Allblogs.length;
     const patientsCount = users.filter((user) => !user.isTherapist).length;
     const therapistsCount = users.filter((user) => user.isTherapist).length;
     const newsletterCount = newsletter.length;
@@ -475,7 +474,7 @@ export async function getServerSideProps({ locale, query }) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
-            blogs,
+            Allblogs,
             users,
             datesBarData,
             blogsCount,
