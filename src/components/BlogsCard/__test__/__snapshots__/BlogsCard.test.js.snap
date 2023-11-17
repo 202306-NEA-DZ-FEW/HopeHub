@@ -51,6 +51,11 @@ exports[`renders correctly 1`] = `
     </p>
     <p
       className="text-NeutralBlack dark:text-NeutralWhite font-light text-xs lg:text-base py-2"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
     />
   </div>
 </div>

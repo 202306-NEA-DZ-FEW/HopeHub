@@ -1,38 +1,92 @@
-import axios from "axios";
-import format from "date-fns/format";
-import { doc, setDoc } from "firebase/firestore";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
-import styles from "../../styles/BlogdEdit.module.css";
+import axios from "axios";
+import format from "date-fns/format";
 
+import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/util/firebase";
 
-import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import styles from "../../styles/BlogdEdit.module.css";
 
-// import TextEditor from "./TextEditor";
+// Dynamically import Quill to avoid SSR
+const QuillNoSSRWrapper = dynamic(import("react-quill"), {
+    ssr: false,
+    loading: () => <p>Loading ...</p>,
+});
 
-export default function BlogsEdit({ blog }) {
-    const TextEditor = useMemo(() => {
-        return dynamic(() => import("@/components/AdminDashboard/TextEditor"), {
-            loading: () => <p>loading...</p>,
+// Define Quill modules and formats
+const modules = {
+    toolbar: [
+        [{ header: "1" }, { header: "2" }, { font: [] }],
+        [{ size: [] }],
+        ["bold", "italic", "underline", "strike", "blockquote"],
+        [
+            { list: "ordered" },
+            { list: "bullet" },
+            { indent: "-1" },
+            { indent: "+1" },
+        ],
+        ["link", "image", "video"],
+        ["clean"],
+    ],
+    clipboard: {
+        matchVisual: false,
+    },
+};
 
-            ssr: false,
-        });
-    }, []);
+const formats = [
+    "header",
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "video",
+];
 
+// Component for the Text Editor using Quill
+const TextEditor = ({ value, onChange }) => {
+    const handleChange = (content, _, __, editor) => {
+        onChange(editor.getHTML()); // Use editor.getHTML() to get the HTML content
+    };
+
+    return typeof window !== "undefined" ? (
+        <div>
+            <QuillNoSSRWrapper
+                value={value}
+                onChange={handleChange}
+                className='h-fit'
+                modules={modules}
+                formats={formats}
+            />
+        </div>
+    ) : (
+        <p>Loading...</p>
+    );
+};
+
+// Main BlogsEdit component
+export default function BlogsEditCopy({ blog }) {
     const { t } = useTranslation("common");
+    const fileInputRef = useRef(null);
     const [tag, setTag] = useState("");
     const [tags, setTags] = useState([]);
-    const fileInputRef = useRef(null);
     const [editorContent, setEditorContent] = useState("");
     const [formData, setFormData] = useState({
         title: "",
         subTitle: "",
         author: "",
-        body: "",
         tags: [],
         imageURL: "",
         date: format(new Date(), "yyyy-MM-dd"),
@@ -61,6 +115,7 @@ export default function BlogsEdit({ blog }) {
         }
     }, [blog]);
 
+    // Function to generate a unique ID
     function uniqueID() {
         return (
             Math.random().toString(36).substring(2) + Date.now().toString(36)
@@ -94,6 +149,7 @@ export default function BlogsEdit({ blog }) {
         });
     };
 
+    // Function to handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!isFormValid()) {
@@ -102,10 +158,9 @@ export default function BlogsEdit({ blog }) {
         }
         try {
             await setDoc(doc(db, "blogs", formData.id), formData);
-        } catch {
-            (err) => console.error("error adding the blog", err);
+        } catch (err) {
+            console.error("error adding the blog", err);
         }
-        // Clear the form fields after submission
         setFormData({
             title: "",
             subTitle: "",
@@ -123,7 +178,7 @@ export default function BlogsEdit({ blog }) {
     };
 
     // Function to handle image upload
-    function handleImage(e) {
+    const handleImage = (e) => {
         e.preventDefault();
         const img = e.target.files[0];
         const formD = new FormData();
@@ -141,7 +196,7 @@ export default function BlogsEdit({ blog }) {
                 });
             })
             .catch((err) => console.error("upload image error", err));
-    }
+    };
 
     // Function to handle clearing image URL when the user removes the image input
     const handleClearImage = () => {
@@ -203,12 +258,9 @@ export default function BlogsEdit({ blog }) {
             body: content,
         }));
     };
-    const handleButtonClick = () => {
-        // Manually trigger form submission when the button is clicked
-        formRef.current.dispatchEvent(new Event("submit"));
-    };
-    const formRef = useRef(null);
-    function addTag(e) {
+
+    // Function to add a tag to the tags list
+    const addTag = (e) => {
         if (e.key === "Enter") {
             e.preventDefault();
             setTags([...tags, e.target.value]);
@@ -218,7 +270,8 @@ export default function BlogsEdit({ blog }) {
             });
             setTag("");
         }
-    }
+    };
+
     // Function to delete a tag from the tags list
     const deleteTag = (txt) => {
         let newArr = tags.filter((tag) => tag !== txt);
@@ -230,6 +283,7 @@ export default function BlogsEdit({ blog }) {
         });
     };
 
+    // Component for displaying tags
     const TagBtn = ({ txt }) => (
         <span className='w-fit p-1 mb-5 mr-2 border rounded-3xl border-gray-500  group relative'>
             {txt}{" "}
@@ -262,19 +316,14 @@ export default function BlogsEdit({ blog }) {
 
     return (
         <div className='flex flex-col md:flex-row md:w-full '>
-            <form
-                onSubmit={handleSubmit}
-                ref={formRef}
-                className='flex flex-col w-1/2'
-            >
-                {" "}
+            <form onSubmit={handleSubmit} className='flex flex-col w-1/2'>
                 <div className='pl-4 mb-4 space-y-1 text-xl flex flex-col'>
                     <label htmlFor='Title'>{t("Title")}</label>
                     <input
                         type='text'
                         id='Title'
                         className='w-full text-NeutralBlack font-normal text-lg px-4 rounded-md border border-slate-300 bg-white py-3 outline-none '
-                        value={formData.title} // Bind the value to the form state
+                        value={formData.title}
                         onChange={handleChange}
                         name='title'
                     />
@@ -304,10 +353,9 @@ export default function BlogsEdit({ blog }) {
                 <div className={styles.input_file}>
                     <input
                         type='file'
-                        placeholder='Upload Image'
+                        ref={fileInputRef}
                         name='imageURL'
                         id='imageURL'
-                        ref={fileInputRef}
                         onChange={handleImage}
                         onClick={handleClearImage}
                     />
@@ -353,6 +401,7 @@ export default function BlogsEdit({ blog }) {
                     />
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }

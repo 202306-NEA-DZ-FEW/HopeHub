@@ -9,13 +9,12 @@ import React, { useEffect, useState } from "react";
 
 import EventModal from "@/components/calendarEvents/EventModal";
 
-import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/util/firebase";
-function Calendar({ appointments }) {
-    // console.log('client appointments', appointments)
+
+function Calendar({ appointments, user }) {
     const router = useRouter();
-    const { user } = useAppcontext();
     const { t } = useTranslation("common");
     const events = user.isTherapist
         ? appointments /* .map((ev)=>{
@@ -63,7 +62,7 @@ function Calendar({ appointments }) {
     }
     useEffect(() => {}, []);
     return (
-        <Layout className='max-w-screen'>
+        <Layout user={user} className='max-w-screen'>
             {modalOpen && (
                 <EventModal
                     event={eventData}
@@ -115,7 +114,9 @@ export async function getServerSideProps({ locale, query }) {
     if (!userId || userId == "undefined") {
         // console.log('user',userId)
         return { redirect: { destination: "/Auth", permanent: false } };
-    } else {
+    }
+
+    try {
         const appointmentSnapshot = await getDocs(
             collection(db, "appointments")
         );
@@ -137,11 +138,25 @@ export async function getServerSideProps({ locale, query }) {
             }
         }
         console.log("appointments..............", appointments);
+
+        const userDoc = await getDoc(doc(db, "users", userId));
+        console.log("im userdoc in serverside", userDoc.exists());
+        if (!userDoc.exists()) {
+            // Handle the case when the user with the specified ID is not found
+            return { notFound: true };
+        }
+        // Extract user data from the document
+        const user = userDoc.data();
+
         return {
             props: {
                 ...(await serverSideTranslations(locale, ["common"])),
+                user,
                 appointments,
             },
         };
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+        return { props: { error: "Error fetching user data" } };
     }
 }
