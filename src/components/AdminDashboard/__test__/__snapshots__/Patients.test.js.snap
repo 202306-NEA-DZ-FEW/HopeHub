@@ -53,11 +53,13 @@ exports[`renders correctly 1`] = `
   >
     <button
       className="w-56 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
+      onClick={[Function]}
     >
       Delete
     </button>
     <button
       className="w-56 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
+      onClick={[Function]}
     >
       Send Email
     </button>

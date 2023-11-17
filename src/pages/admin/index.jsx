@@ -1,4 +1,12 @@
-import { collection, getDocs } from "firebase/firestore";
+
+import {
+    collection,
+    deleteDoc,
+    doc,
+    getDocs,
+    query,
+    where,
+} from "firebase/firestore";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -7,7 +15,6 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 import BlogsEdit from "@/components/AdminDashboard/BlogsEdit";
 import Patients from "@/components/AdminDashboard/Patients";
-import Posts from "@/components/AdminDashboard/Posts";
 import Therapists from "@/components/AdminDashboard/Therapists";
 import Bar from "@/components/charts/Bar";
 import SingleDate from "@/components/charts/singleDate";
@@ -15,6 +22,7 @@ import Widget from "@/components/charts/Widget";
 
 // import { Patient, Therapist } from "@/util/constants";
 import { db } from "@/util/firebase";
+import Blogs from "@/components/AdminDashboard/Blogs";
 
 export default function AdminDashboard({
     blogs,
@@ -26,24 +34,163 @@ export default function AdminDashboard({
     newsletterCount,
     datesAppointments,
 }) {
-    // console.log("users data", users);
-
     const { t } = useTranslation("common");
     const [visibleSection, setVisibleSection] = useState("therapists");
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+    const [selectedBlog, setSelectedBlog] = useState(null);
+    const [blogs, setBlogs] = useState(initialBlogs);
+    const [patients, setPatients] = useState(
+        users.filter((user) => !user.isTherapist)
+    ); // Initialize state with initial patients
+    const [therapists, setTherapists] = useState(
+        users.filter((user) => user.isTherapist)
+    );
     const [isBlogsDropdownOpen, setIsBlogsDropdownOpen] = useState(false); // Correct the variable name
     const [selectedDate, setSelectedDate] = useState("");
     console.log("appointments", datesAppointments[selectedDate]);
     const handleSectionToggle = (section) => {
         setVisibleSection(section);
     };
-    const Patient = users.filter((user) => !user.isTherapist);
-    const Therapist = users.filter((user) => user.isTherapist);
+    // const Patient = users.filter((user) => !user.isTherapist);
+    // const Therapist = users.filter((user) => user.isTherapist);
     const toggleDropdown = (dropdown) => {
         if (dropdown === "users") {
             setIsUserDropdownOpen(!isUserDropdownOpen);
         } else if (dropdown === "blogs") {
             setIsBlogsDropdownOpen(!isBlogsDropdownOpen); // Correct the variable name
+        }
+    };
+
+    const handleEditBlog = (blog) => {
+        // Set the selected blog in the state
+        setSelectedBlog(blog);
+        // Switch to the 'Blogs Edit' section
+        setVisibleSection("Blogs Edit");
+    };
+
+    const handleDelete = async (blog) => {
+        try {
+            // Delete the blog from Firestore
+            const blogRef = doc(collection(db, "blogs"), blog.id);
+            await deleteDoc(blogRef);
+
+            // Update the state to remove the deleted blog
+            const updatedBlogs = blogs.filter((b) => b.id !== blog.id);
+            setBlogs(updatedBlogs);
+
+            // Handle any additional logic after deletion if needed
+            console.log("Blog deleted successfully!");
+        } catch (error) {
+            console.error("Error deleting blog:", error);
+            throw error;
+        }
+    };
+
+    const handleDeletePatient = async (patient) => {
+        try {
+            console.log("im patient", patient);
+
+            // Check if the patient has a uid
+            if (patient.uid) {
+                // Delete the patient from Firestore using uid
+                const patientRef = doc(collection(db, "users"), patient.uid);
+                await deleteDoc(patientRef);
+            } else {
+                // Fetch all documents and filter based on some condition
+                const querySnapshot = await getDocs(collection(db, "users"));
+                const docToDelete = querySnapshot.docs.find((doc) => {
+                    // Customize this logic based on your requirements
+                    // In this example, I'm checking if all key-value pairs match
+                    const patientData = doc.data();
+                    return Object.keys(patient).every(
+                        (key) => patientData[key] === patient[key]
+                    );
+                });
+                if (docToDelete) {
+                    await deleteDoc(docToDelete.ref);
+                } else {
+                    console.error("User not found for deletion:", patient);
+                    return;
+                }
+            }
+            // Fetch the updated collection after deletion
+            const q = query(
+                collection(db, "users"),
+                where("isTherapist", "==", false)
+            );
+            const updatedPatientsSnapshot = await getDocs(q);
+            const updatedPatients = updatedPatientsSnapshot.docs.map((doc) =>
+                doc.data()
+            );
+
+            // Update the state with the new collection
+            setPatients(updatedPatients);
+
+            // Verify the state immediately after the update
+            console.log("State after update:", patients);
+
+            // Handle any additional logic after deletion if needed
+            console.log("Patient deleted successfully!");
+        } catch (error) {
+            console.error("Error deleting patient:", error);
+            console.log("im a patient", patient);
+            throw error;
+        }
+    };
+
+    const handleDeleteTherapist = async (therapist) => {
+        try {
+            console.log("im patient", therapist);
+
+            // Check if the patient has a uid
+            if (therapist.uid) {
+                // Delete the patient from Firestore using uid
+                const therapistRef = doc(
+                    collection(db, "users"),
+                    therapist.uid
+                );
+                await deleteDoc(therapistRef);
+            } else {
+                // Fetch all documents and filter based on some condition
+                const querySnapshot = await getDocs(collection(db, "users"));
+                const docToDelete = querySnapshot.docs.find((doc) => {
+                    // Customize this logic based on your requirements
+                    // In this example, I'm checking if all key-value pairs match
+                    const therapistData = doc.data();
+                    return Object.keys(therapist).every(
+                        (key) => therapistData[key] === therapist[key]
+                    );
+                });
+
+                if (docToDelete) {
+                    await deleteDoc(docToDelete.ref);
+                } else {
+                    console.error("User not found for deletion:", therapist);
+                    return;
+                }
+            }
+            // Fetch the updated collection after deletion
+            const q = query(
+                collection(db, "users"),
+                where("isTherapist", "==", true)
+            );
+            const updatedTherapistsSnapshot = await getDocs(q);
+            const updatedTherapists = updatedTherapistsSnapshot.docs.map(
+                (doc) => doc.data()
+            );
+
+            // Update the state with the new collection
+            setTherapists(updatedTherapists);
+
+            // Verify the state immediately after the update
+            console.log("State after update:", therapists);
+
+            // Handle any additional logic after deletion if needed
+            console.log("Therapist deleted successfully!");
+        } catch (error) {
+            console.error("Error deleting therapist:", error);
+            console.log("im a therapist", therapist);
+            throw error;
         }
     };
 
@@ -202,7 +349,7 @@ export default function AdminDashboard({
                     {visibleSection === "therapists" && (
                         // Render Therapists component when 'therapists' link is clicked
                         <>
-                            {Therapist.map((member) => (
+                            {therapists.map((member) => (
                                 <Therapists
                                     key={member.uid}
                                     image={member.image}
@@ -212,6 +359,11 @@ export default function AdminDashboard({
                                     gender={member.gender}
                                     phoneNumber={member.phoneNumber}
                                     imgURL={member.photoURL}
+                                    email={member.email}
+                                    therapist={member}
+                                    onDelete={() =>
+                                        handleDeleteTherapist(member)
+                                    }
                                 />
                             ))}
                         </>
@@ -219,7 +371,7 @@ export default function AdminDashboard({
                     {visibleSection === "patients" && (
                         // Render Patients component when 'patients' link is clicked
                         <>
-                            {Patient.map((member) => (
+                            {patients.map((member) => (
                                 <Patients
                                     key={member.uid}
                                     image={member.image}
@@ -229,6 +381,9 @@ export default function AdminDashboard({
                                     gender={member.gender}
                                     phoneNumber={member.phoneNumber}
                                     imgURL={member.photoURL}
+                                    email={member.email}
+                                    patient={member}
+                                    onDelete={() => handleDeletePatient(member)}
                                 />
                             ))}
                         </>
@@ -244,9 +399,16 @@ export default function AdminDashboard({
                     )}
                     {visibleSection === "Posts" &&
                         blogs.map((blog) => (
-                            <Posts key={blog.id} name={blog.title} />
+                            <Blogs
+                                key={blog.id}
+                                blog={blog}
+                                onEdit={handleEditBlog}
+                                onDelete={handleDelete}
+                            />
                         ))}
-                    {visibleSection === "Blogs Edit" && <BlogsEdit />}
+                    {visibleSection === "Blogs Edit" && (
+                        <BlogsEdit blog={selectedBlog} />
+                    )}
                 </div>
             </div>
         </div>
@@ -255,8 +417,7 @@ export default function AdminDashboard({
 
 export async function getServerSideProps({ locale, query }) {
     const specialToken = query.specialToken;
-    // console.log("queryyyyyyyyyyyyyyy", query);
-    // console.log("im token", specialToken);
+
     // Check if there is a valid special token
     if (specialToken !== process.env.NEXT_PUBLIC_SPECIAL_TOKEN) {
         return { redirect: { destination: "/Auth", permanent: false } };

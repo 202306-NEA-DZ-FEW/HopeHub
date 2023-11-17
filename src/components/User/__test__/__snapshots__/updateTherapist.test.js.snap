@@ -93,24 +93,79 @@ exports[`renders correctly 1`] = `
             className="border-t-2 border-NeutralWhite pb-4"
           />
           <li>
-            <button
-              className="button-container w-32 mx-2 mb-1 h-9 md:mr-8 md:w-40 bg-Accent hover-bg-Primary rounded-md"
+            <details
+              onToggle={[Function]}
+              open={true}
             >
-              <a
-                className="text-lg tracking-wider text-NeutralBlack font-semibold font-poppins"
-                href="/Auth"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onTouchStart={[Function]}
-                style={
-                  Object {
-                    "textTransform": "capitalize",
-                  }
-                }
+              <summary
+                className="text-Accent text-lg font-bold underline font-poppins text-NeutralBlack font-semibold dark:text-NeutralWhite"
               >
-                Log In
-              </a>
-            </button>
+                User
+              </summary>
+              <ul
+                className="menu w-32 text-NeutralBlack font-medium font-poppins"
+              >
+                <li>
+                  <a
+                    href="/Profile?userid=undefined"
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onTouchStart={[Function]}
+                  >
+                    Profile
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/calendar?userid=undefined"
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onTouchStart={[Function]}
+                  >
+                    Calendar
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/Payment?userid=undefined"
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onTouchStart={[Function]}
+                  >
+                    Payments
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="text-base"
+                    onClick={[Function]}
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      strokeWidth="0"
+                      style={
+                        Object {
+                          "color": undefined,
+                        }
+                      }
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m2 12 5 4v-3h9v-2H7V8z"
+                      />
+                      <path
+                        d="M13.001 2.999a8.938 8.938 0 0 0-6.364 2.637L8.051 7.05c1.322-1.322 3.08-2.051 4.95-2.051s3.628.729 4.95 2.051 2.051 3.08 2.051 4.95-.729 3.628-2.051 4.95-3.08 2.051-4.95 2.051-3.628-.729-4.95-2.051l-1.414 1.414c1.699 1.7 3.959 2.637 6.364 2.637s4.665-.937 6.364-2.637c1.7-1.699 2.637-3.959 2.637-6.364s-.937-4.665-2.637-6.364a8.938 8.938 0 0 0-6.364-2.637z"
+                      />
+                    </svg>
+                    Log Out
+                  </a>
+                </li>
+              </ul>
+            </details>
           </li>
         </ul>
       </div>
@@ -239,24 +294,36 @@ exports[`renders correctly 1`] = `
               Contact
             </a>
           </li>
-          <button
-            className="button-container w-28 h-9 mx-4 md:mr-2 md:w-40 bg-Accent dark:bg-Dark_Accent dark:hover:bg-Dark_Primary hover-bg-Primary rounded-md"
+          <div
+            className="dropdown dropdown-end dropdown-bottom"
           >
-            <a
-              className="text-base tracking-wider text-NeutralBlack dark:text-NeutralWhite font-semibold font-poppins"
-              href="/Auth"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onTouchStart={[Function]}
-              style={
-                Object {
-                  "textTransform": "capitalize",
-                }
-              }
+            <div
+              className="relative flex items-center"
+              tabIndex={0}
             >
-              Log In
-            </a>
-          </button>
+              <div
+                className="relative w-10 h-10 ml-2 rounded-full cursor-pointer"
+                onClick={[Function]}
+              >
+                <div
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-violet-400"
+                >
+                  <span
+                    className="text-white text-xl"
+                  >
+                    U
+                  </span>
+                </div>
+              </div>
+              <span
+                className="cursor-pointer ml-2"
+                onClick={[Function]}
+              />
+              <div
+                className="menu-sm-dropdown"
+              />
+            </div>
+          </div>
         </ul>
       </div>
     </div>
@@ -354,7 +421,7 @@ exports[`renders correctly 1`] = `
                 name="name"
                 onChange={[Function]}
                 type="text"
-                value="mockConstructor"
+                value=""
               />
             </div>
             <div
@@ -445,61 +512,66 @@ exports[`renders correctly 1`] = `
   <footer
     className="footer mt-20 px-10 py-5 bg-Accent dark:bg-Dark_Primary text-base-content flex flex-col md:flex-row lg:flex-row justify-between items-center"
   >
-    <form>
+    <div
+      className="flex flex-col"
+    >
       <header
-        className=" font-bold text-xl mb-[-15px] text-NeutralBlack dark:text-NeutralWhite"
+        className="font-bold text-xl mb-[-15px] text-NeutralBlack dark:text-NeutralWhite"
       >
-        footer_msg_1
+        Subscribe
       </header>
-      <fieldset
-        className="form-control w-96 mt-2"
+      <label
+        className="label"
       >
-        <label
-          className="label"
+        <span
+          className="label-text text-NeutralBlack dark:text-NeutralWhite"
         >
-          <span
-            className="label-text text-NeutralBlack dark:text-NeutralWhite"
-          >
-            footer_msg_2
-          </span>
-        </label>
-        <div
-          className="relative flex flex-row"
+          We promise to never spam you, or share your email.
+        </span>
+      </label>
+      <form>
+        <fieldset
+          className="form-control w-96 mt-2"
         >
-          <input
-            className="input input-bordered border-[#718096] border-solid w-4/5 outline-none focus:outline-none"
-            onChange={[Function]}
-            onKeyDown={[Function]}
-            placeholder="footer_msg_3"
-            type="text"
-            value=""
-          />
-          <span
-            className=" w-20 ml-[-1rem]"
-            onClick={[Function]}
+          <div
+            className="relative flex flex-row mr-[-2rem]"
           >
-            <svg
-              fill="none"
-              viewBox="0 0 100 100"
-              width="100%"
-              xmlns="http://www.w3.org/2000/svg"
+            <input
+              className="input input-bordered border-[#718096] border-solid w-4/5 outline-none focus:outline-none"
+              onChange={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Enter your e-mail"
+              type="text"
+              value=""
+            />
+            <span
+              className="w-20 ml-[-1rem]"
+              onClick={[Function]}
             >
-              <path
-                d="M1 1H54C56.7614 1 59 3.23858 59 6V54C59 56.7614 56.7614 59 54 59H1V1Z"
-                fill="#99B4DF"
-                id="subscribe"
-                stroke="#718096"
-                strokeWidth="2"
-              />
-              <path
-                d="M29.6327 30.3673L25.0421 32.5401C24.5997 32.7861 24.053 32.7438 23.6538 32.4325L17.4862 27.7498C16.6922 27.1308 16.9078 25.8769 17.8628 25.5585L40.3377 18.0669C41.3237 17.7382 42.2618 18.6763 41.9331 19.6623L34.4415 42.1372C34.1231 43.0922 32.8691 43.3078 32.2502 42.5138L27.5675 36.3462C27.2562 35.947 27.2139 35.4003 27.4599 34.9579L29.6327 30.3673Z"
-                fill="#1A1A1A"
-              />
-            </svg>
-          </span>
-        </div>
-      </fieldset>
-    </form>
+              <svg
+                fill="none"
+                viewBox="0 0 100 100"
+                width="100%"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1H54C56.7614 1 59 3.23858 59 6V54C59 56.7614 56.7614 59 54 59H1V1Z"
+                  fill="#99B4DF"
+                  id="subscribe"
+                  stroke="#718096"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M29.6327 30.3673L25.0421 32.5401C24.5997 32.7861 24.053 32.7438 23.6538 32.4325L17.4862 27.7498C16.6922 27.1308 16.9078 25.8769 17.8628 25.5585L40.3377 18.0669C41.3237 17.7382 42.2618 18.6763 41.9331 19.6623L34.4415 42.1372C34.1231 43.0922 32.8691 43.3078 32.2502 42.5138L27.5675 36.3462C27.2562 35.947 27.2139 35.4003 27.4599 34.9579L29.6327 30.3673Z"
+                  fill="#1A1A1A"
+                />
+                 
+              </svg>
+            </span>
+          </div>
+        </fieldset>
+      </form>
+    </div>
     <div
       className=" items-center flex flex-col justify-center h-full text-NeutralBlack dark:text-NeutralWhite"
     >

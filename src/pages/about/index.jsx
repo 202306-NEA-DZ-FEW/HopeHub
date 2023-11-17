@@ -9,7 +9,11 @@ import TeamCard from "@/components/About/TeamTab";
 import Layout from "@/layout/Layout";
 import { teamMembers } from "@/util/constants";
 
-const About = () => {
+import { parse } from "cookie";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/util/firebase";
+
+const About = ({ user }) => {
     const { t } = useTranslation("common");
     const [visibleSection, setVisibleSection] = useState("team");
 
@@ -22,7 +26,7 @@ const About = () => {
     };
 
     return (
-        <Layout>
+        <Layout user={user}>
             <div className='bg-NeutralWhite dark:bg-Dark_Accent pt-8 min-h-screen flex flex-col '>
                 <Head>
                     <title>{t("About")}</title>
@@ -132,11 +136,40 @@ const About = () => {
 
 export default About;
 
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common"])),
-            // Will be passed to the page component as props
-        },
-    };
+export async function getServerSideProps({ locale, req }) {
+    // Check if there is a logged-in user
+    const cookies = parse(req.headers.cookie || "");
+    const userId = cookies.loggedInUser;
+
+    try {
+        if (userId) {
+            // Fetch user data from Firestore based on user ID
+            const userDoc = await getDoc(doc(db, "users", userId));
+
+            if (!userDoc.exists()) {
+                // Handle the case when the user with the specified ID is not found
+                return { notFound: true };
+            }
+
+            // Extract user data from the document
+            const user = userDoc.data();
+
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                    user,
+                },
+            };
+        } else {
+            // User is not logged in
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                },
+            };
+        }
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+        return { props: { error: "Error fetching user data" } };
+    }
 }

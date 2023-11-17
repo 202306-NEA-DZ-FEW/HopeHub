@@ -21,14 +21,14 @@ import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
 import { auth, db } from "@/util/firebase";
 
-export default function UserProfile() {
+export default function UserProfile({ user }) {
+    console.log("im user in profile", user);
     // const pathname = usePathname()
     // const searchParams = useSearchParams()
     const router = useRouter();
 
     const { t } = useTranslation("common");
-    const { user, profileUpdated, setProfileUpdated, setUser } =
-        useAppcontext();
+    const { profileUpdated, setProfileUpdated, setUser } = useAppcontext();
     // console.log("user profile", user);
     const [hobbyInput, setHobbyInput] = useState("");
     const [fullName, setFullName] = useState(user.name || "");
@@ -250,7 +250,7 @@ export default function UserProfile() {
         }
     }
     return (
-        <Layout className=''>
+        <Layout user={user}>
             <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row  max-w-screen bg-NeutralWhite dark:bg-NeutralBlack'>
                 <div className='pb-12 lg:py-16 lg:w-[60%] md:[60%] flex '>
                     <div className='bg-NeutralBlack  dark:border-NeutralWhite border-2 w-80 h-80 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>

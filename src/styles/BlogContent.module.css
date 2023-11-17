@@ -1,0 +1,28 @@
+/* BlogContent.module.css */
+.blog-content {
+    /* Your styles for blog content */
+}
+
+.blog-content h2 {
+    font-size: x-large;
+}
+
+.blog-content ol {
+    list-style-type: decimal; /* Use 'decimal' for numbered lists */
+    margin-left: 1.5em; /* Adjust the margin as needed */
+}
+
+.blog-content li {
+    margin-bottom: 0.1em; /* Adjust the margin between list items as needed */
+}
+
+/* Styles for links */
+.blog-content a {
+    color: #709add; /* Change to your preferred link color */
+    text-decoration: underline; /* Optional: Add underlines */
+}
+
+.blog-content a:hover {
+    color: #61bbb2; /* Change to your preferred link color on hover */
+    text-decoration: none; /* Optional: Remove underlines on hover */
+}
