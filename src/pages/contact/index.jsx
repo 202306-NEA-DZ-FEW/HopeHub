@@ -2,22 +2,23 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 import { FaLocationDot, FaPhoneVolume } from "react-icons/fa6";
-
 import ContactForm from "@/components/ContactForm/ContactForm";
-
 import Layout from "@/layout/Layout";
+import { parse } from "cookie";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/util/firebase";
 
-function Contact() {
+function Contact({ user }) {
     const { t } = useTranslation("common");
 
     return (
         <div
-            className='bg-cover bg-center bg-no-repeat brightness-75 flex flex-col'
+            className='bg-cover bg-center bg-no-repeat  flex flex-col'
             style={{
                 backgroundImage: `url('/assets/login-bg.svg')`, // Replace with the actual path to your image
             }}
         >
-            <Layout>
+            <Layout user={user}>
                 <div className='flex flex-col ml-8 mr-10 lg:mb-24 my-12'>
                     <h1 className='text-NeutralBlack dark:text-NeutralWhite font-semibold font-poppins text-2xl md:text-3xl lg:py-0 lg:mb-3 py-4'>
                         {t("SEND US YOUR REQUEST!")}
@@ -68,11 +69,40 @@ function Contact() {
 
 export default Contact;
 
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common"])),
-            // Will be passed to the page component as props
-        },
-    };
+export async function getServerSideProps({ locale, req }) {
+    // Check if there is a logged-in user
+    const cookies = parse(req.headers.cookie || "");
+    const userId = cookies.loggedInUser;
+
+    try {
+        if (userId) {
+            // Fetch user data from Firestore based on user ID
+            const userDoc = await getDoc(doc(db, "users", userId));
+
+            if (!userDoc.exists()) {
+                // Handle the case when the user with the specified ID is not found
+                return { notFound: true };
+            }
+
+            // Extract user data from the document
+            const user = userDoc.data();
+
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                    user,
+                },
+            };
+        } else {
+            // User is not logged in
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                },
+            };
+        }
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+        return { props: { error: "Error fetching user data" } };
+    }
 }

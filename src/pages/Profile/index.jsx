@@ -3,17 +3,17 @@ import React from "react";
 
 import TherapistProfile from "@/components/User/updateTherapist";
 import UserProfile from "@/components/User/UserProfile";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/util/firebase";
 
-import { useAppcontext } from "@/context/state";
-
-function Profile() {
-    const { user } = useAppcontext();
-    console.log("therapist", user);
+function Profile({ user }) {
     return (
-        // <ProtectedRoute>
         <>
-            {user?.isTherapist ? <TherapistProfile /> : <UserProfile />}
-            {/* </ProtectedRoute>*/}
+            {user?.isTherapist ? (
+                <TherapistProfile user={user} />
+            ) : (
+                <UserProfile user={user} />
+            )}
         </>
     );
 }
@@ -27,9 +27,25 @@ export async function getServerSideProps({ locale, query }) {
         return { redirect: { destination: "/Auth", permanent: false } };
     }
 
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common"])),
-        },
-    };
+    try {
+        // Fetch user data from Firestore based on user ID
+        const userDoc = await getDoc(doc(db, "users", userId));
+        console.log("im userdoc in serverside", userDoc.exists());
+        if (!userDoc.exists()) {
+            // Handle the case when the user with the specified ID is not found
+            return { notFound: true };
+        }
+        // Extract user data from the document
+        const user = userDoc.data();
+
+        return {
+            props: {
+                ...(await serverSideTranslations(locale, ["common"])),
+                user,
+            },
+        };
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+        return { props: { error: "Error fetching user data" } };
+    }
 }

@@ -6,11 +6,9 @@ import BookingButton from "../BookingButton/BookingButton";
 import IndexBanner from "../../../public/assets/indexBanner.jpg";
 import { useAppcontext } from "@/context/state";
 
-export default function Banner() {
+export default function Banner({ user }) {
     //Function used for translations
     const { t } = useTranslation("common");
-    const { user } = useAppcontext();
-    console.log(user);
 
     //Displaying the Homepage Banner
     return (

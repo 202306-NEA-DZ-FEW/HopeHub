@@ -3,15 +3,16 @@ import Layout from "@/layout/Layout";
 import BlogCard from "@/components/BlogsCard/BlogsCard";
 import BookingButton from "@/components/BookingButton/BookingButton";
 import { useTranslation } from "next-i18next";
-import { useAppcontext } from "../../context/state"; // Replace with the actual path to your context file.
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { db } from "@/util/firebase";
+import { parse } from "cookie";
 
-function BlogsPage() {
+function BlogsPage({ blogs, user }) {
     const { t } = useTranslation("common");
-    const { blogs, user } = useAppcontext(); // Access the blogs data from the context.
 
     return (
-        <Layout>
+        <Layout user={user}>
             <h1 className='mx-6 mt-4 lg:mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block text-NeutralBlack dark:text-NeutralWhite'>
                 {t("Our Blog Posts")}
             </h1>
@@ -25,9 +26,9 @@ function BlogsPage() {
                                 image={blog.imageURL}
                                 title={blog.title}
                                 subtitle={blog.subTitle}
-                                summary={blog.summary}
                                 author={blog.author}
                                 blogId={blog.id}
+                                body={blog.body}
                             />
                         </div>
                     ))}
@@ -81,11 +82,55 @@ function BlogsPage() {
 
 export default BlogsPage;
 
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common"])),
-            // Will be passed to the page component as props
-        },
-    };
+export async function getServerSideProps({ locale, req }) {
+    // Check if there is a logged-in user
+    const cookies = parse(req.headers.cookie || "");
+    const userId = cookies.loggedInUser;
+    console.log("im before try");
+    try {
+        console.log("im inside try");
+        // Fetch blogs data
+        const blogSnapshot = await getDocs(collection(db, "blogs"));
+        const blogs = [];
+
+        blogSnapshot.forEach((doc) => {
+            blogs.push(doc.data());
+        });
+
+        const sortedBlogs = blogs.sort(
+            (a, b) => new Date(b.date) - new Date(a.date)
+        );
+
+        if (userId) {
+            // Fetch user data from Firestore based on user ID
+            const userDoc = await getDoc(doc(db, "users", userId));
+
+            if (!userDoc.exists()) {
+                // Handle the case when the user with the specified ID is not found
+                return { notFound: true };
+            }
+
+            // Extract user data from the document
+            const user = userDoc.data();
+
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                    user,
+                    blogs: sortedBlogs,
+                },
+            };
+        } else {
+            // User is not logged in
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                    blogs: sortedBlogs,
+                },
+            };
+        }
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        return { props: { error: "Error fetching data" } };
+    }
 }

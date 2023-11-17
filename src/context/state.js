@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import Cookie from "js-cookie";
 import { useTheme } from "next-themes";
 import { createContext, useContext, useEffect, useState } from "react";
@@ -15,41 +15,43 @@ export function AppWrapper({ children }) {
     const { theme, setTheme } = useTheme();
     const [darkMode, setDarkMode] = useState(false);
     const [profileUpdated, setProfileUpdated] = useState(false);
-    const [blogs, setBlogs] = useState([{}]); // Store the blogs data
+    const [loading, setLoading] = useState(); // New loading state
 
-    async function fetchBlogs() {
-        try {
-            const blogsCollection = collection(db, "blogs");
-            const data = await getDocs(blogsCollection);
-            const blogsData = [];
-            data.forEach((doc) => {
-                const blog = doc.data();
-                blogsData.push(blog);
-            });
-            setBlogs(blogsData);
-            // return blogsData
-        } catch (error) {
-            console.log("error fetching blogs:", error);
-        }
-    }
     useEffect(() => {
         const loggedInUserCookie = Cookie.get("loggedInUser");
         if (loggedInUserCookie) {
-            // User is logged in, set isLogged to true
-            setIsLogged(true);
-            // You can also fetch the user's data from the cookie and set it to the user state
-            setUser({ ...user, uid: loggedInUserCookie });
-        }
-        // Fetch blogs data when the component mounts
+            const fetchUser = async () => {
+                try {
+                    const userDoc = await getDoc(
+                        doc(db, "users", loggedInUserCookie)
+                    );
+                    if (userDoc.exists()) {
+                        setUser({
+                            ...userDoc.data(),
+                            uid: loggedInUserCookie,
+                        });
+                        setIsLogged(true);
+                    } else {
+                        setIsLogged(false);
+                        setUser({});
+                    }
+                } catch (error) {
+                    console.error("Error fetching user data:", error);
+                } finally {
+                    setLoading(false); // Set loading to false when fetching is complete
+                }
+            };
 
-        fetchBlogs();
+            // Fetch user information on page load
+            fetchUser();
+        }
     }, []);
 
-    async function authChange() {
+    const authChange = async () => {
+        setLoading(true); // Set loading to true when starting the authentication change
         try {
-            await onAuthStateChanged(auth, async (logUser) => {
+            onAuthStateChanged(auth, async (logUser) => {
                 if (logUser) {
-                    // console.log("logUser true", logUser);
                     setIsLogged(true);
                     Cookie.set("loggedInUser", auth.currentUser.uid, {
                         expires: 7,
@@ -65,22 +67,25 @@ export function AppWrapper({ children }) {
                         });
                     }
                 } else {
-                    console.log("logUser false", logUser);
                     setIsLogged(false);
                     setUser({});
-                    console.log("user not logged");
                 }
             });
         } catch (err) {
-            console.log("AuthChange error", err);
+            console.error("Error in authChange:", err);
+        } finally {
+            setLoading(false); // Set loading to false when authentication change is complete
         }
+    };
+
+    if (loading) {
+        return <div></div>;
     }
 
     function toggledarkMode() {
         setDarkMode(!darkMode);
         // console.log("darkmode", darkMode);
     }
-
     return (
         <AppContext.Provider
             value={{
@@ -95,7 +100,6 @@ export function AppWrapper({ children }) {
                 profileUpdated,
                 setProfileUpdated,
                 setUser,
-                blogs, // Make blogs data accessible in your context
             }}
         >
             {children}
