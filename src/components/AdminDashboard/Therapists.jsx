@@ -127,21 +127,41 @@ export default function Therapists({
                     isOpen={isModalOpen}
                     onRequestClose={handleCancelSendEmail}
                     contentLabel='Send Email Modal'
+                    className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'
+                    overlayClassName='fixed inset-0'
                 >
-                    <h2>Compose Email</h2>
-                    <input
-                        type='text'
-                        placeholder='Subject'
-                        value={emailSubject}
-                        onChange={(e) => setEmailSubject(e.target.value)}
-                    />
-                    <textarea
-                        placeholder='Email Content'
-                        value={emailContent}
-                        onChange={(e) => setEmailContent(e.target.value)}
-                    />
-                    <button onClick={handleConfirmSendEmail}>Send</button>
-                    <button onClick={handleCancelSendEmail}>Cancel</button>
+                    <div className='bg-white w-full max-w-md p-6 rounded-lg shadow-xl'>
+                        <h2 className='text-2xl font-bold mb-4'>
+                            Compose Email
+                        </h2>
+                        <input
+                            type='text'
+                            placeholder='Subject'
+                            value={emailSubject}
+                            onChange={(e) => setEmailSubject(e.target.value)}
+                            className='w-full px-4 py-2 mb-4 border border-gray-300 rounded focus:outline-none focus:border-blue-500'
+                        />
+                        <textarea
+                            placeholder='Email Content'
+                            value={emailContent}
+                            onChange={(e) => setEmailContent(e.target.value)}
+                            className='w-full h-40 px-4 py-2 mb-4 border border-gray-300 rounded resize-none focus:outline-none focus:border-blue-500'
+                        />
+                        <div className='flex justify-end'>
+                            <button
+                                onClick={handleConfirmSendEmail}
+                                className='mr-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600'
+                            >
+                                Send
+                            </button>
+                            <button
+                                onClick={handleCancelSendEmail}
+                                className='bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none focus:bg-gray-400'
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
                 </Modal>
             </div>
         </div>

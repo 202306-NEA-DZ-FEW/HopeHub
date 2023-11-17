@@ -328,6 +328,7 @@ export default function AdminDashboard({ blogs: initialBlogs, users }) {
                                     gender={member.gender}
                                     phoneNumber={member.phoneNumber}
                                     imgURL={member.photoURL}
+                                    email={member.email}
                                     patient={member}
                                     onDelete={() => handleDeletePatient(member)}
                                 />

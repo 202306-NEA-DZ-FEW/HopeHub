@@ -6,11 +6,6 @@ import ReactQuill from "react-quill";
 // import QuillEditor from "./QuillEditor";
 // type Props = {};
 export default function TextEditor({ value, onChange }) {
-    // const QuillNoSSRWrapper = dynamic(import("react-quill"), {
-    //     ssr: false,
-    //     loading: () => <p>Loading ...</p>,
-    // });
-
     const modules = useMemo(() => {
         return {
             toolbar: [
