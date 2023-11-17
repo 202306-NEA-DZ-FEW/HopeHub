@@ -1,27 +1,61 @@
-# Capstone project information
+# Hope🕊️Hub - Online Therapy Website
 
-## Project information
+## Home is Where the Hope Is
+In a world where time and circumstances often become barriers to seeking help, HopeHub strives to break down these walls. Our mission is crystal clear - to provide a safe, careful, and friendly space. Here, users can seamlessly connect with professional therapists, schedule online appointments, engage in therapy sessions through chat, video, and voice calls, and partake in therapeutic activities.
 
--   Project name: [Project name]
--   Project description: [Project description]
--   Technology used: Nextjs, TailwindCSS, i18next, Husky, Prettier, Eslint, Commitlinter (Conventional Commits)
--   Team members: Member1, Member2, etc,
--   Bootcamp: GIZ YE 2022
+Deployed website: https://hope-hub-w4pj.vercel.app/
 
-## Installation
+## Core Components
+-  Connection Hub: Schedule Appointments and Engage in Therapy Sessions
+-  Targeted Engagement: User-friendly Login/Signup, Authentication, Google, and Facebook Integration
+-  Resource Gateway: blogs Page with Links on Mental Health
+-  Personal Haven: Add/Edit Personal Info and Profile Picture
+-  Global Connectivity: Multi-language Support
+-  Therapeutic Interaction: Video Calls, Voice Calls, and Chat Functions
 
-```shell
-npm install -g commitizen // Installs commitizen
-npx husky install         // Installs Husky
-chmod ug+x .husky/*       // Gives husky executable extension
-npm install               // Installs the node modules
-```
+## Pages
+-  Home Page: A welcoming introduction to the platform.
+-  About Page: Provides insight into the coding team's mission and offers contact information for each member.
+-  Contact Page: Offers a means for user inquiries and support.
+-  Authentication Page: Login/signup with secure authentication.
+-  Blogs Page: Central hub for mental health resources.
+-  User Profile Page: Personalized space for users to manage information and profiles for both patients/therapists.
+-  Booking Page: Enables users to schedule appointments with therapists, facilitating seamless interaction for users and therapists alike.
+-  Payment Page (via Stripe): Secure payment gateway for users to handle financial transactions.
+-  Thank You Page: Displays a heartfelt "Thank You" message after every submission, expressing gratitude for the user's engagement.
 
-## Development process
+## Bonus Features
+-  Dark Mode: Activate a Stylish Dark Mode for Enhanced Visual Comfort
+-  Payment with Stripe: Secure payment processing through Stripe for hassle-free transactions.
+-  Admin Dashboard: Centralized Admin Control and Monitoring for Streamlined Management
+-  Search Functionality: Efficient Search Capability for Quick Access to Relevant Information
+-  Calendar: provide users with a visual representation of their scheduled activities.
+  
 
--   When commiting you will have to use `git cz` and then go through the process. Look at the first commit I made to know what that means.
--   The translation process is done using the i18next library. There's an example in the index.js file of how this is done. Check this github project for more info on how to use the i18next library: [i18next](https://github.com/i18next/next-i18next)
--   When writing commits, commitlinter library is used to make sure that your commits are consistent with the conventional commits. To learn more about it refer to the guidelines in Canvas or the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) site.
--   The `layout` folder contains the components that will be used in the layout of pages, so components like the header and footer will be placed there.
+## Project Management
+-  GitHub Issues: Efficiently create, discuss, and assign tasks.
+-  Milestones: Organize and track progress by grouping related issues.
+-  gitHub Project Management Tool: Utilize Kanban boards for task management and workflow automation.
+-  Mind Map: Visualize project structure and relationships for effective planning.
 
-Good luck and happy coding :D
+
+## 🔧 Tools Behind the Scenes
+-  Next.js: For a smooth and responsive interface.
+-  TailwindCSS: Keeping things simple, yet stylish.
+-  18next: Breaking language barriers for a global community.
+-  Husky, Prettier, Eslint, Commitlinter: Ensuring clean and consistent code.
+  
+
+## 🌐 Stay Connected
+For questions or just to say hello, reach out to us 
+
+- Abdelghani Bahri: https://github.com/GhaniBahri
+- Amel Batouche: https://github.com/Amel7400
+- Fella Kettani: https://github.com/fketta
+- Zohir Kioukiou: https://github.com/Zohir-kk
+- Brahim Hadj Mahammed: https://github.com/BrahimHM
+
+Let's build a community where every pixel carries a message of hope. Join us at Hope Hub and let's make the digital world a little brighter together. 🌟
+Bootcamp: GIZ DZ 2023
+
+
