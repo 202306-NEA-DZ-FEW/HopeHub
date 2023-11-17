@@ -1,5 +1,5 @@
 {
-    "name": "nextjs",
+    "name": "HopeHub",
     "version": "0.1.0",
     "private": true,
     "scripts": {
@@ -19,6 +19,8 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "@babel/plugin-transform-modules-commonjs": "^7.23.3",
+        "@babel/preset-react": "^7.23.3",
         "@fullcalendar/core": "^6.1.9",
         "@fullcalendar/daygrid": "^6.1.9",
         "@fullcalendar/react": "^6.1.9",
@@ -26,8 +28,11 @@
         "@stripe/react-stripe-js": "^2.3.1",
         "@stripe/stripe-js": "^2.1.11",
         "axios": "^1.6.0",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "babel-preset-jest": "^29.6.3",
         "clsx": "^1.2.1",
         "cookie": "^0.6.0",
+        "d3": "^7.8.5",
         "date-fns": "^2.29.1",
         "embla-carousel-react": "^8.0.0-rc14",
         "eslint-plugin-jest": "^26.6.0",
@@ -59,6 +64,8 @@
         "stripe": "^14.3.0"
     },
     "devDependencies": {
+        "@babel/core": "^7.23.3",
+        "@babel/preset-env": "^7.23.3",
         "@commitlint/cli": "^16.3.0",
         "@commitlint/config-conventional": "^16.2.4",
         "@svgr/webpack": "^6.2.1",
@@ -66,6 +73,7 @@
         "@testing-library/react": "^13.3.0",
         "@types/react": "^18.0.15",
         "autoprefixer": "^10.4.16",
+        "babel-jest": "^29.7.0",
         "cz-conventional-changelog": "^3.3.0",
         "daisyui": "^3.9.2",
         "eslint": "^8.19.0",

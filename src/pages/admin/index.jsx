@@ -6,21 +6,33 @@ import {
     query,
     where,
 } from "firebase/firestore";
+import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
+import Blogs from "@/components/AdminDashboard/Blogs";
 import BlogsEdit from "@/components/AdminDashboard/BlogsEdit";
 import Patients from "@/components/AdminDashboard/Patients";
 import Therapists from "@/components/AdminDashboard/Therapists";
+import Bar from "@/components/charts/Bar";
+import SingleDate from "@/components/charts/singleDate";
+import Widget from "@/components/charts/Widget";
 
 // import { Patient, Therapist } from "@/util/constants";
 import { db } from "@/util/firebase";
-import Blogs from "@/components/AdminDashboard/Blogs";
 
-export default function AdminDashboard({ blogs: initialBlogs, users }) {
-    console.log("users data", users);
+export default function AdminDashboard({
+    Allblogs: initialBlogs,
+    users,
+    datesBarData,
+    blogsCount,
+    patientsCount,
+    therapistsCount,
+    newsletterCount,
+    datesAppointments,
+}) {
     const { t } = useTranslation("common");
     const [visibleSection, setVisibleSection] = useState("therapists");
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
@@ -33,6 +45,8 @@ export default function AdminDashboard({ blogs: initialBlogs, users }) {
         users.filter((user) => user.isTherapist)
     );
     const [isBlogsDropdownOpen, setIsBlogsDropdownOpen] = useState(false); // Correct the variable name
+    const [selectedDate, setSelectedDate] = useState("");
+    console.log("appointments", datesAppointments[selectedDate]);
     const handleSectionToggle = (section) => {
         setVisibleSection(section);
     };
@@ -188,7 +202,14 @@ export default function AdminDashboard({ blogs: initialBlogs, users }) {
 
                 <ul className='menu  w-56 text-lg rounded-md space-y-5 outline-none'>
                     <li>
-                        <a>{/* {t("General")} */} Dashboard</a>
+                        <a
+                            className={`menu-dropdown-show ${
+                                visibleSection === "dashboard" ? "active" : ""
+                            }`}
+                            onClick={() => handleSectionToggle("dashboard")}
+                        >
+                            {/* {t("General")} */} Dashboard
+                        </a>
                     </li>
                     <li className=''>
                         <span
@@ -292,6 +313,37 @@ export default function AdminDashboard({ blogs: initialBlogs, users }) {
             </div>
 
             <div className='w-full'>
+                <div className='flex items-center justify-end w-full gap-5 p-4 mb-5'>
+                    <button
+                        className='w-28 h-10 shadow-md rounded-md text-lg font-medium bg-white'
+                        onClick={() => location.reload()}
+                    >
+                        Refresh
+                    </button>
+                    <Link
+                        className='w-28 h-10 shadow-md rounded-md text-lg font-medium items-center justify-center bg-red-500 text-white text-center flex'
+                        href='/'
+                    >
+                        Close{" "}
+                    </Link>
+                </div>
+                <div
+                    className={`w-11/12 mx-auto p-4 border rounded-md grid-cols-[3fr_2fr] gap-x-1 gap-y-7 bg-white mt-6 ${
+                        visibleSection === "dashboard" ? "grid" : "hidden"
+                    }`}
+                >
+                    <div className='w-full h-fit p-4 flex flex-row justify-between col-start-1 col-span-2 row-start-1'>
+                        <Widget title='Therapists' value={therapistsCount} />
+                        <Widget title='Patients' value={patientsCount} />
+                        <Widget title='Blogs' value={blogsCount} />
+                        <Widget title='Subscription' value={newsletterCount} />
+                    </div>
+                    <Bar
+                        data={datesBarData}
+                        setSelectedDate={setSelectedDate}
+                    />
+                    <SingleDate data={datesAppointments[selectedDate]} />
+                </div>
                 <div className='flex flex-wrap py-2 '>
                     {visibleSection === "therapists" && (
                         // Render Therapists component when 'therapists' link is clicked
@@ -371,22 +423,65 @@ export async function getServerSideProps({ locale, query }) {
     }
 
     const blogSnapshot = await getDocs(collection(db, "blogs"));
-    const blogs = [];
+    const Allblogs = [];
     blogSnapshot.forEach((doc) => {
-        blogs.push(doc.data());
+        Allblogs.push(doc.data());
     });
 
     const userSnapshot = await getDocs(collection(db, "users"));
     const users = [];
+    const datesAppointments = {};
     userSnapshot.forEach((doc) => {
         users.push(doc.data());
+        const rdv = doc.data().appointments || [];
+        rdv.forEach((el) => {
+            datesAppointments[el.date] === undefined
+                ? (datesAppointments[el.date] = [
+                      { name: doc.data().name || doc.id, time: el.time },
+                  ])
+                : datesAppointments[el.date].push({
+                      name: doc.data().name || doc.id,
+                      time: el.time,
+                  });
+        });
     });
 
+    console.log("server user", datesAppointments);
+    const dateSnapshot = await getDocs(collection(db, "dates"));
+    const dates = {};
+    dateSnapshot.forEach((doc) => {
+        // dates.push(doc.data())
+        dates[doc.id] = doc.data();
+    });
+    const newsletterSnapshot = await getDocs(collection(db, "dates"));
+    const newsletter = [];
+    newsletterSnapshot.forEach((doc) => {
+        newsletter.push(doc.data());
+    });
+    const allDates = [];
+    for (let date in dates) {
+        allDates.push({
+            date: date,
+            count: dates[date].bookedHours.length,
+        });
+    }
+    const datesBarData = allDates.slice(-7);
+    const blogsCount = Allblogs.length;
+    const patientsCount = users.filter((user) => !user.isTherapist).length;
+    const therapistsCount = users.filter((user) => user.isTherapist).length;
+    const newsletterCount = newsletter.length;
+    console.log("counts server", newsletterCount);
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
-            blogs,
+            Allblogs,
             users,
+            datesBarData,
+            blogsCount,
+            patientsCount,
+            therapistsCount,
+            newsletterCount,
+            datesAppointments,
         },
     };
 }

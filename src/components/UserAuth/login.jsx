@@ -23,6 +23,7 @@ function Login({ isChecked, setChecked }) {
     async function handleLogin(e, email, password, router, setUser) {
         e.preventDefault();
         const specialToken = process.env.NEXT_PUBLIC_SPECIAL_TOKEN;
+
         const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
         if (email === "admin@hopehub.com") {
             if (password === adminPassword) {

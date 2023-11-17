@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import Cookie from "js-cookie";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
@@ -8,8 +9,6 @@ import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
-
-import Cookie from "js-cookie";
 
 function Signup({ isChecked, setChecked }) {
     const [email, setEmail] = useState("");
@@ -35,6 +34,54 @@ function Signup({ isChecked, setChecked }) {
                 className:
                     "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
             });
+            // <<<<<<< 108-dashboard
+            //         } else {
+            //             createUserWithEmailAndPassword(auth, email, password)
+            //                 .then((userCredential) => {
+            //                     // console.log(userCredential.user)
+            //                     // to verify the provided email is correct, it will be implemented after deployement
+            //                     /*  sendEmailVerification(userCredential.user).then(() => {
+            //                     console.log("verification email sent");
+            //                 }); */
+            //                     updateProfile(userCredential.user, {
+            //                         //after creating user, update his prfole and give him name
+            //                         displayName: firstname + " " + lastname,
+            //                     })
+            //                         .then((cred) => {
+            //                             console.log(cred);
+            //                             console.log("user", userCredential);
+            //                             setDoc(doc(db, "users", userCredential.user.uid), {
+            //                                 birthDate: bdate,
+            //                                 isTherapist: false,
+            //                                 licenseNumber: null,
+            //                                 displayName: firstname + " " + lastname,
+            //                             })
+            //                                 .then((data) => {
+            //                                     console.log("data", data);
+            //                                     Cookie.set(
+            //                                         "loggedInUser",
+            //                                         userCredential.user.uid,
+            //                                         { expires: 7 }
+            //                                     );
+            //                                     router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
+            //                                 })
+            //                                 .then(() => authChange())
+            //                                 .catch((err) => {
+            //                                     console.log("firestore error", err);
+            //                                 });
+            //                         })
+            //                         .catch((err) => {
+            //                             console.log("updating profile error", err);
+            //                         });
+            //                 })
+            //                 .catch(() => {
+            //                     toast.error("Can't Sign up", {
+            //                         position: toast.POSITION.BOTTOM_CENTER,
+            //                         autoClose: 2500,
+            //                     });
+            //                 });
+            //             // reset the fields
+            // =======
             return;
         }
 
@@ -70,6 +117,7 @@ function Signup({ isChecked, setChecked }) {
                 autoClose: 2500,
             });
         } finally {
+            // >>>>>>> develop
             setEmail("");
             setLastname("");
             setConfirmemail("");
