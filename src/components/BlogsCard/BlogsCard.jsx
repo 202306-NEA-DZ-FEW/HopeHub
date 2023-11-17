@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 
-const BlogCard = ({ image, title, subtitle, author, blogId, summary }) => {
+const BlogCard = ({ image, title, subtitle, author, blogId, body }) => {
     // Function used for translations
     const { t } = useTranslation("common");
 
@@ -30,9 +30,15 @@ const BlogCard = ({ image, title, subtitle, author, blogId, summary }) => {
                 <p className='text-gray-500 dark:text-gray-400 font-light text-xs lg:text-sm'>
                     {t("Written by")} {author}
                 </p>
-                <p className='text-NeutralBlack dark:text-NeutralWhite font-light text-xs lg:text-base py-2'>
-                    {summary}
-                </p>
+                <p
+                    dangerouslySetInnerHTML={{
+                        __html:
+                            body && typeof body === "string"
+                                ? body.split("</p")[0]
+                                : "",
+                    }}
+                    className='text-NeutralBlack dark:text-NeutralWhite font-light text-xs lg:text-base py-2'
+                ></p>
             </div>
         </div>
     );

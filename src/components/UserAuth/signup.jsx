@@ -1,9 +1,11 @@
 /* eslint-disable no-undef */
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import Cookie from "js-cookie";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
@@ -21,50 +23,101 @@ function Signup({ isChecked, setChecked }) {
     const { authChange } = useAppcontext();
     const { t } = useTranslation("common");
 
-    function handleSignup(e) {
+    const handleSignup = async (e) => {
         e.preventDefault();
+
         if (email !== confirmemail || password !== confirmpassword) {
-            alert("Email or password does not match");
-        } else {
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // console.log(userCredential.user)
-                    // to verify the provided email is correct, it will be implemented after deployement
-                    /*  sendEmailVerification(userCredential.user).then(() => {
-                    console.log("verification email sent");
-                }); */
-                    updateProfile(userCredential.user, {
-                        //after creating user, update his prfole and give him name
-                        displayName: firstname + " " + lastname,
-                    })
-                        .then((cred) => {
-                            console.log(cred);
-                            console.log("user", userCredential);
-                            setDoc(doc(db, "users", userCredential.user.uid), {
-                                birthDate: bdate,
-                                isTherapist: false,
-                                licenseNumber: null,
-                            })
-                                .then((data) => {
-                                    console.log("data", data);
-                                    router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
-                                })
-                                .then(() => authChange())
-                                .catch((err) => {
-                                    console.log("firestore error", err);
-                                });
-                        })
-                        .catch((err) => {
-                            console.log("updating profile error", err);
-                        });
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log("can't sign up", errorMessage, " ", errorCode);
-                    // ..
-                });
-            // reset the fields
+            toast.warning("Email or password does not match", {
+                position: toast.POSITION.BOTTOM_CENTER,
+                autoClose: 2500,
+                transition: Slide,
+                className:
+                    "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+            });
+            // <<<<<<< 108-dashboard
+            //         } else {
+            //             createUserWithEmailAndPassword(auth, email, password)
+            //                 .then((userCredential) => {
+            //                     // console.log(userCredential.user)
+            //                     // to verify the provided email is correct, it will be implemented after deployement
+            //                     /*  sendEmailVerification(userCredential.user).then(() => {
+            //                     console.log("verification email sent");
+            //                 }); */
+            //                     updateProfile(userCredential.user, {
+            //                         //after creating user, update his prfole and give him name
+            //                         displayName: firstname + " " + lastname,
+            //                     })
+            //                         .then((cred) => {
+            //                             console.log(cred);
+            //                             console.log("user", userCredential);
+            //                             setDoc(doc(db, "users", userCredential.user.uid), {
+            //                                 birthDate: bdate,
+            //                                 isTherapist: false,
+            //                                 licenseNumber: null,
+            //                                 displayName: firstname + " " + lastname,
+            //                             })
+            //                                 .then((data) => {
+            //                                     console.log("data", data);
+            //                                     Cookie.set(
+            //                                         "loggedInUser",
+            //                                         userCredential.user.uid,
+            //                                         { expires: 7 }
+            //                                     );
+            //                                     router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
+            //                                 })
+            //                                 .then(() => authChange())
+            //                                 .catch((err) => {
+            //                                     console.log("firestore error", err);
+            //                                 });
+            //                         })
+            //                         .catch((err) => {
+            //                             console.log("updating profile error", err);
+            //                         });
+            //                 })
+            //                 .catch(() => {
+            //                     toast.error("Can't Sign up", {
+            //                         position: toast.POSITION.BOTTOM_CENTER,
+            //                         autoClose: 2500,
+            //                     });
+            //                 });
+            //             // reset the fields
+            // =======
+            return;
+        }
+
+        try {
+            const userCredential = await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+            const userData = {
+                uid: userCredential.user.uid, // Save the UID
+                birthDate: bdate,
+                isTherapist: false,
+                licenseNumber: null,
+                name: `${firstname} ${lastname}`,
+                email: email,
+            };
+
+            await updateProfile(userCredential.user, {
+                displayName: `${firstname} ${lastname}`,
+            });
+
+            await addUserToFirestore(userCredential, userData);
+
+            Cookie.set("loggedInUser", userCredential.user.uid, { expires: 7 });
+            router.push(`/thanks?from=${pathname}`);
+            authChange();
+        } catch (error) {
+            console.error("Signup error:", error);
+            toast.error("Can't Sign up", {
+                position: toast.POSITION.BOTTOM_CENTER,
+                autoClose: 2500,
+            });
+        } finally {
+            // >>>>>>> develop
             setEmail("");
             setLastname("");
             setConfirmemail("");
@@ -73,7 +126,22 @@ function Signup({ isChecked, setChecked }) {
             setPassword("");
             setFirstname("");
         }
-    }
+    };
+
+    const addUserToFirestore = async (userCredential, userData) => {
+        try {
+            const docRef = doc(db, "users", userCredential.user.uid);
+            console.log("im db", db);
+            console.log("im doc ref", docRef);
+            console.log("im user here", userCredential.user.uid);
+            console.log("im userData", userData);
+            await setDoc(docRef, userData);
+            console.log("User data added to Firestore");
+        } catch (error) {
+            console.error("Firestore error:", error);
+        }
+    };
+
     return (
         <>
             <div className='font-poppins flex flex-col items-start justify-center w-full '>

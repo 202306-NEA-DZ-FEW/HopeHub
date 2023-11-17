@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import EditorToolBar from "../EditorToolBar";
+import Widget from "../Widget";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<EditorToolBar />).toJSON();
+    const tree = renderer.create(<Widget />).toJSON();
     expect(tree).toMatchSnapshot();
 });

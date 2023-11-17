@@ -1,5 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 
@@ -10,14 +11,23 @@ export default function Issues({ OnNext, OnPrevious }) {
     const [issues, setIssues] = useState([]); // Use an array for multiple selections
     const [error, setError] = useState("");
     const { bookingInfos, setBookingInfos } = useAppcontext();
-
+    const toastifyError = (message) => {
+        toast.error(message, {
+            position: toast.POSITION.BOTTOM_CENTER,
+            autoClose: 2500,
+            transition: Slide,
+            className:
+                "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+        });
+    };
     const handleNextClick = () => {
         if (issues.length > 0) {
             // Check if at least one option is selected
-            setError("");
+
             OnNext();
         } else {
-            setError(t("Please select at least one option before proceeding."));
+            // Display an error toast message using toastifyError
+            toastifyError(t("Please select an issue before proceeding."));
         }
     };
 
@@ -31,7 +41,7 @@ export default function Issues({ OnNext, OnPrevious }) {
     };
 
     return (
-        <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen min-h-screen'>
+        <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12'>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent'>
                 <div className='mb-3 pt-6 font-ogg font-bold text-NeutralBlack dark:text-NeutralWhite uppercase text-2xl lg:text-4xl leading-normal'>
                     {t("Let's match you with the right therapist")}
@@ -41,7 +51,7 @@ export default function Issues({ OnNext, OnPrevious }) {
                         "Please fill out this short questionnaire to provide some general and anonymous background about you and the issues you'd like to deal with in online therapy. It would help us match you with the most suitable therapist for you."
                     )}{" "}
                 </div>
-                <div className='flex flex-col bg-NeutralWhite dark:bg-Dark_Accent lg:w-1/2 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'>
+                <div className='flex flex-col bg-NeutralWhite dark:bg-Dark_Accent lg:w-3/5 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'>
                     {error && (
                         <div className='text-Error text-center font-poppins text-regular pt-5'>
                             {error}

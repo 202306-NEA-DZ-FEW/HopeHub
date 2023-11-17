@@ -2,11 +2,13 @@ import { doc, updateDoc } from "firebase/firestore";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
+import { Slide, toast } from "react-toastify";
 
 import { db } from "@/util/firebase";
 
 import ToggleButton from "../Navbar/toggleBtn";
 import TranslationButton from "../TranslationButton/TranslationButton";
+import NewsletterSignUp from "../NewsletterSignUp/NewsletterSignUp";
 
 function Footer() {
     const { t } = useTranslation("common");
@@ -15,100 +17,22 @@ function Footer() {
         e.preventDefault();
         setEmail(e.target.value);
     }
-    async function handleSubscribe(e) {
-        // console.log("e", e)
-        const sendBtn = e.type === "click" && e.target.id === "subscribe";
-        if (e.key === "Enter" || sendBtn) {
-            e.preventDefault();
-            // console.log('email',email)
 
-            fetch("https://sendmail-api-docs.vercel.app/api/send", {
-                method: "POST",
-                body: JSON.stringify({
-                    to: email,
-                    subject: "Welcome to Hope Hub",
-                    message: `
-            <html>
-              <body style='padding=1rem 2rem;'>
-                <h1 style='font-size=18px; margin=auto;'>Hello!</h1>
-                <p style='font-size=16px;'>Thank you for subscribing to Hope Hub. <br>
-                Content worth reading awaits you. Sit back, relax, and enjoy the newsletter ride.</p>
-              </body>
-            </html>
-          `,
-                }),
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    if (data.success) {
-                        const newsletterRef = doc(
-                            db,
-                            "newsletter",
-                            "subscribe"
-                        );
-                        const docKey = email.replace(/\./g, "_");
-                        try {
-                            updateDoc(newsletterRef, {
-                                [docKey]: email,
-                            }).then(() => alert("thank you for subscribing"));
-                        } catch (err) {
-                            console.error(err);
-                        }
-                    } else {
-                        alert(`Error: ${data.message}`);
-                    }
-                });
-            setEmail("");
-        }
-    }
     return (
         <footer className='footer mt-20 px-10 py-5 bg-Accent dark:bg-Dark_Primary text-base-content flex flex-col md:flex-row lg:flex-row justify-between items-center'>
-            <form>
-                <header className=' font-bold text-xl mb-[-15px] text-NeutralBlack dark:text-NeutralWhite'>
-                    {t("footer_msg_1")}
+            <div className='flex flex-col'>
+                <header className='font-bold text-xl mb-[-15px] text-NeutralBlack dark:text-NeutralWhite'>
+                    {t("Subscribe")}
                 </header>
-                <fieldset className='form-control w-96 mt-2'>
-                    <label className='label'>
-                        <span className='label-text text-NeutralBlack dark:text-NeutralWhite'>
-                            {t("footer_msg_2")}
-                        </span>
-                    </label>
-                    <div className='relative flex flex-row'>
-                        <input
-                            onChange={emailChange}
-                            value={email}
-                            onKeyDown={handleSubscribe}
-                            type='text'
-                            placeholder={t("footer_msg_3")}
-                            className='input input-bordered border-[#718096] border-solid w-4/5 outline-none focus:outline-none'
-                        />
-                        <span
-                            className=' w-20 ml-[-1rem]'
-                            onClick={handleSubscribe}
-                        >
-                            <svg
-                                width='100%'
-                                // height='auto'
-                                xmlns='http://www.w3.org/2000/svg'
-                                viewBox='0 0 100 100'
-                                fill='none'
-                            >
-                                <path
-                                    id='subscribe'
-                                    d='M1 1H54C56.7614 1 59 3.23858 59 6V54C59 56.7614 56.7614 59 54 59H1V1Z'
-                                    fill='#99B4DF'
-                                    stroke='#718096'
-                                    strokeWidth='2'
-                                />
-                                <path
-                                    d='M29.6327 30.3673L25.0421 32.5401C24.5997 32.7861 24.053 32.7438 23.6538 32.4325L17.4862 27.7498C16.6922 27.1308 16.9078 25.8769 17.8628 25.5585L40.3377 18.0669C41.3237 17.7382 42.2618 18.6763 41.9331 19.6623L34.4415 42.1372C34.1231 43.0922 32.8691 43.3078 32.2502 42.5138L27.5675 36.3462C27.2562 35.947 27.2139 35.4003 27.4599 34.9579L29.6327 30.3673Z'
-                                    fill='#1A1A1A'
-                                />
-                            </svg>
-                        </span>
-                    </div>
-                </fieldset>
-            </form>
+                <label className='label'>
+                    <span className='label-text text-NeutralBlack dark:text-NeutralWhite'>
+                        {t(
+                            "We promise to never spam you, or share your email."
+                        )}
+                    </span>
+                </label>
+                <NewsletterSignUp />
+            </div>
             <div className=' items-center flex flex-col justify-center h-full text-NeutralBlack dark:text-NeutralWhite'>
                 <div className='flex flex-row items-center justify-between'>
                     <div className='mb-2 px-3'>
@@ -118,17 +42,17 @@ function Footer() {
                         <TranslationButton />
                     </div>
 
-                    <nav className='footer-title flex gap-8'>
-                        <Link className=' ' href='../Home'>
+                    <nav className='footer-title flex gap-8 font-[13px] md:font-medium lg:font-medium '>
+                        <Link className=' ' href='/'>
                             {t("Home")}
                         </Link>
-                        <Link className=' ' href='../Blogs'>
+                        <Link className=' ' href='../blogs'>
                             {t("Blogs")}
                         </Link>
-                        <Link className=' ' href='../About'>
+                        <Link className=' ' href='../about'>
                             {t("About")}
                         </Link>
-                        <Link className=' ' href='../Contact'>
+                        <Link className=' ' href='../contact'>
                             {t("Contact")}
                         </Link>
                     </nav>

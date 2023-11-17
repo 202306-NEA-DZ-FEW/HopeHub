@@ -1,5 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 
@@ -8,7 +9,15 @@ export default function Description({ OnNext, OnPrevious }) {
     const [error, setError] = useState(""); // Initialize error state
     const [description, setDescription] = useState("");
     const { bookingInfos, setBookingInfos } = useAppcontext();
-
+    const toastifyError = (message) => {
+        toast.error(message, {
+            position: toast.POSITION.BOTTOM_CENTER,
+            autoClose: 2500,
+            transition: Slide,
+            className:
+                "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+        });
+    };
     const SubmitDescription = () => {
         // setDescription(text);
         setBookingInfos({ description: description, ...bookingInfos });
@@ -18,13 +27,13 @@ export default function Description({ OnNext, OnPrevious }) {
         // Validate user input if necessary
         if (description) {
             // Reset the error message if there's no error
-            setError("");
+
             SubmitDescription();
             // Call the OnNext function and pass the data to it
             OnNext();
         } else {
-            // Display an error message or handle validation as needed
-            setError(t("Please write something before proceeding."));
+            // Display an error toast message using toastifyError
+            toastifyError(t("Please write us something before proceeding."));
         }
     };
     return (
@@ -48,7 +57,7 @@ export default function Description({ OnNext, OnPrevious }) {
                     <textarea
                         id='details'
                         value={description}
-                        className='textarea p-4 dark:brightness-90 text-NeutralBlack text-xl font-poppins text-regular bg-NeutralWhite lg:h-full sm:h-full sm:leading-tight shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-md '
+                        className='textarea p-4 dark:brightness-90 text-NeutralBlack text-xl font-poppins text-regular bg-NeutralWhite lg:h-full h-[300px] sm:h-full sm:leading-tight shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-md '
                         onChange={(e) => setDescription(e.target.value)}
                         placeholder={t("Tell us what you feel ...")}
                     ></textarea>

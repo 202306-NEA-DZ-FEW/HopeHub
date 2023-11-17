@@ -69,7 +69,7 @@ const ContactForm = () => {
                         >
                             {t("Request Type")}
                         </label>
-                        <select className='select rounded w-full bg-NeutralWhite'>
+                        <select className='select rounded w-full bg-NeutralWhite text-base font-semibold'>
                             <option
                                 disabled
                                 selected
@@ -158,7 +158,7 @@ const ContactForm = () => {
                         ></textarea>
                     </div>
                 </div>
-                <div className='text-center flex justify-end mt-3'>
+                <div className='text-center flex justify-end mt-5'>
                     <button
                         type='submit'
                         className='w-36 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'

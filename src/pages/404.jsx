@@ -1,11 +1,13 @@
 import Link from "next/link";
 import * as React from "react";
-
+import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
 
 export default function NotFoundPage() {
+    const { user } = useAppcontext();
+
     return (
-        <Layout>
+        <Layout user={user}>
             <div className='flex items-center justify-center h-screen bg-NeutralWhite dark:bg-Dark_Accent'>
                 <div className='text-center '>
                     <h1 className='text-6xl font-poppins font-bold text-Accent  '>

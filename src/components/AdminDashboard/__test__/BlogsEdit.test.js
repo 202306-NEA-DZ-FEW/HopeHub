@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 
-import BlogsEdit from "../BlogsEdit";
+import BlogsEdit from "../BlogsEditCopy";
 
 it("renders correctly", () => {
     const tree = renderer.create(<BlogsEdit />).toJSON();

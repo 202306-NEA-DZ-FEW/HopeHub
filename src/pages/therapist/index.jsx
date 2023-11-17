@@ -1,19 +1,18 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
-
+import { Slide, toast } from "react-toastify";
+import { parse } from "cookie";
 import Input from "@/components/Input/Input";
-
 import Layout from "@/layout/Layout";
 import { auth, db } from "@/util/firebase";
-
 import therapistPic from "../../../public/assets/therapist-pic.jpg";
 
-function Therapist() {
+function Therapist({ user }) {
     const { t } = useTranslation("common");
     const [email, setEmail] = useState("");
     const [licensenumber, setLicensenumber] = useState("");
@@ -26,7 +25,13 @@ function Therapist() {
     function handleSubmit(e) {
         e.preventDefault();
         if (password !== confirmpassword) {
-            alert("Password does not match");
+            toast.warning("password does not match", {
+                position: toast.POSITION.BOTTOM_CENTER,
+                autoClose: 2500,
+                transition: Slide,
+                className:
+                    "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+            });
         } else {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
@@ -126,7 +131,7 @@ function Therapist() {
         },
     ];
     return (
-        <Layout>
+        <Layout user={user}>
             <main className='flex flex-col  w-full h-fit py-4 '>
                 <h1 className='text-NeutralBlack dark:text-NeutralWhite text-center px-4 text-4xl md:text-6xl font-poppins font-semibold md:font-bold w-full'>
                     {/* Create{" "}
@@ -178,11 +183,45 @@ function Therapist() {
 }
 
 export default Therapist;
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common"])),
-            // Will be passed to the page component as props
-        },
-    };
+
+export async function getServerSideProps({ locale, req }) {
+    // Check if there is a logged-in user
+    const cookies = parse(req.headers.cookie || "");
+    const userId = cookies.loggedInUser;
+
+    if (!userId || userId == "undefined") {
+        return { redirect: { destination: "/Auth", permanent: false } };
+    }
+
+    try {
+        if (userId) {
+            // Fetch user data from Firestore based on user ID
+            const userDoc = await getDoc(doc(db, "users", userId));
+
+            if (!userDoc.exists()) {
+                // Handle the case when the user with the specified ID is not found
+                return { notFound: true };
+            }
+
+            // Extract user data from the document
+            const user = userDoc.data();
+
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                    user,
+                },
+            };
+        } else {
+            // User is not logged in
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                },
+            };
+        }
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+        return { props: { error: "Error fetching user data" } };
+    }
 }

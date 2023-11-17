@@ -4,8 +4,9 @@ import React from "react";
 
 import BookingButton from "../BookingButton/BookingButton";
 import IndexBanner from "../../../public/assets/indexBanner.jpg";
+import { useAppcontext } from "@/context/state";
 
-export default function Banner() {
+export default function Banner({ user }) {
     //Function used for translations
     const { t } = useTranslation("common");
 
@@ -32,7 +33,11 @@ export default function Banner() {
             {/* Adding the button for booking an appointment */}
             <div className='absolute inset-0 flex items-end justify-end mx-6 md:mx-10 mb-6 sm:m-20 lg:mx-10 lg:mb-32'>
                 <BookingButton
-                    destination='/booking'
+                    destination={
+                        user !== undefined
+                            ? `/booking?userid=${user.uid}`
+                            : "/Auth"
+                    }
                     buttonText='Book An Appointment'
                 />
             </div>

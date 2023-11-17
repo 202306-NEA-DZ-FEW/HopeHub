@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="bg-NeutralWhite dark:bg-Dark_Accent min-w-screen min-h-screen"
+  className="bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12"
 >
   <div
     className="w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent"
@@ -18,7 +18,7 @@ exports[`renders correctly 1`] = `
       Please fill out this short questionnaire to provide some general and anonymous background about you and the issues you'd like to deal with in online therapy. It would help us match you with the most suitable therapist for you.
     </div>
     <div
-      className="flex flex-col bg-NeutralWhite dark:bg-Dark_Accent lg:w-1/2 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative"
+      className="flex flex-col bg-NeutralWhite dark:bg-Dark_Accent lg:w-3/5 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative"
     >
       <h3
         className="py-5 px-4 lg:py-10 lg:px-11 leading-normal text-NeutralBlack dark:text-NeutralWhite text-xl lg:text-2xl font-regular font-poppins capitalize"
@@ -33,7 +33,7 @@ exports[`renders correctly 1`] = `
             className="checkbox-wrapper mb-[0.125rem] block min-h-[1.5rem] pl-11 py-2"
           >
             <label
-              className="px-6 mx-10 group"
+              className="md:px-6 md:mx-10 group"
             >
               <input
                 checked={false}
@@ -53,7 +53,7 @@ exports[`renders correctly 1`] = `
           className="checkbox-wrapper mb-[0.125rem] block min-h-[1.5rem] pl-11 py-2"
         >
           <label
-            className="px-6 mx-10 group"
+            className="md:px-6 md:mx-10 group"
           >
             <input
               checked={false}
@@ -73,7 +73,7 @@ exports[`renders correctly 1`] = `
             className="checkbox-wrapper mb-[0.125rem] block min-h-[1.5rem] pl-11 py-2"
           >
             <label
-              className="px-6 mx-10 group"
+              className="md:px-6 md:mx-10 group"
             >
               <input
                 checked={false}
@@ -94,7 +94,7 @@ exports[`renders correctly 1`] = `
             className="checkbox-wrapper mb-[0.125rem] block min-h-[1.5rem] pl-11 py-2"
           >
             <label
-              className="px-6 mx-10 group"
+              className="md:px-6 md:mx-10 group"
             >
               <input
                 checked={false}

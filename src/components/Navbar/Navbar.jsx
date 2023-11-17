@@ -1,26 +1,29 @@
 import { signOut } from "firebase/auth";
+import Cookie from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiLogOutCircle } from "react-icons/bi";
 import { PiMagnifyingGlass } from "react-icons/pi";
 
 import { useAppcontext } from "@/context/state";
-import { auth } from "@/util/firebase";
+import { auth, db } from "@/util/firebase";
 
 import darklogo from "../../../public/assets/darklogo.svg";
 import logo from "../../../public/assets/logo.svg";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 
-import Cookie from "js-cookie";
-
-export default function Navbar() {
+export default function Navbar({ user }) {
     //Function used for translations
     const { t } = useTranslation("common");
     //Using variables from context to set up dark mode, router, and navbar changes once a user is logged in
     const { darkMode } = useAppcontext();
-    const { isLogged, user } = useAppcontext();
+    const { isLogged, setIsLogged } = useAppcontext();
+
+    //Defining blogs
+    const [blogs, setBlogs] = useState([]);
 
     //Initializing the Next.js router
     const router = useRouter();
@@ -50,12 +53,13 @@ export default function Navbar() {
     function handleLogout() {
         // Clear the user's session or remove the cookie
         Cookie.remove("loggedInUser"); // Remove the user cookie
-        // You may also need to sign the user out from your authentication provider
-        // For Firebase, you can use `signOut` from the auth object
+
         signOut(auth)
             .then(() => {
-                // Redirect the user to the login page or any other appropriate location
+                // Refresh the page and then redirect the user
                 router.push("/Auth"); // Replace "/login" with the actual login page route
+                window.location.href;
+                setIsLogged(false);
             })
             .catch((error) => {
                 console.error("Error during logout:", error);
@@ -63,26 +67,48 @@ export default function Navbar() {
     }
 
     const [searchQuery, setSearchQuery] = useState("");
-    const { blogs } = useAppcontext(); // Access the blogs data from the context
 
     // Function to handle changes in the search input
     const handleSearchInputChange = (e) => {
         setSearchQuery(e.target.value.toLowerCase()); // Convert the search query to lowercase for case-insensitive search
     };
 
-    // Function to filter blogs based on the search query
-    const filteredBlogs = blogs.filter((blog) => {
-        if (!blog) return false; // Check if blog is defined
-        const blogTitle = (blog.title || "").toLowerCase(); // Check if title is defined
-        const blogSubtitle = (blog.subTitle || "").toLowerCase(); // Check if subTitle is defined
-        const tags = (blog.tags || []).map((tag) => (tag || "").toLowerCase()); // Check if tags is defined
+    // Function to fetch blog data from Firestore
+    const fetchBlogsFromFirestore = async () => {
+        try {
+            const blogsCollection = collection(db, "blogs");
+            const q = query(blogsCollection, orderBy("date", "desc"));
+            const data = await getDocs(q);
+            const blogData = data.docs.map((doc) => doc.data());
+            setBlogs(blogData);
+        } catch (error) {
+            console.error("Error fetching blogs:", error);
+        }
+    };
 
-        return (
-            blogTitle.includes(searchQuery) ||
-            blogSubtitle.includes(searchQuery) ||
-            tags.some((tag) => tag.includes(searchQuery))
-        );
-    });
+    // Function to filter blogs based on the search query
+    const filterBlogs = (blogsData, query) => {
+        return blogsData.filter((blog) => {
+            if (!blog) return false;
+            const blogTitle = (blog.title || "").toLowerCase();
+            const blogSubtitle = (blog.subTitle || "").toLowerCase();
+            const tags = (blog.tags || []).map((tag) =>
+                (tag || "").toLowerCase()
+            );
+
+            return (
+                blogTitle.includes(query) ||
+                blogSubtitle.includes(query) ||
+                tags.some((tag) => tag.includes(query))
+            );
+        });
+    };
+
+    useEffect(() => {
+        fetchBlogsFromFirestore();
+    }, []);
+
+    const filteredBlogs = filterBlogs(blogs, searchQuery);
 
     return (
         <div className='navbar h-8 sticky top-0 z-10 dark:bg-NeutralBlack dark:backdrop-blur-lg dark:bg-opacity-30 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b-slate-400'>
@@ -134,7 +160,7 @@ export default function Navbar() {
                         </li>
                         <div className='border-t-2 border-NeutralWhite pb-4'></div>
                         {/* Conditionally showing the login button or the profile menu for small screens */}
-                        {isLogged ? (
+                        {user ? (
                             <li>
                                 <details
                                     open
@@ -148,41 +174,23 @@ export default function Navbar() {
                                         {user.name || "User"}
                                     </summary>
                                     <ul className='menu w-32 text-NeutralBlack font-medium font-poppins'>
-                                        <li
-                                            className={` ${isPageActive(
-                                                "/Profile"
-                                            )}`}
-                                        >
+                                        <li>
                                             <Link
-                                                className='text-base'
-                                                href='/Profile'
+                                                href={`/Profile?userid=${user.uid}`}
                                             >
                                                 {t("Profile")}
                                             </Link>
                                         </li>
-                                        <li
-                                            className={` ${isPageActive(
-                                                "/booking"
-                                            )}`}
-                                        >
+                                        <li>
                                             <Link
-                                                className='text-base'
-                                                href='/calendar'
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
+                                                href={`/calendar?userid=${user.uid}`}
                                             >
-                                                {t("Appointments")}
+                                                {t("Calendar")}
                                             </Link>
                                         </li>
-                                        <li
-                                            className={` ${isPageActive(
-                                                "/payment"
-                                            )}`}
-                                        >
+                                        <li>
                                             <Link
-                                                className='text-base'
-                                                href='/payment'
+                                                href={`/Payment?userid=${user.uid}`}
                                             >
                                                 {t("Payments")}
                                             </Link>
@@ -257,7 +265,6 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                {/* Add the "visible" class to enable the pop-in effect */}
                 {searchQuery && filteredBlogs.length > 0 && (
                     <div className='search-results-dropdown visible absolute bg-NeutralWhite rounded-lg shadow-md z-10 w-full font-poppins pl-8'>
                         <ul className='p-2 dropdown-content z-[1] menu mt-6 shadow bg-base-100 rounded-md'>
@@ -302,7 +309,7 @@ export default function Navbar() {
                         >
                             <Link href='/contact'>{t("Contact")}</Link>
                         </li>
-                        {isLogged ? (
+                        {user ? (
                             <div className='dropdown dropdown-end dropdown-bottom'>
                                 <div
                                     tabIndex={0}
@@ -343,17 +350,23 @@ export default function Navbar() {
                                         {userMenuOpen && (
                                             <ul className='dropdown-content z-[1] menu p-2 shadow bg-Accent rounded-md w-40 mt-1'>
                                                 <li>
-                                                    <Link href='/Profile'>
+                                                    <Link
+                                                        href={`/Profile?userid=${user.uid}`}
+                                                    >
                                                         {t("Profile")}
                                                     </Link>
                                                 </li>
                                                 <li>
-                                                    <Link href='/calendar'>
-                                                        {t("Appointments")}
+                                                    <Link
+                                                        href={`/calendar?userid=${user.uid}`}
+                                                    >
+                                                        {t("Calendar")}
                                                     </Link>
                                                 </li>
                                                 <li>
-                                                    <Link href='/payment'>
+                                                    <Link
+                                                        href={`/Payments?userid=${user.uid}`}
+                                                    >
                                                         {t("Payments")}
                                                     </Link>
                                                 </li>

@@ -45,7 +45,7 @@ exports[`renders correctly 1`] = `
       >
         <a
           className="text-xs sm:text-base lg:text-xl text-NeutralBlack dark:text-NeutralWhite uppercase font-semibold font-poppins"
-          href="/booking"
+          href="/Auth"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}

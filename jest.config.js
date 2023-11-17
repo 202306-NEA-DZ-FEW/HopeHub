@@ -22,6 +22,10 @@ const customJestConfig = {
         "^@/(.*)$": "<rootDir>/src/$1",
         "^~/(.*)$": "<rootDir>/public/$1",
     },
+    transform: {
+        "^.+\\.jsx?$": "babel-jest",
+    },
+    transformIgnorePatterns: ["/node_modules/(?!d3-(array|format))"],
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
