@@ -2,9 +2,11 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import Cookie from "js-cookie";
+import Head from "next/head";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import React from "react";
 import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
@@ -145,6 +147,9 @@ function Signup({ isChecked, setChecked }) {
     return (
         <>
             <div className='font-poppins flex flex-col items-start justify-center w-full '>
+                <Head>
+                    <title>Sign Up</title>
+                </Head>
                 <h2 className=' font-extrabold text-4xl text-NeutralBlack my-8'>
                     {t("Sign Up")}{" "}
                 </h2>

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
 import { Slide, toast } from "react-toastify";
@@ -58,6 +59,9 @@ function PickaDate({ OnPrevious, OnNext, dates = [] }) {
 
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12'>
+            <Head>
+                <title>Pick a Date</title>
+            </Head>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent '>
                 <div className='mb-3 pt-12 font-poppins font-semibold tracking-wider text-NeutralBlack dark:text-NeutralWhite capitalize text-2xl lg:text-4xl leading-normal'>
                     {t("Let's match you with the right therapist")}

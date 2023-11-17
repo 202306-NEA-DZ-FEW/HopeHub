@@ -1,6 +1,9 @@
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import Head from "next/head";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
+import React from "react";
 
 import TypeOfCounseling from "@/components/booking/1TypeOfCounseling";
 import RelationshipStatus from "@/components/booking/2RelationshipStatus";
@@ -17,6 +20,7 @@ import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
 
 function BookingPage({ dates, user }) {
+    const { t } = useTranslation("common");
     const [step, setStep] = useState(1);
     const { bookingInfos } = useAppcontext();
     // console.log('dates', dates)
@@ -66,6 +70,9 @@ function BookingPage({ dates, user }) {
     }
     return (
         <Layout user={user} className='max-w-screen'>
+            <Head>
+                <title>{t("Booking")}</title>
+            </Head>
             {Step()}
         </Layout>
     );

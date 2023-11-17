@@ -1,5 +1,6 @@
 import { appWithTranslation } from "next-i18next";
 import { ThemeProvider } from "next-themes";
+import React from "react";
 import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";

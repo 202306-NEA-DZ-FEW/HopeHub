@@ -1,23 +1,28 @@
+import { parse } from "cookie";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
 
 import Banner from "@/components/HomePage/Banner";
+import BlogsCarousel from "@/components/HomePage/BlogsCarousel";
 import ConnectionSection from "@/components/HomePage/ConnectionSection";
 import PurchasingSection from "@/components/HomePage/PurchasingSection";
 import TherapistsInfoSection from "@/components/HomePage/TherapistsInfoSection";
 
 import Layout from "@/layout/Layout";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import { db, auth } from "@/util/firebase";
-import BlogsCarousel from "@/components/HomePage/BlogsCarousel";
-import { parse } from "cookie";
+import { db } from "@/util/firebase";
 
 export default function HomePage({ blogs, user }) {
+    const { t } = useTranslation("common");
     console.log("logged user data", user);
 
     return (
         <Layout user={user}>
+            <Head>
+                <title>{t("Hope Hub")}</title>
+            </Head>
             <div className='flex flex-col items-center justify-start dark:bg-Dark_Primary'>
                 <Banner user={user} />
                 <TherapistsInfoSection />

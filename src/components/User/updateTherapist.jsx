@@ -2,6 +2,7 @@
 import axios from "axios";
 import { updateProfile } from "firebase/auth";
 import { doc, updateDoc } from "firebase/firestore";
+import Head from "next/head";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -119,6 +120,9 @@ export default function TherapistProfile(user) {
 
     return (
         <Layout user={user}>
+            <Head>
+                <title>{t("Update therapist profile")}</title>
+            </Head>
             <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row  max-w-screen bg-NeutralWhite dark:bg-NeutralBlack'>
                 <div className='pb-12 lg:py-16 lg:w-[60%] md:[60%] flex '>
                     <div className='bg-NeutralBlack dark:bg-NeutralWhite border-2 w-80 h-80 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>

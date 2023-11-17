@@ -6,9 +6,11 @@ import {
     query,
     where,
 } from "firebase/firestore";
+import Head from "next/head";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from "react";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
@@ -195,6 +197,9 @@ export default function AdminDashboard({
 
     return (
         <div className='flex h-fit  '>
+            <Head>
+                <title>Admin</title>
+            </Head>
             <div className=' font-poppins pb-64 text-NeutralBlack bg-slate-400 py-10 px-4 rounded-md'>
                 <h1 className='text-4xl text-Accent bg-white rounded-md p-4 text-center font-bold mb-4'>
                     {/* {t("Admin Dashboard")} */} Hope Hub

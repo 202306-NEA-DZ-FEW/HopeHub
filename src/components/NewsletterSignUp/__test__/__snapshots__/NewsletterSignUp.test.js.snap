@@ -9,7 +9,7 @@ exports[`renders correctly 1`] = `
       className="relative flex flex-row mr-[-2rem]"
     >
       <input
-        className="input input-bordered border-[#718096] border-solid w-4/5 outline-none focus:outline-none"
+        className="input input-bordered cursor-text border-[#718096] border-solid w-4/5 outline-none focus:outline-none"
         onChange={[Function]}
         onKeyDown={[Function]}
         placeholder="Enter your e-mail"
@@ -17,7 +17,7 @@ exports[`renders correctly 1`] = `
         value=""
       />
       <span
-        className="w-20 ml-[-1rem]"
+        className="w-20 -ml-2 cursor-pointer"
         onClick={[Function]}
       >
         <svg

@@ -1,5 +1,5 @@
 import { useTranslation } from "next-i18next";
-
+import React from "react";
 export default function Blogs({ onEdit, onDelete, blog }) {
     const handleEditClick = () => {
         // Trigger the onEdit function with the entire blog object

@@ -4,7 +4,6 @@ import React from "react";
 
 import BookingButton from "../BookingButton/BookingButton";
 import IndexBanner from "../../../public/assets/indexBanner.jpg";
-import { useAppcontext } from "@/context/state";
 
 export default function Banner({ user }) {
     //Function used for translations

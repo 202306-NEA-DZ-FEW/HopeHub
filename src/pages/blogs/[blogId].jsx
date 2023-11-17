@@ -1,21 +1,25 @@
 // pages/[blogId].jsx
-import React, { useState } from "react";
-import { useRouter } from "next/router";
-import Layout from "@/layout/Layout"; // Import your layout component here
-import { db } from "../../util/firebase";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import BlogsCarousel from "@/components/HomePage/BlogsCarousel";
-import { useTranslation } from "next-i18next";
-import { format } from "date-fns";
-import { useAppcontext } from "@/context/state";
-import styles from "../../styles/BlogContent.module.css";
 import { parse } from "cookie";
+import { format } from "date-fns";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import NewsletterSignUp from "@/components/NewsletterSignUp/NewsletterSignUp";
-import { LuCopy, LuCopyCheck } from "react-icons/lu";
+import React, { useState } from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { LuCopy, LuCopyCheck } from "react-icons/lu";
 
+import styles from "../../styles/BlogContent.module.css";
+
+import BlogsCarousel from "@/components/HomePage/BlogsCarousel";
+import NewsletterSignUp from "@/components/NewsletterSignUp/NewsletterSignUp";
+
+import { useAppcontext } from "@/context/state";
+import Layout from "@/layout/Layout"; // Import your layout component here
+
+import { db } from "../../util/firebase";
+import placeholderImage from "../../../public/assets/Image placehodler.png";
 function BlogPage({ blog, blogs, user }) {
     // Function used for translations
     const { t } = useTranslation("common");
@@ -53,7 +57,7 @@ function BlogPage({ blog, blogs, user }) {
     const firstParagraph = blog.body.split("</p")[0]; // Get the first paragraph
     const renderFirstParagraph = firstParagraph ? (
         <h1
-            className={`my-2 mx-4 md:mx-20 italic md:text-base text-center font-poppins text-NeutralBlack dark:text-NeutralWhite md:block`}
+            className='my-2 mx-4 md:mx-20 italic md:text-base text-center font-poppins text-NeutralBlack dark:text-NeutralWhite md:block'
             dangerouslySetInnerHTML={{
                 __html: firstParagraph,
             }}
@@ -100,7 +104,7 @@ function BlogPage({ blog, blogs, user }) {
                     style={{ height: "650px", overflow: "hidden" }}
                 >
                     <img
-                        src={blog.imageURL}
+                        src={blog.imageURL || placeholderImage}
                         alt={blog.title}
                         className='w-full object-cover  mx-auto text-NeutralBlack dark:text-NeutralWhite relative'
                         style={{
