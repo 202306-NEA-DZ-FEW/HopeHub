@@ -1,4 +1,5 @@
 import { signOut } from "firebase/auth";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import Cookie from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,9 +12,9 @@ import { PiMagnifyingGlass } from "react-icons/pi";
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
 
+import placeholderImage from "../../../public/assets/Avatar place holder.svg";
 import darklogo from "../../../public/assets/darklogo.svg";
 import logo from "../../../public/assets/logo.svg";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
 
 export default function Navbar({ user }) {
     //Function used for translations
@@ -320,21 +321,22 @@ export default function Navbar({ user }) {
                                         onClick={toggleUserMenu}
                                     >
                                         {user.photoURL ? (
-                                            <div className='avatar '>
-                                                <div className='w-10 rounded-full '>
+                                            <div className='avatar'>
+                                                <div className='w-10 rounded-full'>
                                                     <img
                                                         src={user.photoURL}
+                                                        alt='User Photo'
                                                         className='object-fill'
                                                     />
                                                 </div>
                                             </div>
                                         ) : (
-                                            <div className='flex items-center justify-center w-10 h-10 rounded-full bg-violet-400'>
-                                                <span className='text-white text-xl'>
-                                                    {user.name
-                                                        ? user.name.charAt(0)
-                                                        : "U"}
-                                                </span>
+                                            <div className='w-10 h-10 rounded-full bg-violet-400 flex items-center justify-center'>
+                                                <img
+                                                    src={placeholderImage}
+                                                    alt='Placeholder'
+                                                    className='w-full h-full object-cover rounded-full'
+                                                />
                                             </div>
                                         )}
                                     </div>
@@ -348,7 +350,7 @@ export default function Navbar({ user }) {
                                         {/* Conditionally showing the login button or the profile menu for large screens */}
 
                                         {userMenuOpen && (
-                                            <ul className='dropdown-content z-[1] menu p-2 shadow bg-Accent rounded-md w-40 mt-1'>
+                                            <ul className='dropdown-content z-[1] menu p-2 shadow bg-Accent dark:bg-Dark_Primary text-NeutralBlack dark:text-NeutralWhite rounded-md w-40 mt-1'>
                                                 <li>
                                                     <Link
                                                         href={`/Profile?userid=${user.uid}`}

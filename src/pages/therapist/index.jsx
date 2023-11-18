@@ -1,15 +1,19 @@
+import { parse } from "cookie";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import Head from "next/head";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
 import { Slide, toast } from "react-toastify";
-import { parse } from "cookie";
+
 import Input from "@/components/Input/Input";
+
 import Layout from "@/layout/Layout";
 import { auth, db } from "@/util/firebase";
+
 import therapistPic from "../../../public/assets/therapist-pic.jpg";
 
 function Therapist({ user }) {
@@ -132,7 +136,10 @@ function Therapist({ user }) {
     ];
     return (
         <Layout user={user}>
-            <main className='flex flex-col  w-full h-fit py-4 '>
+            <Head>
+                <title>{t("Therapist Profile")}</title>
+            </Head>
+            <main className='flex flex-col  w-full h-fit py-4 mb-20 mt-6 '>
                 <h1 className='text-NeutralBlack dark:text-NeutralWhite text-center px-4 text-4xl md:text-6xl font-poppins font-semibold md:font-bold w-full'>
                     {/* Create{" "}
                         <span className='text-Accent font-aclonica font-medium'>

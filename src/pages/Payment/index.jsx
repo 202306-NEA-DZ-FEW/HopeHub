@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -15,6 +16,9 @@ const CardDetailsPage = () => {
     return (
         <div className='bg-cover bg-NeutralWhite dark:bg-Dark_Accent bg-center  flex flex-col'>
             <Layout>
+                <Head>
+                    <title>{t("Payment")}</title>
+                </Head>
                 <div className=' flex flex-col ml-8 mr-10 my-12 '>
                     <h1 className='text-NeutralBlack dark:text-NeutralWhite font-poppins font-bold text-3xl'>
                         {t("Add Card Details")}

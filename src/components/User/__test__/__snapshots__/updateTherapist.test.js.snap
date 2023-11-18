@@ -306,13 +306,20 @@ exports[`renders correctly 1`] = `
                 onClick={[Function]}
               >
                 <div
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-violet-400"
+                  className="w-10 h-10 rounded-full bg-violet-400 flex items-center justify-center"
                 >
-                  <span
-                    className="text-white text-xl"
-                  >
-                    U
-                  </span>
+                  <img
+                    alt="Placeholder"
+                    className="w-full h-full object-cover rounded-full"
+                    src={
+                      Object {
+                        "blurDataURL": "data:image/png;base64,imagedata",
+                        "height": 40,
+                        "src": "/img.jpg",
+                        "width": 40,
+                      }
+                    }
+                  />
                 </div>
               </div>
               <span
@@ -510,13 +517,13 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <footer
-    className="footer mt-20 px-10 py-5 bg-Accent dark:bg-Dark_Primary text-base-content flex flex-col md:flex-row lg:flex-row justify-between items-center"
+    className=" px-10 py-5 bg-Accent dark:bg-Dark_Primary text-base-content flex flex-col md:flex-row lg:flex-row md:justify-between items-center"
   >
     <div
       className="flex flex-col"
     >
       <header
-        className="font-bold text-xl mb-[-15px] text-NeutralBlack dark:text-NeutralWhite"
+        className="font-bold text-xl mb-[0.15rem] text-NeutralBlack dark:text-NeutralWhite"
       >
         Subscribe
       </header>
@@ -524,7 +531,7 @@ exports[`renders correctly 1`] = `
         className="label"
       >
         <span
-          className="label-text text-NeutralBlack dark:text-NeutralWhite"
+          className="label-text mb-[0.5rem] text-NeutralBlack dark:text-NeutralWhite"
         >
           We promise to never spam you, or share your email.
         </span>
@@ -537,7 +544,7 @@ exports[`renders correctly 1`] = `
             className="relative flex flex-row mr-[-2rem]"
           >
             <input
-              className="input input-bordered border-[#718096] border-solid w-4/5 outline-none focus:outline-none"
+              className="input input-bordered cursor-text border-[#718096] border-solid w-4/5 outline-none focus:outline-none"
               onChange={[Function]}
               onKeyDown={[Function]}
               placeholder="Enter your e-mail"
@@ -545,7 +552,7 @@ exports[`renders correctly 1`] = `
               value=""
             />
             <span
-              className="w-20 ml-[-1rem]"
+              className="w-20 -ml-2 cursor-pointer"
               onClick={[Function]}
             >
               <svg
@@ -576,130 +583,134 @@ exports[`renders correctly 1`] = `
       className=" items-center flex flex-col justify-center h-full text-NeutralBlack dark:text-NeutralWhite"
     >
       <div
-        className="flex flex-row items-center justify-between"
+        className="flex flex-col md:flex-row items-center justify-between"
       >
         <div
-          className="mb-2 px-3"
+          className="flex flex-wrap  items-center"
         >
           <div
-            className="bg-DarkWhite dark:bg-EnglishViolet"
-            onClick={[Function]}
+            className="mb-2 px-3"
           >
-            <label
-              className="toggle"
-              htmlFor="switch"
-            >
-              <div
-                className="icon iconMoon checked"
-              >
-                <svg
-                  fill="currentColor"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
-                    fillRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div
-                className="icon iconSun"
-              >
-                <svg
-                  fill="currentColor"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"
-                  />
-                </svg>
-              </div>
-            </label>
-          </div>
-        </div>
-        <div
-          className="mb-2.5 px-3"
-        >
-          <div
-            className="relative inline-block text-base rounded-md"
-          >
-            <button
-              aria-expanded={false}
-              aria-haspopup="listbox"
-              aria-label="Select Language"
+            <div
+              className="bg-DarkWhite dark:bg-EnglishViolet"
               onClick={[Function]}
             >
-              <svg
-                className="inline-block w-5 h-5 mr-2"
-                fill="currentColor"
-                height="1em"
-                stroke="currentColor"
-                strokeWidth="0"
+              <label
+                className="toggle"
+                htmlFor="switch"
+              >
+                <div
+                  className="icon iconMoon checked"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clipRule="evenodd"
+                      d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div
+                  className="icon iconSun"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"
+                    />
+                  </svg>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            className="mb-2 px-3"
+          >
+            <div
+              className="relative inline-block text-base rounded-md"
+            >
+              <button
+                aria-expanded={false}
+                aria-haspopup="listbox"
+                aria-label="Select Language"
+                onClick={[Function]}
+              >
+                <svg
+                  className="inline-block w-5 h-5 mr-2"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 16 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"
+                  />
+                </svg>
+              </button>
+              <div
+                className="absolute bottom-10 w-36"
                 style={
                   Object {
-                    "color": undefined,
+                    "display": "none",
                   }
                 }
-                viewBox="0 0 16 16"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
               >
-                <path
-                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"
-                />
-              </svg>
-            </button>
-            <div
-              className="absolute bottom-10 w-36"
-              style={
-                Object {
-                  "display": "none",
-                }
-              }
-            >
-              <ul
-                className="dropdown menu py-2 bg-NeutralWhite dark:bg-Dark_Primary rounded-md "
-              >
-                <li>
-                  <a
-                    className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite "
-                    href="/en"
-                    onClick={[Function]}
-                  >
-                    English
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
-                    href="/ar"
-                    onClick={[Function]}
-                  >
-                    العربية
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
-                    href="/fr"
-                    onClick={[Function]}
-                  >
-                    French
-                  </a>
-                </li>
-              </ul>
+                <ul
+                  className="dropdown menu py-2 bg-NeutralWhite dark:bg-Dark_Primary rounded-md "
+                >
+                  <li>
+                    <a
+                      className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite "
+                      href="/en"
+                      onClick={[Function]}
+                    >
+                      English
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
+                      href="/ar"
+                      onClick={[Function]}
+                    >
+                      العربية
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
+                      href="/fr"
+                      onClick={[Function]}
+                    >
+                      French
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
         <nav
-          className="footer-title flex gap-8 font-[13px] md:font-medium lg:font-medium "
+          className="footer-title flex gap-8 font-base my-4 text-NeutralBlack dark:text-NeutralWhite md:font-medium lg:font-medium "
         >
           <a
             className=" "

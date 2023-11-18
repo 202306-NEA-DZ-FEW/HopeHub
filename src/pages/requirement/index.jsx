@@ -1,12 +1,15 @@
 // Import necessary modules and components
+import { parse } from "cookie";
+import { doc, getDoc } from "firebase/firestore";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import RequirementFrame from "public/assets/RequirmentFrame.svg";
+import React from "react";
+
 import Layout from "@/layout/Layout";
-import { parse } from "cookie";
-import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/util/firebase";
 
 // Define the Requirement component
@@ -15,6 +18,9 @@ export default function Requirement({ user }) {
 
     return (
         <Layout user={user}>
+            <Head>
+                <title>{t("Requirements")}</title>
+            </Head>
             <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen min-h-screen flex flex-row-reverse lg:mb-12'>
                 {/* Image component for RequirementFrame */}
                 <Image
@@ -85,7 +91,7 @@ export default function Requirement({ user }) {
                     {/*Add more list items for requirements here */}
                     <Link
                         href='/therapist'
-                        className=' mt-3 self-end w-28 h-10 rounded-md text-base font-poppins font-regular dark:text-NeutralWhite dark:bg-Dark_Primary dark:group-hover:bg-[#3E4E68]  bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
+                        className=' mt-3 flex items-center justify-center self-end w-28 h-10 rounded-md text-base font-poppins font-regular dark:text-NeutralWhite dark:bg-Dark_Primary dark:group-hover:bg-[#3E4E68]  bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
                     >
                         {" "}
                         {t("Next")}

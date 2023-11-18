@@ -1,5 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
-
+import React from "react";
 class MyDocument extends Document {
     static async getInitialProps(ctx) {
         const initialProps = await Document.getInitialProps(ctx);
@@ -32,7 +32,7 @@ class MyDocument extends Document {
                         rel='stylesheet'
                     ></link>
 
-                    <link rel='icon' href='/assets/logo-icon.svg' />
+                    <link rel='icon' href='/assets/logo-Icon.png' />
                 </Head>
                 <body className='bg-NeutralWhite dark:bg-Dark_Accent'>
                     <Main />

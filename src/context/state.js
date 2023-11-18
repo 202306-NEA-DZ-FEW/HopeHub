@@ -3,6 +3,7 @@ import { doc, getDoc } from "firebase/firestore";
 import Cookie from "js-cookie";
 import { useTheme } from "next-themes";
 import { createContext, useContext, useEffect, useState } from "react";
+import React from "react";
 
 import { auth, db } from "@/util/firebase";
 

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
@@ -7,6 +8,9 @@ export default function Confirmation() {
     const { t } = useTranslation("common");
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12'>
+            <Head>
+                <title>Confirmation</title>
+            </Head>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent '>
                 <div className='mb-3 pt-12 font-ogg font-bold text-NeutralBlack dark:text-NeutralWhite capitalize text-2xl lg:text-4xl leading-normal'>
                     {t("your request has been submitted!")}

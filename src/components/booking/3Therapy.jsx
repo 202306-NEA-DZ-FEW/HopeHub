@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import { Slide, toast } from "react-toastify";
@@ -35,6 +36,9 @@ export default function Therapy({ OnNext, OnPrevious }) {
     };
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb3/5'>
+            <Head>
+                <title>Therapy</title>
+            </Head>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent '>
                 <div className='mb-3 pt-12 font-ogg font-bold text-NeutralBlack dark:text-NeutralWhite capitalize text-2xl lg:text-4xl leading-normal'>
                     {t("Let's match you with the right therapist")}
