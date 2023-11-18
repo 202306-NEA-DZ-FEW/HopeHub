@@ -8,6 +8,7 @@ import Layout from "@/layout/Layout";
 import { parse } from "cookie";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/util/firebase";
+import React from "react";
 
 // Define the Requirement component
 export default function Requirement({ user }) {

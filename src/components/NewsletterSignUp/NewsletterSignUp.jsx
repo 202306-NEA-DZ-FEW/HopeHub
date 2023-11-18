@@ -5,6 +5,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { useTranslation } from "next-i18next";
 import { Slide, toast } from "react-toastify";
 import { db } from "@/util/firebase";
+import React from "react";
 
 function NewsletterSignUp() {
     const { t } = useTranslation("common");

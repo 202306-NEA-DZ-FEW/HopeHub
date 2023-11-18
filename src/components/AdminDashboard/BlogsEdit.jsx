@@ -4,6 +4,7 @@ import { doc, setDoc } from "firebase/firestore";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import { useEffect, useMemo, useRef, useState } from "react";
+import React from "react";
 
 import styles from "../../styles/BlogdEdit.module.css";
 

@@ -67,7 +67,7 @@
 }
 
 .search-bar.open {
-    width: 200px; /* Width of the open search bar */
+    width: 140px; /* Width of the open search bar */
 }
 
 /* Define a transition for the opacity property */

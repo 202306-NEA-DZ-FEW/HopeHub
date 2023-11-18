@@ -2,6 +2,7 @@ import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import { useState } from "react";
 import Modal from "react-modal";
+import React from "react";
 
 export default function Therapists({
     name,

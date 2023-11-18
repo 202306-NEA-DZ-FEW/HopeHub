@@ -71,7 +71,7 @@ const PurchasingSection = () => {
                 {t("Purchase tickets that can be used to book appointments!")}
             </h1>
             <div className='flex flex-col items-center'>
-                <div className='flex flex-wrap my-8 mx-2 md:mx-28 lg:mx-2 justify-around w-full'>
+                <div className='flex flex-wrap my-8 px-6 md:mx-28 lg:mx-2 justify-around w-full'>
                     {cards}
                 </div>
                 <div className='card items-center my-2 rounded-xl shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] w-10/12 h-auto'>

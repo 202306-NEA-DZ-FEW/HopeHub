@@ -24,7 +24,7 @@ export default function Layout({ children, user }) {
             className='bg-NeutralWhite dark:bg-Dark_Accent'
         >
             <Navbar user={user} />
-            <div className='mt-8'>{children}</div>
+            <div className='pt-12'>{children}</div>
             <Footer />
         </div>
     );

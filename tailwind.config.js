@@ -23,6 +23,8 @@ module.exports = {
                 poppins: ["Poppins"],
                 aclonica: ["Aclonica"],
                 opensans: ["Open Sans", "sans-serif"],
+                fredoka: ["Fredoka", "sans-serif"],
+                lilita: ["Lilita One", "sans-serif"],
             },
         },
     },

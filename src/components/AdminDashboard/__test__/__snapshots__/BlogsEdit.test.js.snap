@@ -8,6 +8,7 @@ exports[`renders correctly 1`] = `
     className="flex flex-col w-1/2"
     onSubmit={[Function]}
   >
+     
     <div
       className="pl-4 mb-4 space-y-1 text-xl flex flex-col"
     >
@@ -67,6 +68,7 @@ exports[`renders correctly 1`] = `
         name="imageURL"
         onChange={[Function]}
         onClick={[Function]}
+        placeholder="Upload Image"
         type="file"
       />
     </div>
@@ -117,15 +119,10 @@ exports[`renders correctly 1`] = `
       >
         body
       </span>
-      <div>
-        <p>
-          Loading ...
-        </p>
-      </div>
+      <p>
+        loading...
+      </p>
     </div>
   </div>
-  <div
-    className="Toastify"
-  />
 </div>
 `;

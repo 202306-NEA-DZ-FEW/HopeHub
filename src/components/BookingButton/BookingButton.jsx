@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import React from "react";
 
 export default function BookingButton({ destination, buttonText }) {
     // Function used for translations

@@ -1,4 +1,5 @@
 import { useTranslation } from "next-i18next";
+import React from "react";
 
 export default function Posts({ name }) {
     const { t } = useTranslation("common");

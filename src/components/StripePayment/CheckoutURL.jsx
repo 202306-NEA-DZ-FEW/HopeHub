@@ -1,5 +1,6 @@
 import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import { auth, db } from "@/util/firebase";
+import React from "react";
 
 export const CheckoutURL = async (auth, priceId) => {
     const userId = auth.currentUser?.uid;

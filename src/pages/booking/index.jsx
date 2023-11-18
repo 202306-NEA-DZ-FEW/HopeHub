@@ -1,6 +1,7 @@
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
+import React from "react";
 
 import TypeOfCounseling from "@/components/booking/1TypeOfCounseling";
 import RelationshipStatus from "@/components/booking/2RelationshipStatus";
