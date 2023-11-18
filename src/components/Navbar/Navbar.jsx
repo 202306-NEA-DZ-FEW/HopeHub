@@ -15,6 +15,7 @@ import { auth, db } from "@/util/firebase";
 import darklogo from "../../../public/assets/darklogo.svg";
 import logo from "../../../public/assets/logo.svg";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import placeholderImage from "../../../public/assets/Avatar place holder.svg";
 
 export default function Navbar({ user }) {
     //Function used for translations
@@ -380,13 +381,11 @@ export default function Navbar({ user }) {
                                                 </div>
                                             ) : (
                                                 <div className='flex items-center justify-center w-10 h-10 rounded-full bg-violet-400'>
-                                                    <span className='text-white text-xl'>
-                                                        {user.name
-                                                            ? user.name.charAt(
-                                                                  0
-                                                              )
-                                                            : "U"}
-                                                    </span>
+                                                    <img
+                                                        src={placeholderImage}
+                                                        alt='Placeholder'
+                                                        className='w-full h-full object-cover rounded-full'
+                                                    />
                                                 </div>
                                             )}
                                         </div>

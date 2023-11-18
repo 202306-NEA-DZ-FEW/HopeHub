@@ -1,4 +1,5 @@
 import { sendPasswordResetEmail } from "firebase/auth";
+import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
@@ -27,6 +28,9 @@ function Forgot({ isChecked, setChecked }) {
     return (
         <>
             <div className='font-poppins flex flex-col items-start justify-center w-full '>
+                <Head>
+                    <title>Password Reset</title>
+                </Head>
                 <h2 className=' font-extrabold text-4xl text-NeutralBlack  my-5'>
                     {" "}
                     {t("forgot")}{" "}

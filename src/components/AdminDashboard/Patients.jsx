@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
-import Modal from "react-modal";
 import { useState } from "react";
 import React from "react";
+import Modal from "react-modal";
 
+import placeholderImage from "../../../public/assets/Avatar-placeholder.png";
 export default function Patients({
     name,
     age,
@@ -87,14 +88,14 @@ export default function Patients({
 
     return (
         <div className='card flex w-64 h-110 mb-4 mx-auto font-poppins text-NeutralBlack bg-NeutralWhite shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)]'>
-            <div className='mx-auto rounded-full my-8 px-4  '>
+            <div className='mx-auto rounded-full my-8 px-4'>
                 <Image
                     alt={name}
                     width={80}
                     height={80}
-                    src={imgURL}
+                    src={imgURL || placeholderImage} // Use placeholder image when imgURL is not available
                     className='rounded-full w-24 h-24'
-                />{" "}
+                />
             </div>
             <div className='flex-grow space-y-3 px-4'>
                 <h3>

@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className=" dark:bg-Dark_Neutral dark:text-NeutralWhite  bg-NeutralWhite text-NeutralBlack  w-full font-poppins flex flex-col lg:pb-16"
+  className=" dark:bg-Dark_Accent dark:text-NeutralWhite  bg-NeutralWhite text-NeutralBlack  w-full font-poppins flex flex-col lg:pb-16"
 >
   <h1
     className="mx-6 mt-6 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase font-medium"

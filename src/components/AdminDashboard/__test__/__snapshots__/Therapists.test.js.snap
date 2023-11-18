@@ -12,9 +12,11 @@ exports[`renders correctly 1`] = `
       data-nimg="1"
       decoding="async"
       height={80}
+      loading="lazy"
       onError={[Function]}
       onLoad={[Function]}
-      src=""
+      src="/_next/image?url=%2Fimg.jpg&w=256&q=75"
+      srcSet="/_next/image?url=%2Fimg.jpg&w=96&q=75 1x, /_next/image?url=%2Fimg.jpg&w=256&q=75 2x"
       style={
         Object {
           "color": "transparent",

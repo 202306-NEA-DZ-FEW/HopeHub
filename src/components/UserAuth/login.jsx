@@ -1,14 +1,15 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import Cookie from "js-cookie";
+import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
-import { Slide, toast } from "react-toastify";
 import React from "react";
+import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
-import { doc, getDoc } from "firebase/firestore";
 
 // After successful login
 
@@ -81,6 +82,9 @@ function Login({ isChecked, setChecked }) {
     return (
         <>
             <div className='font-poppins flex flex-col items-start justify-center w-full '>
+                <Head>
+                    <title>Log In</title>
+                </Head>
                 <h2 className=' font-extrabold text-4xl text-NeutralBlack my-8'>
                     {t("Log In")}
                 </h2>
@@ -107,7 +111,7 @@ function Login({ isChecked, setChecked }) {
                     <div className='flex flex-row justify-between items-center gap-4'>
                         <button
                             type='submit'
-                            className={`btn font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500  flex-1 ${
+                            className={`btn border-none font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500  flex-1 ${
                                 isChecked === "login" ? "" : ""
                             }`}
                         >
@@ -115,7 +119,7 @@ function Login({ isChecked, setChecked }) {
                         </button>
                         <button
                             type=''
-                            className='btn font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500  flex-1'
+                            className='btn border-none  font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500  flex-1'
                             onClick={() => {
                                 setChecked("signup");
                             }}

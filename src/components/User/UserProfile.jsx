@@ -8,6 +8,7 @@ import {
     updateProfile,
 } from "firebase/auth";
 import { doc, updateDoc } from "firebase/firestore";
+import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
@@ -251,11 +252,14 @@ export default function UserProfile({ user }) {
     }
     return (
         <Layout user={user}>
-            <div className='flex justify-center font-semibold font-poppins flex-col md:flex-row  max-w-screen bg-NeutralWhite dark:bg-NeutralBlack'>
-                <div className='pb-12 lg:py-16 lg:w-[60%] md:[60%] flex '>
-                    <div className='bg-NeutralBlack  dark:border-NeutralWhite border-2 w-80 h-80 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>
+            <Head>
+                <title>{t("Update user profile")}</title>
+            </Head>
+            <div className='flex justify-between font-semibold font-poppins mx-auto flex-col md:flex-row mt-20 w-fit  '>
+                <div className=' md:[40%] flex mr-8  mt-16'>
+                    <div className='mx-auto mb-8 bg-NeutralBlack dark:bg-NeutralWhite w-40 h-40 md:w-52 lg:h-52 md:h-52 rounded-full flex flex-col items-center justify-center relative overflow-visible'>
                         {user.photoURL ? (
-                            <div className='w-[70%] h-full rounded-full overflow-hidden'>
+                            <div className='w-[20%] h-full rounded-full overflow-hidden'>
                                 <Image
                                     src={user.photoURL}
                                     width={100}
@@ -265,7 +269,7 @@ export default function UserProfile({ user }) {
                                 />
                             </div>
                         ) : (
-                            <FaUser className='fill-NeutralWhite  w-16 h-16 md:w-24 md:h-24 mb-5 ' />
+                            <FaUser className='fill-NeutralWhite dark:fill-NeutralBlack w-16 h-16 md:w-24 md:h-24 mb-5 ' />
                         )}
 
                         <input
@@ -278,16 +282,17 @@ export default function UserProfile({ user }) {
                         />
 
                         <label
-                            className='absolute -mb-[19rem] cursor-pointer'
+                            className='absolute mt-44 lg:mt-56 cursor-pointer'
                             onClick={handleIconClick}
                         >
-                            <LiaUserEditSolid className='text-NeutralBlack dark:text-NeutralWhite dark:border-NeutralWhite w-12 h-12 md:w-14 md:h-14 bg-NeutralWhite dark:bg-NeutralBlack rounded-full border-2 border-NeutralBlack p-2' />
+                            <LiaUserEditSolid className='text-NeutralBlack dark:text-NeutralWhite  w-12 h-12 md:w-14 md:h-14 bg-NeutralWhite dark:bg-NeutralBlack rounded-full border border-NeutralBlack p-2' />
                         </label>
                     </div>
                 </div>
+
                 <div className='flex items-center justify-center text-NeutralBlack dark:text-NeutralWhite md:w-2/3 lg:w-full'>
-                    <div className='mx-auto w-full lg:max-w-[80%]  mb-20'>
-                        <h2 className='  py-5 px-6 text-4xl font-semibold'>
+                    <div className='mx-auto w-full lg:max-w-full -mr-24 -ml-16 mb-20'>
+                        <h2 className='py-5 px-6 text-[2.75rem] font-semibold'>
                             {t("Update profile")}
                         </h2>
                         <form
@@ -385,9 +390,9 @@ export default function UserProfile({ user }) {
                                         onChange={(e) =>
                                             setFamilySize(e.target.value)
                                         }
-                                        className='rounded-md border font-normal lg:text-xl border-slate-300 bg-white py-3 outline-none text-center '
+                                        className='rounded-md border font-normal lg:text-xl border-slate-300 bg-NeutralWhite py-3 outline-none text-center '
                                     />
-                                    <span className='mt-4 text-xl'>
+                                    <span className='mt-4 text-xl text-NeutralBlack dark:text-NeutralWhite'>
                                         {" "}
                                         {t("members")}
                                     </span>
@@ -477,7 +482,7 @@ export default function UserProfile({ user }) {
                                     onChange={(e) => setIdcard(e.target.value)}
                                 />
                             </div>
-                            <label className='mb-5 pt-5 block text-4xl font-semibold '>
+                            <label className='mb-5 pt-5 block text-4xl font-semibold text-NeutralBlack dark:text-NeutralWhite '>
                                 {t("Change Password")}
                             </label>
                             <div className='mb-5 flex'>

@@ -1,12 +1,17 @@
-import React, { useEffect, useRef } from "react";
-import Layout from "@/layout/Layout";
-import BlogCard from "@/components/BlogsCard/BlogsCard";
-import BookingButton from "@/components/BookingButton/BookingButton";
+import { parse } from "cookie";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import React, { useEffect, useRef } from "react";
+
+import BlogCard from "@/components/BlogsCard/BlogsCard";
+import BookingButton from "@/components/BookingButton/BookingButton";
+
+import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
-import { parse } from "cookie";
+
+import placeholderImage from "../../../public/assets/Image placehodler.png";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
@@ -43,6 +48,9 @@ function BlogsPage({ blogs, user }) {
 
     return (
         <Layout user={user}>
+            <Head>
+                <title>Blogs</title>
+            </Head>
             <h1 className='mx-6 mt-4 text-base md:mb-4 lg:mb-0 md:text-3xl md:mx-9 md:mt-16 font-poppins uppercase font-medium inline-block text-NeutralBlack dark:text-NeutralWhite'>
                 {t("Our Blog Posts")}
             </h1>
@@ -53,7 +61,7 @@ function BlogsPage({ blogs, user }) {
                             <div key={index} className='p-4'>
                                 <div className='border border-solid mb-5 border-Primary dark:border-Dark_Primary'></div>
                                 <BlogCard
-                                    image={blog.imageURL}
+                                    image={blog.imageURL || placeholderImage}
                                     title={blog.title}
                                     subtitle={blog.subTitle}
                                     author={blog.author}
