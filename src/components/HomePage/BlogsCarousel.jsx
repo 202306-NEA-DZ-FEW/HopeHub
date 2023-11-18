@@ -4,6 +4,8 @@ import { useTranslation } from "next-i18next";
 import React from "react";
 import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
 import Slider from "react-slick";
+import { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,7 +13,25 @@ import "slick-carousel/slick/slick-theme.css";
 const BlogsCarousel = ({ blogs }) => {
     const { t } = useTranslation("common");
 
-    // Sort blogs by date in descending order
+    const controls = useAnimation();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const yOffset = window.pageYOffset;
+            const triggerOffset = 100; // Adjust this value as needed
+            if (yOffset > triggerOffset) {
+                controls.start("visible");
+            } else {
+                controls.start("hidden");
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [controls]);
 
     // Take the last 6 blogs
     const lastSixBlogs = blogs.slice(0, 6);

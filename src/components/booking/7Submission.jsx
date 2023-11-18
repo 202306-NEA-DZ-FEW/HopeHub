@@ -1,6 +1,7 @@
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
+import React from "react";
 
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";

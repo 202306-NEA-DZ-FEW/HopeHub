@@ -3,8 +3,6 @@ import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import * as React from "react";
-
 import Banner from "@/components/HomePage/Banner";
 import BlogsCarousel from "@/components/HomePage/BlogsCarousel";
 import ConnectionSection from "@/components/HomePage/ConnectionSection";
@@ -12,11 +10,32 @@ import PurchasingSection from "@/components/HomePage/PurchasingSection";
 import TherapistsInfoSection from "@/components/HomePage/TherapistsInfoSection";
 
 import Layout from "@/layout/Layout";
-import { db } from "@/util/firebase";
+import { db, auth } from "@/util/firebase";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useSpring, animated } from "react-spring";
 
-export default function HomePage({ blogs, user }) {
+const AnimatedSection = ({ children }) => {
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.5, // Adjust as needed
+    });
+
+    const animation = useSpring({
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0px)" : "translateY(20px)",
+    });
+
+    return (
+        <animated.div ref={ref} style={animation}>
+            {children}
+        </animated.div>
+    );
+};
+
+const HomePage = ({ blogs, user }) => {
     const { t } = useTranslation("common");
-    console.log("logged user data", user);
 
     return (
         <Layout user={user}>
@@ -25,14 +44,22 @@ export default function HomePage({ blogs, user }) {
             </Head>
             <div className='flex flex-col items-center justify-start dark:bg-Dark_Primary'>
                 <Banner user={user} />
-                <TherapistsInfoSection />
-                <ConnectionSection />
+                <AnimatedSection>
+                    <TherapistsInfoSection />
+                </AnimatedSection>
+                <AnimatedSection>
+                    <ConnectionSection />
+                </AnimatedSection>
                 <BlogsCarousel blogs={blogs} />
-                <PurchasingSection />
+                <AnimatedSection>
+                    <PurchasingSection />
+                </AnimatedSection>
             </div>
         </Layout>
     );
-}
+};
+
+export default HomePage;
 
 export async function getServerSideProps({ locale, req }) {
     // Check if there is a logged-in user

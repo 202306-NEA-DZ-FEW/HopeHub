@@ -5,338 +5,350 @@ exports[`renders correctly 1`] = `
   className="bg-NeutralWhite dark:bg-Dark_Accent"
   dir="ltr"
 >
-  <div
-    className="navbar h-8 sticky top-0 z-10 dark:bg-NeutralBlack dark:backdrop-blur-lg dark:bg-opacity-30 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b-slate-400"
+  <nav
+    style={
+      Object {
+        "position": "fixed",
+        "top": "0px",
+        "transition": "top 0.3s ease",
+        "width": "100%",
+        "zIndex": 1000,
+      }
+    }
   >
     <div
-      className="navbar-start w-auto"
+      className="navbar sticky h-8 top-0 z-10 dark:bg-NeutralBlack dark:backdrop-blur-lg dark:bg-opacity-30 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b-slate-400"
     >
       <div
-        className="dropdown"
-      >
-        <label
-          className="btn btn-ghost md:pl-6 lg:hidden"
-          tabIndex={0}
-        >
-          <svg
-            className="h-5 w-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M4 6h16M4 12h8m-8 6h16"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-            />
-          </svg>
-        </label>
-        <ul
-          className="menu menu-sm dropdown-content -ml-2 px-3 shadow w-screen mt-2 bg-Primary"
-          tabIndex={0}
-        >
-          <li
-            className="py-1 text-NeutralBlack font-semibold dark:text-NeutralWhite"
-          >
-            <a
-              className="text-lg"
-              href="/"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onTouchStart={[Function]}
-            >
-              Home
-            </a>
-          </li>
-          <li
-            className="py-1 text-NeutralBlack font-semibold dark:text-NeutralWhite"
-          >
-            <a
-              className="text-lg"
-              href="/blogs"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onTouchStart={[Function]}
-            >
-              Blogs
-            </a>
-          </li>
-          <li
-            className="py-1 text-NeutralBlack font-semibold dark:text-NeutralWhite"
-          >
-            <a
-              className="text-lg"
-              href="/about"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onTouchStart={[Function]}
-            >
-              About
-            </a>
-          </li>
-          <li
-            className="py-1 text-NeutralBlack font-semibold dark:text-NeutralWhite"
-          >
-            <a
-              className="text-lg"
-              href="/contact"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onTouchStart={[Function]}
-            >
-              Contact
-            </a>
-          </li>
-          <div
-            className="border-t-2 border-NeutralWhite pb-4"
-          />
-          <li>
-            <details
-              onToggle={[Function]}
-              open={true}
-            >
-              <summary
-                className="text-Accent text-lg font-bold underline font-poppins text-NeutralBlack font-semibold dark:text-NeutralWhite"
-              >
-                User
-              </summary>
-              <ul
-                className="menu w-32 text-NeutralBlack font-medium font-poppins"
-              >
-                <li>
-                  <a
-                    href="/Profile?userid=undefined"
-                    onClick={[Function]}
-                    onMouseEnter={[Function]}
-                    onTouchStart={[Function]}
-                  >
-                    Profile
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/calendar?userid=undefined"
-                    onClick={[Function]}
-                    onMouseEnter={[Function]}
-                    onTouchStart={[Function]}
-                  >
-                    Calendar
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/Payment?userid=undefined"
-                    onClick={[Function]}
-                    onMouseEnter={[Function]}
-                    onTouchStart={[Function]}
-                  >
-                    Payments
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="text-base"
-                    onClick={[Function]}
-                  >
-                    <svg
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      strokeWidth="0"
-                      style={
-                        Object {
-                          "color": undefined,
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="m2 12 5 4v-3h9v-2H7V8z"
-                      />
-                      <path
-                        d="M13.001 2.999a8.938 8.938 0 0 0-6.364 2.637L8.051 7.05c1.322-1.322 3.08-2.051 4.95-2.051s3.628.729 4.95 2.051 2.051 3.08 2.051 4.95-.729 3.628-2.051 4.95-3.08 2.051-4.95 2.051-3.628-.729-4.95-2.051l-1.414 1.414c1.699 1.7 3.959 2.637 6.364 2.637s4.665-.937 6.364-2.637c1.7-1.699 2.637-3.959 2.637-6.364s-.937-4.665-2.637-6.364a8.938 8.938 0 0 0-6.364-2.637z"
-                      />
-                    </svg>
-                    Log Out
-                  </a>
-                </li>
-              </ul>
-            </details>
-          </li>
-        </ul>
-      </div>
-      <div
-        className="logo-container lg:px-6"
-      >
-        <a
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onTouchStart={[Function]}
-        >
-          <img
-            alt="Normal Logo"
-            data-nimg="1"
-            decoding="async"
-            height={60}
-            loading="lazy"
-            onError={[Function]}
-            onLoad={[Function]}
-            src="/_next/image?url=%2Fimg.jpg&w=256&q=75"
-            srcSet="/_next/image?url=%2Fimg.jpg&w=128&q=75 1x, /_next/image?url=%2Fimg.jpg&w=256&q=75 2x"
-            style={
-              Object {
-                "color": "transparent",
-              }
-            }
-            width={120}
-          />
-        </a>
-      </div>
-    </div>
-    <div
-      className="flex justify-between ml-auto dropdown"
-    >
-      <div
-        className="flex items-center"
+        className="navbar-start w-auto"
       >
         <div
-          className="search-icon mr-2"
-          onClick={[Function]}
+          className="dropdown"
         >
-          <svg
-            className="w-6 h-6 dark:fill-NeutralWhite"
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            strokeWidth="0"
-            style={
-              Object {
-                "color": undefined,
-              }
-            }
-            viewBox="0 0 256 256"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
+          <label
+            className="btn btn-ghost md:pl-6 lg:hidden"
+            tabIndex={0}
           >
-            <path
-              d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
-            />
-          </svg>
-        </div>
-        <div
-          className="search-bar"
-        >
-          <input
-            className="input input-bordered input-sm w-full"
-            onChange={[Function]}
-            placeholder="Type here"
-            type="text"
-            value=""
-          />
-        </div>
-      </div>
-      <div
-        className="navbar-center mr-4 hidden lg:flex"
-      >
-        <ul
-          className="menu menu-horizontal"
-        >
-          <li
-            className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
-          >
-            <a
-              href="/"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onTouchStart={[Function]}
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              Home
-            </a>
-          </li>
-          <li
-            className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
+              <path
+                d="M4 6h16M4 12h8m-8 6h16"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </svg>
+          </label>
+          <ul
+            className="menu menu-sm dropdown-content -ml-2 px-3 shadow w-screen mt-2 bg-Primary"
+            tabIndex={0}
           >
-            <a
-              href="/blogs"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onTouchStart={[Function]}
+            <li
+              className="py-1 text-NeutralBlack font-semibold dark:text-NeutralWhite"
             >
-              Blogs
-            </a>
-          </li>
-          <li
-            className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
-          >
-            <a
-              href="/about"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onTouchStart={[Function]}
+              <a
+                className="text-lg"
+                href="/"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onTouchStart={[Function]}
+              >
+                Home
+              </a>
+            </li>
+            <li
+              className="py-1 text-NeutralBlack font-semibold dark:text-NeutralWhite"
             >
-              About
-            </a>
-          </li>
-          <li
-            className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
-          >
-            <a
-              href="/contact"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onTouchStart={[Function]}
+              <a
+                className="text-lg"
+                href="/blogs"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onTouchStart={[Function]}
+              >
+                Blogs
+              </a>
+            </li>
+            <li
+              className="py-1 text-NeutralBlack font-semibold dark:text-NeutralWhite"
             >
-              Contact
-            </a>
-          </li>
-          <div
-            className="dropdown dropdown-end dropdown-bottom"
-          >
+              <a
+                className="text-lg"
+                href="/about"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onTouchStart={[Function]}
+              >
+                About
+              </a>
+            </li>
+            <li
+              className="py-1 text-NeutralBlack font-semibold dark:text-NeutralWhite"
+            >
+              <a
+                className="text-lg"
+                href="/contact"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onTouchStart={[Function]}
+              >
+                Contact
+              </a>
+            </li>
             <div
-              className="relative flex items-center"
-              tabIndex={0}
+              className="border-t-2 border-NeutralWhite pb-4"
+            />
+            <li>
+              <details
+                onToggle={[Function]}
+                open={true}
+              >
+                <summary
+                  className="text-Accent text-lg font-bold underline font-poppins text-NeutralBlack font-semibold dark:text-NeutralWhite"
+                >
+                  User
+                </summary>
+                <ul
+                  className="menu w-32 text-NeutralBlack font-medium font-poppins"
+                >
+                  <li>
+                    <a
+                      href="/Profile?userid=undefined"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      onTouchStart={[Function]}
+                    >
+                      Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/calendar?userid=undefined"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      onTouchStart={[Function]}
+                    >
+                      Calendar
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/Payment?userid=undefined"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      onTouchStart={[Function]}
+                    >
+                      Payments
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="text-base"
+                      onClick={[Function]}
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        strokeWidth="0"
+                        style={
+                          Object {
+                            "color": undefined,
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m2 12 5 4v-3h9v-2H7V8z"
+                        />
+                        <path
+                          d="M13.001 2.999a8.938 8.938 0 0 0-6.364 2.637L8.051 7.05c1.322-1.322 3.08-2.051 4.95-2.051s3.628.729 4.95 2.051 2.051 3.08 2.051 4.95-.729 3.628-2.051 4.95-3.08 2.051-4.95 2.051-3.628-.729-4.95-2.051l-1.414 1.414c1.699 1.7 3.959 2.637 6.364 2.637s4.665-.937 6.364-2.637c1.7-1.699 2.637-3.959 2.637-6.364s-.937-4.665-2.637-6.364a8.938 8.938 0 0 0-6.364-2.637z"
+                        />
+                      </svg>
+                      Log Out
+                    </a>
+                  </li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </div>
+        <div
+          className="logo-container lg:px-6"
+        >
+          <a
+            href="/"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            <img
+              alt="Normal Logo"
+              data-nimg="1"
+              decoding="async"
+              height={60}
+              loading="lazy"
+              onError={[Function]}
+              onLoad={[Function]}
+              src="/_next/image?url=%2Fimg.jpg&w=256&q=75"
+              srcSet="/_next/image?url=%2Fimg.jpg&w=128&q=75 1x, /_next/image?url=%2Fimg.jpg&w=256&q=75 2x"
+              style={
+                Object {
+                  "color": "transparent",
+                }
+              }
+              width={120}
+            />
+          </a>
+        </div>
+      </div>
+      <div
+        className="flex justify-between ml-auto dropdown"
+      >
+        <div
+          className="flex items-center"
+        >
+          <div
+            className="search-icon mr-2"
+            onClick={[Function]}
+          >
+            <svg
+              className="w-6 h-6 dark:fill-NeutralWhite"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+              />
+            </svg>
+          </div>
+          <div
+            className="search-bar"
+          >
+            <input
+              className="input input-bordered input-sm w-full"
+              onChange={[Function]}
+              placeholder="Type here"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          className="navbar-center mr-4 hidden lg:flex"
+        >
+          <ul
+            className="menu menu-horizontal"
+          >
+            <li
+              className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
+            >
+              <a
+                href="/"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onTouchStart={[Function]}
+              >
+                Home
+              </a>
+            </li>
+            <li
+              className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
+            >
+              <a
+                href="/blogs"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onTouchStart={[Function]}
+              >
+                Blogs
+              </a>
+            </li>
+            <li
+              className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
+            >
+              <a
+                href="/about"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onTouchStart={[Function]}
+              >
+                About
+              </a>
+            </li>
+            <li
+              className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
+            >
+              <a
+                href="/contact"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onTouchStart={[Function]}
+              >
+                Contact
+              </a>
+            </li>
+            <div
+              className="dropdown dropdown-end dropdown-bottom"
             >
               <div
-                className="relative w-10 h-10 ml-2 rounded-full cursor-pointer"
-                onClick={[Function]}
+                className="relative flex items-center"
+                tabIndex={0}
               >
                 <div
-                  className="w-10 h-10 rounded-full bg-violet-400 flex items-center justify-center"
+                  className="relative w-10 h-10 ml-2 rounded-full cursor-pointer"
+                  onClick={[Function]}
                 >
-                  <img
-                    alt="Placeholder"
-                    className="w-full h-full object-cover rounded-full"
-                    src={
-                      Object {
-                        "blurDataURL": "data:image/png;base64,imagedata",
-                        "height": 40,
-                        "src": "/img.jpg",
-                        "width": 40,
+                  <div
+                    className="flex items-center justify-center w-10 h-10 rounded-full bg-violet-400"
+                  >
+                    <img
+                      alt="Placeholder"
+                      className="w-full h-full object-cover rounded-full"
+                      src={
+                        Object {
+                          "blurDataURL": "data:image/png;base64,imagedata",
+                          "height": 40,
+                          "src": "/img.jpg",
+                          "width": 40,
+                        }
                       }
-                    }
-                  />
+                    />
+                  </div>
                 </div>
+                <span
+                  className="cursor-pointer ml-2"
+                  onClick={[Function]}
+                />
+                <div
+                  className="menu-sm-dropdown dropdown-hover"
+                />
               </div>
-              <span
-                className="cursor-pointer ml-2"
-                onClick={[Function]}
-              />
-              <div
-                className="menu-sm-dropdown"
-              />
             </div>
-          </div>
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
+  </nav>
   <div
-    className="mt-8"
+    className="pt-12"
   >
     <div
       className="flex justify-center font-semibold font-poppins flex-col md:flex-row  max-w-screen bg-NeutralWhite dark:bg-NeutralBlack"

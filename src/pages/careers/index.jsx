@@ -4,6 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from "react";
 
 import JobCard from "@/components/JobCard/JobCard";
 

@@ -10,30 +10,35 @@ export const teamMembers = [
         name: "Zohir KiouKiou",
         linkedin: "https://www.linkedin.com/in/zohir-kioukiou/",
         github: "https://github.com/Zohir-kk",
+        id: 1,
     },
     {
         image: Amel,
         name: "Amel Batouche",
         linkedin: "https://www.linkedin.com/in/batoucheamel/",
         github: "https://github.com/Amel7400",
+        id: 2,
     },
     {
         image: Abdelghani,
         name: "Abdelghani Bahri",
         linkedin: "https://www.linkedin.com/in/abdelghani-bahri-0a190a159/",
         github: "https://github.com/GhaniBahri",
+        id: 3,
     },
     {
         image: Fella,
         name: "Fella Kettani",
         linkedin: "https://www.linkedin.com/in/fella-kettani/",
         github: "https://github.com/fketta",
+        id: 4,
     },
     {
         image: Brahim,
         name: "Brahim Hadj Mahammed",
         linkedin: "https://www.linkedin.com/in/brahim-hadj-mahammed-b77843156/",
         github: "https://github.com/BrahimHM",
+        id: 5,
     },
 ];
 

@@ -10,7 +10,7 @@ module.exports = {
                 },
             },
         ],
-        "@babel/preset-react", // Add this
+        "@babel/preset-react",
     ],
     plugins: ["@babel/plugin-syntax-jsx"],
 };

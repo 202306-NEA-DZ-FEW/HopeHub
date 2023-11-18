@@ -2,6 +2,7 @@ import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import React from "react";
 
 const ProtectedRoute = ({ children }) => {
     const { isLogged, user } = useAppcontext();

@@ -7,10 +7,10 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import RequirementFrame from "public/assets/RequirmentFrame.svg";
-import React from "react";
 
 import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
+import React from "react";
 
 // Define the Requirement component
 export default function Requirement({ user }) {

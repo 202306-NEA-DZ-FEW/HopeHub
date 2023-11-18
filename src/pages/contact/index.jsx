@@ -40,8 +40,8 @@ function Contact({ user }) {
                             <ContactForm className='w-full' />
                             {/* Small card at the right bottom for "Find Us At" */}
                             <div className='flex justify-center md:w-8/12 lg:w-9/12 xl:w-6/12 max-w-6xl my-6 lg:p-3'>
-                                <div className='card bg-Primary dark:bg-Dark_Primary w-full md:h-5/6 lg:h-max rounded mx-1 md:mt-auto md:mb-12 lg:mb-9'>
-                                    <div className='card-bod py-6 px-9'>
+                                <div className='card bg-Primary dark:bg-Dark_Primary w-full md:h-5/6 lg:h-max rounded mx-1 md:mt-auto md:mb-12 lg:mb-11'>
+                                    <div className='card-bod py-7 px-9'>
                                         <h2 className='card-title text-NeutralBlack dark:text-NeutralWhite font-poppins font-medium text-xl lg:text-xl'>
                                             <FaLocationDot />
                                             {t("Find Us At")}
