@@ -1,5 +1,6 @@
 // NewsletterSignUp.js
 import { doc, updateDoc } from "firebase/firestore";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import React from "react";
 import { useState } from "react";
@@ -11,6 +12,9 @@ function NewsletterSignUp() {
     const { t } = useTranslation("common");
     const [email, setEmail] = useState("");
 
+    const router = useRouter();
+    const pathname = usePathname().slice(1);
+
     function emailChange(e) {
         e.preventDefault();
         setEmail(e.target.value);
@@ -20,6 +24,7 @@ function NewsletterSignUp() {
         const sendBtn = e.type === "click" && e.target.id === "subscribe";
         if (e.key === "Enter" || sendBtn) {
             e.preventDefault();
+            router.push(`/thanks?from=${pathname}`);
 
             fetch("https://sendmail-api-docs.vercel.app/api/send", {
                 method: "POST",
@@ -34,7 +39,7 @@ function NewsletterSignUp() {
                                 Content worth reading awaits you. Sit back, relax, and enjoy the newsletter ride.</p>
                             </body>
                         </html>
-                    `,
+                        `,
                 }),
             })
                 .then((res) => res.json())
