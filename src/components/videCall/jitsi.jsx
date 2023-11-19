@@ -6,6 +6,9 @@ import Layout from "@/layout/Layout";
 
 function CallRoom() {
     const { user } = useAppcontext();
+    function handleReadyToClose() {
+        alert("Ready to close...");
+    }
     return (
         <>
             <Layout>
@@ -23,7 +26,7 @@ function CallRoom() {
                             DISABLE_JOIN_LEAVE_NOTIFICATIONS: true,
                         }}
                         userInfo={{
-                            displayName: `${user.name || "Hope Hub"}`,
+                            displayName: `${user ? user.name : "Hope Hub"}`,
                         }}
                         onApiReady={(externalApi) => {
                             // here you can attach custom event listeners to the Jitsi Meet External API
@@ -32,6 +35,7 @@ function CallRoom() {
                         getIFrameRef={(iframeRef) => {
                             iframeRef.style.height = "600px";
                         }}
+                        onReadyToClose={handleReadyToClose}
                     />
                 </main>
             </Layout>

@@ -4,13 +4,13 @@ import { doc, setDoc } from "firebase/firestore";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import { useEffect, useMemo, useRef, useState } from "react";
+import React from "react";
+import { toast } from "react-toastify";
 
+import "react-toastify/dist/ReactToastify.css";
 import styles from "../../styles/BlogdEdit.module.css";
 
 import { db } from "@/util/firebase";
-
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 // import TextEditor from "./TextEditor";
 

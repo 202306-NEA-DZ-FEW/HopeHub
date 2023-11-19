@@ -1,14 +1,15 @@
 // Import necessary modules and components
+import { parse } from "cookie";
+import { doc, getDoc } from "firebase/firestore";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import RequirementFrame from "public/assets/RequirmentFrame.svg";
-import Layout from "@/layout/Layout";
-import { parse } from "cookie";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/util/firebase";
+import React from "react";
 
+import Layout from "@/layout/Layout";
+import { db } from "@/util/firebase";
 // Define the Requirement component
 export default function Requirement({ user }) {
     const { t } = useTranslation("common");

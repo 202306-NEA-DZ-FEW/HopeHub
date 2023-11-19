@@ -1,13 +1,14 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import Cookie from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import React from "react";
 import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
-import { doc, getDoc } from "firebase/firestore";
 
 // After successful login
 

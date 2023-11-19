@@ -1,6 +1,6 @@
-import { collection, addDoc, onSnapshot } from "firebase/firestore";
-import { auth, db } from "@/util/firebase";
+import { addDoc, collection, onSnapshot } from "firebase/firestore";
 
+import { db } from "@/util/firebase";
 export const CheckoutURL = async (auth, priceId) => {
     const userId = auth.currentUser?.uid;
     if (!userId) throw new Error("User is not authenticated");

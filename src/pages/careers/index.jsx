@@ -1,15 +1,16 @@
 // Import necessary modules and components
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
-import JobCard from "@/components/JobCard/JobCard";
-import jobsData from "../../data/jobdata";
-
-import Layout from "@/layout/Layout";
-
 import { parse } from "cookie";
 import { doc, getDoc } from "firebase/firestore";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from "react";
+
+import JobCard from "@/components/JobCard/JobCard";
+
+import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
+
+import jobsData from "../../data/jobdata";
 
 // Define the Requirement component
 export default function Careers({ user }) {

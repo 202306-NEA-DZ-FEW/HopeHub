@@ -1,6 +1,7 @@
+import Link from "next/link";
 import React from "react";
 
-function EventModal({ event, position, closeModal }) {
+function EventModal({ event, position, closeModal, userId }) {
     return (
         <>
             <div
@@ -11,8 +12,15 @@ function EventModal({ event, position, closeModal }) {
                 style={position}
                 className='text-NeutralBlack dark:text-NeutralWhite dark:bg-NeutralBlack w-60 md:w-96 bg-white shadow-Accent shadow-[0px_0px_8px_0px] rounded-xl h-fit p-5 flex flex-col items-start absolute z-20 '
             >
-                <h1 className='text-Accent text-2xl font-semibold'>
+                <h1 className='text-Accent text-2xl font-semibold flex flex-row items-center justify-between w-full'>
                     {event.name || "Patient Name"}
+                    <Link
+                        href={`/call?userid=${userId}`}
+                        onClick={console.log("go to calroom", userId)}
+                        className='w-fit h-fit px-4 py-1 bg-Accent rounded text-white text-lg font-semibold '
+                    >
+                        Call{" "}
+                    </Link>
                 </h1>
                 <span className='text-base text-gray-400'>
                     {event.date} at {event.time}{" "}

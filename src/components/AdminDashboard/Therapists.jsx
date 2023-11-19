@@ -1,8 +1,8 @@
-import { useTranslation } from "next-i18next";
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import React from "react";
 import Modal from "react-modal";
-
 export default function Therapists({
     name,
     age,

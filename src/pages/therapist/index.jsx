@@ -1,15 +1,19 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
+import Cookie from "js-cookie";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
 import { Slide, toast } from "react-toastify";
-import { parse } from "cookie";
+
 import Input from "@/components/Input/Input";
+
+import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
 import { auth, db } from "@/util/firebase";
+
 import therapistPic from "../../../public/assets/therapist-pic.jpg";
 
 function Therapist({ user }) {
@@ -22,7 +26,17 @@ function Therapist({ user }) {
     const [city, setCity] = useState("");
     const router = useRouter();
     const pathname = usePathname().slice(1);
-    function handleSubmit(e) {
+    const { authChange } = useAppcontext();
+
+    const addUserToFirestore = async (userCredential, userData) => {
+        try {
+            const docRef = doc(db, "users", userCredential.user.uid);
+            await setDoc(docRef, userData);
+        } catch (error) {
+            console.error("Firestore error:", error);
+        }
+    };
+    async function handleSubmit(e) {
         e.preventDefault();
         if (password !== confirmpassword) {
             toast.warning("password does not match", {
@@ -33,51 +47,43 @@ function Therapist({ user }) {
                     "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
             });
         } else {
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // console.log(userCredential.user)
-                    // to verify the provided email is correct, it will be implemented after deployement
-                    /*  sendEmailVerification(userCredential.user).then(() => {
-                    console.log("verification email sent");
-                }); */
-                    updateProfile(userCredential.user, {
-                        //after creating user, update his prfole and give him name
-                        displayName: username,
-                    })
-                        .then((cred) => {
-                            // const user = userCredential.user;
-                            console.log("cred", cred);
-                            console.log("user", userCredential);
-                            setDoc(doc(db, "users", userCredential.user.uid), {
-                                city: city,
-                                licenseNumber: licensenumber,
-                                isTherapist: true,
-                            })
-                                .then((data) => {
-                                    router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
-                                })
-                                .catch((err) => {
-                                    console.log("firestore error", err);
-                                });
-                        })
-                        .catch((err) => {
-                            console.log("updating error", err);
-                        });
-                    console.log(userCredential);
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log("can't sign up", errorMessage, " ", errorCode);
-                    // ..
+            try {
+                const userCredential = await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+                const userData = {
+                    uid: userCredential.user.uid,
+                    isTherapist: true,
+                    licenseNumber: licensenumber,
+                    name: username,
+                    email: email,
+                    city: city,
+                };
+                await updateProfile(userCredential.user, {
+                    displayName: username,
                 });
-            // reset the fields
-            setEmail("");
-            setUsername("");
-            setConfirmpassword("");
-            setPassword("");
-            setLicensenumber("");
-            setCity("");
+                await addUserToFirestore(userCredential, userData);
+                Cookie.set("loggedInUser", userCredential.user.uid, {
+                    expires: 7,
+                });
+                router.push(`/thanks?from=${pathname}`);
+                authChange();
+            } catch (error) {
+                console.error("Signup error:", error);
+                toast.error("Can't Sign up", {
+                    position: toast.POSITION.BOTTOM_CENTER,
+                    autoClose: 2500,
+                });
+            } finally {
+                setEmail("");
+                setUsername("");
+                setConfirmpassword("");
+                setPassword("");
+                setLicensenumber("");
+                setCity("");
+            }
         }
     }
     const infos = [
@@ -186,40 +192,20 @@ export default Therapist;
 
 export async function getServerSideProps({ locale, req }) {
     // Check if there is a logged-in user
-    const cookies = parse(req.headers.cookie || "");
-    const userId = cookies.loggedInUser;
+    // const cookies = parse(req.headers.cookie || "");
+    // const userId = cookies.loggedInUser;
 
-    if (!userId || userId == "undefined") {
-        return { redirect: { destination: "/Auth", permanent: false } };
-    }
+    // if (!userId || userId == "undefined") {
+    //     return { redirect: { destination: "/Auth", permanent: false } };
+    // }
 
     try {
-        if (userId) {
-            // Fetch user data from Firestore based on user ID
-            const userDoc = await getDoc(doc(db, "users", userId));
-
-            if (!userDoc.exists()) {
-                // Handle the case when the user with the specified ID is not found
-                return { notFound: true };
-            }
-
-            // Extract user data from the document
-            const user = userDoc.data();
-
-            return {
-                props: {
-                    ...(await serverSideTranslations(locale, ["common"])),
-                    user,
-                },
-            };
-        } else {
-            // User is not logged in
-            return {
-                props: {
-                    ...(await serverSideTranslations(locale, ["common"])),
-                },
-            };
-        }
+        // User is not logged in
+        return {
+            props: {
+                ...(await serverSideTranslations(locale, ["common"])),
+            },
+        };
     } catch (error) {
         console.error("Error fetching user data:", error);
         return { props: { error: "Error fetching user data" } };

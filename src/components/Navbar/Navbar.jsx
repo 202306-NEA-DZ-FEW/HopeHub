@@ -1,4 +1,5 @@
 import { signOut } from "firebase/auth";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import Cookie from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,14 +7,16 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
 import { BiLogOutCircle } from "react-icons/bi";
+import { FaRegCalendarAlt, FaRegUser } from "react-icons/fa";
+import { FaFileInvoiceDollar } from "react-icons/fa6";
 import { PiMagnifyingGlass } from "react-icons/pi";
+import { TbVideo } from "react-icons/tb";
 
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
 
 import darklogo from "../../../public/assets/darklogo.svg";
 import logo from "../../../public/assets/logo.svg";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
 
 export default function Navbar({ user }) {
     //Function used for translations
@@ -178,6 +181,7 @@ export default function Navbar({ user }) {
                                             <Link
                                                 href={`/Profile?userid=${user.uid}`}
                                             >
+                                                <FaRegUser />
                                                 {t("Profile")}
                                             </Link>
                                         </li>
@@ -185,6 +189,7 @@ export default function Navbar({ user }) {
                                             <Link
                                                 href={`/calendar?userid=${user.uid}`}
                                             >
+                                                <FaRegCalendarAlt />
                                                 {t("Calendar")}
                                             </Link>
                                         </li>
@@ -192,6 +197,7 @@ export default function Navbar({ user }) {
                                             <Link
                                                 href={`/Payment?userid=${user.uid}`}
                                             >
+                                                <FaFileInvoiceDollar />
                                                 {t("Payments")}
                                             </Link>
                                         </li>
@@ -351,8 +357,9 @@ export default function Navbar({ user }) {
                                             <ul className='dropdown-content z-[1] menu p-2 shadow bg-Accent rounded-md w-40 mt-1'>
                                                 <li>
                                                     <Link
-                                                        href={`/Profile?userid=${user.uid}`}
+                                                        href={`/profile?userid=${user.uid}`}
                                                     >
+                                                        <FaRegUser />
                                                         {t("Profile")}
                                                     </Link>
                                                 </li>
@@ -360,13 +367,23 @@ export default function Navbar({ user }) {
                                                     <Link
                                                         href={`/calendar?userid=${user.uid}`}
                                                     >
+                                                        <FaRegCalendarAlt />
                                                         {t("Calendar")}
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link
+                                                        href={`/call?userid=${user.uid}`}
+                                                    >
+                                                        <TbVideo />
+                                                        {t("Join call")}
                                                     </Link>
                                                 </li>
                                                 <li>
                                                     <Link
                                                         href={`/Payments?userid=${user.uid}`}
                                                     >
+                                                        <FaFileInvoiceDollar />
                                                         {t("Payments")}
                                                     </Link>
                                                 </li>

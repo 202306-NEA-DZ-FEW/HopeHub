@@ -1,11 +1,12 @@
 // NewsletterSignUp.js
 
-import { useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { useTranslation } from "next-i18next";
+import { useState } from "react";
+import React from "react";
 import { Slide, toast } from "react-toastify";
-import { db } from "@/util/firebase";
 
+import { db } from "@/util/firebase";
 function NewsletterSignUp() {
     const { t } = useTranslation("common");
     const [email, setEmail] = useState("");
