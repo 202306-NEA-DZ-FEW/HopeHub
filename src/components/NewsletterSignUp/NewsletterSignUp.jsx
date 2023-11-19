@@ -1,11 +1,8 @@
 // NewsletterSignUp.js
 
 import { doc, updateDoc } from "firebase/firestore";
-
 import { collection, getDocs } from "firebase/firestore";
-
 import { usePathname, useRouter } from "next/navigation";
-
 import { useTranslation } from "next-i18next";
 import React from "react";
 import { useState } from "react";
@@ -33,7 +30,6 @@ function NewsletterSignUp() {
             let sortedBlogs = [];
 
             router.push(`/thanks?from=${pathname}`);
-
 
             try {
                 // Fetch blogs data
@@ -99,7 +95,6 @@ function NewsletterSignUp() {
                 </body>
                 </html>
                     `,
-
                 }),
             })
                 .then((res) => res.json())
