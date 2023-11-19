@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="flex flex-col lg:flex-row"
+>
+  <a
+    href="/blogs/undefined"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onTouchStart={[Function]}
+  >
+    <div
+      className="image-container"
+    >
+      <img
+        className="image"
+        data-nimg="1"
+        decoding="async"
+        height={200}
+        onError={[Function]}
+        onLoad={[Function]}
+        src=""
+        style={
+          Object {
+            "color": "transparent",
+          }
+        }
+        width={300}
+      />
+    </div>
+  </a>
+  <div
+    className="flex flex-col my-2 lg:px-6 text-poppins"
+  >
+    <a
+      href="/blogs/undefined"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onTouchStart={[Function]}
+    >
+      <h2
+        className="text-sm lg:text-xl font-semibold text-NeutralBlack dark:text-NeutralWhite"
+      />
+    </a>
+    <p
+      className="text-gray-500 dark:text-gray-400 font-light text-xs lg:text-sm"
+    >
+      Written by
+       
+    </p>
+    <p
+      className="text-NeutralBlack dark:text-NeutralWhite font-light text-xs lg:text-base py-2"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+    />
+  </div>
+</div>
+`;

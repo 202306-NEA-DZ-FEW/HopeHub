@@ -1,15 +1,31 @@
+import Cookies from "js-cookie";
 import * as React from "react";
 
-export default function Layout({ children }) {
-    // Put Header or Footer around the children element
-    // Example
-    // return (
-    //     <>
-    //         <Navbar />
-    //         {children}
-    //         <Footer />
-    //     </>
-    // );
+import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/Navbar/Navbar";
 
-    return <>{children}</>;
+import i18n from "../../i18n";
+
+export default function Layout({ children, user }) {
+    const userLanguage = Cookies.get("userLanguage");
+
+    i18n.changeLanguage(userLanguage);
+
+    let textDirectionClass = "ltr";
+
+    if (userLanguage === "ar") {
+        // console.log(userLanguage);
+        textDirectionClass = "ltr";
+    }
+
+    return (
+        <div
+            dir={textDirectionClass}
+            className='bg-NeutralWhite dark:bg-Dark_Accent'
+        >
+            <Navbar user={user} />
+            <div className='pt-12'>{children}</div>
+            <Footer />
+        </div>
+    );
 }

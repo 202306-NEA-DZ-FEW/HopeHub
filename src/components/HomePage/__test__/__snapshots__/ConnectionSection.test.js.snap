@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="bg-NeutralWhite dark:bg-Dark_Accent w-full lg:pb-16 pb-6"
+>
+  <h1
+    className="text-NeutralBlack dark:text-NeutralWhite mx-6 mt-6 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 lg:mx-7 md:mt-10 uppercase font-poppins font-medium"
+  >
+    Connect with us through
+  </h1>
+  <div
+    className="flex flex-wrap my-8 justify-center px-6 lg:gap-16 w-full"
+  >
+    <div
+      className=" card flex flex-col items-center my-2 p-3 md:px-5 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 "
+    >
+      <div
+        className="my-2 lg:my-6"
+      >
+        <svg
+          className="text-3xl md:text-5xl"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 16 16"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zm10.762.135a.5.5 0 0 1 .708 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 0 1-.708-.708L14.293 4H9.5a.5.5 0 0 1 0-1h4.793l-1.647-1.646a.5.5 0 0 1 0-.708z"
+          />
+        </svg>
+      </div>
+      <h3
+        className="text-lg md:text-xl lg:text-2xl font-poppins font-medium text-teal-600"
+      >
+        Voice Call
+      </h3>
+      <p
+        className="text-xs md:text-base lg:text-base text-center m-2 font-poppins font-normal dark:text-NeutralWhite text-NeutralBlack"
+      >
+        Feeling ready to start a conversation? Give your therapist a voice call and talk your heart out!
+      </p>
+    </div>
+    <div
+      className=" card flex flex-col items-center my-2 p-3 md:px-5 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 "
+    >
+      <div
+        className="my-2 lg:my-6"
+      >
+        <svg
+          className="text-3xl md:text-5xl"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 16 16"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+          />
+          <path
+            d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"
+          />
+        </svg>
+      </div>
+      <h3
+        className="text-lg md:text-xl lg:text-2xl font-poppins font-medium text-teal-600"
+      >
+        Chat
+      </h3>
+      <p
+        className="text-xs md:text-base lg:text-base text-center m-2 font-poppins font-normal dark:text-NeutralWhite text-NeutralBlack"
+      >
+        Need to talk to someone? Come have a chat with your therapist!
+      </p>
+    </div>
+    <div
+      className=" card flex flex-col items-center my-2 p-3 md:px-5 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 "
+    >
+      <div
+        className="my-2 lg:my-6"
+      >
+        <svg
+          className="text-3xl md:text-5xl"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 16 16"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z"
+            fillRule="evenodd"
+          />
+        </svg>
+      </div>
+      <h3
+        className="text-lg md:text-xl lg:text-2xl font-poppins font-medium text-teal-600"
+      >
+        Video Call
+      </h3>
+      <p
+        className="text-xs md:text-base lg:text-base text-center m-2 font-poppins font-normal dark:text-NeutralWhite text-NeutralBlack"
+      >
+        For a better experience therapists recommend video calls, but always remember that it's your choice!
+      </p>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="shrink-0 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary rounded-md p-4 hover:scale-105 delay-75 cursor-pointer"
+>
+  <div
+    className="flex gap-2 py-3"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      style={
+        Object {
+          "color": undefined,
+        }
+      }
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+        stroke="none"
+      />
+      <path
+        d="M11.5 17h-7.5a1 1 0 0 1 -1 -1v-12a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v9"
+      />
+      <path
+        d="M3 13h18"
+      />
+      <path
+        d="M8 21h3.5"
+      />
+      <path
+        d="M10 17l-.5 4"
+      />
+      <path
+        d="M20 21l2 -2l-2 -2"
+      />
+      <path
+        d="M17 17l-2 2l2 2"
+      />
+    </svg>
+    <span />
+  </div>
+  <div
+    className=" font-bold flex-1 py-3"
+  >
+    <span>
+       | 
+       |
+       
+    </span>
+  </div>
+  <div
+    className="flex gap-2 py-3"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      stroke="currentColor"
+      strokeWidth="0"
+      style={
+        Object {
+          "color": undefined,
+        }
+      }
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        id="Location_On"
+      >
+        <g>
+          <path
+            d="M12,21.933a1.715,1.715,0,0,1-1.384-.691L5.555,14.5a7.894,7.894,0,1,1,12.885-.009L13.385,21.24A1.717,1.717,0,0,1,12,21.933ZM11.992,3.066A6.81,6.81,0,0,0,7.414,4.815a6.891,6.891,0,0,0-1.05,9.1l5.051,6.727a.725.725,0,0,0,.584.292h0a.732.732,0,0,0,.586-.292l5.044-6.734A6.874,6.874,0,0,0,12.81,3.113,7.277,7.277,0,0,0,11.992,3.066Z"
+          />
+          <path
+            d="M12,12.5A2.5,2.5,0,1,1,14.5,10,2.5,2.5,0,0,1,12,12.5Zm0-4A1.5,1.5,0,1,0,13.5,10,1.5,1.5,0,0,0,12,8.5Z"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="bg-Primary pb-9 w-full"
+>
+  <h1
+    className="mx-6 mt-4 mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-black inline-block"
+  >
+    RECENT BLOGS
+  </h1>
+  <div
+    className="px-20"
+  >
+    <div
+      className="slick-slider slick-initialized"
+    >
+      <div
+        className="slick-list"
+      >
+        <div
+          className="slick-track"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "WebkitTransform": "translate3d(0px, 0px, 0px)",
+              "WebkitTransition": "",
+              "msTransform": "translateX(0px)",
+              "opacity": 1,
+              "transform": "translate3d(0px, 0px, 0px)",
+              "transition": "",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

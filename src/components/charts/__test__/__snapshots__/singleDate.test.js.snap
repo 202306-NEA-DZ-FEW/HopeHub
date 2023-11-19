@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="border border-NeutralBlack w-full col-start-2 col-end-3 row-start-2 h-full overflow-auto"
+>
+  <table
+    className="w-full border corder-black p-6 border-spacing-3"
+  >
+    <thead>
+      <tr
+        className="bg-Accent p-0.5 "
+      >
+        <th
+          className="border h-5 w-3/5 border-gray-200 bg-transparent rounded"
+        >
+          User
+        </th>
+        <th
+          className="border h-5 w-2/5 border-gray-200 bg-transparent rounded"
+        >
+          Time
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</div>
+`;

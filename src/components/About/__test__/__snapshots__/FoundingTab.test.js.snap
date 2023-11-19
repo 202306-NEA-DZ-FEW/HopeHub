@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="card mt-12"
+  style={
+    Object {
+      "opacity": 0,
+    }
+  }
+>
+  <div>
+    <div
+      className="flex flex-wrap lg:flex-nowrap lg:w-[80%] lg:h-[20%] lg:mx-auto px-100 justify-center"
+    >
+      <img
+        alt="Founder"
+        className=" lg:pb-12 px-8 rounded-md"
+        data-nimg="1"
+        decoding="async"
+        height={200}
+        loading="lazy"
+        onError={[Function]}
+        onLoad={[Function]}
+        src="/_next/image?url=%2Fassets%2FGroup182.png&w=828&q=75"
+        srcSet="/_next/image?url=%2Fassets%2FGroup182.png&w=384&q=75 1x, /_next/image?url=%2Fassets%2FGroup182.png&w=828&q=75 2x"
+        style={
+          Object {
+            "color": "transparent",
+          }
+        }
+        width={380}
+      />
+      <div
+        className="mx-6 lg:mb-10"
+      >
+        <p
+          className="text-NeutralBlack dark:text-NeutralWhite text-xl md:text-4xl lg:text-[1.32rem] font-poppins text-justify indent-4 px-6 py-6 lg:py-0 leading-relaxed"
+        >
+          HopeHub was founded by a group of Re:coded students in 2023. It was called HopeHub Online and started as a blog and an online community where approved therapists shared their research and ideas. We launched the Beginners Guide to Therapy and our first study, and that hub of industry expertise transformed into a small consulting firm and led us to create the Online Therapist of today!
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

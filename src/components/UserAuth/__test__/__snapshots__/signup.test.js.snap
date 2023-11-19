@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="font-poppins flex flex-col items-start justify-center w-full "
+>
+  <h2
+    className=" font-extrabold text-4xl text-NeutralBlack my-8"
+  >
+    Sign Up
+     
+  </h2>
+  <form
+    className="text-4xl  p-6 w-full bg-NeutralWhite dark:bg-Dark_Primary rounded-md shadow-md flex flex-col gap-4"
+    onSubmit={[Function]}
+  >
+    <div
+      className="flex flex-row justify-between items-center gap-4"
+    >
+      <input
+        className="flex-1 input input-bordered w-full bg-NeutralWhite text-NeutralBlack  h-16"
+        id="Fname"
+        name=""
+        onChange={[Function]}
+        placeholder="fname"
+        required={true}
+        type="text"
+        value=""
+      />
+      <input
+        className="flex-1 input input-bordered w-full bg-NeutralWhite text-NeutralBlack  h-16 "
+        id="Lname"
+        name=""
+        onChange={[Function]}
+        placeholder="lname"
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <input
+      className="input input-bordered w-full bg-NeutralWhite text-NeutralBlack  h-16"
+      id="email"
+      name=""
+      onChange={[Function]}
+      placeholder="footer_msg_3"
+      required={true}
+      type="email"
+      value=""
+    />
+    <input
+      className="input input-bordered w-full bg-NeutralWhite text-NeutralBlack  h-16 "
+      id="email2"
+      name=""
+      onChange={[Function]}
+      placeholder="Confirm Email"
+      required={true}
+      type="email"
+      value=""
+    />
+    <div
+      className="flex flex-row justify-between items-center gap-4"
+    >
+      <input
+        className="flex-1 input input-bordered w-full bg-NeutralWhite text-NeutralBlack h-16"
+        id="password"
+        name=""
+        onChange={[Function]}
+        placeholder="enter password"
+        required={true}
+        type="password"
+        value=""
+      />
+      <input
+        className="flex-1 input input-bordered w-full bg-NeutralWhite text-NeutralBlack h-16 "
+        id="password2"
+        name=""
+        onChange={[Function]}
+        placeholder="Confirm Password"
+        required={true}
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="flex flex-row justify-between items-center text-lg gap-4"
+    >
+      <label
+        className="text-right w-1/2  text-NeutralBlack dark:text-NeutralWhite "
+        htmlFor="bdate"
+      >
+        bdate
+      </label>
+      <input
+        className=" w-1/2 input h-16 bg-NeutralWhite text-NeutralBlack border"
+        id="bdate"
+        name=""
+        onChange={[Function]}
+        required={true}
+        type="date"
+        value=""
+      />
+    </div>
+    <div
+      className="flex flex-row justify-between items-center gap-4"
+    >
+      <button
+        className="btn font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite  dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500  flex-1"
+        onClick={[Function]}
+        type="submit"
+      >
+        Log In
+         
+      </button>
+      <button
+        className="btn font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite  dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500  flex-1 text-Accent border-Accent hover:text-Accent"
+        type=""
+      >
+        Sign Up
+         
+      </button>
+    </div>
+  </form>
+</div>
+`;

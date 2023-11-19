@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="card flex w-64 h-110 mb-4 mx-auto font-poppins text-NeutralBlack bg-NeutralWhite shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)]"
+>
+  <div
+    className="mx-auto rounded-full my-8 px-4"
+  >
+    <img
+      className="rounded-full w-24 h-24"
+      data-nimg="1"
+      decoding="async"
+      height={80}
+      loading="lazy"
+      onError={[Function]}
+      onLoad={[Function]}
+      src="/_next/image?url=%2Fimg.jpg&w=256&q=75"
+      srcSet="/_next/image?url=%2Fimg.jpg&w=96&q=75 1x, /_next/image?url=%2Fimg.jpg&w=256&q=75 2x"
+      style={
+        Object {
+          "color": "transparent",
+        }
+      }
+      width={80}
+    />
+  </div>
+  <div
+    className="flex-grow space-y-3 px-4"
+  >
+    <h3>
+      Full Name:
+       
+    </h3>
+    <h3>
+      Age:
+       
+    </h3>
+    <h3>
+      Birthday:
+       
+    </h3>
+    <h3>
+      Gender:
+       
+    </h3>
+    <h3>
+      Phone Number:
+       
+    </h3>
+  </div>
+  <div
+    className="flex flex-col items-center space-y-2 py-4"
+  >
+    <button
+      className="w-56 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
+      onClick={[Function]}
+    >
+      Delete
+    </button>
+    <button
+      className="w-56 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
+      onClick={[Function]}
+    >
+      Send Email
+    </button>
+  </div>
+</div>
+`;
