@@ -1,16 +1,23 @@
 // NewsletterSignUp.js
+
 import { doc, updateDoc } from "firebase/firestore";
+
 import { collection, getDocs } from "firebase/firestore";
+
+import { usePathname, useRouter } from "next/navigation";
+
 import { useTranslation } from "next-i18next";
 import React from "react";
 import { useState } from "react";
 import { Slide, toast } from "react-toastify";
 
 import { db } from "@/util/firebase";
-
 function NewsletterSignUp() {
     const { t } = useTranslation("common");
     const [email, setEmail] = useState("");
+
+    const router = useRouter();
+    const pathname = usePathname().slice(1);
 
     function emailChange(e) {
         e.preventDefault();
@@ -21,8 +28,12 @@ function NewsletterSignUp() {
         const sendBtn = e.type === "click" && e.target.id === "subscribe";
         if (e.key === "Enter" || sendBtn) {
             e.preventDefault();
+
             let blogContent = "";
             let sortedBlogs = [];
+
+            router.push(`/thanks?from=${pathname}`);
+
 
             try {
                 // Fetch blogs data
@@ -70,6 +81,7 @@ function NewsletterSignUp() {
                     to: email,
                     subject: "Welcome to Hope Hub",
                     message: `
+
                     <html>
                     <body style='padding: 1rem 2rem; font-family: "Poppins", sans-serif; background-color: #ccc; margin: 0;'>
                     <div style='background-color: #fff; margin: 20px auto; padding: 20px 10px; max-width: 800px;'>
@@ -87,6 +99,7 @@ function NewsletterSignUp() {
                 </body>
                 </html>
                     `,
+
                 }),
             })
                 .then((res) => res.json())
