@@ -50,7 +50,7 @@ function NewsletterSignUp() {
                             "newsletter",
                             "subscribe"
                         );
-                        const docKey = email.replace(/\./g, "_");
+                        const docKey = email.replace(/\./g, "*");
                         try {
                             updateDoc(newsletterRef, {
                                 [docKey]: email,

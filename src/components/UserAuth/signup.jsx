@@ -1,5 +1,9 @@
 /* eslint-disable no-undef */
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+    createUserWithEmailAndPassword,
+    sendEmailVerification,
+    updateProfile,
+} from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import Cookie from "js-cookie";
 import Head from "next/head";
@@ -36,54 +40,6 @@ function Signup({ isChecked, setChecked }) {
                 className:
                     "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
             });
-            // <<<<<<< 108-dashboard
-            //         } else {
-            //             createUserWithEmailAndPassword(auth, email, password)
-            //                 .then((userCredential) => {
-            //                     // console.log(userCredential.user)
-            //                     // to verify the provided email is correct, it will be implemented after deployement
-            //                     /*  sendEmailVerification(userCredential.user).then(() => {
-            //                     console.log("verification email sent");
-            //                 }); */
-            //                     updateProfile(userCredential.user, {
-            //                         //after creating user, update his prfole and give him name
-            //                         displayName: firstname + " " + lastname,
-            //                     })
-            //                         .then((cred) => {
-            //                             console.log(cred);
-            //                             console.log("user", userCredential);
-            //                             setDoc(doc(db, "users", userCredential.user.uid), {
-            //                                 birthDate: bdate,
-            //                                 isTherapist: false,
-            //                                 licenseNumber: null,
-            //                                 displayName: firstname + " " + lastname,
-            //                             })
-            //                                 .then((data) => {
-            //                                     console.log("data", data);
-            //                                     Cookie.set(
-            //                                         "loggedInUser",
-            //                                         userCredential.user.uid,
-            //                                         { expires: 7 }
-            //                                     );
-            //                                     router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
-            //                                 })
-            //                                 .then(() => authChange())
-            //                                 .catch((err) => {
-            //                                     console.log("firestore error", err);
-            //                                 });
-            //                         })
-            //                         .catch((err) => {
-            //                             console.log("updating profile error", err);
-            //                         });
-            //                 })
-            //                 .catch(() => {
-            //                     toast.error("Can't Sign up", {
-            //                         position: toast.POSITION.BOTTOM_CENTER,
-            //                         autoClose: 2500,
-            //                     });
-            //                 });
-            //             // reset the fields
-            // =======
             return;
         }
 
@@ -112,6 +68,11 @@ function Signup({ isChecked, setChecked }) {
             Cookie.set("loggedInUser", userCredential.user.uid, { expires: 7 });
             router.push(`/thanks?from=${pathname}`);
             authChange();
+
+            const actionCodeSettings = {
+                url: `http://localhost:3000/en/?userid=${auth.currentUser.uid}`,
+            };
+            await sendEmailVerification(auth.currentUser, actionCodeSettings);
         } catch (error) {
             console.error("Signup error:", error);
             toast.error("Can't Sign up", {
