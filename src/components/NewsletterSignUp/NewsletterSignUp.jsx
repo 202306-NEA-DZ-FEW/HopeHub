@@ -1,12 +1,12 @@
 // NewsletterSignUp.js
 
-import { doc, updateDoc } from "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
+import { deleteDoc, doc, updateDoc, where } from "firebase/firestore";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import React from "react";
 import { useState } from "react";
 import { Slide, toast } from "react-toastify";
+import { collection, query, getDocs } from "firebase/firestore";
 
 import { db } from "@/util/firebase";
 function NewsletterSignUp() {
@@ -126,6 +126,29 @@ function NewsletterSignUp() {
                     }
                 });
             setEmail("");
+        }
+    }
+
+    async function unsubscribe(email) {
+        const newsletterRef = collection(db, "newsletter", "subscribe");
+        const userDoc = query(newsletterRef, where("email", "==", email));
+
+        try {
+            const snapshot = await getDocs(userDoc);
+            snapshot.forEach((doc) => {
+                deleteDoc(doc.ref)
+                    .then(() => {
+                        // Optional: Show success message or handle accordingly
+                        console.log(`Successfully unsubscribed: ${email}`);
+                    })
+                    .catch((error) => {
+                        // Handle error while deleting the document
+                        console.error("Error unsubscribing:", error);
+                    });
+            });
+        } catch (error) {
+            // Handle error fetching the document
+            console.error("Error fetching document:", error);
         }
     }
 

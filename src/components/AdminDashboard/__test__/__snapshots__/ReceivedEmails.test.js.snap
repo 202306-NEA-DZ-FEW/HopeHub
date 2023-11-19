@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="p-8"
+>
+  <h2
+    className="font-bold text-2xl mb-4"
+  >
+    Received Emails
+  </h2>
+  <div>
+    <div
+      className="flex space-x-4 mb-4"
+    >
+      <button
+        className="py-2 px-4 bg-blue-500 text-white rounded"
+        onClick={[Function]}
+      >
+        All
+      </button>
+      <button
+        className="py-2 px-4 bg-gray-300 text-gray-700 rounded"
+        onClick={[Function]}
+      >
+        Archived
+      </button>
+      <button
+        className="py-2 px-4 bg-gray-300 text-gray-700 rounded"
+        onClick={[Function]}
+      >
+        Not Archived
+      </button>
+    </div>
+    <table
+      className="w-full border-collapse border border-gray-300"
+    >
+      <thead
+        className="bg-gray-200"
+      >
+        <tr>
+          <th
+            className="py-2 px-4 border-b"
+          >
+            Name
+          </th>
+          <th
+            className="py-2 px-4 border-b"
+          >
+            Email
+          </th>
+          <th
+            className="py-2 px-4 border-b"
+          >
+            Contact Type
+          </th>
+          <th
+            className="py-2 px-4 border-b"
+          >
+            Details
+          </th>
+          <th
+            className="py-2 px-4 border-b"
+          >
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          className="hover:bg-gray-100"
+        >
+          <td
+            className="py-2 px-4 border-b"
+          >
+            John Doe
+          </td>
+          <td
+            className="py-2 px-4 border-b"
+          >
+            john@example.com
+          </td>
+          <td
+            className="py-2 px-4 border-b"
+          >
+            General
+          </td>
+          <td
+            className="py-2 px-4 border-b"
+          >
+            This is a test email.
+          </td>
+          <td
+            className="py-2 px-4 border-b flex flex-row"
+          >
+            <button
+              className="mr-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+              onClick={[Function]}
+            >
+              Respond
+            </button>
+            <button
+              className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
+              onClick={[Function]}
+            >
+              Archive
+            </button>
+          </td>
+        </tr>
+        <tr
+          className="hover:bg-gray-100"
+        >
+          <td
+            className="py-2 px-4 border-b"
+          >
+            Jane Smith
+          </td>
+          <td
+            className="py-2 px-4 border-b"
+          >
+            jane@example.com
+          </td>
+          <td
+            className="py-2 px-4 border-b"
+          >
+            Sales
+          </td>
+          <td
+            className="py-2 px-4 border-b"
+          >
+            Another test email.
+          </td>
+          <td
+            className="py-2 px-4 border-b flex flex-row"
+          >
+            <button
+              className="mr-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+              onClick={[Function]}
+            >
+              Respond
+            </button>
+            <button
+              className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
+              onClick={[Function]}
+            >
+              Unarchive
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

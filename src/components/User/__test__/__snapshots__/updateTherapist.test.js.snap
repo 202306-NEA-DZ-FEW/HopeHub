@@ -408,19 +408,25 @@ exports[`renders correctly 1`] = `
                   onClick={[Function]}
                 >
                   <div
-                    className="flex items-center justify-center w-10 h-10 rounded-full bg-violet-400"
+                    className="flex items-center justify-center w-10 h-10 rounded-full bg-Accent"
                   >
                     <img
                       alt="Placeholder"
                       className="w-full h-full object-cover rounded-full"
-                      src={
+                      data-nimg="1"
+                      decoding="async"
+                      height={40}
+                      loading="lazy"
+                      onError={[Function]}
+                      onLoad={[Function]}
+                      src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+                      srcSet="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+                      style={
                         Object {
-                          "blurDataURL": "data:image/png;base64,imagedata",
-                          "height": 40,
-                          "src": "/img.jpg",
-                          "width": 40,
+                          "color": "transparent",
                         }
                       }
+                      width={40}
                     />
                   </div>
                 </div>

@@ -10,8 +10,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState } from "react";
 import React from "react";
+import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 import Blogs from "@/components/AdminDashboard/Blogs";
@@ -24,6 +24,7 @@ import Widget from "@/components/charts/Widget";
 
 // import { Patient, Therapist } from "@/util/constants";
 import { db } from "@/util/firebase";
+import ReceivedEmails from "@/components/AdminDashboard/ReceivedEmails";
 
 export default function AdminDashboard({
     Allblogs: initialBlogs,
@@ -34,8 +35,10 @@ export default function AdminDashboard({
     therapistsCount,
     newsletterCount,
     datesAppointments,
+    receivedEmails,
 }) {
     const { t } = useTranslation("common");
+    const [emails, setEmails] = useState([]);
     const [visibleSection, setVisibleSection] = useState("therapists");
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [selectedBlog, setSelectedBlog] = useState(null);
@@ -48,7 +51,6 @@ export default function AdminDashboard({
     );
     const [isBlogsDropdownOpen, setIsBlogsDropdownOpen] = useState(false); // Correct the variable name
     const [selectedDate, setSelectedDate] = useState("");
-    console.log("appointments", datesAppointments[selectedDate]);
     const handleSectionToggle = (section) => {
         setVisibleSection(section);
     };
@@ -262,6 +264,23 @@ export default function AdminDashboard({
                                         {t("Therapists")}
                                     </a>
                                 </li>
+
+                                <li>
+                                    <a
+                                        className={`${
+                                            visibleSection === "receivedEmails"
+                                                ? "active"
+                                                : ""
+                                        }`}
+                                        onClick={() =>
+                                            handleSectionToggle(
+                                                "receivedEmails"
+                                            )
+                                        }
+                                    >
+                                        {t("Emails")}
+                                    </a>
+                                </li>
                             </ul>
                         )}
                     </li>
@@ -340,6 +359,7 @@ export default function AdminDashboard({
                     <div className='w-full h-fit p-4 flex flex-row justify-between col-start-1 col-span-2 row-start-1'>
                         <Widget title='Therapists' value={therapistsCount} />
                         <Widget title='Patients' value={patientsCount} />
+                        <Widget title='Emails' value={emails} />
                         <Widget title='Blogs' value={blogsCount} />
                         <Widget title='Subscription' value={newsletterCount} />
                     </div>
@@ -391,6 +411,10 @@ export default function AdminDashboard({
                                 />
                             ))}
                         </>
+                    )}
+                    {visibleSection === "receivedEmails" && (
+                        // Render ReceivedEmails section
+                        <ReceivedEmails emails={receivedEmails} />
                     )}
                 </div>
                 <div className='py-4 pr-4 flex flex-col w-full'>
@@ -451,6 +475,13 @@ export async function getServerSideProps({ locale, query }) {
         });
     });
 
+    // Fetch emails from the "contact" collection
+    const contactsSnapshot = await getDocs(collection(db, "contact"));
+    const receivedEmails = contactsSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        data: doc.data(),
+    }));
+
     console.log("server user", datesAppointments);
     const dateSnapshot = await getDocs(collection(db, "dates"));
     const dates = {};
@@ -487,6 +518,7 @@ export async function getServerSideProps({ locale, query }) {
             therapistsCount,
             newsletterCount,
             datesAppointments,
+            receivedEmails,
         },
     };
 }

@@ -16,9 +16,9 @@ import { animated, useSpring } from "react-spring";
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
 
-import placeholderImage from "../../../public/assets/Avatar place holder.svg";
 import darklogo from "../../../public/assets/darklogo.svg";
 import logo from "../../../public/assets/logo.svg";
+import placeholderImage from "../../../public/assets/AvatarPlaceHolder.svg";
 
 export default function Navbar({ user }) {
     //Function used for translations
@@ -394,8 +394,8 @@ export default function Navbar({ user }) {
                                                     </div>
                                                 </div>
                                             ) : (
-                                                <div className='flex items-center justify-center w-10 h-10 rounded-full bg-violet-400'>
-                                                    <img
+                                                <div className='flex items-center justify-center w-10 h-10 rounded-full bg-Accent'>
+                                                    <Image
                                                         src={placeholderImage}
                                                         alt='Placeholder'
                                                         className='w-full h-full object-cover rounded-full'
