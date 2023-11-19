@@ -1,11 +1,14 @@
+import { parse } from "cookie";
+import { doc, getDoc } from "firebase/firestore";
+import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 import { FaLocationDot, FaPhoneVolume } from "react-icons/fa6";
+
 import ContactForm from "@/components/ContactForm/ContactForm";
+
 import Layout from "@/layout/Layout";
-import { parse } from "cookie";
-import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/util/firebase";
 
 function Contact({ user }) {
@@ -19,6 +22,9 @@ function Contact({ user }) {
             }}
         >
             <Layout user={user}>
+                <Head>
+                    <title>{t("Contact us")}</title>
+                </Head>
                 <div className='flex flex-col ml-8 mr-10 lg:mb-24 my-12'>
                     <h1 className='text-NeutralBlack dark:text-NeutralWhite font-semibold font-poppins text-2xl md:text-3xl lg:py-0 lg:mb-3 py-4'>
                         {t("SEND US YOUR REQUEST!")}
@@ -34,8 +40,8 @@ function Contact({ user }) {
                             <ContactForm className='w-full' />
                             {/* Small card at the right bottom for "Find Us At" */}
                             <div className='flex justify-center md:w-8/12 lg:w-9/12 xl:w-6/12 max-w-6xl my-6 lg:p-3'>
-                                <div className='card bg-Primary dark:bg-Dark_Primary w-full md:h-5/6 lg:h-max rounded mx-1 md:mt-auto md:mb-12 lg:mb-9'>
-                                    <div className='card-bod py-6 px-9'>
+                                <div className='card bg-Primary dark:bg-Dark_Primary w-full md:h-5/6 lg:h-max rounded mx-1 md:mt-auto md:mb-12 lg:mb-11'>
+                                    <div className='card-bod py-7 px-9'>
                                         <h2 className='card-title text-NeutralBlack dark:text-NeutralWhite font-poppins font-medium text-xl lg:text-xl'>
                                             <FaLocationDot />
                                             {t("Find Us At")}

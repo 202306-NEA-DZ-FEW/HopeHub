@@ -2,8 +2,8 @@
 
 import { doc, updateDoc } from "firebase/firestore";
 import { useTranslation } from "next-i18next";
-import { useState } from "react";
 import React from "react";
+import { useState } from "react";
 import { Slide, toast } from "react-toastify";
 
 import { db } from "@/util/firebase";
@@ -79,9 +79,12 @@ function NewsletterSignUp() {
                         onKeyDown={handleSubscribe}
                         type='text'
                         placeholder={t("Enter your e-mail")}
-                        className='input input-bordered border-[#718096] border-solid w-4/5 outline-none focus:outline-none'
+                        className='input input-bordered cursor-text border-[#718096] border-solid w-4/5 outline-none focus:outline-none'
                     />
-                    <span className='w-20 ml-[-1rem]' onClick={handleSubscribe}>
+                    <span
+                        className='w-20 -ml-2 cursor-pointer'
+                        onClick={handleSubscribe}
+                    >
                         <svg
                             width='100%'
                             xmlns='http://www.w3.org/2000/svg'

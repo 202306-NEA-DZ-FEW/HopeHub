@@ -1,36 +1,75 @@
-import React from "react";
-import Layout from "@/layout/Layout";
-import BlogCard from "@/components/BlogsCard/BlogsCard";
-import BookingButton from "@/components/BookingButton/BookingButton";
+import { parse } from "cookie";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import React, { useEffect, useRef } from "react";
+
+import BlogCard from "@/components/BlogsCard/BlogsCard";
+import BookingButton from "@/components/BookingButton/BookingButton";
+
+import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
-import { parse } from "cookie";
+
+import placeholderImage from "../../../public/assets/Image placehodler.png";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useSpring, animated } from "react-spring";
 
 function BlogsPage({ blogs, user }) {
     const { t } = useTranslation("common");
+    const blogRef = useRef([]);
+    const controls = useAnimation();
+
+    const AnimatedSection = ({ children }) => {
+        const [ref, inView] = useInView({
+            triggerOnce: true,
+            threshold: 0.5, // Adjust as needed
+        });
+
+        const animation = useSpring({
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateY(0px)" : "translateY(20px)",
+        });
+        const fadeOutAnimation = useSpring({
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateY(0px)" : "translateY(-20px)",
+        });
+
+        return (
+            <animated.div
+                ref={ref}
+                style={inView ? animation : fadeOutAnimation}
+            >
+                {children}
+            </animated.div>
+        );
+    };
 
     return (
         <Layout user={user}>
-            <h1 className='mx-6 mt-4 lg:mb-6 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block text-NeutralBlack dark:text-NeutralWhite'>
+            <Head>
+                <title>Blogs</title>
+            </Head>
+            <h1 className='mx-6 mt-4 text-base md:mb-4 lg:mb-0 md:text-3xl md:mx-9 md:mt-16 font-poppins uppercase font-medium inline-block text-NeutralBlack dark:text-NeutralWhite'>
                 {t("Our Blog Posts")}
             </h1>
             <div className='flex flex-col xl:flex-row mx-5 mb-6'>
                 <div className='flex flex-col'>
                     {blogs.map((blog, index) => (
-                        <div key={index} className='p-4'>
-                            <div className='border border-solid mb-5 border-Primary dark:border-Dark_Primary'></div>
-
-                            <BlogCard
-                                image={blog.imageURL}
-                                title={blog.title}
-                                subtitle={blog.subTitle}
-                                author={blog.author}
-                                blogId={blog.id}
-                                body={blog.body}
-                            />
-                        </div>
+                        <AnimatedSection key={blog.id}>
+                            <div key={index} className='p-4'>
+                                <div className='border border-solid mb-5 border-Primary dark:border-Dark_Primary'></div>
+                                <BlogCard
+                                    image={blog.imageURL || placeholderImage}
+                                    title={blog.title}
+                                    subtitle={blog.subTitle}
+                                    author={blog.author}
+                                    blogId={blog.id}
+                                    body={blog.body}
+                                />
+                            </div>
+                        </AnimatedSection>
                     ))}
                 </div>
                 <div className='flex flex-col w-10/12 mx-auto'>

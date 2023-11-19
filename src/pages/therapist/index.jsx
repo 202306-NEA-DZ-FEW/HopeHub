@@ -1,5 +1,7 @@
+import { parse } from "cookie";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import Head from "next/head";
 import Cookie from "js-cookie";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -138,7 +140,10 @@ function Therapist({ user }) {
     ];
     return (
         <Layout user={user}>
-            <main className='flex flex-col  w-full h-fit py-4 '>
+            <Head>
+                <title>{t("Therapist Profile")}</title>
+            </Head>
+            <main className='flex flex-col  w-full h-fit py-4 mb-20 mt-6 '>
                 <h1 className='text-NeutralBlack dark:text-NeutralWhite text-center px-4 text-4xl md:text-6xl font-poppins font-semibold md:font-bold w-full'>
                     {/* Create{" "}
                         <span className='text-Accent font-aclonica font-medium'>

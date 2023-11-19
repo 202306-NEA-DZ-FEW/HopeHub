@@ -3,6 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { collection, getDocs } from "firebase/firestore";
 import { doc, getDoc } from "firebase/firestore";
+import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -66,6 +67,9 @@ function Calendar({ appointments, user }) {
     useEffect(() => {}, []);
     return (
         <Layout user={user} className='max-w-screen'>
+            <Head>
+                <title>{t("Calender")}</title>
+            </Head>
             {modalOpen && (
                 <EventModal
                     event={eventData}

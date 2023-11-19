@@ -25,7 +25,7 @@ export default function ConnectionSection() {
         return (
             <div
                 key={index}
-                className='card flex flex-col items-center cursor-pointer my-2 p-3 md:px-5 rounded-xl dark:bg-Dark_Accent shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-64 '
+                className=' card flex flex-col items-center my-2 p-3 md:px-5 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 '
             >
                 <div className='my-2 lg:my-6'>
                     <IconComponent className='text-3xl md:text-5xl' />
@@ -42,11 +42,11 @@ export default function ConnectionSection() {
 
     //Displaying the cards and the section title
     return (
-        <div className='bg-NeutralWhite dark:bg-Dark_Accent w-full lg:pb-16'>
-            <h1 className='text-base mx-6 mt-6 md:mx-9 mb-2 md:mb-4 md:text-3xl md:mt-10 lg:mx-9 font-poppins uppercase font-medium inline-block dark:text-NeutralWhite text-NeutralBlack'>
+        <div className='bg-NeutralWhite dark:bg-Dark_Accent w-full lg:pb-16 pb-6'>
+            <h1 className='text-NeutralBlack dark:text-NeutralWhite mx-6 mt-6 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 lg:mx-7 md:mt-10 uppercase font-poppins font-medium'>
                 {t("Connect with us through")}
             </h1>
-            <div className='flex flex-wrap my-2 mx-6 md:mx-28 lg:mx-2 justify-around'>
+            <div className='flex flex-wrap my-8 justify-center px-6 lg:gap-16 w-full'>
                 {cards}
             </div>
         </div>

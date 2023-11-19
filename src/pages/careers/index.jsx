@@ -1,6 +1,7 @@
 // Import necessary modules and components
 import { parse } from "cookie";
 import { doc, getDoc } from "firebase/firestore";
+import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
@@ -18,6 +19,9 @@ export default function Careers({ user }) {
 
     return (
         <Layout user={user}>
+            <Head>
+                <title>{t("Careers")}</title>
+            </Head>
             <div className=' font-poppins px-8 lg:px-9 lg:pb-20 bg-NeutralWHite dark:bg-Dark_Accent'>
                 <div className=' py-2 flex justify-center flex-col text-NeutralBlack dark:text-NeutralWhite '>
                     <h2 className='text-4xl leading-relaxed'>

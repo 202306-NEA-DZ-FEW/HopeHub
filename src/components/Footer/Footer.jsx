@@ -1,14 +1,10 @@
-import { doc, updateDoc } from "firebase/firestore";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
-import { Slide, toast } from "react-toastify";
-
-import { db } from "@/util/firebase";
 
 import ToggleButton from "../Navbar/toggleBtn";
-import TranslationButton from "../TranslationButton/TranslationButton";
 import NewsletterSignUp from "../NewsletterSignUp/NewsletterSignUp";
+import TranslationButton from "../TranslationButton/TranslationButton";
 
 function Footer() {
     const { t } = useTranslation("common");
@@ -19,13 +15,13 @@ function Footer() {
     }
 
     return (
-        <footer className='footer mt-20 px-10 py-5 bg-Accent dark:bg-Dark_Primary text-base-content flex flex-col md:flex-row lg:flex-row justify-between items-center'>
+        <footer className=' px-10 py-5 bg-Accent dark:bg-Dark_Primary text-base-content flex flex-col md:flex-row lg:flex-row md:justify-between items-center'>
             <div className='flex flex-col'>
-                <header className='font-bold text-xl mb-[-15px] text-NeutralBlack dark:text-NeutralWhite'>
+                <header className='font-bold text-xl mb-[0.15rem] text-NeutralBlack dark:text-NeutralWhite'>
                     {t("Subscribe")}
                 </header>
                 <label className='label'>
-                    <span className='label-text text-NeutralBlack dark:text-NeutralWhite'>
+                    <span className='label-text mb-[0.5rem] text-NeutralBlack dark:text-NeutralWhite'>
                         {t(
                             "We promise to never spam you, or share your email."
                         )}
@@ -34,15 +30,16 @@ function Footer() {
                 <NewsletterSignUp />
             </div>
             <div className=' items-center flex flex-col justify-center h-full text-NeutralBlack dark:text-NeutralWhite'>
-                <div className='flex flex-row items-center justify-between'>
-                    <div className='mb-2 px-3'>
-                        <ToggleButton />
+                <div className='flex flex-col md:flex-row items-center justify-between'>
+                    <div className='flex flex-wrap  items-center'>
+                        <div className='mb-2 px-3'>
+                            <ToggleButton />
+                        </div>
+                        <div className='mb-2 px-3'>
+                            <TranslationButton />
+                        </div>
                     </div>
-                    <div className='mb-2.5 px-3'>
-                        <TranslationButton />
-                    </div>
-
-                    <nav className='footer-title flex gap-8 font-[13px] md:font-medium lg:font-medium '>
+                    <nav className='footer-title flex gap-8 font-base my-4 text-NeutralBlack dark:text-NeutralWhite md:font-medium lg:font-medium '>
                         <Link className=' ' href='/'>
                             {t("Home")}
                         </Link>

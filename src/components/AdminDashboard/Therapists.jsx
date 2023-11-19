@@ -3,6 +3,8 @@ import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import React from "react";
 import Modal from "react-modal";
+
+import placeholderImage from "../../../public/assets/Avatar-placeholder.png";
 export default function Therapists({
     name,
     age,
@@ -92,7 +94,7 @@ export default function Therapists({
                     alt={name}
                     width={80}
                     height={80}
-                    src={imgURL}
+                    src={imgURL || placeholderImage}
                     className='rounded-full w-24 h-24'
                 />{" "}
             </div>

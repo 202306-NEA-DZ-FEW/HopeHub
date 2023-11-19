@@ -1,4 +1,5 @@
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import React from "react";
 
@@ -81,9 +82,9 @@ export default function Submission({ OnNext, OnPrevious }) {
             <html>
               <body style='padding=1rem 2rem;'>
                 <h1 style='font-size=18px; margin=auto;'>Hello!</h1>
-                <p style='font-size=16px;'> <br> 
+                <p style='font-size=16px;'> <br>
                 your appointment is confirmed for ${bookingInfos.date} at ${bookingInfos.start} </p>
-              </body>  
+              </body>
             </html>
           `,
             }),
@@ -93,6 +94,9 @@ export default function Submission({ OnNext, OnPrevious }) {
 
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12'>
+            <Head>
+                <title>Submission</title>
+            </Head>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent flex flex-col'>
                 <div className='mb-3 pt-12 font-poppins font-bold tracking-wideer text-NeutralBlack dark:text-NeutralWhite capitalize text-2xl lg:text-4xl leading-normal'>
                     {t("Submit your appointment")}

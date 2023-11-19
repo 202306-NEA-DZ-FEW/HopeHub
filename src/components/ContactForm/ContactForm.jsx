@@ -2,6 +2,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import React from "react";
+
 const ContactForm = () => {
     const { t } = useTranslation("common");
 

@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import React from "react";
-import { CheckoutURL } from "../../components/StripePayment/CheckoutURL";
-import { auth, db } from "@/util/firebase";
+
 import { useAppcontext } from "@/context/state";
-import { useRouter } from "next/navigation";
+import { auth } from "@/util/firebase";
+
+import { CheckoutURL } from "../../components/StripePayment/CheckoutURL";
 
 const PurchasingSection = () => {
     const { t } = useTranslation("common");
@@ -63,7 +65,7 @@ const PurchasingSection = () => {
         );
     });
     return (
-        <div className=' dark:bg-Dark_Neutral dark:text-NeutralWhite  bg-NeutralWhite text-NeutralBlack  w-full font-poppins flex flex-col lg:pb-16'>
+        <div className=' dark:bg-Dark_Accent dark:text-NeutralWhite  bg-NeutralWhite text-NeutralBlack  w-full font-poppins flex flex-col lg:pb-16'>
             <h1 className='mx-6 mt-6 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase font-medium'>
                 {t("Purchase Tickets")}
             </h1>
@@ -71,7 +73,7 @@ const PurchasingSection = () => {
                 {t("Purchase tickets that can be used to book appointments!")}
             </h1>
             <div className='flex flex-col items-center'>
-                <div className='flex flex-wrap my-8 mx-2 md:mx-28 lg:mx-2 justify-around w-full'>
+                <div className='flex flex-wrap my-8 px-6 md:mx-28 lg:mx-2 justify-around w-full'>
                     {cards}
                 </div>
                 <div className='card items-center my-2 rounded-xl shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] w-10/12 h-auto'>
