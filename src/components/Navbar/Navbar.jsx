@@ -10,15 +10,15 @@ import { BiLogOutCircle } from "react-icons/bi";
 import { FaRegCalendarAlt, FaRegUser } from "react-icons/fa";
 import { FaFileInvoiceDollar } from "react-icons/fa6";
 import { PiMagnifyingGlass } from "react-icons/pi";
-import { useSpring, animated } from "react-spring";
 import { TbVideo } from "react-icons/tb";
+import { animated, useSpring } from "react-spring";
 
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
 
+import placeholderImage from "../../../public/assets/Avatar place holder.svg";
 import darklogo from "../../../public/assets/darklogo.svg";
 import logo from "../../../public/assets/logo.svg";
-import placeholderImage from "../../../public/assets/Avatar place holder.svg";
 
 export default function Navbar({ user }) {
     //Function used for translations
@@ -221,7 +221,7 @@ export default function Navbar({ user }) {
                                         <ul className='menu w-32 text-NeutralBlack font-medium font-poppins'>
                                             <li>
                                                 <Link
-                                                    href={`/Profile?userid=${user.uid}`}
+                                                    href={`/profile?userid=${user.uid}`}
                                                 >
                                                     <FaRegUser />
                                                     {t("Profile")}
@@ -416,7 +416,7 @@ export default function Navbar({ user }) {
                                                 <ul className='dropdown-content z-[1] menu p-2 shadow bg-Accent rounded-md w-40 mt-0.5'>
                                                     <li>
                                                         <Link
-                                                            href={`/Profile?userid=${user.uid}`}
+                                                            href={`/profile?userid=${user.uid}`}
                                                         >
                                                             <FaRegUser />
                                                             {t("Profile")}
