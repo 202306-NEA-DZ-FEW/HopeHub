@@ -1,5 +1,7 @@
+import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
+import { Slide, toast } from "react-toastify";
 
 import styles from "../../styles/PickaDate.module.css";
 
@@ -28,7 +30,15 @@ function PickaDate({ OnPrevious, OnNext, dates = [] }) {
         // console.log('today is ', tomorrow)
     }, []);
 
-    const [error, setError] = useState("");
+    const toastifyError = (message) => {
+        toast.error(message, {
+            position: toast.POSITION.BOTTOM_CENTER,
+            autoClose: 2500,
+            transition: Slide,
+            className:
+                "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+        });
+    };
     function selectDate(newDate) {
         setDate(newDate);
         setBookedHours(dates[date]);
@@ -41,17 +51,17 @@ function PickaDate({ OnPrevious, OnNext, dates = [] }) {
     }
     function handleNext() {
         if (date !== "" && time !== "") {
-            // Check if at least one option is selected
-            // console.log('time and date', time, date)
-            setError("");
             OnNext();
         } else {
-            setError(t("Please set the time and date."));
+            toastifyError(t("Please set the time and date."));
         }
     }
 
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12'>
+            <Head>
+                <title>Pick a Date</title>
+            </Head>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent '>
                 <div className='mb-3 pt-12 font-poppins font-semibold tracking-wider text-NeutralBlack dark:text-NeutralWhite capitalize text-2xl lg:text-4xl leading-normal'>
                     {t("Let's match you with the right therapist")}
@@ -62,11 +72,6 @@ function PickaDate({ OnPrevious, OnNext, dates = [] }) {
                     )}
                 </div>
                 <div className=' flex flex-col bg-NeutralWhite dark:bg-Dark_Accent lg:w-3/5 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'>
-                    {error && (
-                        <div className='text-Error text-center pt-5'>
-                            {t(error)}
-                        </div>
-                    )}
                     <h3 className='py-5 px-4 lg:py-10 lg:px-11 leading-normal text-NeutralBlack dark:text-NeutralWhite lg:text-2xl text-2xl font-regular font-poppins capitalize '>
                         {t("Select a date")}
                     </h3>

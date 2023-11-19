@@ -1,16 +1,44 @@
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import React from "react";
 
-export default function PurchasingSection() {
-    //Function used for translations
-    const { t } = useTranslation("common");
+import { useAppcontext } from "@/context/state";
+import { auth } from "@/util/firebase";
 
-    //Arrays for the different info displayed in each card
+import { CheckoutURL } from "../../components/StripePayment/CheckoutURL";
+
+const PurchasingSection = () => {
+    const { t } = useTranslation("common");
+    const router = useRouter();
+    const { isLogged } = useAppcontext();
+
     const ticketsNum = [5, 25, 50];
     const ticketsPrice = [10, 40, 70];
+    const priceIds = [
+        "price_1OAwiBBYW5nxWxJ3NuXZrMJJ",
+        "price_1OAxH5BYW5nxWxJ3XkbeFPIe",
+        "price_1OAxIoBYW5nxWxJ3SwluE4pQ",
+    ];
 
-    //Mapping over the arrays to create the cards
+    const handlePurchase = async (priceId, ticketsNum) => {
+        try {
+            // If there is no user, redirect to /Auth
+            if (isLogged != true) {
+                window.location.replace("/Auth");
+                return;
+            }
+
+            // Set up the listener and wait for the checkout URL
+            const url = await CheckoutURL(auth, priceId);
+
+            // Redirect to Stripe Checkout
+            window.location.replace(url);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     const cards = ticketsNum.map((item, index) => {
         return (
             <div
@@ -25,28 +53,27 @@ export default function PurchasingSection() {
                         ${ticketsPrice[index]}
                     </h1>
                     <div className='card-actions justify-end md:mt-4'>
-                        <Link href='/buyticket/'>
-                            <button className='w-36 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
-                                {t("Purchase")}
-                            </button>
-                        </Link>
+                        <button
+                            onClick={() => handlePurchase(priceIds[index])}
+                            className='w-36 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
+                        >
+                            {t("Purchase")}
+                        </button>
                     </div>
                 </div>
             </div>
         );
     });
-
-    //Displaying the cards and the section title
     return (
-        <div className=' dark:bg-Dark_Neutral dark:text-NeutralWhite dark:bg-Dark_Accent bg-NeutralWhite text-NeutralBlack  w-full font-poppins flex flex-col lg:pb-16'>
+        <div className=' dark:bg-Dark_Accent dark:text-NeutralWhite  bg-NeutralWhite text-NeutralBlack  w-full font-poppins flex flex-col lg:pb-16'>
             <h1 className='mx-6 mt-6 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase font-medium'>
-                {t("Purchase")} {t("Tickets")}
+                {t("Purchase Tickets")}
             </h1>
-            <h1 className='text-xs mx-6  md:text-xl md:mx-9 uppercase font-normal'>
+            <h1 className='text-xs mx-6 md:text-xl md:mx-9 uppercase font-normal'>
                 {t("Purchase tickets that can be used to book appointments!")}
             </h1>
             <div className='flex flex-col items-center'>
-                <div className='flex flex-wrap my-8 mx-2 md:mx-28 lg:mx-2 justify-around w-full'>
+                <div className='flex flex-wrap my-8 px-6 md:mx-28 lg:mx-2 justify-around w-full'>
                     {cards}
                 </div>
                 <div className='card items-center my-2 rounded-xl shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] w-10/12 h-auto'>
@@ -71,4 +98,6 @@ export default function PurchasingSection() {
             </div>
         </div>
     );
-}
+};
+
+export default PurchasingSection;

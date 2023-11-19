@@ -1,6 +1,9 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import Head from "next/head";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
+import React from "react";
 
 import TypeOfCounseling from "@/components/booking/1TypeOfCounseling";
 import RelationshipStatus from "@/components/booking/2RelationshipStatus";
@@ -16,7 +19,8 @@ import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
 
-function BookingPage({ dates }) {
+function BookingPage({ dates, user }) {
+    const { t } = useTranslation("common");
     const [step, setStep] = useState(1);
     const { bookingInfos } = useAppcontext();
     // console.log('dates', dates)
@@ -64,23 +68,55 @@ function BookingPage({ dates }) {
                 return <Confirmation OnNext={OnNext} OnPrevious={OnPrevious} />;
         }
     }
-    return <Layout className='max-w-screen'>{Step()}</Layout>;
+    return (
+        <Layout user={user} className='max-w-screen'>
+            <Head>
+                <title>{t("Booking")}</title>
+            </Head>
+            {Step()}
+        </Layout>
+    );
 }
 
 export default BookingPage;
 
-export async function getStaticProps({ locale }) {
-    const querySnapshot = await getDocs(collection(db, "dates"));
-    const dates = {};
-    querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        // console.log(doc.id, " => ", doc.data());
-        dates[doc.id] = doc.data();
-    });
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common"])),
-            dates,
-        },
-    };
+export async function getServerSideProps({ locale, query }) {
+    const userId = query.userid; // Assuming the user ID is provided in the query parameter
+
+    if (!userId || userId == "undefined") {
+        return { redirect: { destination: "/Auth", permanent: false } };
+    }
+
+    try {
+        // Fetch user data from Firestore based on user ID
+        const userDoc = await getDoc(doc(db, "users", userId));
+        console.log("im userdoc in serverside", userDoc.exists());
+        if (!userDoc.exists()) {
+            // Handle the case when the user with the specified ID is not found
+            return { notFound: true };
+        }
+
+        // Extract user data from the document
+        const user = userDoc.data();
+
+        // Fetch dates data
+        console.log("fetch the dates");
+        const dateSnapshot = await getDocs(collection(db, "dates"));
+        const dates = {};
+
+        dateSnapshot.forEach((doc) => {
+            dates[doc.id] = doc.data();
+        });
+
+        return {
+            props: {
+                ...(await serverSideTranslations(locale, ["common"])),
+                user,
+                dates,
+            },
+        };
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        return { props: { error: "Error fetching data" } };
+    }
 }

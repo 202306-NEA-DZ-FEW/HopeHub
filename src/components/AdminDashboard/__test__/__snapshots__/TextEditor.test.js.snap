@@ -2,8 +2,6 @@
 
 exports[`renders correctly 1`] = `
 <div>
-  <p>
-    Loading ...
-  </p>
+  <div />
 </div>
 `;

@@ -1,4 +1,7 @@
 // Import necessary modules and components
+import { parse } from "cookie";
+import { doc, getDoc } from "firebase/firestore";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
@@ -6,13 +9,18 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import RequirementFrame from "public/assets/RequirmentFrame.svg";
 
 import Layout from "@/layout/Layout";
+import { db } from "@/util/firebase";
+import React from "react";
 
 // Define the Requirement component
-export default function Requirement() {
+export default function Requirement({ user }) {
     const { t } = useTranslation("common");
 
     return (
-        <Layout>
+        <Layout user={user}>
+            <Head>
+                <title>{t("Requirements")}</title>
+            </Head>
             <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen min-h-screen flex flex-row-reverse lg:mb-12'>
                 {/* Image component for RequirementFrame */}
                 <Image
@@ -83,7 +91,7 @@ export default function Requirement() {
                     {/*Add more list items for requirements here */}
                     <Link
                         href='/therapist'
-                        className=' mt-3 self-end w-28 h-10 rounded-md text-base font-poppins font-regular dark:text-NeutralWhite dark:bg-Dark_Primary dark:group-hover:bg-[#3E4E68]  bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
+                        className=' mt-3 flex items-center justify-center self-end w-28 h-10 rounded-md text-base font-poppins font-regular dark:text-NeutralWhite dark:bg-Dark_Primary dark:group-hover:bg-[#3E4E68]  bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
                     >
                         {" "}
                         {t("Next")}
@@ -94,12 +102,41 @@ export default function Requirement() {
     );
 }
 
-// Define a function to get static props for i18n
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common"])),
-            // Will be passed to the page component as props
-        },
-    };
+// Server side function to fetch user data, and translations
+export async function getServerSideProps({ locale, req }) {
+    // Check if there is a logged-in user
+    const cookies = parse(req.headers.cookie || "");
+    const userId = cookies.loggedInUser;
+
+    try {
+        if (userId) {
+            // Fetch user data from Firestore based on user ID
+            const userDoc = await getDoc(doc(db, "users", userId));
+
+            if (!userDoc.exists()) {
+                // Handle the case when the user with the specified ID is not found
+                return { notFound: true };
+            }
+
+            // Extract user data from the document
+            const user = userDoc.data();
+
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                    user,
+                },
+            };
+        } else {
+            // User is not logged in
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                },
+            };
+        }
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+        return { props: { error: "Error fetching user data" } };
+    }
 }

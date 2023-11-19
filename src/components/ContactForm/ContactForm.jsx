@@ -1,68 +1,97 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import React from "react";
+import { db } from "@/util/firebase";
+import { doc, setDoc } from "firebase/firestore";
 
-const ContactForm = () => {
+const ContactForm = ({ user }) => {
     const { t } = useTranslation("common");
 
     const [ContactType, setContactType] = useState("");
-
-    const [Name, setName] = useState("");
-    const [Email, setEmail] = useState("");
+    const [Name, setName] = useState(user ? user.name : "");
+    const [Email, setEmail] = useState(user ? user.email : "");
     const [Details, setDetails] = useState("");
+    const [id, setId] = useState("");
 
     const router = useRouter();
-    const pathname = usePathname().slice(1);
+    const pathname = usePathname()?.slice(1) || "";
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Name:", Name);
-        console.log("Contact Type:", Name);
-        console.log("Contact Type:", ContactType);
-        console.log("Contact Type:", Details);
-        handleSubscribe(e);
-        router.push(`/thanks?from=${pathname}`);
+
+        function uniqueID() {
+            return (
+                Math.random().toString(36).substring(2) +
+                Date.now().toString(36)
+            );
+        }
+
+        try {
+            const generatedId = uniqueID(); // Generate a unique ID
+            setId(generatedId);
+
+            const formData = {
+                Name,
+                Email,
+                ContactType,
+                Details,
+                id: generatedId,
+            };
+
+            // Save form data to Firestore using setDoc
+            await setDoc(doc(db, "contact", uniqueID()), formData);
+            // Handle email sending here...
+            await handleSubscribe(e);
+
+            router.push(`/thanks?from=${pathname}`);
+        } catch (error) {
+            // Handle error state or alert user about submission failure
+            console.error("Error saving form data: ", error);
+        }
     };
     const handleSelectChange = (event) => {
-        // Get the selected value from the event
-        const selectedValue = event.target.value;
-
         // Update the state with the selected value
-        setContactType(selectedValue);
+        setContactType(event.target.value);
     };
 
-    async function handleSubscribe(e) {
+    const handleSubscribe = async (e) => {
         e.preventDefault();
-        // console.log('email',email)
 
+        // Send email to the user
         fetch("https://sendmail-api-docs.vercel.app/api/send", {
             method: "POST",
             body: JSON.stringify({
-                to: "hope.hub.dz@gmail.com",
-                subject: ContactType,
+                to: Email, // Use the provided email address
+                subject: "We'll get in touch soon",
                 message: `
-            <html>
-              <body style='padding=1rem 2rem;'>
-                <h1 style='font-size=18px; margin=auto;'>Need a help !!!</h1>
-                <p style='font-size=16px;'>From :${Name} <br> email: ${Email} <br> 
-                I have issue on ${ContactType}  <br>
-                 ${Details}
-                </p>
-              </body>  
-            </html>
-          `,
+                    <html>
+                        <body style='padding=1rem 2rem;'>
+                            <h1 style='font-size=18px; margin=auto;'>Thanks for reaching out!</h1>
+                            <p style='font-size=16px;'>Dear ${Name}, <br><br>
+                            We have received your inquiry regarding ${ContactType}. Our team will get back to you soon. <br><br>
+                            Regards,<br>
+                            Hope Hub
+                            </p>
+                        </body>  
+                    </html>
+                `,
             }),
         })
             .then((res) => res.json())
             .then((data) => {
                 if (data.success) {
-                    alert("Your messag was sent successfuly");
+                    alert("Your message was sent successfully");
                 } else {
                     alert(`Error: ${data.message}`);
                 }
             });
+
         setEmail("");
-    }
+        setName("");
+        setDetails("");
+        setContactType("");
+    };
 
     return (
         <div className='container flex ml-0'>
@@ -113,27 +142,27 @@ const ContactForm = () => {
                             {t("Request Type")}
                         </label>
                         <select
-                            className='select rounded w-full bg-NeutralWhite'
+                            className='select rounded w-full bg-NeutralWhite text-base font-semibold'
                             value={ContactType}
                             onChange={handleSelectChange}
                         >
                             <option
                                 disabled
-                                selected
+                                value=''
                                 className='text-NeutralBlack font-medium'
                             >
                                 {t("Select Request Type")}
                             </option>
                             <option
+                                value='I have a question about the service.'
                                 id='service'
-                                value='service'
                                 className='text-NeutralBlack font-medium'
                             >
                                 {t("I have a question about the service.")}
                             </option>
                             <option
-                                id='support'
-                                value='support'
+                                value="I'm a registered client and I need support."
+                                id='service'
                                 className='text-NeutralBlack font-medium'
                             >
                                 {t(
@@ -141,15 +170,15 @@ const ContactForm = () => {
                                 )}
                             </option>
                             <option
-                                id='counselor'
-                                value='counselor'
+                                value="I'm a counselor interested in joining."
+                                id='service'
                                 className='text-NeutralBlack font-medium'
                             >
                                 {t("I'm a counselor interested in joining.")}
                             </option>
                             <option
-                                id='counselorSup'
-                                value='counselorSup'
+                                value="I'm a registered counselor and I need support."
+                                id='service'
                                 className='text-NeutralBlack font-medium'
                             >
                                 {t(
@@ -157,15 +186,15 @@ const ContactForm = () => {
                                 )}
                             </option>
                             <option
-                                id='businessRelated'
-                                value='businessRelated'
+                                value='I have a business-related inquiry.'
+                                id='service'
                                 className='text-NeutralBlack font-medium'
                             >
                                 {t("I have a business-related inquiry.")}
                             </option>
                             <option
-                                id='hopehub'
-                                value='hopehub'
+                                value="I'm interested in Hope Hub for my organization."
+                                id='service'
                                 className='text-NeutralBlack font-medium'
                             >
                                 {t(
@@ -173,8 +202,8 @@ const ContactForm = () => {
                                 )}
                             </option>
                             <option
-                                id='billingRelated'
-                                value='billingRelated'
+                                value='I have a billing-related question.'
+                                id='service'
                                 className='text-NeutralBlack font-medium'
                             >
                                 {t("I have a billing-related question.")}
@@ -197,7 +226,7 @@ const ContactForm = () => {
                         ></textarea>
                     </div>
                 </div>
-                <div className='text-center flex justify-end mt-3'>
+                <div className='text-center flex justify-end mt-5'>
                     <button
                         type='submit'
                         className='w-36 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'

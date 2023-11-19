@@ -3,12 +3,13 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState, useEffect } from "react";
+import Cookie from "js-cookie";
 
 import Forgot from "@/components/UserAuth/forgot";
 import Login from "@/components/UserAuth/login";
@@ -21,6 +22,8 @@ import { auth, db } from "@/util/firebase";
 import fb from "../../../public/assets/Facebook-icon.svg";
 import google from "../../../public/assets/Google-icon.svg";
 import hopeText from "../../../public/assets/HopeText.svg";
+
+import { parse } from "cookie";
 
 function Auth() {
     const { authChange, user } = useAppcontext();
@@ -40,44 +43,50 @@ function Auth() {
     const { t } = useTranslation("common");
 
     function handleGoogleAuth() {
-        // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-        auth.useDeviceLanguage(); // user' browser default language
+        auth.useDeviceLanguage(); // user's browser default language
         signInWithPopup(auth, provider)
-            .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
+            .then(async (result) => {
                 const credential =
                     GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
-                // The signed-in user info.
                 const user = result.user;
-                console.log("user", user);
-                setDoc(doc(db, "users", user.uid), {
-                    isTherapist: false,
-                    licenseNumber: null,
-                })
-                    .then((data) => {
-                        console.log("data", data);
-                        router.push(`/thanks?from=${pathname}`); // redirect to thanks pages after registration
-                    })
-                    .then(() => authChange())
-                    .catch((err) => {
-                        console.log("firestore error", err);
+
+                if (user) {
+                    const userDocRef = doc(db, "users", user.uid);
+
+                    const docSnapshot = await getDoc(userDocRef);
+                    if (docSnapshot.exists()) {
+                        // User already exists in the collection, redirect to homepage
+                        router.push(`/`);
+                        Cookie.set("loggedInUser", user.uid, { expires: 7 });
+                        return;
+                    }
+
+                    // User does not exist, store user details in the collection
+                    await setDoc(userDocRef, {
+                        isTherapist: false,
+                        licenseNumber: null,
+                        name: user.displayName,
+                        email: user.email,
+                        uid: user.uid,
+                        // Add any other user details you want to store in the collection
                     });
-                // IdP data available using getAdditionalUserInfo(result)
-                // ...
+
+                    // Set cookie for 7 days upon successful sign-up
+                    Cookie.set("loggedInUser", user.uid, { expires: 7 });
+
+                    router.push(`/thanks?from=${window.location.pathname}`);
+                }
+                authChange();
             })
             .catch((error) => {
-                // Handle Errors here.
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage);
-                // The email of the user's account used.
-                const email = error.customData.email;
-                // The AuthCredential type that was used.
+                // const email = error.customData.email;
                 const credential =
                     GoogleAuthProvider.credentialFromError(error);
                 console.log(credential);
-                // ...
             });
     }
     function handleFbAuth() {
@@ -152,11 +161,24 @@ function Auth() {
 
 export default Auth;
 
-export async function getStaticProps({ locale }) {
+// Server side function for translations and getting the userID
+export async function getServerSideProps({ locale, req }) {
+    // Check if there is a logged-in user
+    const cookies = parse(req.headers.cookie || "");
+    const userId = cookies.loggedInUser;
+
+    if (userId) {
+        return {
+            redirect: {
+                destination: `/Profile?userid=${userId}`,
+                permanent: false,
+            },
+        };
+    }
+
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
-            // Will be passed to the page component as props
         },
     };
 }

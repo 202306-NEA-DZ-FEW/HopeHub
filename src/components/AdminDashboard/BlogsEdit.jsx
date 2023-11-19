@@ -1,23 +1,37 @@
 import axios from "axios";
 import format from "date-fns/format";
 import { doc, setDoc } from "firebase/firestore";
+import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
-import { useState } from "react";
-import { useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import React from "react";
 
 import styles from "../../styles/BlogdEdit.module.css";
 
 import { db } from "@/util/firebase";
 
-import TextEditor from "./TextEditor";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function BlogsEdit() {
+// import TextEditor from "./TextEditor";
+
+export default function BlogsEdit({ blog }) {
+    const TextEditor = useMemo(() => {
+        return dynamic(() => import("@/components/AdminDashboard/TextEditor"), {
+            loading: () => <p>loading...</p>,
+
+            ssr: false,
+        });
+    }, []);
+
     const { t } = useTranslation("common");
     const [tag, setTag] = useState("");
     const [tags, setTags] = useState([]);
+    const fileInputRef = useRef(null);
+    const [editorContent, setEditorContent] = useState("");
     const [formData, setFormData] = useState({
         title: "",
-        subtitle: "",
+        subTitle: "",
         author: "",
         body: "",
         tags: [],
@@ -25,16 +39,68 @@ export default function BlogsEdit() {
         date: format(new Date(), "yyyy-MM-dd"),
         id: uniqueID(),
     });
+
+    // Maximum character limits for input fields
+    const MAX_TITLE_LENGTH = 40;
+    const MAX_SUBTITLE_LENGTH = 80;
+    const MAX_AUTHOR_LENGTH = 30;
+
+    //useEffect to populate form data when 'blog' prop changes
+    useEffect(() => {
+        if (blog) {
+            setFormData({
+                title: blog.title || "",
+                subTitle: blog.subTitle || "",
+                author: blog.author || "",
+                tags: blog.tags || [],
+                imageURL: blog.imageURL || "",
+                date: blog.date || format(new Date(), "yyyy-MM-dd"),
+                id: blog.id || uniqueID(),
+            });
+            setTags(blog.tags || []);
+            setEditorContent(blog.body || "");
+        }
+    }, [blog]);
+
     function uniqueID() {
         return (
             Math.random().toString(36).substring(2) + Date.now().toString(36)
         );
-        // return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-        //     (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-        // );
     }
+
+    // Function to check if the form is valid before submission
+    const isFormValid = () => {
+        const isNonEmptyString = (value) => {
+            return value && value.trim() !== "";
+        };
+
+        // Check if all required fields are filled
+        const requiredFieldsFilled =
+            isNonEmptyString(formData.title) &&
+            isNonEmptyString(formData.subTitle) &&
+            isNonEmptyString(formData.author) &&
+            formData.body !== null &&
+            formData.body !== "<p><br></p>";
+
+        // Check if an image is uploaded and at least one tag is added
+        const imageUploaded = isNonEmptyString(formData.imageURL);
+        const atLeastOneTagAdded = formData.tags.length > 0;
+
+        return requiredFieldsFilled && imageUploaded && atLeastOneTagAdded;
+    };
+    // Function to display a toast notification for incomplete form
+    const showToast = () => {
+        toast.error("Please fill in all required fields!", {
+            position: toast.POSITION.TOP_CENTER,
+        });
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!isFormValid()) {
+            showToast();
+            return;
+        }
         try {
             await setDoc(doc(db, "blogs", formData.id), formData);
         } catch {
@@ -43,14 +109,21 @@ export default function BlogsEdit() {
         // Clear the form fields after submission
         setFormData({
             title: "",
-            subtitle: "",
+            subTitle: "",
             author: "",
-            body: "",
             tags: [],
             imageURL: "",
+            date: format(new Date(), "yyyy-MM-dd"),
+            id: uniqueID(),
         });
         setTags([]);
+        setEditorContent("");
+        if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+        }
     };
+
+    // Function to handle image upload
     function handleImage(e) {
         e.preventDefault();
         const img = e.target.files[0];
@@ -67,18 +140,69 @@ export default function BlogsEdit() {
                     ...formData,
                     imageURL: response.data.secure_url,
                 });
-                // console.log('cloudinary res', response.data.secure_url)
             })
             .catch((err) => console.error("upload image error", err));
-        console.log("image uploaded", formData);
     }
 
-    const handleChange = (e) => {
+    // Function to handle clearing image URL when the user removes the image input
+    const handleClearImage = () => {
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value,
+            imageURL: "", // Reset imageURL to an empty string
         });
-        // console.log('handle change formdata', formData)
+    };
+
+    // JSX for the file input
+    <div className={styles.input_file}>
+        <input
+            type='file'
+            ref={fileInputRef}
+            name='imageURL'
+            id='imageURL'
+            onChange={handleImage}
+            onClick={handleClearImage}
+        />
+    </div>;
+
+    // Function to handle changes in input fields
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        // Check for input name and restrict character length accordingly
+        let truncatedValue = value;
+        switch (name) {
+            case "title":
+                if (value.length > MAX_TITLE_LENGTH) {
+                    truncatedValue = value.substring(0, MAX_TITLE_LENGTH);
+                }
+                break;
+            case "subTitle":
+                if (value.length > MAX_SUBTITLE_LENGTH) {
+                    truncatedValue = value.substring(0, MAX_SUBTITLE_LENGTH);
+                }
+                break;
+            case "author":
+                if (value.length > MAX_AUTHOR_LENGTH) {
+                    truncatedValue = value.substring(0, MAX_AUTHOR_LENGTH);
+                }
+                break;
+            default:
+                break;
+        }
+
+        setFormData({
+            ...formData,
+            [name]: truncatedValue,
+        });
+    };
+
+    // Function to handle changes in the editor content
+    const handleChangeEditor = (content) => {
+        setEditorContent(content);
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            body: content,
+        }));
     };
     const handleButtonClick = () => {
         // Manually trigger form submission when the button is clicked
@@ -96,10 +220,17 @@ export default function BlogsEdit() {
             setTag("");
         }
     }
-    function deleteTag(txt) {
+    // Function to delete a tag from the tags list
+    const deleteTag = (txt) => {
         let newArr = tags.filter((tag) => tag !== txt);
         setTags(newArr);
-    }
+        // After updating the tags state, also update the formData
+        setFormData({
+            ...formData,
+            tags: newArr,
+        });
+    };
+
     const TagBtn = ({ txt }) => (
         <span className='w-fit p-1 mb-5 mr-2 border rounded-3xl border-gray-500  group relative'>
             {txt}{" "}
@@ -111,6 +242,25 @@ export default function BlogsEdit() {
             </button>
         </span>
     );
+
+    // Function to handle resetting form fields
+    const handleReset = () => {
+        setFormData({
+            title: "",
+            subTitle: "",
+            author: "",
+            tags: [],
+            imageURL: "",
+            date: format(new Date(), "yyyy-MM-dd"),
+            id: uniqueID(),
+        });
+        setTags([]);
+        setEditorContent("");
+        if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+        }
+    };
+
     return (
         <div className='flex flex-col md:flex-row md:w-full '>
             <form
@@ -119,11 +269,7 @@ export default function BlogsEdit() {
                 className='flex flex-col w-1/2'
             >
                 {" "}
-                {/* Use onSubmit to handle form submission */}
                 <div className='pl-4 mb-4 space-y-1 text-xl flex flex-col'>
-                    {/* <span className='text-NeutralBlack tracking-wider'>
-                    {t("Title")}
-                </span> */}
                     <label htmlFor='Title'>{t("Title")}</label>
                     <input
                         type='text'
@@ -135,56 +281,52 @@ export default function BlogsEdit() {
                     />
                 </div>
                 <div className='pl-4 mb-4 space-y-1 text-xl flex flex-col'>
-                    {/* <span className='text-NeutralBlack tracking-wider'>
-                    {t("Title")}
-                </span> */}
-                    <label htmlFor='subtitleitle'>{t("Subtitle")}</label>
+                    <label htmlFor='subTitle'>{t("Subtitle")}</label>
                     <input
                         type='text'
-                        id='subtitle'
+                        id='subTitle'
                         className='w-full text-NeutralBlack font-normal text-lg px-4 rounded-md border border-slate-300 bg-white py-3 outline-none '
-                        value={formData.subtitle} // Bind the value to the form state
+                        value={formData.subTitle}
                         onChange={handleChange}
-                        name='subtitle'
+                        name='subTitle'
                     />
                 </div>
                 <div className='pl-4 mb-4 space-y-1 text-xl flex flex-col'>
-                    {/* <span className='text-NeutralBlack'>{t("Author")}</span> */}
                     <label htmlFor='Author'>{t("Author")}</label>
                     <input
                         type='text'
                         id='Author'
                         className='w-full text-NeutralBlack font-normal text-lg px-4 rounded-md border border-slate-300 bg-white py-3 outline-none '
-                        value={formData.author} // Bind the value to the form state
+                        value={formData.author}
                         onChange={handleChange}
                         name='author'
                     />
                 </div>
-                {/* <div className='pl-4 mb-4 h-fit space-y-1 text-xl flex flex-col'>
-                <span className='text-NeutralBlack'>{t("body")}</span>
-                <TextEditor
-                    value={formData.body}
-                    onChange={(value) =>
-                        setFormData({ ...formData, body: value })
-                    }
-                />
-            </div> */}
                 <div className={styles.input_file}>
                     <input
                         type='file'
-                        // value={formData.imageURL}
                         placeholder='Upload Image'
                         name='imageURL'
                         id='imageURL'
+                        ref={fileInputRef}
                         onChange={handleImage}
+                        onClick={handleClearImage}
                     />
                 </div>
-                <button
-                    onClick={handleButtonClick}
-                    className='w-32 h-10 self-start ml-4 mt-20 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
-                >
-                    {t("Submit")}
-                </button>
+                <div className='flex flex-row'>
+                    <button
+                        onClick={handleReset}
+                        className='w-32 h-10 self-start ml-4 mt-20 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
+                    >
+                        {t("Reset")}
+                    </button>
+                    <button
+                        onClick={handleSubmit}
+                        className='w-32 h-10 self-start ml-4 mt-20 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
+                    >
+                        {t("Submit")}
+                    </button>
+                </div>
             </form>
             <div className='flex flex-col w-1/2'>
                 <div className='pl-4 mb-4 space-y-1 text-xl flex flex-col'>
@@ -207,10 +349,8 @@ export default function BlogsEdit() {
                 <div className='pl-4 mb-4 h-fit space-y-1 text-xl flex flex-col'>
                     <span className='text-NeutralBlack'>{t("body")}</span>
                     <TextEditor
-                        value={formData.body}
-                        onChange={(value) =>
-                            setFormData({ ...formData, body: value })
-                        }
+                        value={editorContent}
+                        onChange={handleChangeEditor}
                     />
                 </div>
             </div>

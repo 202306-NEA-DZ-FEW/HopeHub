@@ -1,5 +1,8 @@
+import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import { Slide, toast } from "react-toastify";
+import React from "react";
 
 import { useAppcontext } from "@/context/state";
 
@@ -13,23 +16,31 @@ export default function RelationshipStatus({ OnNext, OnPrevious }) {
         setRelationshipStatus(text);
         setBookingInfos({ relationshipStatus: text, ...bookingInfos });
     };
-
+    const toastifyError = (message) => {
+        toast.error(message, {
+            position: toast.POSITION.BOTTOM_CENTER,
+            autoClose: 2500,
+            transition: Slide,
+            className:
+                "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+        });
+    };
     const handleNextClick = () => {
         // Validate user input if necessary
         if (relationshipStatus) {
-            // Reset the error message if there's no error
-            setError("");
-
             // Call the onNext function and pass the data to it
             OnNext();
         } else {
-            // Display an error message or handle validation as needed
-            setError(t("Please select an option before proceeding."));
+            // Display an error toast message using toastifyError
+            toastifyError(t("Please select an option before proceeding."));
         }
     };
 
     return (
         <div className='bg-NeutralWhite  dark:bg-Dark_Accent min-w-screen mb-12'>
+            <Head>
+                <title>Relationship Status</title>
+            </Head>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent'>
                 <div className='mb-3 pt-6 font-ogg font-bold text-NeutralBlack dark:text-NeutralWhite capitalize text-2xl lg:text-4xl leading-normal'>
                     {t("Let's match you with the right therapist")}

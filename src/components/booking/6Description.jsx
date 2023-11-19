@@ -1,5 +1,8 @@
+import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import { Slide, toast } from "react-toastify";
+import React from "react";
 
 import { useAppcontext } from "@/context/state";
 
@@ -8,7 +11,15 @@ export default function Description({ OnNext, OnPrevious }) {
     const [error, setError] = useState(""); // Initialize error state
     const [description, setDescription] = useState("");
     const { bookingInfos, setBookingInfos } = useAppcontext();
-
+    const toastifyError = (message) => {
+        toast.error(message, {
+            position: toast.POSITION.BOTTOM_CENTER,
+            autoClose: 2500,
+            transition: Slide,
+            className:
+                "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+        });
+    };
     const SubmitDescription = () => {
         // setDescription(text);
         setBookingInfos({ description: description, ...bookingInfos });
@@ -18,17 +29,20 @@ export default function Description({ OnNext, OnPrevious }) {
         // Validate user input if necessary
         if (description) {
             // Reset the error message if there's no error
-            setError("");
+
             SubmitDescription();
             // Call the OnNext function and pass the data to it
             OnNext();
         } else {
-            // Display an error message or handle validation as needed
-            setError(t("Please write something before proceeding."));
+            // Display an error toast message using toastifyError
+            toastifyError(t("Please write us something before proceeding."));
         }
     };
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen min-h-screen'>
+            <Head>
+                <title>Description</title>
+            </Head>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent flex flex-col '>
                 <div className='mb-3 pt-6 font-poppins font-bold text-NeutralBlack dark:text-NeutralWhite  capitalize text-2xl lg:text-4xl leading-normal'>
                     {t("What brings you here?")}
