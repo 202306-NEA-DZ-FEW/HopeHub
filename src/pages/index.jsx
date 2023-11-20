@@ -34,23 +34,23 @@ const AnimatedSection = ({ children }) => {
     );
 };
 
-const HomePage = ({ blogs, user }) => {
+const HomePage = () => {
     const { t } = useTranslation("common");
 
     return (
-        <Layout user={user}>
+        <Layout>
             <Head>
                 <title>{t("Hope Hub")}</title>
             </Head>
             <div className='flex flex-col items-center justify-start dark:bg-Dark_Primary'>
-                <Banner user={user} />
+                <Banner />
                 <AnimatedSection>
                     <TherapistsInfoSection />
                 </AnimatedSection>
                 <AnimatedSection>
                     <ConnectionSection />
                 </AnimatedSection>
-                <BlogsCarousel blogs={blogs} />
+                {/* <BlogsCarousel blogs={blogs} /> */}
                 <AnimatedSection>
                     <PurchasingSection />
                 </AnimatedSection>

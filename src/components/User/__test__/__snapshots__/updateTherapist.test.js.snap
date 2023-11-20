@@ -110,7 +110,7 @@ exports[`renders correctly 1`] = `
                 <summary
                   className="text-Accent text-lg font-bold underline font-poppins text-NeutralBlack font-semibold dark:text-NeutralWhite"
                 >
-                  User
+                  mockConstructor
                 </summary>
                 <ul
                   className="menu w-32 text-NeutralBlack font-medium font-poppins"
