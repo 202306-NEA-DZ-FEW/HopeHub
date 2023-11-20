@@ -164,8 +164,8 @@ export default Auth;
 // Server side function for translations and getting the userID
 export async function getServerSideProps({ locale, req }) {
     // Check if there is a logged-in user
-    const cookies = parse(req.headers.cookie || "");
-    const userId = cookies.loggedInUser;
+    // const cookies = parse(req.headers.cookie || "");
+    // const userId = cookies.loggedInUser;
 
     // if (userId) {
     //     return {
