@@ -157,24 +157,23 @@ function Auth() {
 
 export default Auth;
 
-// // Server side function for translations and getting the userID
-// export async function getServerSideProps({ locale, req }) {
-//     // Check if there is a logged-in user
-//     // const cookies = parse(req.headers.cookie || "");
-//     // const userId = cookies.loggedInUser;
+// Server side function for translations and getting the userID
+export async function getServerSideProps({ locale, req }) {
+    const cookies = parse(req.headers.cookie || "");
+    const userId = cookies.loggedInUser;
 
-//     // if (userId) {
-//     //     return {
-//     //         redirect: {
-//     //             destination: `/Profile?userid=${userId}`,
-//     //             permanent: false,
-//     //         },
-//     //     };
-//     // }
+    if (userId) {
+        return {
+            redirect: {
+                destination: `/Profile?userid=${userId}`,
+                permanent: false,
+            },
+        };
+    }
 
-//     return {
-//         props: {
-//             ...(await serverSideTranslations(locale, ["common"])),
-//         },
-//     };
-// }
+    return {
+        // props: {
+        //     ...(await serverSideTranslations(locale, ["common"])),
+        // },
+    };
+}
