@@ -17,12 +17,48 @@ import { db } from "@/util/firebase";
 function Calendar({ appointments, user }) {
     const router = useRouter();
     const { t } = useTranslation("common");
-    const events = user.isTherapist
-        ? appointments /* .map((ev)=>{
-            return { title: ev.time, id: ev.uid, ...ev };
-        }) */
-        : user?.appointments?.map((d) => ({ title: d.time, ...d }));
-    console.log("calender ave", events);
+    const [filteredAppointments, setFilteredAppointments] = useState([]);
+
+    useEffect(() => {
+        const fetchFilteredAppointments = async () => {
+            try {
+                if (user.isTherapist) {
+                    const therapistRef = doc(db, "users", user.uid);
+                    const therapistDoc = await getDoc(therapistRef);
+                    if (therapistDoc.exists()) {
+                        const therapistData = therapistDoc.data();
+                        const patients = therapistData.patients || [];
+                        const filtered = [];
+                        patients.forEach((patientId) => {
+                            const matchingAppointments = appointments.filter(
+                                (appointment) => appointment.id === patientId
+                            );
+                            filtered.push(...matchingAppointments);
+                        });
+
+                        setFilteredAppointments(filtered);
+                    }
+                } else {
+                    setFilteredAppointments(user?.appointments || []);
+                }
+            } catch (error) {
+                console.error("Error fetching filtered appointments:", error);
+            }
+        };
+
+        fetchFilteredAppointments();
+    }, [user, appointments]);
+
+    const events = filteredAppointments.map((appointment) => ({
+        title: appointment.time,
+        ...appointment,
+    }));
+    // const events = user.isTherapist
+    //     ? appointments /* .map((ev)=>{
+    //         return { title: ev.time, id: ev.uid, ...ev };
+    //     }) */
+    //     : user?.appointments?.map((d) => ({ title: d.time, ...d }));
+    // console.log("calender ave", events);
     // console.log("appointments", appointments);
     // if(user.isTherapist){
     //     appointments.forEach((obj, id) => {
@@ -38,6 +74,7 @@ function Calendar({ appointments, user }) {
         left: "0px",
         top: "0px",
     });
+
     function handleEventClick(info) {
         if (user.isTherapist) {
             const event = events.filter((obj) => {
@@ -61,10 +98,12 @@ function Calendar({ appointments, user }) {
                 top: `${rect.top - rect.height}px`,
             });
             setModalOpen(!modalOpen);
+            console.log("im after modal", events);
         }
         return;
     }
     useEffect(() => {}, []);
+    console.log("im outsiiiiide", events);
     return (
         <Layout user={user} className='max-w-screen'>
             <Head>
@@ -76,6 +115,8 @@ function Calendar({ appointments, user }) {
                     position={modalPosition}
                     closeModal={() => {
                         setModalOpen(false);
+                        setEventData(null); // Reset event data when closing the modal
+                        console.log("im in here", events);
                     }}
                     userId={user.uid}
                 />
@@ -146,10 +187,8 @@ export async function getServerSideProps({ locale, query }) {
                 });
             }
         }
-        console.log("appointments..............", appointments);
 
         const userDoc = await getDoc(doc(db, "users", userId));
-        console.log("im userdoc in serverside", userDoc.exists());
         if (!userDoc.exists()) {
             // Handle the case when the user with the specified ID is not found
             return { notFound: true };

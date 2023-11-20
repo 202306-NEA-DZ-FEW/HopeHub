@@ -23,10 +23,9 @@ function BookingPage({ dates, user }) {
     const { t } = useTranslation("common");
     const [step, setStep] = useState(1);
     const { bookingInfos } = useAppcontext();
-    // console.log('dates', dates)
+
     function OnNext() {
         setStep(step + 1);
-        // console.log(bookingInfos);
     }
     function OnPrevious() {
         setStep(step - 1);
