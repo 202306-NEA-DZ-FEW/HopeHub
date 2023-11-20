@@ -20,13 +20,12 @@ import darklogo from "../../../public/assets/darklogo.svg";
 import logo from "../../../public/assets/logo.svg";
 import placeholderImage from "../../../public/assets/AvatarPlaceHolder.svg";
 
-export default function Navbar() {
+export default function Navbar({ user }) {
     //Function used for translations
     const { t } = useTranslation("common");
     //Using variables from context to set up dark mode, router, and navbar changes once a user is logged in
     const { darkMode } = useAppcontext();
     const { isLogged, setIsLogged } = useAppcontext();
-    const { user, setUser } = useAppcontext();
 
     const [visible, setVisible] = useState(true);
     const [profileMenuVisible, setProfileMenuVisible] = useState(true);
