@@ -92,7 +92,7 @@ export async function getServerSideProps({ locale, req }) {
 
             return {
                 props: {
-                    ...(await serverSideTranslations(locale, ["common"])),
+                    // ...(await serverSideTranslations(locale, ["common"])),
                     user,
                     // blogs: sortedBlogs,
                 },
@@ -101,7 +101,7 @@ export async function getServerSideProps({ locale, req }) {
             // User is not logged in
             return {
                 props: {
-                    ...(await serverSideTranslations(locale, ["common"])),
+                    // ...(await serverSideTranslations(locale, ["common"])),
                     // blogs: sortedBlogs,
                 },
             };
