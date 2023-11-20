@@ -17,6 +17,7 @@ export function AppWrapper({ children }) {
     const [darkMode, setDarkMode] = useState(false);
     const [profileUpdated, setProfileUpdated] = useState(false);
     const [loading, setLoading] = useState(); // New loading state
+    // const [locale, setLocale] = useState('en'); // Default locale
 
     useEffect(() => {
         const loggedInUserCookie = Cookie.get("loggedInUser");
@@ -101,6 +102,7 @@ export function AppWrapper({ children }) {
                 profileUpdated,
                 setProfileUpdated,
                 setUser,
+                // locale,
             }}
         >
             {children}
