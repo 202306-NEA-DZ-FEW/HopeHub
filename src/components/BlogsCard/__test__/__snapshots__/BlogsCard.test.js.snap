@@ -46,8 +46,7 @@ exports[`renders correctly 1`] = `
     <p
       className="text-gray-500 dark:text-gray-400 font-light text-xs lg:text-sm"
     >
-      Written by
-       
+      Written by 
     </p>
     <p
       className="text-NeutralBlack dark:text-NeutralWhite font-light text-xs lg:text-base py-2"

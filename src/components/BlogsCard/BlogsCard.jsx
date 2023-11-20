@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useTranslation } from "next-i18next";
+// import { useTranslation } from "next-i18next";
 
 const BlogCard = ({ image, title, subtitle, author, blogId, body }) => {
     // Function used for translations
-    const { t } = useTranslation("common");
+    // const { t } = useTranslation("common");
 
     // Rendering the blogcard
     return (
@@ -28,7 +28,8 @@ const BlogCard = ({ image, title, subtitle, author, blogId, body }) => {
                     </h2>
                 </Link>
                 <p className='text-gray-500 dark:text-gray-400 font-light text-xs lg:text-sm'>
-                    {t("Written by")} {author}
+                    {/* {t("Written by")} {author} */}
+                    Written by {author}
                 </p>
                 <p
                     dangerouslySetInnerHTML={{

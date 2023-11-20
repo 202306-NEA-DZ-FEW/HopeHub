@@ -1,8 +1,8 @@
 import { parse } from "cookie";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import Head from "next/head";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+// import { useTranslation } from "next-i18next";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useEffect, useRef } from "react";
 
 import BlogCard from "@/components/BlogsCard/BlogsCard";
@@ -17,7 +17,7 @@ import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
 
 function BlogsPage({ blogs, user }) {
-    const { t } = useTranslation("common");
+    // const { t } = useTranslation("common");
     const blogRef = useRef([]);
     const controls = useAnimation();
 
@@ -52,7 +52,8 @@ function BlogsPage({ blogs, user }) {
                 <title>Blogs</title>
             </Head>
             <h1 className='mx-6 mt-4 text-base md:mb-4 lg:mb-0 md:text-3xl md:mx-9 md:mt-16 font-poppins uppercase font-medium inline-block text-NeutralBlack dark:text-NeutralWhite'>
-                {t("Our Blog Posts")}
+                {/* {t("Our Blog Posts")} */}
+                Our Blog Posts
             </h1>
             <div className='flex flex-col xl:flex-row mx-5 mb-6'>
                 <div className='flex flex-col'>
@@ -79,9 +80,11 @@ function BlogsPage({ blogs, user }) {
                                 HopeHub
                             </h2>
                             <p className='py-6 font-poppins text-sm lg:text-xl'>
-                                {t(
+                                {/* {t(
                                     "If you're looking for support, see how HopeHub can help."
-                                )}
+                                )} */}
+                                If you are looking for support, see how HopeHub
+                                can help.
                             </p>
                             <div className='flex justify-center'>
                                 <BookingButton
@@ -98,12 +101,17 @@ function BlogsPage({ blogs, user }) {
                     <div className='card w-auto h-min my-3 mx-5 bg-gray-300 text-NeutralBlack dark:bg-gray-700 dark:text-NeutralWhite shadow-xl'>
                         <div className='card-body'>
                             <h2 className='card-title text-lg lg:text-5xl font-poppins font-semibold'>
-                                {t("Our Newsletter Is Waiting For You")}
+                                {/* {t("Our Newsletter Is Waiting For You")} */}
+                                Our Newsletter Is Waiting For You
                             </h2>
                             <p className='py-6 font-poppins text-sm lg:text-xl'>
-                                {t(
+                                {/* {t(
                                     "Get Inspired Weekly: Start Your Journey to Improved Mental Health and Personal Growth by Subscribing to Our Newsletter Today, and Connect with HopeHub's Community of Support and Healing."
-                                )}
+                                )} */}
+                                Get Inspired Weekly: Start Your Journey to
+                                Improved Mental Health and Personal Growth by
+                                Subscribing to Our Newsletter Today, and Connect
+                                with HopeHubs Community of Support and Healing.
                             </p>
                             <div className='flex justify-center'>
                                 <BookingButton
@@ -152,7 +160,7 @@ export async function getServerSideProps({ locale, req }) {
 
             return {
                 props: {
-                    ...(await serverSideTranslations(locale, ["common"])),
+                    // ...(await serverSideTranslations(locale, ["common"])),
                     user,
                     blogs: sortedBlogs,
                 },
@@ -161,7 +169,7 @@ export async function getServerSideProps({ locale, req }) {
             // User is not logged in
             return {
                 props: {
-                    ...(await serverSideTranslations(locale, ["common"])),
+                    // ...(await serverSideTranslations(locale, ["common"])),
                     blogs: sortedBlogs,
                 },
             };

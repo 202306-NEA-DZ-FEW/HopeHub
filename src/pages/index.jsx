@@ -34,7 +34,7 @@ const AnimatedSection = ({ children }) => {
     );
 };
 
-const HomePage = ({ user }) => {
+const HomePage = ({ blogs, user }) => {
     // const { t } = useTranslation("common");
 
     return (
@@ -48,7 +48,7 @@ const HomePage = ({ user }) => {
                 <AnimatedSection>
                     <ConnectionSection />
                 </AnimatedSection>
-                {/* <BlogsCarousel blogs={blogs} /> */}
+                <BlogsCarousel blogs={blogs} />
                 <AnimatedSection>
                     <PurchasingSection />
                 </AnimatedSection>
@@ -64,17 +64,17 @@ export async function getServerSideProps({ locale, req }) {
     const cookies = parse(req.headers.cookie || "");
     const userId = cookies.loggedInUser;
     try {
-        // // Fetch blogs data
-        // const blogSnapshot = await getDocs(collection(db, "blogs"));
-        // const blogs = [];
+        // Fetch blogs data
+        const blogSnapshot = await getDocs(collection(db, "blogs"));
+        const blogs = [];
 
-        // blogSnapshot.forEach((doc) => {
-        //     blogs.push(doc.data());
-        // });
+        blogSnapshot.forEach((doc) => {
+            blogs.push(doc.data());
+        });
 
-        // const sortedBlogs = blogs.sort(
-        //     (a, b) => new Date(b.date) - new Date(a.date)
-        // );
+        const sortedBlogs = blogs.sort(
+            (a, b) => new Date(b.date) - new Date(a.date)
+        );
 
         if (userId) {
             // Fetch user data from Firestore based on user ID
@@ -92,7 +92,7 @@ export async function getServerSideProps({ locale, req }) {
                 props: {
                     // ...(await serverSideTranslations(locale, ["common"])),
                     user,
-                    // blogs: sortedBlogs,
+                    blogs: sortedBlogs,
                 },
             };
         } else {
@@ -100,7 +100,7 @@ export async function getServerSideProps({ locale, req }) {
             return {
                 props: {
                     // ...(await serverSideTranslations(locale, ["common"])),
-                    // blogs: sortedBlogs,
+                    blogs: sortedBlogs,
                 },
             };
         }

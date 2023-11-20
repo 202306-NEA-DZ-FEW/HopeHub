@@ -1,7 +1,7 @@
 import { doc, getDoc } from "firebase/firestore";
 import Head from "next/head";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+// import { useTranslation } from "next-i18next";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 
 import TherapistProfile from "@/components/User/updateTherapist";
@@ -10,12 +10,10 @@ import UserProfile from "@/components/User/UserProfile";
 import { db } from "@/util/firebase";
 
 function Profile({ user }) {
-    const { t } = useTranslation("common");
+    // const { t } = useTranslation("common");
     return (
         <>
-            <Head>
-                <title>{t("User Profile")}</title>
-            </Head>
+            <Head>{/* <title>{t("User Profile")}</title> */}</Head>
             {user?.isTherapist ? (
                 <TherapistProfile user={user} />
             ) : (
@@ -47,7 +45,7 @@ export async function getServerSideProps({ locale, query }) {
 
         return {
             props: {
-                ...(await serverSideTranslations(locale, ["common"])),
+                // ...(await serverSideTranslations(locale, ["common"])),
                 user,
             },
         };
