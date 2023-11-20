@@ -167,14 +167,14 @@ export async function getServerSideProps({ locale, req }) {
     const cookies = parse(req.headers.cookie || "");
     const userId = cookies.loggedInUser;
 
-    if (userId) {
-        return {
-            redirect: {
-                destination: `/Profile?userid=${userId}`,
-                permanent: false,
-            },
-        };
-    }
+    // if (userId) {
+    //     return {
+    //         redirect: {
+    //             destination: `/Profile?userid=${userId}`,
+    //             permanent: false,
+    //         },
+    //     };
+    // }
 
     return {
         props: {
