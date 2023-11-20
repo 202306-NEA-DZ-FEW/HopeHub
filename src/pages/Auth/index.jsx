@@ -6,8 +6,6 @@ import {
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState, useEffect } from "react";
 import Cookie from "js-cookie";
 
@@ -40,7 +38,6 @@ function Auth() {
         );
     const provider = new GoogleAuthProvider();
     const FbProvider = new FacebookAuthProvider();
-    const { t } = useTranslation("common");
 
     function handleGoogleAuth() {
         auth.useDeviceLanguage(); // user's browser default language
@@ -95,7 +92,6 @@ function Auth() {
             .then((result) => {
                 // The signed-in user info.
                 const user = result.user;
-                console.log("fb user", user);
                 // This gives you a Facebook Access Token. You can use it to access the Facebook API.
                 const credential =
                     FacebookAuthProvider.credentialFromResult(result);
@@ -126,7 +122,7 @@ function Auth() {
             >
                 <section className=' flex flex-col items-start gap-0 p-1 mx-auto md:mr-28'>
                     <h1 className='w-full text-left font-poppins font-bold text-NeutralBlack  text-5xl lg:text-6xl relative top-12 md:top-20'>
-                        {t("welcome")}
+                        welcome
                     </h1>
                     <Image
                         src={hopeText}
@@ -143,7 +139,7 @@ function Auth() {
           before:content-[''] before:bg-Accent before:w-2/5 before:h-[2px] before:absolute before:left-0 before:top-1/2
           after:content-[''] after:bg-Accent after:w-2/5 after:h-[2px] after:absolute after:right-0 after:top-1/2"
                     >
-                        {t("or")}
+                        or
                     </span>
                     <div className='flex flex-row justify-center gap-8 items-center w-full'>
                         <button onClick={handleFbAuth}>
