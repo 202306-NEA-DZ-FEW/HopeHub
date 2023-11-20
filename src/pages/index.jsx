@@ -2,7 +2,7 @@ import { parse } from "cookie";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Banner from "@/components/HomePage/Banner";
 import BlogsCarousel from "@/components/HomePage/BlogsCarousel";
 import ConnectionSection from "@/components/HomePage/ConnectionSection";
@@ -35,13 +35,11 @@ const AnimatedSection = ({ children }) => {
 };
 
 const HomePage = ({ user }) => {
-    const { t } = useTranslation("common");
+    // const { t } = useTranslation("common");
 
     return (
         <Layout user={user}>
-            <Head>
-                <title>{t("Hope Hub")}</title>
-            </Head>
+            <Head>{/* <title>{t("Hope Hub")}</title> */}</Head>
             <div className='flex flex-col items-center justify-start dark:bg-Dark_Primary'>
                 <Banner user={user} />
                 <AnimatedSection>
