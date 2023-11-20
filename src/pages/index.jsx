@@ -34,7 +34,7 @@ const AnimatedSection = ({ children }) => {
     );
 };
 
-const HomePage = () => {
+const HomePage = ({ blogs }) => {
     const { t } = useTranslation("common");
 
     return (
@@ -50,7 +50,7 @@ const HomePage = () => {
                 <AnimatedSection>
                     <ConnectionSection />
                 </AnimatedSection>
-                {/* <BlogsCarousel blogs={blogs} /> */}
+                <BlogsCarousel blogs={blogs} />
                 <AnimatedSection>
                     <PurchasingSection />
                 </AnimatedSection>
@@ -78,34 +78,33 @@ export async function getServerSideProps({ locale, req }) {
             (a, b) => new Date(b.date) - new Date(a.date)
         );
 
-        if (userId) {
-            // Fetch user data from Firestore based on user ID
-            const userDoc = await getDoc(doc(db, "users", userId));
+        // if (userId) {
+        //     // Fetch user data from Firestore based on user ID
+        //     const userDoc = await getDoc(doc(db, "users", userId));
 
-            if (!userDoc.exists()) {
-                // Handle the case when the user with the specified ID is not found
-                return { notFound: true };
-            }
+        //     if (!userDoc.exists()) {
+        //         // Handle the case when the user with the specified ID is not found
+        //         return { notFound: true };
+        //     }
 
-            // Extract user data from the document
-            const user = userDoc.data();
+        //     // Extract user data from the document
+        //     const user = userDoc.data();
 
-            return {
-                props: {
-                    ...(await serverSideTranslations(locale, ["common"])),
-                    user,
-                    blogs: sortedBlogs,
-                },
-            };
-        } else {
-            // User is not logged in
-            return {
-                props: {
-                    ...(await serverSideTranslations(locale, ["common"])),
-                    blogs: sortedBlogs,
-                },
-            };
-        }
+        //     return {
+        //         props: {
+        //             ...(await serverSideTranslations(locale, ["common"])),
+        //             user,
+        //             blogs: sortedBlogs,
+        //         },
+        //     };
+        // } else {
+        //     // User is not logged in
+        return {
+            props: {
+                ...(await serverSideTranslations(locale, ["common"])),
+                blogs: sortedBlogs,
+            },
+        };
     } catch (error) {
         console.error("Error fetching data:", error);
         return { props: { error: "Error fetching data" } };
