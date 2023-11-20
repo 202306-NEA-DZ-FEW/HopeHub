@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-    "test": "مرحبا"
-=======
     "test": "مرحبا",
     "Type of Contact": "نوع الاتصال",
     "I have a question about the service.": "لدي سؤال حول الخدمة.",
@@ -219,5 +216,4 @@
     "Calender": " جدول المواعيد",
     "Booking": "الحجز",
     "Page Not Found": "الصفحة غير موجودة"
->>>>>>> develop
 }
