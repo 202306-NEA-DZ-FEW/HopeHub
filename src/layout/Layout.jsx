@@ -3,7 +3,7 @@ import * as React from "react";
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 
-export default function Layout({ children }) {
+export default function Layout({ children, user }) {
     // const userLanguage = Cookies.get("userLanguage");
 
     // i18n.changeLanguage(userLanguage);
@@ -17,7 +17,7 @@ export default function Layout({ children }) {
 
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent'>
-            <Navbar />
+            <Navbar user={user} />
             <div className='pt-12'>{children}</div>
             <Footer />
         </div>
