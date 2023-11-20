@@ -34,7 +34,7 @@ class MyDocument extends Document {
 
                     <link rel='icon' href='/assets/logo-Icon.png' />
                 </Head>
-                <body className='bg-NeutralWhite dark:bg-Dark_Accent'>
+                <body className='bg-NeutralWhite dark:bg-Dark_Primary'>
                     <Main />
                     <NextScript />
                 </body>

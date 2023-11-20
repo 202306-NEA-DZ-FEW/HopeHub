@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
-import { Slide, toast } from "react-toastify";
 import React from "react";
+import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 
