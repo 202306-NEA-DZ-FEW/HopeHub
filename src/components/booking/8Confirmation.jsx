@@ -4,7 +4,6 @@ import { useTranslation } from "next-i18next";
 import React from "react";
 
 import { auth } from "@/util/firebase";
-
 export default function Confirmation() {
     const { t } = useTranslation("common");
     return (

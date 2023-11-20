@@ -1,15 +1,20 @@
 // NewsletterSignUp.js
-import { doc, updateDoc } from "firebase/firestore";
+
+import { deleteDoc, doc, updateDoc, where } from "firebase/firestore";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import React from "react";
 import { useState } from "react";
 import { Slide, toast } from "react-toastify";
+import { collection, query, getDocs } from "firebase/firestore";
 
 import { db } from "@/util/firebase";
-
 function NewsletterSignUp() {
     const { t } = useTranslation("common");
     const [email, setEmail] = useState("");
+
+    const router = useRouter();
+    const pathname = usePathname().slice(1);
 
     function emailChange(e) {
         e.preventDefault();
@@ -21,19 +26,74 @@ function NewsletterSignUp() {
         if (e.key === "Enter" || sendBtn) {
             e.preventDefault();
 
+            let blogContent = "";
+            let sortedBlogs = [];
+
+            router.push(`/thanks?from=${pathname}`);
+
+            try {
+                // Fetch blogs data
+                const blogSnapshot = await getDocs(collection(db, "blogs"));
+                const blogs = [];
+
+                blogSnapshot.forEach((doc) => {
+                    blogs.push(doc.data());
+                });
+
+                sortedBlogs = blogs.sort(
+                    (a, b) => new Date(b.date) - new Date(a.date)
+                );
+            } catch (error) {
+                console.log(error);
+            }
+
+            sortedBlogs.slice(0, 6).forEach((blog) => {
+                const firstParagraph = blog.body.split("</p")[0]; // Assuming paragraphs are separated by two newlines
+
+                blogContent += `
+        <div style='display: flex; align-items: center; padding-bottom: 20px;'>
+            <div style='width: 300px; height: 200px;'>
+            <a href='https://hope-hub-w4pj.vercel.app/blogs/${blog.id}' target='_blank'>
+            <img src='${blog.imageURL}' alt='${blog.title}' style='width: 100%; height: 100%; object-fit: cover;' />
+        </a>
+                    </div>
+            <div style='margin-left: 20px; width: 50%;'>
+            <h2 style='font-size: 16px; font-weight: bold; color: #222; margin: 0;'>
+            <a href='https://hope-hub-w4pj.vercel.app/blogs/${blog.id}' target='_blank' style='text-decoration: none; color: #222;'>${blog.title}</a>
+             </h2>
+                <p style='font-size: 12px; color: #888;'>
+                    Written by ${blog.author}
+                </p>
+                <h4 style='font-size: 14px; font-weight: 200; color: #333;'>
+                    ${firstParagraph}
+                </h4>
+            </div>
+        </div>
+        `;
+            });
             fetch("https://sendmail-api-docs.vercel.app/api/send", {
                 method: "POST",
                 body: JSON.stringify({
                     to: email,
                     subject: "Welcome to Hope Hub",
                     message: `
-                        <html>
-                            <body style='padding=1rem 2rem;'>
-                                <h1 style='font-size=18px; margin=auto;'>Hello!</h1>
-                                <p style='font-size=16px;'>Thank you for subscribing to Hope Hub. <br>
-                                Content worth reading awaits you. Sit back, relax, and enjoy the newsletter ride.</p>
-                            </body>
-                        </html>
+
+                    <html>
+                    <body style='padding: 1rem 2rem; font-family: "Poppins", sans-serif; background-color: #ccc; margin: 0;'>
+                    <div style='background-color: #fff; margin: 20px auto; padding: 20px 10px; max-width: 800px;'>
+                    <h1 style='font-size: 36px; margin: auto; text-align: center; color: #222;'>
+                            <strong>HOPEHUB's</strong> Weekly Digest
+                        </h1>
+                        <hr style='border: none; height: 3px; background-color: #222; margin-top: 20px; margin-bottom: 20px;' />
+                        <h4 style='font-size: 16px; font-weight: 200; color: #222;'>THIS WEEK'S HIGHLIGHTS</h4>
+                        <hr style='border: none; height: 1px; background-color: #ccc; margin-top: 10px; margin-bottom: 20px;' />
+                        ${blogContent}
+                        <div style="margin-top: 20px; font-size: 14px; color: #666;">
+                            <p>You are receiving this email because you subscribed to HopeHub's Newsletter</p>
+                            </div>
+                    </div>
+                </body>
+                </html>
                     `,
                 }),
             })
@@ -45,7 +105,7 @@ function NewsletterSignUp() {
                             "newsletter",
                             "subscribe"
                         );
-                        const docKey = email.replace(/\./g, "_");
+                        const docKey = email.replace(/\./g, "*");
                         try {
                             updateDoc(newsletterRef, {
                                 [docKey]: email,
@@ -66,6 +126,29 @@ function NewsletterSignUp() {
                     }
                 });
             setEmail("");
+        }
+    }
+
+    async function unsubscribe(email) {
+        const newsletterRef = collection(db, "newsletter", "subscribe");
+        const userDoc = query(newsletterRef, where("email", "==", email));
+
+        try {
+            const snapshot = await getDocs(userDoc);
+            snapshot.forEach((doc) => {
+                deleteDoc(doc.ref)
+                    .then(() => {
+                        // Optional: Show success message or handle accordingly
+                        console.log(`Successfully unsubscribed: ${email}`);
+                    })
+                    .catch((error) => {
+                        // Handle error while deleting the document
+                        console.error("Error unsubscribing:", error);
+                    });
+            });
+        } catch (error) {
+            // Handle error fetching the document
+            console.error("Error fetching document:", error);
         }
     }
 

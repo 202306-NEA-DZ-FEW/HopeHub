@@ -16,10 +16,10 @@ exports[`renders correctly 1`] = `
       className=" card flex flex-col items-center my-2 p-3 md:px-5 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 "
     >
       <div
-        className="my-2 lg:my-6"
+        className="my-2 lg:my-6 "
       >
         <svg
-          className="text-3xl md:text-5xl"
+          className="text-3xl md:text-5xl text-NeutralBlack dark:text-NeutralWhite"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -53,10 +53,10 @@ exports[`renders correctly 1`] = `
       className=" card flex flex-col items-center my-2 p-3 md:px-5 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 "
     >
       <div
-        className="my-2 lg:my-6"
+        className="my-2 lg:my-6 "
       >
         <svg
-          className="text-3xl md:text-5xl"
+          className="text-3xl md:text-5xl text-NeutralBlack dark:text-NeutralWhite"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -93,10 +93,10 @@ exports[`renders correctly 1`] = `
       className=" card flex flex-col items-center my-2 p-3 md:px-5 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 "
     >
       <div
-        className="my-2 lg:my-6"
+        className="my-2 lg:my-6 "
       >
         <svg
-          className="text-3xl md:text-5xl"
+          className="text-3xl md:text-5xl text-NeutralBlack dark:text-NeutralWhite"
           fill="currentColor"
           height="1em"
           stroke="currentColor"

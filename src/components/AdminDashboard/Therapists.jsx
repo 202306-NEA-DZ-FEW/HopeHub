@@ -3,6 +3,8 @@ import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import React from "react";
 import Modal from "react-modal";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import placeholderImage from "../../../public/assets/Avatar-placeholder.png";
 export default function Therapists({
@@ -48,17 +50,33 @@ export default function Therapists({
             // Set the flag to indicate that the email is being sent
             setIsSendingEmail(true);
 
+            const formattedEmailContent = `
+                <html>
+                    <body style='padding=1rem 2rem;'>
+                        <h1 style='font-size:18px; margin:auto;'>${emailSubject}</h1>
+                        <p style='font-size:16px;'>${emailContent}</p>
+                    </body>
+                </html>
+            `;
+
             // Your existing logic to send the email
-            await fetch("/api/sendEmail", {
+            await fetch("https://sendmail-api-docs.vercel.app/api/send", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
                 body: JSON.stringify({
                     to: email,
                     subject: emailSubject,
-                    message: emailContent,
+                    message: formattedEmailContent,
                 }),
+            });
+
+            toast.success("Email sent successfully", {
+                position: "top-right",
+                autoClose: 3000, // Close the notification after 3 seconds
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
 
             // Clear input fields
@@ -70,11 +88,21 @@ export default function Therapists({
         } catch (error) {
             console.error("Error sending email:", error);
             // Handle error if needed
+            toast.error("Error sending email. Please try again.", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         } finally {
             // Reset the flag after the email is sent or if there's an error
             setIsSendingEmail(false);
         }
     };
+
     // Example usage:
     // handleConfirmSendEmail("recipient@example.com", "Your Subject", "Your custom message");
 

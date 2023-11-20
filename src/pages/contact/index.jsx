@@ -37,7 +37,7 @@ function Contact({ user }) {
 
                     <div className='flex flex-col justify-center ml-auto mr-auto py-2 bg-gray-200 dark:bg-Dark_Primary shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] w-10/12 h-full p-6'>
                         <div className='flex flex-col lg:mb-0 md:flex-row md:mb-6'>
-                            <ContactForm className='w-full' />
+                            <ContactForm user={user} className='w-full' />
                             {/* Small card at the right bottom for "Find Us At" */}
                             <div className='flex justify-center md:w-8/12 lg:w-9/12 xl:w-6/12 max-w-6xl my-6 lg:p-3'>
                                 <div className='card bg-Primary dark:bg-Dark_Primary w-full md:h-5/6 lg:h-max rounded mx-1 md:mt-auto md:mb-12 lg:mb-11'>

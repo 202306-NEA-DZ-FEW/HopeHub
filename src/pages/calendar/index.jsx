@@ -39,27 +39,30 @@ function Calendar({ appointments, user }) {
         top: "0px",
     });
     function handleEventClick(info) {
-        const event = events.filter((obj) => {
-            return obj.id === info.event.id;
-        });
-        setEventData(event[0]);
-        const click = info.jsEvent.clientX;
-        let horizontal = 0;
-        const modalWidth = window.innerWidth > 700 ? 390 : 240;
-        const rect = info.el.getBoundingClientRect();
-        if (click + modalWidth + rect.width > window.innerWidth) {
-            horizontal = rect.left - modalWidth;
-            // if(horizontal-240<0){
-            //     horizontal= rect.left}
-        } else {
-            horizontal = rect.left + rect.width;
+        if (user.isTherapist) {
+            const event = events.filter((obj) => {
+                return obj.id === info.event.id;
+            });
+            setEventData(event[0]);
+            const click = info.jsEvent.clientX;
+            let horizontal = 0;
+            const modalWidth = window.innerWidth > 700 ? 390 : 240;
+            const rect = info.el.getBoundingClientRect();
+            if (click + modalWidth + rect.width > window.innerWidth) {
+                horizontal = rect.left - modalWidth;
+                // if(horizontal-240<0){
+                //     horizontal= rect.left}
+            } else {
+                horizontal = rect.left + rect.width;
+            }
+            // console.log('horiiiiiiiii______window',click+modalWidth+rect.width, horizontal, window.innerWidth)
+            setModalPosition({
+                left: `${horizontal}px`,
+                top: `${rect.top - rect.height}px`,
+            });
+            setModalOpen(!modalOpen);
         }
-        // console.log('horiiiiiiiii______window',click+modalWidth+rect.width, horizontal, window.innerWidth)
-        setModalPosition({
-            left: `${horizontal}px`,
-            top: `${rect.top - rect.height}px`,
-        });
-        setModalOpen(!modalOpen);
+        return;
     }
     useEffect(() => {}, []);
     return (
@@ -74,6 +77,7 @@ function Calendar({ appointments, user }) {
                     closeModal={() => {
                         setModalOpen(false);
                     }}
+                    userId={user.uid}
                 />
             )}
             <div className='px-32 py-6 h-screen'>
@@ -83,6 +87,7 @@ function Calendar({ appointments, user }) {
                     eventClick={handleEventClick}
                     plugins={[dayGridPlugin, timeGridPlugin]}
                     expandRows={false}
+                    dayMaxEventRows={3}
                     // aspectRatio={2}
                     contentHeight='auto'
                     headerToolbar={{

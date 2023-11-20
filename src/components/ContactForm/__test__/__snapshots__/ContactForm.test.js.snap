@@ -58,68 +58,62 @@ exports[`renders correctly 1`] = `
         </label>
         <select
           className="select rounded w-full bg-NeutralWhite text-base font-semibold"
+          onChange={[Function]}
+          value=""
         >
           <option
             className="text-NeutralBlack font-medium"
             disabled={true}
-            selected={true}
+            value=""
           >
             Select Request Type
           </option>
           <option
-            checked={false}
             className="text-NeutralBlack font-medium"
             id="service"
-            value="service"
+            value="I have a question about the service."
           >
             I have a question about the service.
           </option>
           <option
-            checked={false}
             className="text-NeutralBlack font-medium"
-            id="support"
-            value="support"
+            id="service"
+            value="I'm a registered client and I need support."
           >
             I'm a registered client and I need support.
           </option>
           <option
-            checked={false}
             className="text-NeutralBlack font-medium"
-            id="counselor"
-            value="counselor"
+            id="service"
+            value="I'm a counselor interested in joining."
           >
             I'm a counselor interested in joining.
           </option>
           <option
-            checked={false}
             className="text-NeutralBlack font-medium"
-            id="counselorSup"
-            value="counselorSup"
+            id="service"
+            value="I'm a registered counselor and I need support."
           >
-             
             I'm a registered counselor and I need support.
           </option>
           <option
-            checked={false}
             className="text-NeutralBlack font-medium"
-            id="businessRelated"
-            value="businessRelated"
+            id="service"
+            value="I have a business-related inquiry."
           >
             I have a business-related inquiry.
           </option>
           <option
-            checked={false}
             className="text-NeutralBlack font-medium"
-            id="hopehub"
-            value="hopehub"
+            id="service"
+            value="I'm interested in Hope Hub for my organization."
           >
             I'm interested in Hope Hub for my organization.
           </option>
           <option
-            checked={false}
             className="text-NeutralBlack font-medium"
-            id="billingRelated"
-            value="billingRelated"
+            id="service"
+            value="I have a billing-related question."
           >
             I have a billing-related question.
           </option>

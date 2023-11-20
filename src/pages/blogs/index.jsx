@@ -125,9 +125,7 @@ export async function getServerSideProps({ locale, req }) {
     // Check if there is a logged-in user
     const cookies = parse(req.headers.cookie || "");
     const userId = cookies.loggedInUser;
-    console.log("im before try");
     try {
-        console.log("im inside try");
         // Fetch blogs data
         const blogSnapshot = await getDocs(collection(db, "blogs"));
         const blogs = [];
