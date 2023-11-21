@@ -1,7 +1,8 @@
-import { db } from "@/util/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import Modal from "react-modal";
+
+import { db } from "@/util/firebase";
 
 const ReceivedEmails = ({ emails: initialEmails }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,7 +14,7 @@ const ReceivedEmails = ({ emails: initialEmails }) => {
     const [emails, setEmails] = useState(initialEmails); // Store emails in state
 
     const handleSendEmailClick = (emailId) => {
-        console.log("Clicked Send Email for emailId:", emailId);
+        // console.log("Clicked Send Email for emailId:", emailId);
         setSelectedEmailId(emailId);
         setIsModalOpen(true);
     };
@@ -58,7 +59,7 @@ const ReceivedEmails = ({ emails: initialEmails }) => {
     };
 
     const handleRespond = (emailId) => {
-        console.log("Clicked Respond for emailId:", emailId);
+        // console.log("Clicked Respond for emailId:", emailId);
 
         handleSendEmailClick(emailId);
     };

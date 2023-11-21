@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="border relative border-NeutralBlack p-4 w-fit col-start-1 col-end-2 row-start-3 h-fit"
+  id="pie"
+/>
+`;

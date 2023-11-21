@@ -28,7 +28,7 @@ export default function Submission({ OnNext, OnPrevious }) {
             ...user,
             appointments: appointments,
         });
-        console.log("user", user?.uid);
+        // console.log("user", user?.uid);
         const userRef = doc(db, "users", user?.uid);
         await updateDoc(userRef, {
             appointments: appointments,

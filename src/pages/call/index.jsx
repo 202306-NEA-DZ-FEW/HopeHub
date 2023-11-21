@@ -1,5 +1,7 @@
 import { JitsiMeeting } from "@jitsi/react-sdk";
+import Head from "next/head";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
 
@@ -9,12 +11,16 @@ import Layout from "@/layout/Layout";
 function CallRoom() {
     const [callFinished, setCallFinished] = useState(false);
     const { user } = useAppcontext();
+    const { t } = useTranslation("common");
     function handleReadyToClose() {
         alert("Ready to close...");
     }
     return (
         <Layout user={user} className='max-w-screen'>
-            <main className={` -mt-20 ${callFinished ? "" : "p-12 -mt-2"}`}>
+            <Head>
+                <title>{t("Therapy Session")} </title>
+            </Head>
+            <main className={` -mt-20 ${callFinished ? "" : "p-12 mt-1"}`}>
                 {callFinished ? (
                     <div
                         className='flex items-center justify-center h-screen w-full bg-NeutralWhite dark:bg-Dark_Accent bg-cover bg-center bg-no-repeat'
@@ -44,10 +50,6 @@ function CallRoom() {
                                     Join again
                                 </button>
                             </div>
-                            {/* <Link href="/" className="text-blue-500 mt-8 hover:underline cursor-pointer">
-  
-                      Go back to Homepage
-                  </Link> */}
                         </div>
                     </div>
                 ) : (

@@ -16,7 +16,7 @@ function EventModal({ event, position, closeModal, userId }) {
                     {event.name || "Patient Name"}
                     <Link
                         href={`/call?userid=${userId}`}
-                        onClick={console.log("go to calroom", userId)}
+                        // onClick={console.log("go to calroom", userId)}
                         className='w-fit h-fit px-4 py-1 bg-Accent rounded text-white text-lg font-semibold '
                     >
                         Call{" "}

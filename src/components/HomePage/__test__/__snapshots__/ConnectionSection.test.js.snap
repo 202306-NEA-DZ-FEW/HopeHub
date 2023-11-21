@@ -5,12 +5,12 @@ exports[`renders correctly 1`] = `
   className="bg-NeutralWhite dark:bg-Dark_Accent w-full lg:pb-16 pb-6"
 >
   <h1
-    className="text-NeutralBlack dark:text-NeutralWhite mx-6 mt-6 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 lg:mx-7 md:mt-10 uppercase font-poppins font-medium"
+    className="text-NeutralBlack dark:text-NeutralWhite mx-6 pt-8 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 lg:mx-7 md:mt-10 uppercase font-poppins font-medium"
   >
     Connect with us through
   </h1>
   <div
-    className="flex flex-wrap my-8 justify-center px-6 lg:gap-16 w-full"
+    className="flex flex-wrap my-8 justify-center px-8 lg:gap-10 w-full"
   >
     <div
       className=" card flex flex-col items-center my-2 p-3 md:px-5 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 "

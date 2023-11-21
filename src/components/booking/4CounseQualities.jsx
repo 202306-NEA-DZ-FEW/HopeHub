@@ -6,7 +6,7 @@ import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 
-import Checkbox from "../Checkbox";
+import Checkbox from "../booking/Checkbox";
 
 export default function CounseQualities({ OnNext, OnPrevious }) {
     const { t } = useTranslation("common");

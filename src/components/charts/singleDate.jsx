@@ -1,7 +1,7 @@
 import React from "react";
 
 function SingleDate({ data }) {
-    console.log("datadta ", data);
+    // console.log("datadta ", data);
     // useEffect(()=>{
 
     // },[data])
