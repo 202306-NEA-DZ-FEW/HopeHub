@@ -36,7 +36,7 @@ export default function Therapy({ OnNext, OnPrevious }) {
         }
     };
     return (
-        <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb3/5'>
+        <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12'>
             <Head>
                 <title>Therapy</title>
             </Head>

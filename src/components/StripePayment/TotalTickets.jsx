@@ -1,5 +1,6 @@
+import { collection, getDocs, query, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { collection, query, where, getDocs } from "firebase/firestore";
+
 import { db } from "@/util/firebase";
 
 const TotalTickets = ({ user }) => {
@@ -54,7 +55,11 @@ const TotalTickets = ({ user }) => {
         fetchTotalTicketsFromPayments();
     }, [user]);
 
-    return <div>Total Tickets from Payments: {totalTicketsFromPayments}</div>;
+    return (
+        <div className='font-poppins text-base mx-6 md:text-xl md:mx-9 md:pb-9 pb-6 text-NeutralBlack dark:text-NeutralWhite '>
+            Total Tickets from Payments: {totalTicketsFromPayments}
+        </div>
+    );
 };
 
 export default TotalTickets;

@@ -43,10 +43,10 @@ export default function ConnectionSection() {
     //Displaying the cards and the section title
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent w-full lg:pb-16 pb-6'>
-            <h1 className='text-NeutralBlack dark:text-NeutralWhite mx-6 mt-6 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 lg:mx-7 md:mt-10 uppercase font-poppins font-medium'>
+            <h1 className='text-NeutralBlack dark:text-NeutralWhite mx-6 pt-8 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 lg:mx-7 md:mt-10 uppercase font-poppins font-medium'>
                 {t("Connect with us through")}
             </h1>
-            <div className='flex flex-wrap my-8 justify-center px-6 lg:gap-16 w-full'>
+            <div className='flex flex-wrap my-8 justify-center px-8 lg:gap-10 w-full'>
                 {cards}
             </div>
         </div>

@@ -10,6 +10,7 @@ import {
 import { doc, updateDoc } from "firebase/firestore";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
@@ -251,6 +252,7 @@ export default function UserProfile({ user }) {
                 });
         }
     }
+
     return (
         <Layout user={user}>
             <Head>
@@ -266,7 +268,7 @@ export default function UserProfile({ user }) {
                                     width={100}
                                     height={100}
                                     alt={user.name}
-                                    className='w-full h-full aspect-square object-cover '
+                                    className='w-full h-full aspect-square object-cover  '
                                 />
                             </div>
                         ) : (
@@ -529,8 +531,8 @@ export default function UserProfile({ user }) {
                                     </i>
                                 </div>
                             </div>
-                            <div className='flex gap-4'>
-                                <button className='w-full h-11   rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
+                            <div className='flex gap-2'>
+                                <button className='w-full h-11  rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
                                     {t("save changes")}
                                 </button>
                                 <button
@@ -547,7 +549,7 @@ export default function UserProfile({ user }) {
                                 {t("payment section")}
                             </h2>
                             <div className='flex'>
-                                <div className='mb-6 group w-1/3'>
+                                <div className='mb-6 group w-[70%]'>
                                     <label
                                         htmlFor='SHOW CARDS'
                                         className=' text-NeutralBlack text-xl pt-5  dark:text-NeutralWhite'
@@ -561,18 +563,20 @@ export default function UserProfile({ user }) {
                                         {t("show cards")}
                                     </button>
                                 </div>
-                                <div className='mb-5 group 1/3'>
+                                <div className='mb-5 group w-full'>
                                     <label
                                         htmlFor='BUY TICKETS'
                                         className=' mt-4 text-xl w-3/4 pt-5  text-NeutralBlack dark:text-NeutralWhite'
                                     >
                                         {t("tickets remaining")}
                                     </label>
-                                    <button
-                                        name='BUY TICKETS'
-                                        className='w-[80%] h-11 mt-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
-                                    >
-                                        {t("buy tickets")}
+                                    <button className='w-[90%] h-11 mt-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
+                                        <Link
+                                            href='/Payment/Tickets'
+                                            name='BUY TICKETS'
+                                        >
+                                            {t("buy tickets")}
+                                        </Link>
                                     </button>
                                 </div>
                             </div>

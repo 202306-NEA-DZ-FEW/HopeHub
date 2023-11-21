@@ -6,8 +6,7 @@ import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
 
-import Checkbox from "../Checkbox";
-
+import Checkbox from "../booking/Checkbox";
 export default function Issues({ OnNext, OnPrevious }) {
     const { t } = useTranslation("common");
     const [issues, setIssues] = useState([]); // Use an array for multiple selections
