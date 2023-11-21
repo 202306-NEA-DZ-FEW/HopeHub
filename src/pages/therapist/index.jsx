@@ -1,8 +1,8 @@
 import { parse } from "cookie";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore";
-import Head from "next/head";
+import { doc, setDoc } from "firebase/firestore";
 import Cookie from "js-cookie";
+import Head from "next/head";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
@@ -197,12 +197,12 @@ export default Therapist;
 
 export async function getServerSideProps({ locale, req }) {
     // Check if there is a logged-in user
-    // const cookies = parse(req.headers.cookie || "");
-    // const userId = cookies.loggedInUser;
+    const cookies = parse(req.headers.cookie || "");
+    const userId = cookies.loggedInUser;
 
-    // if (!userId || userId == "undefined") {
-    //     return { redirect: { destination: "/Auth", permanent: false } };
-    // }
+    if (!userId || userId == "undefined") {
+        return { redirect: { destination: "/Auth", permanent: false } };
+    }
 
     try {
         // User is not logged in

@@ -1,7 +1,11 @@
 import { parse } from "cookie";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import Head from "next/head";
-import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from "react";
+import { useInView } from "react-intersection-observer";
+import { animated, useSpring } from "react-spring";
+
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Banner from "@/components/HomePage/Banner";
 import BlogsCarousel from "@/components/HomePage/BlogsCarousel";
@@ -10,11 +14,7 @@ import PurchasingSection from "@/components/HomePage/PurchasingSection";
 import TherapistsInfoSection from "@/components/HomePage/TherapistsInfoSection";
 
 import Layout from "@/layout/Layout";
-import { db, auth } from "@/util/firebase";
-import React, { useRef } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useSpring, animated } from "react-spring";
+import { db } from "@/util/firebase";
 
 const AnimatedSection = ({ children }) => {
     const [ref, inView] = useInView({
@@ -90,7 +90,7 @@ export async function getServerSideProps({ locale, req }) {
 
             return {
                 props: {
-                    // ...(await serverSideTranslations(locale, ["common"])),
+                    ...(await serverSideTranslations(locale, ["common"])),
                     user,
                     blogs: sortedBlogs,
                 },
@@ -99,7 +99,7 @@ export async function getServerSideProps({ locale, req }) {
             // User is not logged in
             return {
                 props: {
-                    // ...(await serverSideTranslations(locale, ["common"])),
+                    ...(await serverSideTranslations(locale, ["common"])),
                     blogs: sortedBlogs,
                 },
             };
