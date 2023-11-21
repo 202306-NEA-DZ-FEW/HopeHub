@@ -1,9 +1,12 @@
 import { parse } from "cookie";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { useAnimation } from "framer-motion";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
+import { useInView } from "react-intersection-observer";
+import { animated, useSpring } from "react-spring";
 
 import BlogCard from "@/components/BlogsCard/BlogsCard";
 import BookingButton from "@/components/BookingButton/BookingButton";
@@ -12,9 +15,6 @@ import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
 
 import placeholderImage from "../../../public/assets/Image placehodler.png";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useSpring, animated } from "react-spring";
 
 function BlogsPage({ blogs, user }) {
     const { t } = useTranslation("common");
@@ -152,7 +152,7 @@ export async function getServerSideProps({ locale, req }) {
 
             return {
                 props: {
-                    // ...(await serverSideTranslations(locale, ["common"])),
+                    ...(await serverSideTranslations(locale, ["common"])),
                     user,
                     blogs: sortedBlogs,
                 },
@@ -161,7 +161,7 @@ export async function getServerSideProps({ locale, req }) {
             // User is not logged in
             return {
                 props: {
-                    // ...(await serverSideTranslations(locale, ["common"])),
+                    ...(await serverSideTranslations(locale, ["common"])),
                     blogs: sortedBlogs,
                 },
             };
