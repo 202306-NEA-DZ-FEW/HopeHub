@@ -447,7 +447,7 @@ exports[`renders correctly 1`] = `
           className="mx-auto mb-8 bg-NeutralBlack dark:bg-NeutralWhite w-40 h-40 md:w-52 lg:h-52 md:h-52 rounded-full flex flex-col items-center justify-center relative overflow-visible"
         >
           <div
-            className="w-[20%] h-full rounded-full overflow-hidden"
+            className="w-full h-full rounded-full overflow-hidden"
           >
             <img
               alt="John Doe"

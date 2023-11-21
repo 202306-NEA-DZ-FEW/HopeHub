@@ -8,11 +8,11 @@ const ProtectedRoute = ({ children }) => {
     const router = useRouter();
 
     useEffect(() => {
-        console.log("yooooo", isLogged);
+        // console.log("yooooo", isLogged);
 
         // Redirect to the login page if the user is not logged in
         if (isLogged) {
-            console.log("noooooooo", isLogged);
+            // console.log("noooooooo", isLogged);
             router.push("/");
             // Need to fix user data issue for this to work correctly
             // router.push(`/Profile?userid=${user.uid}`);
