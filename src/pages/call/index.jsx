@@ -20,7 +20,7 @@ function CallRoom() {
             <Head>
                 <title>{t("Therapy Session")} </title>
             </Head>
-            <main className={` -mt-20 ${callFinished ? "" : "p-12 -mt-2"}`}>
+            <main className={` -mt-20 ${callFinished ? "" : "p-12 mt-1"}`}>
                 {callFinished ? (
                     <div
                         className='flex items-center justify-center h-screen w-full bg-NeutralWhite dark:bg-Dark_Accent bg-cover bg-center bg-no-repeat'

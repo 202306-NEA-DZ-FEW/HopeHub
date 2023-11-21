@@ -46,7 +46,7 @@ export default function UserProfile({ user }) {
     // const [oldEmail, setOldEmail] = useState(email);
     const [idcard, setIdcard] = useState(user.idcard || "");
     // const [uploadFile, setUploadFile] = useState("");
-    const [cloudinaryImage, setCloudinaryImage] = useState("");
+    const [cloudinaryImage, setCloudinaryImage] = useState(user.photoURL);
     const inputRef = useRef(null);
     const handleIconClick = () => {
         if (inputRef.current) {
@@ -72,6 +72,7 @@ export default function UserProfile({ user }) {
             .then((response) => {
                 setCloudinaryImage(response.data.secure_url);
                 setUser({ ...user, photoURL: response.data.secure_url });
+                handlePhotoChange();
             })
             .catch((error) => {
                 console.error("cloudinary err", error);
@@ -259,9 +260,9 @@ export default function UserProfile({ user }) {
                 <div className=' md:[40%] flex mr-8  mt-16'>
                     <div className='mx-auto mb-8 bg-NeutralBlack dark:bg-NeutralWhite w-40 h-40 md:w-52 lg:h-52 md:h-52 rounded-full flex flex-col items-center justify-center relative overflow-visible'>
                         {user.photoURL ? (
-                            <div className='w-[20%] h-full rounded-full overflow-hidden'>
+                            <div className='w-full h-full rounded-full overflow-hidden'>
                                 <Image
-                                    src={user.photoURL}
+                                    src={cloudinaryImage}
                                     width={100}
                                     height={100}
                                     alt={user.name}

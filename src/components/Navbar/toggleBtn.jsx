@@ -12,7 +12,7 @@ export default function ToggleButton() {
     function handleToggle() {
         toggledarkMode();
         setTheme(darkMode ? "light" : "dark");
-        console.log(theme);
+        // console.log(theme);
         setIsChecked(!isChecked);
     }
     return (
