@@ -43,13 +43,13 @@ const PurchasingSection = () => {
         return (
             <div
                 key={index}
-                className=' card flex flex-col items-center my-2 p-3 md:px-5 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-xl w-48 h-58 md:w-64 md:h-60 lg:w-96 lg:h-60 lg:m-6'
+                className=' card flex flex-col items-center my-2 p-3 md:px-5 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-xl w-48 h-58 md:w-64 md:h-60 lg:w-[23rem] lg:h-60 lg:m-6'
             >
                 <div className='card-body flex flex-col items-center'>
                     <h1 className='card-title text-xl md:text-3xl uppercase font-normal'>
                         {item} {t("Tickets")}
                     </h1>
-                    <h1 className='text-gray-500 font-light text-base md:text-xl'>
+                    <h1 className='text-gray-500 font-light text-base md:text-xl text-NeutralBlack dark:text-NeutralWhite '>
                         ${ticketsPrice[index]}
                     </h1>
                     <div className='card-actions justify-end md:mt-4'>
@@ -69,10 +69,10 @@ const PurchasingSection = () => {
             <h1 className='mx-6 mt-6 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 uppercase font-medium'>
                 {t("Purchase Tickets")}
             </h1>
-            <h1 className='text-xs mx-6 md:text-xl md:mx-9 uppercase font-normal'>
+            <h1 className='text-base mx-6 md:text-xl md:mx-9 uppercase font-normal'>
                 {t("Purchase tickets that can be used to book appointments!")}
             </h1>
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center mb-10 lg:mb-0'>
                 <div className='flex flex-wrap my-8 px-6 md:mx-28 lg:mx-2 justify-around w-full'>
                     {cards}
                 </div>
