@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="flex flex-col md:flex-row md:w-full mx-6"
+>
+  <form
+    className="flex flex-col"
+    onSubmit={[Function]}
+  >
+    <div
+      className="mb-4 space-y-1 text-xl flex flex-col"
+    >
+      <label
+        htmlFor="Title"
+      >
+        Title
+      </label>
+      <input
+        className="w-full rounded-md border border-gray-300 bg-white py-3 outline-none"
+        id="Title"
+        name="title"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="mb-4 space-y-1 text-xl flex flex-col"
+    >
+      <label
+        htmlFor="Department"
+      >
+        Department
+      </label>
+      <input
+        className="w-full rounded-md border border-gray-300 bg-white py-3 outline-none"
+        id="Department"
+        name="department"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="mb-4 space-y-1 text-xl flex flex-col"
+    >
+      <label
+        htmlFor="Location"
+      >
+        Location
+      </label>
+      <input
+        className="w-full rounded-md border border-gray-300 bg-white py-3 outline-none"
+        id="Location"
+        name="location"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="flex flex-row"
+    >
+      <button
+        className="w-32 h-10 self-start ml-4 mt-20 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
+        onClick={[Function]}
+      >
+        Reset
+      </button>
+      <button
+        className="w-32 h-10 self-start ml-4 mt-20 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
+        onClick={[Function]}
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+  <div
+    className="pl-4 mb-4 h-fit space-y-1 text-xl flex flex-col"
+  >
+    <span
+      className="text-NeutralBlack"
+    >
+      Body
+    </span>
+    <p>
+      loading...
+    </p>
+  </div>
+</div>
+`;

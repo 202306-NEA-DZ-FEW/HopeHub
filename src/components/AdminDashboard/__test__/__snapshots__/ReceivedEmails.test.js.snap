@@ -17,7 +17,7 @@ exports[`renders correctly 1`] = `
         className="py-2 px-4 bg-blue-500 text-white rounded"
         onClick={[Function]}
       >
-        All
+        Not Archived
       </button>
       <button
         className="py-2 px-4 bg-gray-300 text-gray-700 rounded"
@@ -29,7 +29,7 @@ exports[`renders correctly 1`] = `
         className="py-2 px-4 bg-gray-300 text-gray-700 rounded"
         onClick={[Function]}
       >
-        Not Archived
+        All
       </button>
     </div>
     <table
@@ -91,7 +91,7 @@ exports[`renders correctly 1`] = `
             This is a test email.
           </td>
           <td
-            className="py-2 px-4 border-b flex flex-row"
+            className="py-2 px-4 border-b flex flex-row justify-end"
           >
             <button
               className="mr-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
@@ -104,46 +104,6 @@ exports[`renders correctly 1`] = `
               onClick={[Function]}
             >
               Archive
-            </button>
-          </td>
-        </tr>
-        <tr
-          className="hover:bg-gray-100"
-        >
-          <td
-            className="py-2 px-4 border-b"
-          >
-            Jane Smith
-          </td>
-          <td
-            className="py-2 px-4 border-b"
-          >
-            jane@example.com
-          </td>
-          <td
-            className="py-2 px-4 border-b"
-          >
-            Sales
-          </td>
-          <td
-            className="py-2 px-4 border-b"
-          >
-            Another test email.
-          </td>
-          <td
-            className="py-2 px-4 border-b flex flex-row"
-          >
-            <button
-              className="mr-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-              onClick={[Function]}
-            >
-              Respond
-            </button>
-            <button
-              className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
-              onClick={[Function]}
-            >
-              Unarchive
             </button>
           </td>
         </tr>

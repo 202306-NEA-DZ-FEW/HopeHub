@@ -93,7 +93,7 @@ export default function Navbar({ user }) {
         signOut(auth)
             .then(() => {
                 // Refresh the page and then redirect the user
-                router.push("/Auth"); // Replace "/login" with the actual login page route
+                router.push("/Auth");
                 window.location.href;
                 setIsLogged(false);
             })

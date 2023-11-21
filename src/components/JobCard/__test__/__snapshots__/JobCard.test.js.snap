@@ -2,12 +2,13 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="shrink-0 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary rounded-md p-4 hover:scale-105 delay-75 cursor-pointer"
+  className="bg-NeutralWhite w-36 h-44 md:w-56 md:h-28 lg:w-96 lg:h-32 dark:bg-Dark_Primary rounded-md shadow-md p-4 hover:shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer overflow-hidden"
 >
   <div
-    className="flex gap-2 py-3"
+    className="flex items-center gap-2 my-2 "
   >
     <svg
+      className="text-gray-500 dark:text-gray-400"
       fill="none"
       height="1em"
       stroke="currentColor"
@@ -47,21 +48,19 @@ exports[`renders correctly 1`] = `
         d="M17 17l-2 2l2 2"
       />
     </svg>
-    <span />
   </div>
   <div
-    className=" font-bold flex-1 py-3"
+    className="font-bold h-2/4 md:h-1/4 my-2 overflow-hidden"
   >
-    <span>
-       | 
-       |
-       
-    </span>
+    <span
+      className="text-lg text-black dark:text-white"
+    />
   </div>
   <div
-    className="flex gap-2 py-3"
+    className="flex items-center gap-2 py-2"
   >
     <svg
+      className="text-gray-500 dark:text-gray-400"
       fill="currentColor"
       height="1em"
       stroke="currentColor"
@@ -88,6 +87,9 @@ exports[`renders correctly 1`] = `
         </g>
       </g>
     </svg>
+    <span
+      className="text-sm text-gray-600 dark:text-gray-300  truncate"
+    />
   </div>
 </div>
 `;

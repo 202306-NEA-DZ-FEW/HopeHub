@@ -85,8 +85,8 @@ export function AppWrapper({ children }) {
 
     function toggledarkMode() {
         setDarkMode(!darkMode);
-        // console.log("darkmode", darkMode);
     }
+
     return (
         <AppContext.Provider
             value={{
