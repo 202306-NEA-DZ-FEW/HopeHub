@@ -4,8 +4,8 @@ const withTM = require("next-transpile-modules")(["@jitsi/react-sdk"]);
 module.exports = withTM({
     // i18n,
     i18n: {
-        locales: ["en", "fr"],
-        defaultLocale: "en",
+        locales: ["ar", "fr"],
+        defaultLocale: "fr",
     },
     eslint: {
         dirs: ["src"],
