@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import RequirementFrame from "public/assets/RequirmentFrame.svg";
+import RequirementPage from "public/assets/RequirementPage.jpg";
 
 import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
@@ -21,11 +21,11 @@ export default function Requirement({ user }) {
             <Head>
                 <title>{t("Requirements")}</title>
             </Head>
-            <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen min-h-screen flex flex-row-reverse lg:mb-12'>
+            <div className='mt-16 bg-NeutralWhite dark:bg-Dark_Accent min-w-screen min-h-screen flex flex-row-reverse lg:mb-12'>
                 {/* Image component for RequirementFrame */}
                 <Image
-                    className='hidden lg:block px-20 pb-[32rem] '
-                    src={RequirementFrame}
+                    className='hidden lg:block px-20 pb-[32rem] rounded-lg '
+                    src={RequirementPage}
                     width={550}
                     height={400}
                     alt=''
@@ -88,7 +88,6 @@ export default function Requirement({ user }) {
                             )}
                         </li>
                     </ul>{" "}
-                    {/*Add more list items for requirements here */}
                     <Link
                         href='/therapist'
                         className=' mt-3 flex items-center justify-center self-end w-28 h-10 rounded-md text-base font-poppins font-regular dark:text-NeutralWhite dark:bg-Dark_Primary dark:group-hover:bg-[#3E4E68]  bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'

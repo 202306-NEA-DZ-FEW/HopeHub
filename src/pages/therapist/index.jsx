@@ -143,7 +143,7 @@ function Therapist({ user }) {
             <Head>
                 <title>{t("Therapist Profile")}</title>
             </Head>
-            <main className='flex flex-col  w-full h-fit py-4 mb-20 mt-6 '>
+            <main className='flex flex-col w-full h-fit py-4 mb-20 mt-16 '>
                 <h1 className='text-NeutralBlack dark:text-NeutralWhite text-center px-4 text-4xl md:text-6xl font-poppins font-semibold md:font-bold w-full'>
                     {/* Create{" "}
                         <span className='text-Accent font-aclonica font-medium'>
@@ -156,7 +156,7 @@ function Therapist({ user }) {
                     </span>{" "}
                     {t("account")}
                 </h1>
-                <div className='w-[70%] mx-auto  shadow-[4px_8px_8px_rgba(0,0,0,42%)] flex flex-row justify-center gap-5 items-center mt-5  border-NeutralBlack bg-NeutralWhite dark:bg-Dark_Accent rounded-md py-4'>
+                <div className='w-[70%] mx-auto shadow-[4px_8px_8px_rgba(0,0,0,42%)] flex flex-row justify-center gap-5 items-center mt-5  border-NeutralBlack bg-gray-300 dark:bg-gray-800 rounded-md py-4'>
                     <form
                         onSubmit={handleSubmit}
                         className=' flex flex-col gap-3 w-full md:w-3/4 lg:w-1/2 pl-6 '

@@ -16,7 +16,7 @@ function Input({ label, type, id, name, state, setstate }) {
                 type={type}
                 name={name}
                 id={id}
-                className='w-full rounded-md border text-NeutralBlack  dark:border-NeutralBlack bg-NeutralWhite p-3  outline-none '
+                className='w-full rounded-md border text-NeutralBlack dark:text-NeutralWhite  border-gray-50 dark:border-gray-600 bg-gray-200 dark:bg-gray-700 p-3  outline-none '
                 onChange={(e) => setstate(e.target.value)}
             />
         </div>

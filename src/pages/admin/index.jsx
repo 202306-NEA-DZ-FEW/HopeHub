@@ -26,6 +26,8 @@ import Widget from "@/components/charts/Widget";
 
 // import { Patient, Therapist } from "@/util/constants";
 import { db } from "@/util/firebase";
+import Jobs from "@/components/AdminDashboard/Jobs";
+import JobsEdit from "@/components/AdminDashboard/JobsEdit";
 
 export default function AdminDashboard({
     Allblogs: initialBlogs,
@@ -39,6 +41,8 @@ export default function AdminDashboard({
     receivedEmails,
     contactTypes,
     emails,
+    AllJobs: initialJobs,
+    jobsCount,
 }) {
     const { t } = useTranslation("common");
     // const [emails, setEmails] = useState([]);
@@ -46,6 +50,9 @@ export default function AdminDashboard({
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [selectedBlog, setSelectedBlog] = useState(null);
     const [blogs, setBlogs] = useState(initialBlogs);
+    const [jobs, setJobs] = useState(initialJobs); // Initialize with initial job data fetched from Firestore
+    const [selectedJob, setSelectedJob] = useState(null);
+    const [isJobsDropdownOpen, setIsJobsDropdownOpen] = useState(false);
     const [patients, setPatients] = useState(
         users.filter((user) => !user.isTherapist)
     ); // Initialize state with initial patients
@@ -64,6 +71,8 @@ export default function AdminDashboard({
             setIsUserDropdownOpen(!isUserDropdownOpen);
         } else if (dropdown === "blogs") {
             setIsBlogsDropdownOpen(!isBlogsDropdownOpen); // Correct the variable name
+        } else if (dropdown === "Jobs") {
+            setIsJobsDropdownOpen(!isJobsDropdownOpen); // Toggling the Jobs dropdown state
         }
     };
 
@@ -74,7 +83,7 @@ export default function AdminDashboard({
         setVisibleSection("Blogs Edit");
     };
 
-    const handleDelete = async (blog) => {
+    const handleDeleteBlog = async (blog) => {
         try {
             // Delete the blog from Firestore
             const blogRef = doc(collection(db, "blogs"), blog.id);
@@ -88,6 +97,31 @@ export default function AdminDashboard({
             console.log("Blog deleted successfully!");
         } catch (error) {
             console.error("Error deleting blog:", error);
+            throw error;
+        }
+    };
+
+    const handleEditJob = (job) => {
+        // Set the selected blog in the state
+        setSelectedJob(job);
+        // Switch to the 'Blogs Edit' section
+        setVisibleSection("Edit Jobs");
+    };
+
+    const handleDeleteJob = async (job) => {
+        try {
+            // Delete the blog from Firestore
+            const jobRef = doc(collection(db, "jobs"), job.id);
+            await deleteDoc(jobRef);
+
+            // Update the state to remove the deleted blog
+            const updatedJobs = jobs.filter((j) => j.id !== job.id);
+            setJobs(updatedJobs);
+
+            // Handle any additional logic after deletion if needed
+            console.log("Job deleted successfully!");
+        } catch (error) {
+            console.error("Error deleting Job:", error);
             throw error;
         }
     };
@@ -287,7 +321,53 @@ export default function AdminDashboard({
                             </ul>
                         )}
                     </li>
-
+                    <li>
+                        <span
+                            className={`flex justify-between ${
+                                visibleSection === "Jobs" ? "" : ""
+                            }`}
+                            onClick={() => toggleDropdown("Jobs")}
+                        >
+                            {t("Jobs")}
+                            {isJobsDropdownOpen ? (
+                                <FaChevronUp className='text-base' />
+                            ) : (
+                                <FaChevronDown className='text-base' />
+                            )}
+                        </span>
+                        {isJobsDropdownOpen && (
+                            <ul>
+                                <li>
+                                    <a
+                                        className={` ${
+                                            visibleSection === "Jobs"
+                                                ? "active"
+                                                : ""
+                                        }`}
+                                        onClick={() =>
+                                            handleSectionToggle("Jobs")
+                                        }
+                                    >
+                                        {t("Jobs")}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        className={` ${
+                                            visibleSection === "Edit Jobs"
+                                                ? "active"
+                                                : ""
+                                        }`}
+                                        onClick={() =>
+                                            handleSectionToggle("Edit Jobs")
+                                        }
+                                    >
+                                        {t("Edit Jobs")}
+                                    </a>
+                                </li>
+                            </ul>
+                        )}
+                    </li>
                     <li>
                         <span
                             className={`flex justify-between ${
@@ -373,7 +453,27 @@ export default function AdminDashboard({
                     <SingleDate data={datesAppointments[selectedDate]} />
                     <Pie data={contactTypes} />
                 </div>
-                <div className='flex flex-wrap py-2 '>
+                <div className=' flex flex-wrap py-2 '>
+                    {visibleSection === "Jobs" && (
+                        <div>
+                            {jobs.map((job) => (
+                                <Jobs
+                                    key={job.id}
+                                    title={job.title}
+                                    location={job.location}
+                                    job={job}
+                                    onEdit={handleEditJob}
+                                    onDelete={handleDeleteJob}
+                                />
+                            ))}
+                        </div>
+                    )}
+
+                    {visibleSection === "Edit Jobs" && (
+                        <div>
+                            <JobsEdit job={selectedJob} />
+                        </div>
+                    )}
                     {visibleSection === "therapists" && (
                         // Render Therapists component when 'therapists' link is clicked
                         <>
@@ -435,7 +535,7 @@ export default function AdminDashboard({
                                 key={blog.id}
                                 blog={blog}
                                 onEdit={handleEditBlog}
-                                onDelete={handleDelete}
+                                onDelete={handleDeleteBlog}
                             />
                         ))}
                     {visibleSection === "Blogs Edit" && (
@@ -454,6 +554,12 @@ export async function getServerSideProps({ locale, query }) {
     if (specialToken !== process.env.NEXT_PUBLIC_SPECIAL_TOKEN) {
         return { redirect: { destination: "/Auth", permanent: false } };
     }
+
+    const jobSnapshot = await getDocs(collection(db, "jobs"));
+    const AllJobs = [];
+    jobSnapshot.forEach((doc) => {
+        AllJobs.push({ id: doc.id, ...doc.data() });
+    });
 
     const blogSnapshot = await getDocs(collection(db, "blogs"));
     const Allblogs = [];
@@ -528,6 +634,7 @@ export async function getServerSideProps({ locale, query }) {
     const patientsCount = users.filter((user) => !user.isTherapist).length;
     const therapistsCount = users.filter((user) => user.isTherapist).length;
     const newsletterCount = Object.keys(newsletter[0]).length;
+    const jobsCount = AllJobs.length;
     // console.log("counts server", newsletterCount);
     return {
         props: {
@@ -542,6 +649,8 @@ export async function getServerSideProps({ locale, query }) {
             datesAppointments,
             receivedEmails,
             contactTypes,
+            AllJobs,
+            jobsCount,
         },
     };
 }

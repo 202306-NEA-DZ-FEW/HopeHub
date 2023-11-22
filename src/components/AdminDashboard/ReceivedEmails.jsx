@@ -10,7 +10,7 @@ const ReceivedEmails = ({ emails: initialEmails }) => {
     const [emailSubject, setEmailSubject] = useState("");
     const [isSendingEmail, setIsSendingEmail] = useState(false);
     const [selectedEmailId, setSelectedEmailId] = useState(null);
-    const [currentTab, setCurrentTab] = useState("all");
+    const [currentTab, setCurrentTab] = useState("notArchived");
     const [emails, setEmails] = useState(initialEmails); // Store emails in state
 
     const handleSendEmailClick = (emailId) => {
@@ -98,13 +98,13 @@ const ReceivedEmails = ({ emails: initialEmails }) => {
                 <div className='flex space-x-4 mb-4'>
                     <button
                         className={`py-2 px-4 ${
-                            currentTab === "all"
+                            currentTab === "notArchived"
                                 ? "bg-blue-500 text-white"
                                 : "bg-gray-300 text-gray-700"
                         } rounded`}
-                        onClick={() => setCurrentTab("all")}
+                        onClick={() => setCurrentTab("notArchived")}
                     >
-                        All
+                        Not Archived
                     </button>
                     <button
                         className={`py-2 px-4 ${
@@ -118,13 +118,13 @@ const ReceivedEmails = ({ emails: initialEmails }) => {
                     </button>
                     <button
                         className={`py-2 px-4 ${
-                            currentTab === "notArchived"
+                            currentTab === "all"
                                 ? "bg-blue-500 text-white"
                                 : "bg-gray-300 text-gray-700"
                         } rounded`}
-                        onClick={() => setCurrentTab("notArchived")}
+                        onClick={() => setCurrentTab("all")}
                     >
-                        Not Archived
+                        All
                     </button>
                 </div>
                 <table className='w-full border-collapse border border-gray-300'>
@@ -155,18 +155,20 @@ const ReceivedEmails = ({ emails: initialEmails }) => {
                                 <td className='py-2 px-4 border-b'>
                                     {email.data.Details}
                                 </td>
-                                <td className='py-2 px-4 border-b flex flex-row'>
-                                    <button
-                                        className='mr-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600'
-                                        onClick={() =>
-                                            handleSendEmailClick(email.id)
-                                        }
-                                    >
-                                        Respond
-                                    </button>
+                                <td className='py-2 px-4 border-b flex flex-row justify-end'>
+                                    {!email.data.archived && (
+                                        <button
+                                            className='mr-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600'
+                                            onClick={() =>
+                                                handleSendEmailClick(email.id)
+                                            }
+                                        >
+                                            Respond
+                                        </button>
+                                    )}
                                     {email.data.archived ? (
                                         <button
-                                            className='bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none focus:bg-gray-400'
+                                            className='bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none focus:bg-gray-400 '
                                             onClick={() =>
                                                 handleDelete(
                                                     email.id,
