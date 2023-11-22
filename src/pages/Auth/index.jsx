@@ -74,8 +74,7 @@ function Auth() {
 
                     // Set cookie for 7 days upon successful sign-up
                     Cookie.set("loggedInUser", user.uid, { expires: 7 });
-
-                    router.push(`/thanks?from=${window.location.pathname}`);
+                    router.push(`/thanks?from=${pathname}`);
                 }
                 authChange();
             })

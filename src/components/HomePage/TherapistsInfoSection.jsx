@@ -14,7 +14,7 @@ export default function TherapistsInfoSection() {
 
     //Displaying the therapists info section
     return (
-        <div className='w-full bg-Primary dark:bg-Dark_Primary lg:pb-4'>
+        <div className='w-full py-4 bg-Primary dark:bg-Dark_Primary lg:pb-4'>
             <h1 className='mx-6 mb-2 text-base md:mb-4 md:text-3xl md:mx-9 md:mt-10 font-poppins uppercase font-medium inline-block text-NeutralBlack dark:text-NeutralWhite '>
                 {t(
                     "Professional, licensed, and vetted therapists that you can trust."

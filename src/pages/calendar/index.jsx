@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
+import styles from "../../styles/Calendar.module.css";
 
 import EventModal from "@/components/calendarEvents/EventModal";
 
@@ -74,9 +75,11 @@ function Calendar({ appointments, user }) {
                     userId={user.uid}
                 />
             )}
-            <div className='px-32 py-6 h-screen'>
+            <div
+                className={`${styles.calendarContainer} px-4 md:px-36 mt-16 mb-44 h-screen`}
+            >
                 <FullCalendar
-                    className='dark:bg-Dark_Primary text-NeutralBlack'
+                    className='text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary '
                     initialView='dayGridMonth'
                     events={events}
                     eventClick={handleEventClick}
@@ -84,15 +87,16 @@ function Calendar({ appointments, user }) {
                     expandRows={false}
                     dayMaxEventRows={3}
                     // aspectRatio={2}
+
                     contentHeight='auto'
                     headerToolbar={{
-                        start: "bookApp",
-                        center: "title",
-                        end: "prev,next",
+                        start: "title",
+                        center: "",
+                        end: "prev next",
                     }}
                     footerToolbar={{
                         start: "",
-                        center: "",
+                        center: "bookApp",
                         end: "",
                     }}
                     customButtons={
@@ -100,7 +104,7 @@ function Calendar({ appointments, user }) {
                             ? {}
                             : {
                                   bookApp: {
-                                      text: "Book appointment",
+                                      text: "Book an appointment",
                                       click: function () {
                                           router.push(
                                               `/booking?userid=${user.uid}`

@@ -78,7 +78,7 @@ const Tickets = ({ user }) => {
                     {cards}
                 </div>
             </div>
-            <TotalTickets />
+            <TotalTickets user={user} />
         </Layout>
     );
 };

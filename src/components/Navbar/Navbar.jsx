@@ -245,10 +245,10 @@ export default function Navbar({ user }) {
                                             </li>
                                             <li>
                                                 <Link
-                                                    href={`/Payment?userid=${user.uid}`}
+                                                    href={`/Tickets?userid=${user.uid}`}
                                                 >
                                                     <FaFileInvoiceDollar />
-                                                    {t("Payments")}
+                                                    {t("Tickets")}
                                                 </Link>
                                             </li>
                                             <li>
@@ -444,11 +444,11 @@ export default function Navbar({ user }) {
                                                     </li>
                                                     <li>
                                                         <Link
-                                                            href={`/StripePayment?userid=${user.uid}`}
+                                                            href={`/Tickets?userid=${user.uid}`}
                                                             className='hover:text-NeutralWhite'
                                                         >
                                                             <FaFileInvoiceDollar />
-                                                            {t("Payments")}
+                                                            {t("Tickets")}
                                                         </Link>
                                                     </li>
                                                     <li>

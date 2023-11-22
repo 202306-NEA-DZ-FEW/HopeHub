@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import { db } from "@/util/firebase";
 
-const TotalTickets = ({ user }) => {
+const TotalTickets = ({ user, setTotalTickets }) => {
     const [totalTicketsFromPayments, setTotalTicketsFromPayments] = useState(0);
 
     useEffect(() => {
@@ -46,6 +46,7 @@ const TotalTickets = ({ user }) => {
                     }
 
                     setTotalTicketsFromPayments(totalTickets);
+                    setTotalTickets(totalTickets); //
                 }
             } catch (error) {
                 console.error(error);
@@ -57,7 +58,7 @@ const TotalTickets = ({ user }) => {
 
     return (
         <div className='font-poppins text-base mx-6 md:text-xl md:mx-9 md:pb-9 pb-6 text-NeutralBlack dark:text-NeutralWhite '>
-            Total Tickets from Payments: {totalTicketsFromPayments}
+            Total Tickets: {totalTicketsFromPayments}
         </div>
     );
 };

@@ -72,7 +72,7 @@ function BookingPage({ dates, user }) {
             <Head>
                 <title>{t("Booking")}</title>
             </Head>
-            {Step()}
+            <div className='my-12'>{Step()}</div>
         </Layout>
     );
 }
