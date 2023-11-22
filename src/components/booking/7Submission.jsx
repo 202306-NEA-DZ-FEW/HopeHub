@@ -1,4 +1,12 @@
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import {
+    collection,
+    doc,
+    getDoc,
+    getDocs,
+    setDoc,
+    updateDoc,
+    where,
+} from "firebase/firestore";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import React from "react";
@@ -9,8 +17,6 @@ export default function Submission({ OnNext, OnPrevious }) {
     const { bookingInfos, user, setUser } = useAppcontext();
     const { t } = useTranslation("common");
     async function handleSubmit() {
-        // send request to save the data
-        // ...
         const appointment = {
             date: bookingInfos.date,
             time: bookingInfos.start,
@@ -89,6 +95,64 @@ export default function Submission({ OnNext, OnPrevious }) {
           `,
             }),
         });
+
+        const userId = user.uid;
+
+        async function assignTherapist() {
+            if (!userId) {
+                console.error("User ID is undefined or null.");
+                return;
+            }
+
+            try {
+                const usersRef = collection(db, "users");
+                const usersSnapshot = await getDocs(usersRef);
+                const therapists = [];
+
+                usersSnapshot.forEach((doc) => {
+                    const userData = doc.data();
+                    if (userData.isTherapist === true) {
+                        therapists.push({ id: doc.id, data: userData });
+                    }
+                });
+
+                if (therapists.length > 0) {
+                    const randomIndex = Math.floor(
+                        Math.random() * therapists.length
+                    );
+                    const selectedTherapist = therapists[randomIndex];
+
+                    // Update the user's document with the assigned therapist
+                    await updateDoc(doc(db, "users", userId), {
+                        hasTherapist: true,
+                        therapistId: selectedTherapist.id,
+                    });
+
+                    // Add patient's ID to therapist's document
+                    const therapistRef = doc(db, "users", selectedTherapist.id);
+                    const therapistDoc = await getDoc(therapistRef);
+                    const therapistData = therapistDoc.data();
+
+                    if (!therapistData.patients) {
+                        therapistData.patients = [userId];
+                    } else {
+                        therapistData.patients.push(userId);
+                    }
+
+                    await updateDoc(therapistRef, {
+                        patients: therapistData.patients,
+                    });
+
+                    console.log("Therapist assigned:", selectedTherapist);
+                } else {
+                    console.log("No therapists available.");
+                }
+            } catch (error) {
+                console.error("Error assigning therapist:", error);
+            }
+        }
+
+        assignTherapist();
         OnNext();
     }
 
