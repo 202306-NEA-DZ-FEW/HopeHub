@@ -57,9 +57,9 @@ function Bar({ data, setSelectedDate }) {
             .attr("rx", 5)
             .attr("ry", 5)
             .on("click", (e, d) => {
-                console.log("dddddd", d, e);
+                // console.log("dddddd", d, e);
                 setSelectedDate(d.date);
-                d3.selectAll("rect").attr("fill", "#99B4DF");
+                d3.select("#bar").selectAll("rect").attr("fill", "#99B4DF");
                 d3.select(e.target).attr("fill", "#ac60ff");
                 svg.selectAll(".label").attr("fill", "grey");
                 svg.select(`#date${d.date}`).attr("fill", "#ac60ff");

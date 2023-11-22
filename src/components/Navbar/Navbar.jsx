@@ -16,9 +16,9 @@ import { animated, useSpring } from "react-spring";
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
 
+import placeholderImage from "../../../public/assets/AvatarPlaceHolder.svg";
 import darklogo from "../../../public/assets/darklogo.svg";
 import logo from "../../../public/assets/logo.svg";
-import placeholderImage from "../../../public/assets/AvatarPlaceHolder.svg";
 
 export default function Navbar({ user }) {
     //Function used for translations
@@ -213,7 +213,7 @@ export default function Navbar({ user }) {
                                     >
                                         <summary
                                             className={`text-Accent text-lg font-bold underline font-poppins ${isPageActive(
-                                                "/profile"
+                                                "/Profile"
                                             )}`}
                                         >
                                             {user.name || "User"}
@@ -221,7 +221,7 @@ export default function Navbar({ user }) {
                                         <ul className='menu w-32 text-NeutralBlack font-medium font-poppins'>
                                             <li>
                                                 <Link
-                                                    href={`/profile?userid=${user.uid}`}
+                                                    href={`/Profile?userid=${user.uid}`}
                                                 >
                                                     <FaRegUser />
                                                     {t("Profile")}
@@ -413,18 +413,21 @@ export default function Navbar({ user }) {
                                             {/* Conditionally showing the login button or the profile menu for large screens */}
 
                                             {userMenuOpen && (
-                                                <ul className='dropdown-content z-[1] menu p-2 shadow bg-Accent rounded-md w-40 mt-0.5'>
+                                                <ul className='dropdown-content z-[1] menu p-2 shadow bg-Accent dark:bg-Dark_Primary text-NeutralBlack  dark:text-NeutralWhite rounded-md w-40 mt-0.5'>
                                                     <li>
                                                         <Link
-                                                            href={`/profile?userid=${user.uid}`}
+                                                            href={`/Profile?userid=${user.uid}`}
+                                                            className='hover:text-NeutralWhite'
                                                         >
                                                             <FaRegUser />
+
                                                             {t("Profile")}
                                                         </Link>
                                                     </li>
                                                     <li>
                                                         <Link
                                                             href={`/calendar?userid=${user.uid}`}
+                                                            className='hover:text-NeutralWhite'
                                                         >
                                                             <FaRegCalendarAlt />
                                                             {t("Calendar")}
@@ -433,6 +436,7 @@ export default function Navbar({ user }) {
                                                     <li>
                                                         <Link
                                                             href={`/call?userid=${user.uid}`}
+                                                            className='hover:text-NeutralWhite'
                                                         >
                                                             <TbVideo />
                                                             {t("Join call")}
@@ -440,7 +444,8 @@ export default function Navbar({ user }) {
                                                     </li>
                                                     <li>
                                                         <Link
-                                                            href={`/Payments?userid=${user.uid}`}
+                                                            href={`/StripePayment?userid=${user.uid}`}
+                                                            className='hover:text-NeutralWhite'
                                                         >
                                                             <FaFileInvoiceDollar />
                                                             {t("Payments")}
@@ -448,6 +453,7 @@ export default function Navbar({ user }) {
                                                     </li>
                                                     <li>
                                                         <a
+                                                            className='hover:text-NeutralWhite'
                                                             onClick={
                                                                 handleLogout
                                                             }

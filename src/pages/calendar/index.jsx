@@ -82,6 +82,7 @@ function Calendar({ appointments, user }) {
             )}
             <div className='px-32 py-6 h-screen'>
                 <FullCalendar
+                    className='dark:bg-Dark_Primary text-NeutralBlack'
                     initialView='dayGridMonth'
                     events={events}
                     eventClick={handleEventClick}

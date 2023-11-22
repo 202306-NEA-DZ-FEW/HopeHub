@@ -17,14 +17,15 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import Blogs from "@/components/AdminDashboard/Blogs";
 import BlogsEdit from "@/components/AdminDashboard/BlogsEdit";
 import Patients from "@/components/AdminDashboard/Patients";
+import ReceivedEmails from "@/components/AdminDashboard/ReceivedEmails";
 import Therapists from "@/components/AdminDashboard/Therapists";
 import Bar from "@/components/charts/Bar";
+import Pie from "@/components/charts/Pie";
 import SingleDate from "@/components/charts/singleDate";
 import Widget from "@/components/charts/Widget";
 
 // import { Patient, Therapist } from "@/util/constants";
 import { db } from "@/util/firebase";
-import ReceivedEmails from "@/components/AdminDashboard/ReceivedEmails";
 import Jobs from "@/components/AdminDashboard/Jobs";
 import JobsEdit from "@/components/AdminDashboard/JobsEdit";
 
@@ -38,11 +39,13 @@ export default function AdminDashboard({
     newsletterCount,
     datesAppointments,
     receivedEmails,
+    contactTypes,
+    emails,
     AllJobs: initialJobs,
     jobsCount,
 }) {
     const { t } = useTranslation("common");
-    const [emails, setEmails] = useState([]);
+    // const [emails, setEmails] = useState([]);
     const [visibleSection, setVisibleSection] = useState("therapists");
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [selectedBlog, setSelectedBlog] = useState(null);
@@ -439,8 +442,7 @@ export default function AdminDashboard({
                     <div className='w-full h-fit p-4 flex flex-row justify-between col-start-1 col-span-2 row-start-1'>
                         <Widget title='Therapists' value={therapistsCount} />
                         <Widget title='Patients' value={patientsCount} />
-                        <Widget title='Emails' value={emails} />
-                        <Widget title='Jobs' value={jobsCount} />
+                        {/* <Widget title='Sunscription' value={emails} /> */}
                         <Widget title='Blogs' value={blogsCount} />
                         <Widget title='Subscription' value={newsletterCount} />
                     </div>
@@ -449,6 +451,7 @@ export default function AdminDashboard({
                         setSelectedDate={setSelectedDate}
                     />
                     <SingleDate data={datesAppointments[selectedDate]} />
+                    <Pie data={contactTypes} />
                 </div>
                 <div className=' flex flex-wrap py-2 '>
                     {visibleSection === "Jobs" && (
@@ -589,14 +592,14 @@ export async function getServerSideProps({ locale, query }) {
         data: doc.data(),
     }));
 
-    console.log("server user", datesAppointments);
+    // console.log("server user", datesAppointments);
     const dateSnapshot = await getDocs(collection(db, "dates"));
     const dates = {};
     dateSnapshot.forEach((doc) => {
         // dates.push(doc.data())
         dates[doc.id] = doc.data();
     });
-    const newsletterSnapshot = await getDocs(collection(db, "dates"));
+    const newsletterSnapshot = await getDocs(collection(db, "newsletter"));
     const newsletter = [];
     newsletterSnapshot.forEach((doc) => {
         newsletter.push(doc.data());
@@ -608,13 +611,31 @@ export async function getServerSideProps({ locale, query }) {
             count: dates[date].bookedHours.length,
         });
     }
+
+    const contactSnapshot = await getDocs(collection(db, "contact"));
+    const contacts = [];
+    contactSnapshot.forEach((doc) => {
+        // dates.push(doc.data())
+        contacts.push(doc.data());
+    });
+    const contactTypes = contacts.reduce((acc, curr) => {
+        const found = acc.find((item) => item.name === curr.ContactType);
+        if (found) {
+            found.value++;
+        } else {
+            acc.push({ name: curr.ContactType, value: 1 });
+        }
+        return acc;
+    }, []);
+
+    //   console.log('data contact types', contactTypes)
     const datesBarData = allDates.slice(-7);
     const blogsCount = Allblogs.length;
     const patientsCount = users.filter((user) => !user.isTherapist).length;
     const therapistsCount = users.filter((user) => user.isTherapist).length;
-    const newsletterCount = newsletter.length;
+    const newsletterCount = Object.keys(newsletter[0]).length;
     const jobsCount = AllJobs.length;
-    console.log("counts server", newsletterCount);
+    // console.log("counts server", newsletterCount);
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
@@ -627,6 +648,7 @@ export async function getServerSideProps({ locale, query }) {
             newsletterCount,
             datesAppointments,
             receivedEmails,
+            contactTypes,
             AllJobs,
             jobsCount,
         },

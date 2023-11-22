@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb3/5"
+  className="bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12"
 >
   <div
     className="w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent "
