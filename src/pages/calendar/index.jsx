@@ -7,7 +7,7 @@ import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import EventModal from "@/components/calendarEvents/EventModal";
 
@@ -17,56 +17,7 @@ import { db } from "@/util/firebase";
 function Calendar({ appointments, user }) {
     const router = useRouter();
     const { t } = useTranslation("common");
-    const [filteredAppointments, setFilteredAppointments] = useState([]);
-
-    useEffect(() => {
-        const fetchFilteredAppointments = async () => {
-            try {
-                if (user.isTherapist) {
-                    const therapistRef = doc(db, "users", user.uid);
-                    const therapistDoc = await getDoc(therapistRef);
-                    if (therapistDoc.exists()) {
-                        const therapistData = therapistDoc.data();
-                        const patients = therapistData.patients || [];
-                        const filtered = [];
-                        patients.forEach((patientId) => {
-                            const matchingAppointments = appointments.filter(
-                                (appointment) => appointment.id === patientId
-                            );
-                            filtered.push(...matchingAppointments);
-                        });
-
-                        setFilteredAppointments(filtered);
-                    }
-                } else {
-                    setFilteredAppointments(user?.appointments || []);
-                }
-            } catch (error) {
-                console.error("Error fetching filtered appointments:", error);
-            }
-        };
-
-        fetchFilteredAppointments();
-    }, [user, appointments]);
-
-    const events = filteredAppointments.map((appointment) => ({
-        title: appointment.time,
-        ...appointment,
-    }));
-    // const events = user.isTherapist
-    //     ? appointments /* .map((ev)=>{
-    //         return { title: ev.time, id: ev.uid, ...ev };
-    //     }) */
-    //     : user?.appointments?.map((d) => ({ title: d.time, ...d }));
-    // console.log("calender ave", events);
-    // console.log("appointments", appointments);
-    // if(user.isTherapist){
-    //     appointments.forEach((obj, id) => {
-    //         const key = Object.keys(obj)[id];
-    //         // console.log('objjjj',obj[key])
-    //         return { title: obj[key]?.time, id: key, ...obj[key] };
-    //     })
-    // }
+    // const [filteredAppointments, setFilteredAppointments] = useState([]);
 
     const [modalOpen, setModalOpen] = useState(false);
     const [eventData, setEventData] = useState(null);
@@ -75,16 +26,22 @@ function Calendar({ appointments, user }) {
         top: "0px",
     });
 
+    const events = user.isTherapist
+        ? appointments.filter(
+              (appointment) => user?.patients.includes(appointment.id) // we filter only the patients assigned to this therapist
+          )
+        : user?.appointments?.map((appointment) => ({
+              title: appointment.time,
+              ...appointment,
+          })); // return the evens array in format accepted by FullCalndar
+
     function handleEventClick(info) {
         if (user.isTherapist) {
-            const event = events.filter((obj) => {
-                return obj.id === info.event.id;
-            });
-            setEventData(event[0]);
-            const click = info.jsEvent.clientX;
+            setEventData(info.event);
+            const click = info.jsEvent.clientX; // the mouse position
             let horizontal = 0;
-            const modalWidth = window.innerWidth > 700 ? 390 : 240;
-            const rect = info.el.getBoundingClientRect();
+            const modalWidth = window.innerWidth > 700 ? 390 : 240; //specify the modal widt, small or bigger screens
+            const rect = info.el.getBoundingClientRect(); // get the event rectangle to use its coordinates to calculate the modal postion
             if (click + modalWidth + rect.width > window.innerWidth) {
                 horizontal = rect.left - modalWidth;
                 // if(horizontal-240<0){
@@ -92,18 +49,14 @@ function Calendar({ appointments, user }) {
             } else {
                 horizontal = rect.left + rect.width;
             }
-            // console.log('horiiiiiiiii______window',click+modalWidth+rect.width, horizontal, window.innerWidth)
             setModalPosition({
                 left: `${horizontal}px`,
                 top: `${rect.top - rect.height}px`,
             });
-            setModalOpen(!modalOpen);
-            console.log("im after modal", events);
+            setModalOpen((prevModalOpen) => !prevModalOpen);
         }
         return;
     }
-    useEffect(() => {}, []);
-    console.log("im outsiiiiide", events);
     return (
         <Layout user={user} className='max-w-screen'>
             <Head>
@@ -111,12 +64,12 @@ function Calendar({ appointments, user }) {
             </Head>
             {modalOpen && (
                 <EventModal
-                    event={eventData}
+                    eventData={eventData}
                     position={modalPosition}
                     closeModal={() => {
-                        setModalOpen(false);
+                        setModalOpen((prevModalOpen) => !prevModalOpen);
                         setEventData(null); // Reset event data when closing the modal
-                        console.log("im in here", events);
+                        // console.log("im in here", events);
                     }}
                     userId={user.uid}
                 />
@@ -142,14 +95,20 @@ function Calendar({ appointments, user }) {
                         center: "",
                         end: "",
                     }}
-                    customButtons={{
-                        bookApp: {
-                            text: "Book appointment",
-                            click: function () {
-                                router.push(`/booking?userid=${user.uid}`);
-                            },
-                        },
-                    }}
+                    customButtons={
+                        user.isTherapist
+                            ? {}
+                            : {
+                                  bookApp: {
+                                      text: "Book appointment",
+                                      click: function () {
+                                          router.push(
+                                              `/booking?userid=${user.uid}`
+                                          );
+                                      },
+                                  },
+                              }
+                    }
                     nowIndicator={true}
                 />
             </div>

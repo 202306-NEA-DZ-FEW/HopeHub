@@ -44,12 +44,13 @@ function Signup({ isChecked, setChecked }) {
         }
 
         try {
+            // create the user in firebase
             const userCredential = await createUserWithEmailAndPassword(
                 auth,
                 email,
                 password
             );
-
+            //this data will be stored in firestore
             const userData = {
                 uid: userCredential.user.uid, // Save the UID
                 birthDate: bdate,
@@ -58,13 +59,13 @@ function Signup({ isChecked, setChecked }) {
                 name: `${firstname} ${lastname}`,
                 email: email,
             };
-
+            // we update the user name
             await updateProfile(userCredential.user, {
                 displayName: `${firstname} ${lastname}`,
             });
-
+            // we save the user infos in firestore
             await addUserToFirestore(userCredential, userData);
-
+            //we store the uid in cookie to keep him logged in
             Cookie.set("loggedInUser", userCredential.user.uid, { expires: 7 });
             router.push(`/thanks?from=${pathname}`);
             authChange();
@@ -80,7 +81,7 @@ function Signup({ isChecked, setChecked }) {
                 autoClose: 2500,
             });
         } finally {
-            // >>>>>>> develop
+            // reste all the fields
             setEmail("");
             setLastname("");
             setConfirmemail("");

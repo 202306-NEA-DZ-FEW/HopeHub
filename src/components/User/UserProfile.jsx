@@ -65,15 +65,18 @@ export default function UserProfile({ user }) {
         formData.append("file", file);
         formData.append("upload_preset", "hopehub");
 
+        //store the image in cloudinary
         axios
             .post(
                 "https://api.cloudinary.com/v1_1/dxic1agza/image/upload",
                 formData
             )
             .then((response) => {
+                //add the photourl to the user object
+
                 setCloudinaryImage(response.data.secure_url);
                 setUser({ ...user, photoURL: response.data.secure_url });
-                handlePhotoChange();
+                handlePhotoChange(); // to update user infos in firebase
             })
             .catch((error) => {
                 console.error("cloudinary err", error);
@@ -132,6 +135,7 @@ export default function UserProfile({ user }) {
                         "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
                 });
             } else {
+                // change the user infos locally
                 console.log("after update");
                 setUser({
                     ...user,
@@ -147,7 +151,7 @@ export default function UserProfile({ user }) {
                     photoURL: cloudinaryImage,
                     idcard: idcard,
                 });
-                await updateUserProfile();
+                await updateUserProfile(); // change the data in firebase
                 toast.success("profile updated", {
                     position: toast.POSITION.BOTTOM_CENTER,
                     autoClose: 2500,
@@ -212,6 +216,7 @@ export default function UserProfile({ user }) {
             if (phone !== auth.currentUser.phoneNumber) handlePhoneChange();
             if (cloudinaryImage !== auth.currentUser.photoURL)
                 handlePhotoChange();
+            // update the user collection in firestore
             await updateDoc(doc(db, "users", user.uid), {
                 ...user,
                 name: fullName,

@@ -1,7 +1,10 @@
 import Link from "next/link";
 import React from "react";
 
-function EventModal({ event, position, closeModal, userId }) {
+function EventModal({ eventData, position, closeModal, userId }) {
+    console.log("info event", eventData._def.extendedProps);
+    const event = { ...eventData._def.extendedProps, date: eventData.startStr };
+    console.log("event DAta nnennenen", event);
     return (
         <>
             <div

@@ -36,6 +36,7 @@ function Login({ isChecked, setChecked }) {
             return;
         }
         try {
+            // firebase function for sign in
             const userCredential = await signInWithEmailAndPassword(
                 auth,
                 email,
