@@ -9,7 +9,7 @@ exports[`renders correctly 1`] = `
     htmlFor="name"
   />
   <input
-    className="w-full rounded-md border text-NeutralBlack  dark:border-NeutralBlack bg-NeutralWhite p-3  outline-none "
+    className="w-full rounded-md border text-NeutralBlack dark:text-NeutralWhite  border-gray-50 dark:border-gray-600 bg-gray-200 dark:bg-gray-700 p-3  outline-none "
     onChange={[Function]}
   />
 </div>
