@@ -3,8 +3,9 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import React from "react";
 
-import { auth } from "@/util/firebase";
-export default function Confirmation() {
+// import { auth } from "@/util/firebase";
+export default function Confirmation({ user }) {
+    console.log("booked user", user);
     const { t } = useTranslation("common");
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12'>
@@ -37,7 +38,7 @@ export default function Confirmation() {
 
                     <div className=' self-center py-10 group '>
                         <Link
-                            href={`/calendar?userId=${auth.currentUser?.uid}`}
+                            href={`/calendar?userid=${user.uid}`}
                             className='w-28 h-10 px-5 py-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
                         >
                             {t("Back to Calendar")}

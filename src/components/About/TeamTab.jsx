@@ -35,7 +35,7 @@ const TeamMemberCards = ({ teamMembers }) => {
         return (
             <div
                 key={index}
-                className='w-52 h-auto rounded-lg p-2 flex flex-col items-center justify-center mx-2 hover:scale-110'
+                className='w-52 h-auto my-4 rounded-lg p-2 flex flex-col items-center justify-center mx-2 hover:scale-110'
                 style={gradientStyle}
             >
                 <Image
@@ -70,7 +70,7 @@ const TeamMemberCards = ({ teamMembers }) => {
         );
     });
 
-    return <div className='flex justify-center'>{memberCards}</div>;
+    return <div className='flex flex-wrap justify-center'>{memberCards}</div>;
 };
 
 export default TeamMemberCards;

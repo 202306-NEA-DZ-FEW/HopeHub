@@ -146,7 +146,7 @@ function NewsletterSignUp() {
 
     return (
         <form>
-            <fieldset className='form-control w-96 mt-2'>
+            <fieldset className='form-control md:w-96 mt-2'>
                 <div className='relative flex flex-row mr-[-2rem]'>
                     <input
                         onChange={emailChange}

@@ -9,13 +9,18 @@ import {
 } from "firebase/firestore";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
-import React from "react";
+import React, { useState } from "react";
 
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
+import TotalTickets from "../StripePayment/TotalTickets";
+
 export default function Submission({ OnNext, OnPrevious }) {
     const { bookingInfos, user, setUser } = useAppcontext();
     const { t } = useTranslation("common");
+    const [totalTickets, setTotalTickets] = useState(0); // Track total tickets
+    console.log("im totaaaaal", totalTickets);
+
     async function handleSubmit() {
         const appointment = {
             date: bookingInfos.date,
@@ -97,6 +102,7 @@ export default function Submission({ OnNext, OnPrevious }) {
         });
 
         const userId = user.uid;
+        setTotalTickets((prevTickets) => prevTickets - 1);
 
         async function assignTherapist() {
             if (!userId) {
@@ -151,7 +157,6 @@ export default function Submission({ OnNext, OnPrevious }) {
                 console.error("Error assigning therapist:", error);
             }
         }
-
         assignTherapist();
         OnNext();
     }
@@ -171,11 +176,15 @@ export default function Submission({ OnNext, OnPrevious }) {
 
                 <div className=" bg-NeutralWhite dark:bg-Dark_Accent lg:w-3/5 lg:h-1/2 sm:w-full sm:h-[80%] sm:leading-tight mx-auto mt-14 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.42)] rounded-lg relative'">
                     <div className='flex flex-col justify-center items-center text-center'>
-                        <h3 className=' rounded-md py-12 text-NeutralBlack dark:text-NeutralWhite text-2xl font-semibold font-poppins capitalize'>
+                        <h3 className=' rounded-md py-6 text-NeutralBlack dark:text-NeutralWhite text-2xl font-semibold font-poppins capitalize'>
                             {t("Please be aware that this action")}
                             <br />
                             {t("will cost you a ticket!")}
                         </h3>
+                        <TotalTickets
+                            user={user}
+                            setTotalTickets={setTotalTickets}
+                        />
                     </div>
                     <div className='flex justify-between '>
                         <div className=' pl-6 py-10 lg:py-10 lg:pl-11 group '>
@@ -186,13 +195,28 @@ export default function Submission({ OnNext, OnPrevious }) {
                                 {t("Previous")}
                             </button>
                         </div>
-                        <div className=' pr-6 py-10 lg:py-10 lg:pr-11 group '>
-                            <button
-                                className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
-                                onClick={handleSubmit}
-                            >
-                                {t("Submit")}
-                            </button>
+
+                        <div className=' pr-6 py-10 lg:py-10 lg:pr-11 group'>
+                            {totalTickets === 0 ? (
+                                <div className='flex flex-col justify-end items-end'>
+                                    <button
+                                        disabled
+                                        className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-gray-300 text-NeutralBlack dark:text-NeutralWhite'
+                                    >
+                                        {t("Submit")}
+                                    </button>
+                                    <p className='font-poppins text-xs mt-2'>
+                                        Please purchase a ticket first.
+                                    </p>
+                                </div>
+                            ) : (
+                                <button
+                                    className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
+                                    onClick={handleSubmit}
+                                >
+                                    {t("Submit")}
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>

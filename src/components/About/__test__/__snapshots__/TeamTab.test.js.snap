@@ -2,10 +2,10 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="flex justify-center"
+  className="flex flex-wrap justify-center"
 >
   <div
-    className="w-52 h-auto rounded-lg p-2 flex flex-col items-center justify-center mx-2 hover:scale-110"
+    className="w-52 h-auto my-4 rounded-lg p-2 flex flex-col items-center justify-center mx-2 hover:scale-110"
     style={
       Object {
         "background": "linear-gradient(to top, #BFDFDC, #99B4DF)",
@@ -93,7 +93,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="w-52 h-auto rounded-lg p-2 flex flex-col items-center justify-center mx-2 hover:scale-110"
+    className="w-52 h-auto my-4 rounded-lg p-2 flex flex-col items-center justify-center mx-2 hover:scale-110"
     style={
       Object {
         "background": "linear-gradient(to bottom, #BFDFDC, #99B4DF)",

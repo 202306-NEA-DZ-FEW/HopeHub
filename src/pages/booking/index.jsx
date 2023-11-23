@@ -64,7 +64,13 @@ function BookingPage({ dates, user }) {
                     />
                 );
             case 9:
-                return <Confirmation OnNext={OnNext} OnPrevious={OnPrevious} />;
+                return (
+                    <Confirmation
+                        OnNext={OnNext}
+                        OnPrevious={OnPrevious}
+                        user={user}
+                    />
+                );
         }
     }
     return (
@@ -72,7 +78,7 @@ function BookingPage({ dates, user }) {
             <Head>
                 <title>{t("Booking")}</title>
             </Head>
-            {Step()}
+            <div className='my-12'>{Step()}</div>
         </Layout>
     );
 }

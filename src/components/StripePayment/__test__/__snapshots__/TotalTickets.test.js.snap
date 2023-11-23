@@ -4,7 +4,7 @@ exports[`renders correctly 1`] = `
 <div
   className="font-poppins text-base mx-6 md:text-xl md:mx-9 md:pb-9 pb-6 text-NeutralBlack dark:text-NeutralWhite "
 >
-  Total Tickets from Payments: 
+  Total Tickets: 
   0
 </div>
 `;
