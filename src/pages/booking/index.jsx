@@ -64,7 +64,13 @@ function BookingPage({ dates, user }) {
                     />
                 );
             case 9:
-                return <Confirmation OnNext={OnNext} OnPrevious={OnPrevious} />;
+                return (
+                    <Confirmation
+                        OnNext={OnNext}
+                        OnPrevious={OnPrevious}
+                        user={user}
+                    />
+                );
         }
     }
     return (

@@ -1,15 +1,16 @@
+import { parse } from "cookie";
 import {
     FacebookAuthProvider,
     GoogleAuthProvider,
     signInWithPopup,
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import Cookie from "js-cookie";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import React, { useState, useEffect } from "react";
-import Cookie from "js-cookie";
+import React, { useState } from "react";
 
 import Forgot from "@/components/UserAuth/forgot";
 import Login from "@/components/UserAuth/login";
@@ -22,8 +23,6 @@ import { auth, db } from "@/util/firebase";
 import fb from "../../../public/assets/Facebook-icon.svg";
 import google from "../../../public/assets/Google-icon.svg";
 import hopeText from "../../../public/assets/HopeText.svg";
-
-import { parse } from "cookie";
 
 function Auth() {
     const { authChange, user } = useAppcontext();
@@ -169,7 +168,7 @@ export async function getServerSideProps({ locale, req }) {
     if (userId) {
         return {
             redirect: {
-                destination: `/Profile?userid=${userId}`,
+                destination: `/profile?userid=${userId}`,
                 permanent: false,
             },
         };

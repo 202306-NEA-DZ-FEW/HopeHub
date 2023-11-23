@@ -1,20 +1,26 @@
 import { JitsiMeeting } from "@jitsi/react-sdk";
+import { doc, getDoc } from "firebase/firestore";
 import Head from "next/head";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
 
-import { useAppcontext } from "@/context/state";
-import Layout from "@/layout/Layout";
+import Loader from "@/components/Loader/Loader";
 
-function CallRoom() {
+// import { useAppcontext } from "@/context/state";
+import Layout from "@/layout/Layout";
+import { db } from "@/util/firebase";
+
+function CallRoom({ user }) {
     const [callFinished, setCallFinished] = useState(false);
-    const { user } = useAppcontext();
+    const [loading, setLoading] = useState(true);
+    // const { user } = useAppcontext();
     const { t } = useTranslation("common");
     function handleReadyToClose() {
         alert("Ready to close...");
     }
+
     return (
         <Layout user={user} className='max-w-screen'>
             <Head>
@@ -53,39 +59,46 @@ function CallRoom() {
                         </div>
                     </div>
                 ) : (
-                    <JitsiMeeting
-                        //  domain = "localhost:3000"
-                        roomName='HopeHubTherapy'
-                        configOverwrite={{
-                            startWithAudioMuted: true,
-                            disableModeratorIndicator: true,
-                            startScreenSharing: true,
-                            enableEmailInStats: false,
-                        }}
-                        interfaceConfigOverwrite={{
-                            DISABLE_JOIN_LEAVE_NOTIFICATIONS: true,
-                        }}
-                        userInfo={{
-                            id: user?.uid,
-                            displayName: `${user ? user.name : "Hope Hub"}`,
-                            email: `${user ? user.email : "test@email.com"}`,
-                            avatar: `${user ? user.photoURL : ""}`,
-                            moderator: true,
-                        }}
-                        onApiReady={(externalApi) => {
-                            // here you can attach custom event listeners to the Jitsi Meet External API
-                            // you can also store it locally to execute commands
-                            externalApi.on("participantLeft", () => {
-                                setCallFinished(true);
-                            });
-                            console.log("external API ", externalApi);
-                        }}
-                        getIFrameRef={(iframeRef) => {
-                            iframeRef.style.height = "600px";
-                        }}
-                        onReadyToClose={handleReadyToClose}
-                        onPart
-                    />
+                    <>
+                        {" "}
+                        {loading && <Loader />}
+                        <JitsiMeeting
+                            //  domain = "localhost:3000"
+                            roomName='HopeHubTherapy'
+                            configOverwrite={{
+                                startWithAudioMuted: true,
+                                disableModeratorIndicator: true,
+                                startScreenSharing: true,
+                                enableEmailInStats: false,
+                            }}
+                            interfaceConfigOverwrite={{
+                                DISABLE_JOIN_LEAVE_NOTIFICATIONS: true,
+                            }}
+                            userInfo={{
+                                id: user?.uid,
+                                displayName: `${user ? user.name : "Hope Hub"}`,
+                                email: `${
+                                    user ? user.email : "test@email.com"
+                                }`,
+                                avatar: `${user ? user.photoURL : ""}`,
+                                moderator: true,
+                            }}
+                            onApiReady={(externalApi) => {
+                                // here you can attach custom event listeners to the Jitsi Meet External API
+                                // you can also store it locally to execute commands
+                                setLoading(false);
+                                externalApi.on("participantLeft", () => {
+                                    setCallFinished(true);
+                                });
+                                console.log("external API ", externalApi);
+                            }}
+                            getIFrameRef={(iframeRef) => {
+                                iframeRef.style.height = "600px";
+                            }}
+                            onReadyToClose={handleReadyToClose}
+                            onPart
+                        />{" "}
+                    </>
                 )}
             </main>
         </Layout>
@@ -94,16 +107,31 @@ function CallRoom() {
 
 export default CallRoom;
 export async function getServerSideProps({ locale, query }) {
-    // Check if there is a valid special token
     const userId = query.userid; // Assuming the user ID is provided in the query parameter
 
     if (!userId || userId == "undefined") {
         return { redirect: { destination: "/Auth", permanent: false } };
     }
-    // console.log("the token..........", token)
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common"])),
-        },
-    };
+
+    try {
+        // Fetch user data from Firestore based on user ID
+        const userDoc = await getDoc(doc(db, "users", userId));
+        console.log("im userdoc in serverside", userDoc.exists());
+        if (!userDoc.exists()) {
+            // Handle the case when the user with the specified ID is not found
+            return { notFound: true };
+        }
+        // Extract user data from the document
+        const user = userDoc.data();
+
+        return {
+            props: {
+                ...(await serverSideTranslations(locale, ["common"])),
+                user,
+            },
+        };
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+        return { props: { error: "Error fetching user data" } };
+    }
 }

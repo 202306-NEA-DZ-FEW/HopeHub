@@ -117,7 +117,7 @@ exports[`renders correctly 1`] = `
                 >
                   <li>
                     <a
-                      href="/Profile?userid=undefined"
+                      href="/profile?userid=undefined"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       onTouchStart={[Function]}

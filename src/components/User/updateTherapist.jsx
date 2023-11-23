@@ -22,9 +22,9 @@ export default function TherapistProfile({ user }) {
     const [fullName, setFullName] = useState(user.name || "");
     const [birthDate, setBirthDate] = useState(user.birthDate || "");
     const [email, setEmail] = useState(user.email);
-    const [phone, setPhone] = useState(user.phoneNumber);
+    const [phone, setPhone] = useState(user.phoneNumber || "");
     const [bio, setBio] = useState(user.bio || "");
-    const [cloudinaryImage, setCloudinaryImage] = useState("");
+    const [cloudinaryImage, setCloudinaryImage] = useState(user.photoURL || "");
     const inputRef = useRef(null);
 
     const handleIconClick = () => {
@@ -111,6 +111,7 @@ export default function TherapistProfile({ user }) {
             )
             .then((response) => {
                 setCloudinaryImage(response.data.secure_url);
+                handlePhotoChange();
                 setUser({ ...user, photoURL: response.data.secure_url });
             })
             .catch((error) => {
@@ -126,10 +127,10 @@ export default function TherapistProfile({ user }) {
             <div className='flex justify-center px-8 md:px-0 mt-16 font-semibold font-poppins flex-col md:flex-row  max-w-screen bg-NeutralWhite dark:bg-NeutralBlack'>
                 <div className='pb-12 lg:py-16 lg:w-[60%] md:[60%] flex '>
                     <div className='bg-NeutralBlack dark:bg-NeutralWhite border-2 w-80 h-80 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>
-                        {user.photoURL ? (
+                        {cloudinaryImage !== "" ? (
                             <div className='w-full h-full rounded-full overflow-hidden'>
                                 <Image
-                                    src={user.photoURL}
+                                    src={cloudinaryImage}
                                     width={100}
                                     height={100}
                                     alt={user.name}
