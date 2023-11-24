@@ -5,15 +5,15 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import React from "react";
 
-import TypeOfCounseling from "@/components/booking/1TypeOfCounseling";
-import RelationshipStatus from "@/components/booking/2RelationshipStatus";
-import Therapy from "@/components/booking/3Therapy";
-import CounseQualities from "@/components/booking/4CounseQualities";
-import Issues from "@/components/booking/5Issues";
-import Description from "@/components/booking/6Description";
-import Submission from "@/components/booking/7Submission";
-import Confirmation from "@/components/booking/8Confirmation";
-import PickaDate from "@/components/booking/PickaDate";
+import TypeOfCounseling from "@/components/Booking/1TypeOfCounseling";
+import RelationshipStatus from "@/components/Booking/2RelationshipStatus";
+import Therapy from "@/components/Booking/3Therapy";
+import CounseQualities from "@/components/Booking/4CounseQualities";
+import Issues from "@/components/Booking/5Issues";
+import Description from "@/components/Booking/6Description";
+import Submission from "@/components/Booking/7Submission";
+import Confirmation from "@/components/Booking/8Confirmation";
+import PickaDate from "@/components/Booking/PickaDate";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";
@@ -54,7 +54,13 @@ function BookingPage({ dates, user }) {
             case 6:
                 return <Description OnNext={OnNext} OnPrevious={OnPrevious} />;
             case 8:
-                return <Submission OnNext={OnNext} OnPrevious={OnPrevious} />;
+                return (
+                    <Submission
+                        user={user}
+                        OnNext={OnNext}
+                        OnPrevious={OnPrevious}
+                    />
+                );
             case 7:
                 return (
                     <PickaDate
@@ -66,9 +72,9 @@ function BookingPage({ dates, user }) {
             case 9:
                 return (
                     <Confirmation
+                        user={user}
                         OnNext={OnNext}
                         OnPrevious={OnPrevious}
-                        user={user}
                     />
                 );
         }

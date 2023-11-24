@@ -12,9 +12,9 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
 
-import Forgot from "@/components/UserAuth/forgot";
-import Login from "@/components/UserAuth/login";
-import Signup from "@/components/UserAuth/signup";
+import Forgot from "@/components/UserAuth/Forgot";
+import Login from "@/components/UserAuth/Login";
+import Signup from "@/components/UserAuth/Signup";
 
 import { useAppcontext } from "@/context/state";
 import Layout from "@/layout/Layout";

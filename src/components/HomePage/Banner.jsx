@@ -29,16 +29,16 @@ export default function Banner({ user }) {
 
             <div className='flex inset-0 items-center absolute'>
                 <animated.h1
-                    className='text-lg ml-6 mb-2 sm:text-4xl sm:mb-32 sm:ml-8 lg:text-6xl lg:mb-48 lg:ml-8 font-poppins font-semibold text-NeutralBlack'
+                    className='text-lg mx-8 pr-3 mb-2 sm:text-4xl sm:mb-32 sm:ml-8 lg:text-6xl lg:mb-48 lg:ml-8 font-poppins font-semibold text-NeutralBlack'
                     style={fadeInProps}
                 >
-                    WE ARE HERE TO
+                    {t("WE ARE HERE TO")}
                 </animated.h1>
                 <animated.h1
                     className='text-2xl px-1 mb-2 sm:text-6xl sm:mb-32 lg:text-8xl lg:mb-48 lg:px-3 text-violet-400 font-aclonica font-semibold custom-text-shadow'
                     style={fadeInProps}
                 >
-                    HELP
+                    {t("HELP")}
                 </animated.h1>
             </div>
 

@@ -35,7 +35,7 @@ const TeamMemberCards = ({ teamMembers }) => {
         return (
             <div
                 key={index}
-                className='w-52 h-auto my-4 rounded-lg p-2 flex flex-col items-center justify-center mx-2 hover:scale-110'
+                className='w-52 h-auto my-4 rounded-lg p-2 flex flex-col items-center justify-center mx-2  transform transition-transform duration-300 hover:scale-105 cursor-pointer '
                 style={gradientStyle}
             >
                 <Image
@@ -53,7 +53,7 @@ const TeamMemberCards = ({ teamMembers }) => {
                         href={member.linkedin}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='text-blue-500 hover:text-blue-700 mr-4'
+                        className='text-blue-500 hover:text-blue-700 mx-2'
                     >
                         <BsLinkedin className='text-2xl hover:scale-105 delay-75' />
                     </a>
@@ -61,7 +61,7 @@ const TeamMemberCards = ({ teamMembers }) => {
                         href={member.github}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100'
+                        className='text-gray-700 dark:text-gray-300 mx-2 hover:text-gray-900 dark:hover:text-gray-100'
                     >
                         <BsGithub className='text-2xl hover:scale-125 delay-75' />
                     </a>

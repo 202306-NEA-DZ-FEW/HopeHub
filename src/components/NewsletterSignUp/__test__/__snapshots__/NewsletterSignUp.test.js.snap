@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<form>
+<form
+  dir="ltr"
+>
   <fieldset
-    className="form-control md:w-96 mt-2"
+    className="form-control   lg:w-80 mt-2"
   >
     <div
       className="relative flex flex-row mr-[-2rem]"
@@ -17,7 +19,7 @@ exports[`renders correctly 1`] = `
         value=""
       />
       <span
-        className="w-20 -ml-2 cursor-pointer"
+        className="w-20 md:w-24 lg:w-20 -ml-2 cursor-pointer"
         onClick={[Function]}
       >
         <svg

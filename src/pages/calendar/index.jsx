@@ -8,9 +8,8 @@ import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
-import styles from "../../styles/Calendar.module.css";
 
-import EventModal from "@/components/calendarEvents/EventModal";
+import EventModal from "@/components/CalendarEvents/EventModal";
 
 import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
@@ -76,10 +75,10 @@ function Calendar({ appointments, user }) {
                 />
             )}
             <div
-                className={`${styles.calendarContainer} px-4 md:px-36 mt-16 mb-44 h-screen`}
+                className={`px-4 md:px-36 pt-32 pb-16 h-full text-NeutralBlack  dark:text-NeutralWhite `}
             >
                 <FullCalendar
-                    className='text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary '
+                    className=' '
                     initialView='dayGridMonth'
                     events={events}
                     eventClick={handleEventClick}
@@ -90,21 +89,30 @@ function Calendar({ appointments, user }) {
 
                     contentHeight='auto'
                     headerToolbar={{
-                        start: "title",
-                        center: "",
+                        start: "bookApp",
+                        center: "title",
                         end: "prev next",
                     }}
                     footerToolbar={{
                         start: "",
-                        center: "bookApp",
+                        center: "",
                         end: "",
                     }}
                     customButtons={
                         user.isTherapist
-                            ? {}
+                            ? {
+                                  bookApp: {
+                                      text: t("Join Call"),
+                                      click: function () {
+                                          router.push(
+                                              `/call?userid=${user.uid}`
+                                          );
+                                      },
+                                  },
+                              }
                             : {
                                   bookApp: {
-                                      text: "Book an appointment",
+                                      text: t("Book An Appointment"),
                                       click: function () {
                                           router.push(
                                               `/booking?userid=${user.uid}`

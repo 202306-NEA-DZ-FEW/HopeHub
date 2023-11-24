@@ -157,24 +157,24 @@ function BlogPage({ blog, blogs, user }) {
                 <NewsletterSignUp />
                 {/* Social media share buttons */}
                 <h1 className='font-poppins font-light text-NeutralBlack dark:text-NeutralWhite'>
-                    Share this article via
+                    {t("Share this article via")}
                 </h1>
-                <div className='flex justify-center space-x-4 my-4'>
+                <div className='flex justify-center my-4'>
                     <button
                         onClick={shareOnTwitter}
-                        className='w-10 h-10 rounded-full flex items-center justify-center bg-Primary dark:bg-slate-600 dark:text-Primary hover:bg-Accent hover:dark:bg-Dark_Primary transition duration-300'
+                        className='w-10 h-10 mx-1 rounded-full flex items-center justify-center bg-Primary dark:bg-slate-600 dark:text-Primary hover:bg-Accent hover:dark:bg-Dark_Primary transition duration-300'
                     >
                         <FaXTwitter />
                     </button>
                     <button
                         onClick={shareOnFacebook}
-                        className='w-10 h-10 rounded-full flex items-center justify-center bg-Primary dark:bg-slate-600 dark:text-Primary hover:bg-Accent hover:dark:bg-Dark_Primary transition duration-300'
+                        className='w-10 h-10 mx-1 rounded-full flex items-center justify-center bg-Primary dark:bg-slate-600 dark:text-Primary hover:bg-Accent hover:dark:bg-Dark_Primary transition duration-300'
                     >
                         <FaFacebook />
                     </button>
                     <button
                         onClick={copyURLToClipboard}
-                        className={`w-10 h-10 rounded-full flex items-center justify-center bg-Primary dark:bg-slate-600 dark:text-Primary hover:bg-Accent hover:dark:bg-Dark_Primary hover:dark:bg-Dark_Primarytransition duration-300 ${
+                        className={`w-10 h-10 mx-1 rounded-full flex items-center justify-center bg-Primary dark:bg-slate-600 dark:text-Primary hover:bg-Accent hover:dark:bg-Dark_Primary hover:dark:bg-Dark_Primarytransition duration-300 ${
                             copied && "bg-violet-400 hover:bg-violet-400"
                         }`}
                     >

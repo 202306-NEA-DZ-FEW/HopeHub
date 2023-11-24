@@ -3,7 +3,7 @@ import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import BlogCard from "@/components/BlogsCard/BlogsCard";
 import BookingButton from "@/components/BookingButton/BookingButton";
@@ -15,11 +15,13 @@ import placeholderImage from "../../../public/assets/Image placehodler.png";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
+import NewsletterSignUp from "@/components/NewsletterSignUp/NewsletterSignUp";
 
 function BlogsPage({ blogs, user }) {
     const { t } = useTranslation("common");
     const blogRef = useRef([]);
     const controls = useAnimation();
+    const [textDirectionClass, setTextDirectionClass] = useState("ltr");
 
     const AnimatedSection = ({ children }) => {
         const [ref, inView] = useInView({
@@ -75,7 +77,12 @@ function BlogsPage({ blogs, user }) {
                 <div className='flex flex-col w-10/12 mx-auto'>
                     <div className='card w-auto h-min my-3 mx-5 bg-Primary dark:bg-Dark_Primary text-NeutralBlack dark:text-NeutralWhite shadow-xl'>
                         <div className='card-body'>
-                            <h2 className='card-title text-lg lg:text-5xl font-poppins font-semibold'>
+                            <h2
+                                dir={
+                                    textDirectionClass === "rtl" ? "rtl" : "ltr"
+                                }
+                                className='card-title text-lg lg:text-5xl font-poppins font-semibold'
+                            >
                                 HopeHub
                             </h2>
                             <p className='py-6 font-poppins text-sm lg:text-xl'>
@@ -100,17 +107,14 @@ function BlogsPage({ blogs, user }) {
                             <h2 className='card-title text-lg lg:text-5xl font-poppins font-semibold'>
                                 {t("Our Newsletter Is Waiting For You")}
                             </h2>
-                            <p className='py-6 font-poppins text-sm lg:text-xl'>
+                            <p className='pt-4 font-poppins text-sm lg:text-xl'>
                                 {t(
                                     "Get Inspired Weekly: Start Your Journey to Improved Mental Health and Personal Growth by Subscribing to Our Newsletter Today, and Connect with HopeHub's Community of Support and Healing."
                                 )}
                             </p>
-                            <div className='flex justify-center'>
-                                <BookingButton
-                                    destination='/newsletter'
-                                    buttonText='Subscribe'
-                                />
-                            </div>
+                        </div>
+                        <div className='px-6'>
+                            <NewsletterSignUp />
                         </div>
                     </div>
                 </div>

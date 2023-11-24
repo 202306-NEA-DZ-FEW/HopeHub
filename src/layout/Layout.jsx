@@ -2,21 +2,27 @@ import * as React from "react";
 
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
+import Cookies from "js-cookie";
+import i18n from "i18n";
 
 export default function Layout({ children, user }) {
-    // const userLanguage = Cookies.get("userLanguage");
+    const [textDirectionClass, setTextDirectionClass] = React.useState("ltr");
 
-    // i18n.changeLanguage(userLanguage);
+    React.useEffect(() => {
+        const userLanguage = Cookies.get("userLanguage");
+        i18n.changeLanguage(userLanguage);
 
-    // let textDirectionClass = "ltr";
-
-    // if (userLanguage === "ar") {
-    //     // console.log(userLanguage);
-    //     textDirectionClass = "ltr";
-    // }
+        if (userLanguage === "ar") {
+            setTextDirectionClass("rtl");
+        } else {
+            setTextDirectionClass("ltr");
+        }
+    }, []);
 
     return (
-        <div className='bg-NeutralWhite dark:bg-Dark_Accent'>
+        <div
+            className={`bg-NeutralWhite dark:bg-Dark_Accent ${textDirectionClass}`}
+        >
             <Navbar user={user} />
             <div className='pt-12'>{children}</div>
             <Footer />

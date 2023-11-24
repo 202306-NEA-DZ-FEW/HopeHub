@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 
-import Forgot from "../forgot";
+import Forgot from "../Forgot";
 
 it("renders correctly", () => {
     const tree = renderer.create(<Forgot />).toJSON();

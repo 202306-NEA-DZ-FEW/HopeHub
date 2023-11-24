@@ -19,10 +19,10 @@ import BlogsEdit from "@/components/AdminDashboard/BlogsEdit";
 import Patients from "@/components/AdminDashboard/Patients";
 import ReceivedEmails from "@/components/AdminDashboard/ReceivedEmails";
 import Therapists from "@/components/AdminDashboard/Therapists";
-import Bar from "@/components/charts/Bar";
-import Pie from "@/components/charts/Pie";
-import SingleDate from "@/components/charts/singleDate";
-import Widget from "@/components/charts/Widget";
+import Bar from "@/components/Charts/Bar";
+import Pie from "@/components/Charts/Pie";
+import SingleDate from "@/components/Charts/SingleDate";
+import Widget from "@/components/Charts/Widget";
 
 // import { Patient, Therapist } from "@/util/constants";
 import { db } from "@/util/firebase";

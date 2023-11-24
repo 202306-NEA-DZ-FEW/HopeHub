@@ -107,31 +107,31 @@ export default function Careers({ user, jobs }) {
                     <ul className='list mt-4 flex flex-col md:flex-row font-poppins'>
                         <div className='flex flex-col mx-0 md:mx-4'>
                             <li className='text-base leading-relaxed flex items-center my-2'>
-                                <PiPlant className='mr-2' />
+                                <PiPlant className='mx-2' />
                                 {t("Comprehensive health coverage")}
                             </li>
                             <li className='text-base leading-relaxed flex items-center my-2'>
-                                <IoTimeOutline className='mr-2' />
+                                <IoTimeOutline className='mx-2' />
                                 {t("Flexible work hours")}
                             </li>
                         </div>
                         <div className='flex flex-col mx-0 md:mx-10'>
                             <li className='text-base leading-relaxed flex items-center my-2'>
-                                <PiAirplaneTiltLight className='mr-2' />
+                                <PiAirplaneTiltLight className='mx-2' />
                                 {t("Paid time off and holidays")}
                             </li>
                             <li className='text-base leading-relaxed flex items-center my-2'>
-                                <PiDesktopTower className='mr-2' />
+                                <PiDesktopTower className='mx-2' />
                                 {t("Remote work options")}
                             </li>
                         </div>
                         <div className='flex flex-col mx-0 md:mx-10'>
                             <li className='text-base leading-relaxed flex items-center my-2'>
-                                <AiOutlineDollar className='mr-2' />
+                                <AiOutlineDollar className='mx-2' />
                                 {t("Professional development opportunities")}
                             </li>
                             <li className='text-base leading-relaxed flex items-center my-2'>
-                                <RiMentalHealthLine className='mr-2' />
+                                <RiMentalHealthLine className='mx-2' />
                                 {t("Employee wellness programs")}
                             </li>
                         </div>

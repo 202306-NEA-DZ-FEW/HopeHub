@@ -177,7 +177,7 @@ function Therapist({ user }) {
                                 type='submit'
                                 className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                             >
-                                Create
+                                {t("Create")}
                             </button>
                         </div>
                     </form>

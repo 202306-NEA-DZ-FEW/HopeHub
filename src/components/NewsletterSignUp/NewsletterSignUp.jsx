@@ -12,6 +12,7 @@ import { Slide, toast } from "react-toastify";
 function NewsletterSignUp() {
     const { t } = useTranslation("common");
     const [email, setEmail] = useState("");
+    const [textDirectionClass, setTextDirectionClass] = useState("ltr");
 
     const router = useRouter();
     const pathname = usePathname().slice(1);
@@ -145,8 +146,8 @@ function NewsletterSignUp() {
     }
 
     return (
-        <form>
-            <fieldset className='form-control md:w-96 mt-2'>
+        <form dir={textDirectionClass === "rtl" ? "rtl" : "ltr"}>
+            <fieldset className='form-control   lg:w-80 mt-2'>
                 <div className='relative flex flex-row mr-[-2rem]'>
                     <input
                         onChange={emailChange}
@@ -157,7 +158,7 @@ function NewsletterSignUp() {
                         className='input input-bordered cursor-text border-[#718096] border-solid w-4/5 outline-none focus:outline-none'
                     />
                     <span
-                        className='w-20 -ml-2 cursor-pointer'
+                        className='w-20 md:w-24 lg:w-20 -ml-2 cursor-pointer'
                         onClick={handleSubscribe}
                     >
                         <svg

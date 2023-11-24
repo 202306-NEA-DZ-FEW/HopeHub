@@ -1,14 +1,18 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
-import React from "react";
+import React, { useState } from "react";
 
 import { useAppcontext } from "@/context/state";
 import { auth } from "@/util/firebase";
 
 import { CheckoutURL } from "../../components/StripePayment/CheckoutURL";
+import TotalTickets from "../StripePayment/TotalTickets";
+import { Slide, toast } from "react-toastify";
 
-const PurchasingSection = () => {
+const PurchasingSection = ({ user }) => {
+    const [totalTickets, setTotalTickets] = useState(); // Track total tickets
+
     const { t } = useTranslation("common");
     const router = useRouter();
     const { isLogged } = useAppcontext();
@@ -27,13 +31,22 @@ const PurchasingSection = () => {
             if (isLogged != true) {
                 window.location.replace("/Auth");
                 return;
+            } else if (user.isTherapist == true) {
+                console.log("helooooooooo");
+                toast.error("Can't purchase tickets as a therapist!", {
+                    position: toast.POSITION.BOTTOM_CENTER,
+                    autoClose: 2500,
+                    transition: Slide,
+                    className:
+                        "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
+                });
+            } else {
+                // Set up the listener and wait for the checkout URL
+                const url = await CheckoutURL(auth, priceId);
+
+                // Redirect to Stripe Checkout
+                window.location.replace(url);
             }
-
-            // Set up the listener and wait for the checkout URL
-            const url = await CheckoutURL(auth, priceId);
-
-            // Redirect to Stripe Checkout
-            window.location.replace(url);
         } catch (error) {
             console.error(error);
         }
@@ -49,7 +62,7 @@ const PurchasingSection = () => {
                     <h1 className='card-title text-xl md:text-3xl uppercase font-normal'>
                         {item} {t("Tickets")}
                     </h1>
-                    <h1 className='text-gray-500 font-light text-base md:text-xl text-NeutralBlack dark:text-NeutralWhite '>
+                    <h1 className='text-gray-500 font-light text-base md:text-xl  '>
                         ${ticketsPrice[index]}
                     </h1>
                     <div className='card-actions justify-end md:mt-4'>
@@ -59,6 +72,12 @@ const PurchasingSection = () => {
                         >
                             {t("Purchase")}
                         </button>
+                        <div className='hidden'>
+                            <TotalTickets
+                                user={user}
+                                setTotalTickets={setTotalTickets}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

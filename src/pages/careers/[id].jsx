@@ -28,7 +28,7 @@ const JobPage = ({ user, job }) => {
                         {t(job.title)}
                     </h1>
                     <h1 className='my-1 mx-auto text-base md:text-lg font-poppins'>
-                        {t(job.department)} {t("Department")}
+                        {t(job.department)}
                     </h1>
                     <h1 className='my-1 mx-auto text-base md:text-lg font-poppins'>
                         {t(job.location)}
@@ -36,20 +36,20 @@ const JobPage = ({ user, job }) => {
                 </div>
             </div>
             <div
-                className={`${styles["blog-content"]} my-12 mx-8 text-base font-poppins text-NeutralBlack dark:text-NeutralWhite`}
+                className={`${styles["blog-content"]} my-12 mx-9 mr-12 text-base font-poppins text-NeutralBlack dark:text-NeutralWhite`}
                 dangerouslySetInnerHTML={renderJobContent(job.description)}
             />
-            <div className='application-instructions font-poppins mx-8 mb-12 text-NeutralBlack dark:text-NeutralWhite'>
-                <h2 className='font-bold text-2xl '>{t("How to Apply:")}</h2>
+            <div className='application-instructions font-poppins mx-8  mr-12 mb-12 text-NeutralBlack dark:text-NeutralWhite'>
+                <h2 className='font-bold text-2xl '>{t("How to Apply")}:</h2>
                 <p className='my-4'>
                     {t(
                         "To apply for this position, please send your resume and cover letter to"
                     )}{" "}
                     <a
                         className='text-teal-600 dark:text-teal-400'
-                        href='mailto:hope.hub.dz@gmail.com'
+                        href='mailto:contact@hopehub.com'
                     >
-                        hope.hub.dz@gmail.com
+                        contact@hopehub.com
                     </a>
                     .
                     {t(
