@@ -52,7 +52,7 @@ const HomePage = ({ blogs, user }) => {
                 </AnimatedSection>
                 <BlogsCarousel blogs={blogs} />
                 <AnimatedSection>
-                    <PurchasingSection />
+                    <PurchasingSection user={user} />
                 </AnimatedSection>
             </div>
         </Layout>

@@ -1,4 +1,12 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+    collection,
+    doc,
+    getDocs,
+    query,
+    setDoc,
+    updateDoc,
+    where,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 
 import { db } from "@/util/firebase";
@@ -45,8 +53,22 @@ const TotalTickets = ({ user, setTotalTickets }) => {
                         });
                     }
 
-                    setTotalTicketsFromPayments(totalTickets);
-                    setTotalTickets(totalTickets); //
+                    const appointmentsCount = user.appointments
+                        ? user.appointments.length
+                        : 0;
+
+                    const remainingTickets = totalTickets - appointmentsCount;
+
+                    setTotalTickets(remainingTickets);
+
+                    // Update the user document with totalTickets
+                    const userDocRef = doc(db, "users", user.uid);
+                    // Update the totalTickets field
+                    await updateDoc(userDocRef, {
+                        totalTickets: remainingTickets,
+                    });
+
+                    setTotalTicketsFromPayments(remainingTickets);
                 }
             } catch (error) {
                 console.error(error);

@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 
-import TherapistProfile from "../updateTherapist";
+import TherapistProfile from "../UpdateTherapist";
 
 const user = {
     // Populate with necessary user data for testing

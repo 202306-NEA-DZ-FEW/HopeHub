@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="bg-NeutralWhite dark:bg-Dark_Accent"
+  className="bg-NeutralWhite dark:bg-Dark_Accent ltr"
 >
   <nav
     style={
@@ -16,263 +16,14 @@ exports[`renders correctly 1`] = `
     }
   >
     <div
-      className="navbar sticky h-8 top-0 z-10 dark:bg-NeutralBlack dark:backdrop-blur-lg dark:bg-opacity-30 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b-slate-400"
+      className="navbar sticky flex justify-between  h-8 top-0 z-10 dark:bg-NeutralBlack dark:backdrop-blur-lg dark:bg-opacity-30 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b-slate-400"
+      dir="ltr"
     >
       <div
-        className="navbar-start w-auto"
+        className="navbar-content flex justify-between items-center w-full px-6"
       >
         <div
-          className="dropdown"
-        >
-          <label
-            className="btn btn-ghost md:pl-6 lg:hidden"
-            tabIndex={0}
-          >
-            <svg
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M4 6h16M4 12h8m-8 6h16"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </svg>
-          </label>
-          <ul
-            className="menu menu-sm dropdown-content -ml-2 px-3 shadow w-screen mt-2 bg-Primary"
-            tabIndex={0}
-          >
-            <li
-              className="py-1 text-NeutralBlack font-semibold dark:text-NeutralWhite"
-            >
-              <a
-                className="text-lg"
-                href="/"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onTouchStart={[Function]}
-              >
-                Home
-              </a>
-            </li>
-            <li
-              className="py-1 text-NeutralBlack font-semibold dark:text-NeutralWhite"
-            >
-              <a
-                className="text-lg"
-                href="/blogs"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onTouchStart={[Function]}
-              >
-                Blogs
-              </a>
-            </li>
-            <li
-              className="py-1 text-NeutralBlack font-semibold dark:text-NeutralWhite"
-            >
-              <a
-                className="text-lg"
-                href="/about"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onTouchStart={[Function]}
-              >
-                About
-              </a>
-            </li>
-            <li
-              className="py-1 text-NeutralBlack font-semibold dark:text-NeutralWhite"
-            >
-              <a
-                className="text-lg"
-                href="/contact"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onTouchStart={[Function]}
-              >
-                Contact
-              </a>
-            </li>
-            <div
-              className="border-t-2 border-NeutralWhite pb-4"
-            />
-            <li>
-              <details
-                onToggle={[Function]}
-                open={true}
-              >
-                <summary
-                  className="text-Accent text-lg font-bold underline font-poppins text-NeutralBlack font-semibold dark:text-NeutralWhite"
-                >
-                  John Doe
-                </summary>
-                <ul
-                  className="menu w-32 text-NeutralBlack font-medium font-poppins"
-                >
-                  <li>
-                    <a
-                      href="/Profile?userid=undefined"
-                      onClick={[Function]}
-                      onMouseEnter={[Function]}
-                      onTouchStart={[Function]}
-                    >
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        strokeWidth="0"
-                        style={
-                          Object {
-                            "color": undefined,
-                          }
-                        }
-                        viewBox="0 0 448 512"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"
-                        />
-                      </svg>
-                      Profile
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/calendar?userid=undefined"
-                      onClick={[Function]}
-                      onMouseEnter={[Function]}
-                      onTouchStart={[Function]}
-                    >
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        strokeWidth="0"
-                        style={
-                          Object {
-                            "color": undefined,
-                          }
-                        }
-                        viewBox="0 0 448 512"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"
-                        />
-                      </svg>
-                      Calendar
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/call?userid=undefined"
-                      onClick={[Function]}
-                      onMouseEnter={[Function]}
-                      onTouchStart={[Function]}
-                    >
-                      <svg
-                        fill="none"
-                        height="1em"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        style={
-                          Object {
-                            "color": undefined,
-                          }
-                        }
-                        viewBox="0 0 24 24"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M0 0h24v24H0z"
-                          fill="none"
-                          stroke="none"
-                        />
-                        <path
-                          d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4z"
-                        />
-                        <path
-                          d="M3 6m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"
-                        />
-                      </svg>
-                      Join call
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/Tickets?userid=undefined"
-                      onClick={[Function]}
-                      onMouseEnter={[Function]}
-                      onTouchStart={[Function]}
-                    >
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        strokeWidth="0"
-                        style={
-                          Object {
-                            "color": undefined,
-                          }
-                        }
-                        viewBox="0 0 384 512"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM64 80c0-8.8 7.2-16 16-16h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H80c-8.8 0-16-7.2-16-16zm0 64c0-8.8 7.2-16 16-16h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H80c-8.8 0-16-7.2-16-16zm128 72c8.8 0 16 7.2 16 16v17.3c8.5 1.2 16.7 3.1 24.1 5.1c8.5 2.3 13.6 11 11.3 19.6s-11 13.6-19.6 11.3c-11.1-3-22-5.2-32.1-5.3c-8.4-.1-17.4 1.8-23.6 5.5c-5.7 3.4-8.1 7.3-8.1 12.8c0 3.7 1.3 6.5 7.3 10.1c6.9 4.1 16.6 7.1 29.2 10.9l.5 .1 0 0 0 0c11.3 3.4 25.3 7.6 36.3 14.6c12.1 7.6 22.4 19.7 22.7 38.2c.3 19.3-9.6 33.3-22.9 41.6c-7.7 4.8-16.4 7.6-25.1 9.1V440c0 8.8-7.2 16-16 16s-16-7.2-16-16V422.2c-11.2-2.1-21.7-5.7-30.9-8.9l0 0c-2.1-.7-4.2-1.4-6.2-2.1c-8.4-2.8-12.9-11.9-10.1-20.2s11.9-12.9 20.2-10.1c2.5 .8 4.8 1.6 7.1 2.4l0 0 0 0 0 0c13.6 4.6 24.6 8.4 36.3 8.7c9.1 .3 17.9-1.7 23.7-5.3c5.1-3.2 7.9-7.3 7.8-14c-.1-4.6-1.8-7.8-7.7-11.6c-6.8-4.3-16.5-7.4-29-11.2l-1.6-.5 0 0c-11-3.3-24.3-7.3-34.8-13.7c-12-7.2-22.6-18.9-22.7-37.3c-.1-19.4 10.8-32.8 23.8-40.5c7.5-4.4 15.8-7.2 24.1-8.7V232c0-8.8 7.2-16 16-16z"
-                        />
-                      </svg>
-                      Tickets
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="text-base"
-                      onClick={[Function]}
-                    >
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        strokeWidth="0"
-                        style={
-                          Object {
-                            "color": undefined,
-                          }
-                        }
-                        viewBox="0 0 24 24"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="m2 12 5 4v-3h9v-2H7V8z"
-                        />
-                        <path
-                          d="M13.001 2.999a8.938 8.938 0 0 0-6.364 2.637L8.051 7.05c1.322-1.322 3.08-2.051 4.95-2.051s3.628.729 4.95 2.051 2.051 3.08 2.051 4.95-.729 3.628-2.051 4.95-3.08 2.051-4.95 2.051-3.628-.729-4.95-2.051l-1.414 1.414c1.699 1.7 3.959 2.637 6.364 2.637s4.665-.937 6.364-2.637c1.7-1.699 2.637-3.959 2.637-6.364s-.937-4.665-2.637-6.364a8.938 8.938 0 0 0-6.364-2.637z"
-                        />
-                      </svg>
-                      Log Out
-                    </a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-          </ul>
-        </div>
-        <div
-          className="logo-container lg:px-6"
+          className="logo-container -ml-6 lg:px-6"
         >
           <a
             href="/"
@@ -299,147 +50,148 @@ exports[`renders correctly 1`] = `
             />
           </a>
         </div>
-      </div>
-      <div
-        className="flex justify-between ml-auto dropdown"
-      >
         <div
-          className="flex items-center"
+          className="navbar-menu flex"
         >
           <div
-            className="search-icon mr-2"
-            onClick={[Function]}
+            className="flex justify-end items-center"
           >
-            <svg
-              className="w-6 h-6 dark:fill-NeutralWhite"
-              fill="currentColor"
-              height="1em"
-              stroke="currentColor"
-              strokeWidth="0"
-              style={
-                Object {
-                  "color": undefined,
-                }
-              }
-              viewBox="0 0 256 256"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
-              />
-            </svg>
-          </div>
-          <div
-            className="search-bar"
-          >
-            <input
-              className="input input-bordered input-sm w-full"
-              onChange={[Function]}
-              placeholder="Type here"
-              type="text"
-              value=""
-            />
-          </div>
-        </div>
-        <div
-          className="navbar-center mr-4 hidden lg:flex"
-        >
-          <ul
-            className="menu menu-horizontal"
-          >
-            <li
-              className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
-            >
-              <a
-                href="/"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onTouchStart={[Function]}
-              >
-                Home
-              </a>
-            </li>
-            <li
-              className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
-            >
-              <a
-                href="/blogs"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onTouchStart={[Function]}
-              >
-                Blogs
-              </a>
-            </li>
-            <li
-              className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
-            >
-              <a
-                href="/about"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onTouchStart={[Function]}
-              >
-                About
-              </a>
-            </li>
-            <li
-              className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
-            >
-              <a
-                href="/contact"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onTouchStart={[Function]}
-              >
-                Contact
-              </a>
-            </li>
             <div
-              className="dropdown dropdown-end dropdown-bottom"
+              className="search-icon mr-2"
+              onClick={[Function]}
             >
+              <svg
+                className="w-6 h-6 dark:fill-NeutralWhite"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 256 256"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                />
+              </svg>
+            </div>
+            <div
+              className="search-bar"
+            >
+              <input
+                className="input input-bordered input-sm w-full"
+                onChange={[Function]}
+                placeholder="Type here"
+                type="text"
+                value=""
+              />
+            </div>
+             
+          </div>
+          <div
+            className="navbar-center justify-end items-end mr-4 hidden lg:flex"
+          >
+            <ul
+              className="menu menu-horizontal"
+            >
+              <li
+                className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
+              >
+                <a
+                  href="/"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onTouchStart={[Function]}
+                >
+                  Home
+                </a>
+              </li>
+              <li
+                className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
+              >
+                <a
+                  href="/blogs"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onTouchStart={[Function]}
+                >
+                  Blogs
+                </a>
+              </li>
+              <li
+                className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
+              >
+                <a
+                  href="/about"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onTouchStart={[Function]}
+                >
+                  About
+                </a>
+              </li>
+              <li
+                className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
+              >
+                <a
+                  href="/contact"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onTouchStart={[Function]}
+                >
+                  Contact
+                </a>
+              </li>
               <div
-                className="relative flex items-center"
-                tabIndex={0}
+                className="dropdown dropdown-end dropdown-bottom"
               >
                 <div
-                  className="relative w-10 h-10 ml-2 rounded-full cursor-pointer"
-                  onClick={[Function]}
+                  className="relative flex items-center"
+                  tabIndex={0}
                 >
                   <div
-                    className="flex items-center justify-center w-10 h-10 rounded-full bg-Accent"
+                    className="relative w-10 h-10 ml-2  -mr-6 rounded-full cursor-pointer"
+                    onClick={[Function]}
                   >
-                    <img
-                      alt="Placeholder"
-                      className="w-full h-full object-cover rounded-full"
-                      data-nimg="1"
-                      decoding="async"
-                      height={40}
-                      loading="lazy"
-                      onError={[Function]}
-                      onLoad={[Function]}
-                      src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
-                      srcSet="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
-                      style={
-                        Object {
-                          "color": "transparent",
+                    <div
+                      className="flex items-center justify-center w-10 h-10 rounded-full bg-Accent"
+                    >
+                      <img
+                        alt="Placeholder"
+                        className="w-full h-full object-cover rounded-full"
+                        data-nimg="1"
+                        decoding="async"
+                        height={40}
+                        loading="lazy"
+                        onError={[Function]}
+                        onLoad={[Function]}
+                        src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+                        srcSet="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+                        style={
+                          Object {
+                            "color": "transparent",
+                          }
                         }
-                      }
-                      width={40}
-                    />
+                        width={40}
+                      />
+                    </div>
                   </div>
+                  <span
+                    className="cursor-pointer ml-2"
+                    onClick={[Function]}
+                  />
+                  <div
+                    className="menu-sm-dropdown dropdown-hover"
+                  />
                 </div>
-                <span
-                  className="cursor-pointer ml-2"
-                  onClick={[Function]}
-                />
-                <div
-                  className="menu-sm-dropdown dropdown-hover"
-                />
               </div>
-            </div>
-          </ul>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -448,7 +200,7 @@ exports[`renders correctly 1`] = `
     className="pt-12"
   >
     <div
-      className="flex justify-center px-8 md:px-0 mt-16 font-semibold font-poppins flex-col md:flex-row  max-w-screen bg-NeutralWhite dark:bg-NeutralBlack"
+      className="flex justify-center px-8 md:px-0 mt-16 font-semibold font-poppins flex-col md:flex-row  max-w-screen  "
     >
       <div
         className="pb-12 lg:py-16 lg:w-[60%] md:[60%] flex "
@@ -550,7 +302,7 @@ exports[`renders correctly 1`] = `
                 Bio
               </label>
               <textarea
-                className="p-4 text-NeutralBlack  w-[68%] h-[40%] text-xl font-poppins font-normal border border-slate-300 bg-NeutralWhite outline-none lg:h-full sm:h-full sm:leading-tight rounded-md "
+                className="p-4 text-NeutralBlack  w-[68%] h-[40%] text-xl font-poppins font-normal border border-slate-300 bg-NeutralWhite outline-none lg:h-full sm:h-full sm:leading-tight rounded-md resize-none "
                 id="bio"
                 name="bio"
                 onChange={[Function]}
@@ -628,16 +380,142 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <footer
-    className=" px-10 py-5 bg-Accent dark:bg-Dark_Primary text-base-content flex flex-col md:flex-row lg:flex-row md:justify-between items-center"
+    className="px-10 py-5 bg-Accent dark:bg-Dark_Primary text-base-content flex flex-col md:flex-row lg:flex-row md:justify-between items-center"
   >
     <div
       className="flex flex-col"
     >
-      <header
-        className="font-bold text-xl mb-[0.15rem] text-NeutralBlack dark:text-NeutralWhite"
+      <div
+        className="flex flex-row justify-between"
       >
-        Subscribe
-      </header>
+        <header
+          className="font-bold mt-3 text-xl mb-[0.15rem] text-NeutralBlack dark:text-NeutralWhite"
+        >
+          Subscribe
+        </header>
+        <div
+          className="flex md:hidden flex-row justify-end pt-1"
+        >
+          <div
+            className=" px-7 pt-2"
+          >
+            <div
+              className="relative inline-block text-base rounded-md "
+            >
+              <button
+                aria-expanded={false}
+                aria-haspopup="listbox"
+                aria-label="Select Language"
+                className="text-NeutralBlack dark:text-NeutralWhite"
+                onClick={[Function]}
+              >
+                <svg
+                  className="inline-block w-5 h-5 mr-2"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 16 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"
+                  />
+                </svg>
+              </button>
+              <div
+                className="absolute bottom-10 w-32"
+                style={
+                  Object {
+                    "display": "none",
+                  }
+                }
+              >
+                <ul
+                  className="dropdown menu py-2 shadow-2xl bg-NeutralWhite dark:bg-Dark_Primary rounded-md "
+                >
+                  <li>
+                    <a
+                      className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite "
+                      href="/en"
+                      onClick={[Function]}
+                    >
+                      English
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
+                      href="/ar"
+                      onClick={[Function]}
+                    >
+                      العربية
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
+                      href="/fr"
+                      onClick={[Function]}
+                    >
+                      French
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+             
+          </div>
+          <div
+            className="bg-DarkWhite dark:bg-EnglishViolet dark:text-white dark:text-opacity-80"
+            onClick={[Function]}
+          >
+            <label
+              className="toggle"
+              htmlFor="switch"
+            >
+              <div
+                className="icon iconMoon checked"
+              >
+                <svg
+                  fill="currentColor"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div
+                className="icon iconSun"
+              >
+                <svg
+                  fill="currentColor"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"
+                  />
+                </svg>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
       <label
         className="label"
       >
@@ -647,9 +525,11 @@ exports[`renders correctly 1`] = `
           We promise to never spam you, or share your email.
         </span>
       </label>
-      <form>
+      <form
+        dir="ltr"
+      >
         <fieldset
-          className="form-control md:w-96 mt-2"
+          className="form-control   lg:w-80 mt-2"
         >
           <div
             className="relative flex flex-row mr-[-2rem]"
@@ -663,7 +543,7 @@ exports[`renders correctly 1`] = `
               value=""
             />
             <span
-              className="w-20 -ml-2 cursor-pointer"
+              className="w-20 md:w-24 lg:w-20 -ml-2 cursor-pointer"
               onClick={[Function]}
             >
               <svg
@@ -697,10 +577,10 @@ exports[`renders correctly 1`] = `
         className="flex flex-col md:flex-row items-center justify-between"
       >
         <nav
-          className="footer-title flex gap-8 font-base my-4 text-NeutralBlack dark:text-NeutralWhite md:font-medium lg:font-medium "
+          className="footer-title flex flex-wrap gap-4 justify-center  font-base my-4 text-NeutralBlack dark:text-NeutralWhite md:font-medium lg:font-medium "
         >
           <a
-            className=" "
+            className="text-NeutralBlack dark:text-NeutralWhite"
             href="/"
             onClick={[Function]}
             onMouseEnter={[Function]}
@@ -750,187 +630,223 @@ exports[`renders correctly 1`] = `
         className="flex flex-row"
       >
         <div
-          className="grid grid-flow-col gap-4 mt-5 mx-4"
+          className="grid grid-flow-col gap-4 mt-5 md:mt-1 lg:mt-5 mx-4"
         >
           <a
-            href=""
+            href="https://twitter.com/recodedofficial?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             <svg
-              fill="none"
-              height="35"
-              viewBox="0 0 35 35"
-              width="35"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M29.2578 4.62682C30.9347 4.28241 32.5884 3.39473 32.5884 3.39473C33.3256 3.04856 33.6012 3.31906 33.2037 4.01651C33.2037 4.01651 32.2112 6.07413 30.6949 7.02984C32.1797 6.84341 33.52 6.29924 33.52 6.29924C34.2926 6.0365 34.5007 6.66055 33.9952 7.29167C33.9952 7.29167 32.6842 9.11819 31.25 10.2083C31.2624 10.538 31.2682 10.4798 31.2682 10.8164C31.2682 22.4922 25.3761 32.8125 10.3789 32.8125C4.74279 32.8125 1.72544 30.5762 1.72544 30.5762C0.269777 29.8354 0.435023 28.9706 2.05229 28.7287C2.05229 28.7287 7.48179 28.2115 9.99381 26.1372C-4.37503 18.9583 1.48563 5.05932 1.48563 5.05932C1.54196 4.25827 2.09591 4.05424 2.68917 4.61642C2.68917 4.61642 9.15627 11.3561 16.7492 11.6789C16.6231 11.1127 16.5601 10.525 16.5601 9.91857C16.5601 5.64926 19.8479 2.1875 23.8993 2.1875C26.0129 2.1875 27.922 3.12555 29.2578 4.62682Z"
-                fill="#1A1A1A"
-              />
-            </svg>
-          </a>
-          <a
-            href=""
-          >
-            <svg
-              fill="none"
-              height="35"
-              viewBox="0 0 35 35"
-              width="35"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1.45837 17.5389C1.45837 8.65781 8.64047 1.45825 17.5 1.45825C26.3596 1.45825 33.5417 8.65781 33.5417 17.5389C33.5417 25.8821 27.2033 32.7413 19.0902 33.5416C19.1336 33.5339 19.1769 33.5258 19.2202 33.517V22.155H23.3908L24.0148 17.3012H19.2202V14.2023C19.2202 12.7969 19.6093 11.8395 21.6199 11.8395L24.1837 11.8382V7.49707C23.7402 7.43772 22.2185 7.30577 20.4476 7.30577C16.7511 7.30577 14.22 9.56756 14.22 13.7218V17.3012H10.0388V22.155H14.22V33.2832C6.93355 31.7655 1.45837 25.2932 1.45837 17.5389Z"
-                fill="#1A1A1A"
-              />
-            </svg>
-          </a>
-          <a
-            href=""
-          >
-            <svg
-              fill="none"
-              height="33"
-              viewBox="0 0 33 33"
-              width="33"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.7259 13.3233V18.6751C16.7259 19.2279 17.1737 19.6759 17.7266 19.6752C19.597 19.6727 23.6064 19.6678 25.5202 19.6678C24.1419 23.787 21.9994 26.0297 16.7259 26.0297C11.3888 26.0297 7.22328 21.763 7.22328 16.4993C7.22328 11.2368 11.3888 6.97012 16.7259 6.97012C19.5473 6.97012 21.3699 7.9484 23.0415 9.3115C24.3792 7.99213 24.2675 7.80347 27.6716 4.6325C24.7816 2.03874 20.9409 0.458252 16.7259 0.458252C7.74238 0.458252 0.458374 7.6398 0.458374 16.4993C0.458374 25.3588 7.74238 32.5416 16.7259 32.5416C30.1541 32.5416 33.4363 21.0109 32.3486 13.3233H16.7259Z"
-                fill="#1A1A1A"
-              />
-            </svg>
-          </a>
-        </div>
-        <div
-          className="flex flex-wrap  items-center"
-        >
-          <h1
-            className="text-6xl mb-5"
-          >
-            |
-          </h1>
-          <div
-            className="mb-2 px-3 "
-          >
-            <div
-              className="relative inline-block text-base rounded-md"
-            >
-              <button
-                aria-expanded={false}
-                aria-haspopup="listbox"
-                aria-label="Select Language"
-                onClick={[Function]}
-              >
-                <svg
-                  className="inline-block w-5 h-5 mr-2"
-                  fill="currentColor"
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 16 16"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"
-                  />
-                </svg>
-              </button>
-              <div
-                className="absolute bottom-10 w-36"
-                style={
-                  Object {
-                    "display": "none",
-                  }
+              className="text-3xl"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
                 }
-              >
-                <ul
-                  className="dropdown menu py-2 bg-NeutralWhite dark:bg-Dark_Primary rounded-md "
-                >
-                  <li>
-                    <a
-                      className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite "
-                      href="/en"
-                      onClick={[Function]}
-                    >
-                      English
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
-                      href="/ar"
-                      onClick={[Function]}
-                    >
-                      العربية
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
-                      href="/fr"
-                      onClick={[Function]}
-                    >
-                      French
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div
-            className="mb-2 px-3"
-          >
-            <div
-              className="bg-DarkWhite dark:bg-EnglishViolet"
-              onClick={[Function]}
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <label
-                className="toggle"
-                htmlFor="switch"
-              >
-                <div
-                  className="icon iconMoon checked"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      clipRule="evenodd"
-                      d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
-                      fillRule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div
-                  className="icon iconSun"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"
-                    />
-                  </svg>
-                </div>
-              </label>
-            </div>
-          </div>
+              <path
+                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://www.facebook.com/recodedofficial/?locale=fr_FR"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            <svg
+              className="text-3xl"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://www.instagram.com/recodedofficial/"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            <svg
+              className="text-3xl"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+              />
+            </svg>
+          </a>
         </div>
       </div>
+    </div>
+    <div
+      className="flex flex-row md:flex-col mx-4"
+    >
+      <div
+        className="hidden md:flex flex-col md:flex-row justify-end pt-1"
+      >
+        <div
+          className=" px-7 pt-2"
+        >
+          <div
+            className="relative inline-block text-base rounded-md "
+          >
+            <button
+              aria-expanded={false}
+              aria-haspopup="listbox"
+              aria-label="Select Language"
+              className="text-NeutralBlack dark:text-NeutralWhite"
+              onClick={[Function]}
+            >
+              <svg
+                className="inline-block w-5 h-5 mr-2"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 16 16"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"
+                />
+              </svg>
+            </button>
+            <div
+              className="absolute bottom-10 w-32"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              <ul
+                className="dropdown menu py-2 shadow-2xl bg-NeutralWhite dark:bg-Dark_Primary rounded-md "
+              >
+                <li>
+                  <a
+                    className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite "
+                    href="/en"
+                    onClick={[Function]}
+                  >
+                    English
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
+                    href="/ar"
+                    onClick={[Function]}
+                  >
+                    العربية
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
+                    href="/fr"
+                    onClick={[Function]}
+                  >
+                    French
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+           
+        </div>
+        <div
+          className="bg-DarkWhite dark:bg-EnglishViolet dark:text-white dark:text-opacity-80"
+          onClick={[Function]}
+        >
+          <label
+            className="toggle"
+            htmlFor="switch"
+          >
+            <div
+              className="icon iconMoon checked"
+            >
+              <svg
+                fill="currentColor"
+                height="20"
+                viewBox="0 0 24 24"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </div>
+            <div
+              className="icon iconSun"
+            >
+              <svg
+                fill="currentColor"
+                height="20"
+                viewBox="0 0 24 24"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"
+                />
+              </svg>
+            </div>
+          </label>
+        </div>
+      </div>
+      <p
+        className="mt-6 text-center md:text-right text-NeutralBlack dark:text-NeutralWhite"
+      >
+         
+        © 
+        2023
+         
+        Hope Hub. All rights reserved.
+      </p>
     </div>
   </footer>
 </div>

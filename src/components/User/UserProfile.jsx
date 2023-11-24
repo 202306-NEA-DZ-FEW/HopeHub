@@ -263,8 +263,8 @@ export default function UserProfile({ user }) {
             <Head>
                 <title>{t("Update user profile")}</title>
             </Head>
-            <div className='flex justify-between font-semibold font-poppins mx-auto flex-col md:flex-row mt-20 w-fit  '>
-                <div className=' md:[40%] flex mr-8  mt-16'>
+            <div className='flex justify-between font-semibold font-poppins mx-auto flex-col md:flex-row mt-0 lg:mt-20 w-fit  '>
+                <div className='  flex mr-8  mt-8 lg:mt-16'>
                     <div className='mx-auto mb-8 bg-NeutralBlack dark:bg-NeutralWhite w-40 h-40 md:w-52 lg:h-52 md:h-52 rounded-full flex flex-col items-center justify-center relative overflow-visible'>
                         {user.photoURL ? (
                             <div className='w-full h-full rounded-full overflow-hidden'>
@@ -298,14 +298,14 @@ export default function UserProfile({ user }) {
                     </div>
                 </div>
 
-                <div className='flex items-center justify-center text-NeutralBlack dark:text-NeutralWhite md:w-2/3 lg:w-full'>
-                    <div className='mx-auto w-full lg:max-w-full -mr-24 -ml-16 mb-20'>
+                <div className='flex items-center justify-center text-NeutralBlack dark:text-NeutralWhite w-full md:w-2/3 lg:w-full'>
+                    <div className=' w-full lg:w-full  mb-20'>
                         <h2 className='py-5 px-6 text-[2.75rem] font-semibold'>
                             {t("Update profile")}
                         </h2>
                         <form
                             onSubmit={handleSubmit}
-                            className='px-6 text-NeutralBlack'
+                            className='px-6 w-full text-NeutralBlack'
                         >
                             <div className='mb-5 text-xl flex'>
                                 <label
@@ -420,7 +420,7 @@ export default function UserProfile({ user }) {
                                     onChange={(e) => setGender(e.target.value)}
                                 >
                                     <option value='Male'>{t("male")}</option>
-                                    <option value='Femmale'>
+                                    <option value='Female'>
                                         {t("female")}
                                     </option>
                                 </select>
@@ -509,9 +509,9 @@ export default function UserProfile({ user }) {
                                         onChange={passwordChanged}
                                         className='w-full rounded-md border lg:text-xl font-normal px-4 border-slate-300 bg-white py-3 outline-none '
                                     />
-                                    <i className=' relative left-[90%] bottom-8 '>
+                                    <div className='relative  bottom-8 flex justify-end items-center mx-4 '>
                                         <FaLock></FaLock>
-                                    </i>
+                                    </div>
                                 </div>
                             </div>
                             <div className='mb-5 flex'>
@@ -531,26 +531,26 @@ export default function UserProfile({ user }) {
                                             setConfirmPassword(e.target.value)
                                         }
                                     />
-                                    <i className=' relative left-[90%] bottom-8  '>
+                                    <div className='relative bottom-8 flex justify-end items-center mx-4 '>
                                         <FaLock></FaLock>
-                                    </i>
+                                    </div>
                                 </div>
                             </div>
                             <div className='flex gap-2'>
-                                <button className='w-full h-11  rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
+                                <button className='w-full h-11  px-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
                                     {t("save changes")}
                                 </button>
                                 <button
-                                    className='w-full h-11  rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
+                                    className='w-full h-11  px-2  rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                     onClick={handleDelete}
                                 >
                                     {t("delete account")}
                                 </button>
-                                <button className='w-full h-11 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
+                                <button className='w-full h-11  px-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'>
                                     {t("cancel")}
                                 </button>
                             </div>
-                            <h2 className=' mb-5 pt-8 block text-4xl font-semibold text-NeutralBlack dark:text-NeutralWhite '>
+                            {/* <h2 className=' mb-5 pt-8 block text-4xl font-semibold text-NeutralBlack dark:text-NeutralWhite '>
                                 {t("payment section")}
                             </h2>
                             <div className='flex'>
@@ -580,11 +580,11 @@ export default function UserProfile({ user }) {
                                             href='/Payment/Tickets'
                                             name='BUY TICKETS'
                                         >
-                                            {t("buy tickets")}
+                                            {t("Book An Appointment")}
                                         </Link>
                                     </button>
                                 </div>
-                            </div>
+                            </div> */}
                         </form>
                     </div>
                 </div>

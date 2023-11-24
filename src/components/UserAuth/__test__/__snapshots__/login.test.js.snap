@@ -16,7 +16,7 @@ exports[`renders correctly 1`] = `
     <input
       className="input input-bordered w-full bg-NeutralWhite text-NeutralBlack mb-2 mt-1   "
       onChange={[Function]}
-      placeholder="footer_msg_3"
+      placeholder="Enter your e-mail"
       type="email"
       value=""
     />

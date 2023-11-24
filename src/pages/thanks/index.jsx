@@ -36,7 +36,12 @@ function Thanks({ user }) {
                 "Thank you for scheduling an appointment with us! We look forward to supporting you on your path to mental wellness."
             );
             break;
-
+        case "tickets":
+            background = "/assets/thank-bg-2.svg";
+            text = t(
+                "Your payment has been successfully done, thank you for choosing HopeHub."
+            );
+            break;
         default:
             background = "/assets/thank-bg-2.svg";
             text = t(

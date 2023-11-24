@@ -34,7 +34,7 @@ exports[`renders correctly 1`] = `
             Tickets
           </h1>
           <h1
-            className="text-gray-500 font-light text-base md:text-xl text-NeutralBlack dark:text-NeutralWhite "
+            className="text-gray-500 font-light text-base md:text-xl  "
           >
             $
             10
@@ -48,6 +48,16 @@ exports[`renders correctly 1`] = `
             >
               Purchase
             </button>
+            <div
+              className="hidden"
+            >
+              <div
+                className="font-poppins text-base mx-6 md:text-xl md:mx-9 md:pb-9 pb-6 text-NeutralBlack dark:text-NeutralWhite "
+              >
+                Total Tickets: 
+                0
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -65,7 +75,7 @@ exports[`renders correctly 1`] = `
             Tickets
           </h1>
           <h1
-            className="text-gray-500 font-light text-base md:text-xl text-NeutralBlack dark:text-NeutralWhite "
+            className="text-gray-500 font-light text-base md:text-xl  "
           >
             $
             40
@@ -79,6 +89,16 @@ exports[`renders correctly 1`] = `
             >
               Purchase
             </button>
+            <div
+              className="hidden"
+            >
+              <div
+                className="font-poppins text-base mx-6 md:text-xl md:mx-9 md:pb-9 pb-6 text-NeutralBlack dark:text-NeutralWhite "
+              >
+                Total Tickets: 
+                0
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -96,7 +116,7 @@ exports[`renders correctly 1`] = `
             Tickets
           </h1>
           <h1
-            className="text-gray-500 font-light text-base md:text-xl text-NeutralBlack dark:text-NeutralWhite "
+            className="text-gray-500 font-light text-base md:text-xl  "
           >
             $
             70
@@ -110,6 +130,16 @@ exports[`renders correctly 1`] = `
             >
               Purchase
             </button>
+            <div
+              className="hidden"
+            >
+              <div
+                className="font-poppins text-base mx-6 md:text-xl md:mx-9 md:pb-9 pb-6 text-NeutralBlack dark:text-NeutralWhite "
+              >
+                Total Tickets: 
+                0
+              </div>
+            </div>
           </div>
         </div>
       </div>
