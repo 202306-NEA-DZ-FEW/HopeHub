@@ -266,7 +266,7 @@ export default function UserProfile({ user }) {
             <div className='flex justify-between font-semibold font-poppins mx-auto flex-col md:flex-row mt-0 lg:mt-20 w-fit  '>
                 <div className='  flex mr-8  mt-8 lg:mt-16'>
                     <div className='mx-auto mb-8 bg-NeutralBlack dark:bg-NeutralWhite w-40 h-40 md:w-52 lg:h-52 md:h-52 rounded-full flex flex-col items-center justify-center relative overflow-visible'>
-                        {user.photoURL ? (
+                        {cloudinaryImage !== "" ? (
                             <div className='w-full h-full rounded-full overflow-hidden'>
                                 <Image
                                     src={cloudinaryImage}
