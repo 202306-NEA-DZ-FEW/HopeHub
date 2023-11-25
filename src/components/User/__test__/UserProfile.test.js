@@ -14,11 +14,11 @@ const mockUser = {
     phoneNumber: "123-456-7890",
     idcard: "ABC123XYZ",
     photoURL: "https://example.com/profile.jpg",
-    width: 30
+    width: 30,
     // Add other properties as needed for your UserProfile component
 };
 
 it("renders correctly", () => {
-    const tree = renderer.create(<UserProfile user={mockUser}  />).toJSON();
+    const tree = renderer.create(<UserProfile user={mockUser} />).toJSON();
     expect(tree).toMatchSnapshot();
 });

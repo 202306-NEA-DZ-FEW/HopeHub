@@ -34,11 +34,15 @@ export default function Issues({ OnNext, OnPrevious }) {
 
     const handleCheckboxChange = (label, isChecked) => {
         if (!isChecked) {
-            setIssues([...issues, label]); // Add to the selected options
+            const newIssues = [...issues, label];
+            setIssues(newIssues);
+            setBookingInfos({ ...bookingInfos, issues: newIssues });
+            console.log("quality added", label, newIssues);
         } else {
-            setIssues(issues.filter((option) => option !== label)); // Remove from selected options
+            const newIssues = issues.filter((option) => option !== label);
+            setIssues(newIssues);
+            setBookingInfos({ ...bookingInfos, issues: newIssues });
         }
-        setBookingInfos({ ...bookingInfos, issues: issues });
     };
 
     return (

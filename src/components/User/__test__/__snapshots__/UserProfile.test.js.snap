@@ -1,0 +1,1107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="bg-NeutralWhite dark:bg-Dark_Accent ltr"
+>
+  <nav
+    style={
+      Object {
+        "position": "fixed",
+        "top": "0px",
+        "transition": "top 0.3s ease",
+        "width": "100%",
+        "zIndex": 1000,
+      }
+    }
+  >
+    <div
+      className="navbar sticky flex justify-between  h-8 top-0 z-10 dark:bg-NeutralBlack dark:backdrop-blur-lg dark:bg-opacity-30 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b-slate-400"
+      dir="ltr"
+    >
+      <div
+        className="navbar-content flex justify-between items-center w-full px-6"
+      >
+        <div
+          className="logo-container -ml-6 lg:px-6"
+        >
+          <a
+            href="/"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            <img
+              alt="Normal Logo"
+              data-nimg="1"
+              decoding="async"
+              height={60}
+              loading="lazy"
+              onError={[Function]}
+              onLoad={[Function]}
+              src="/_next/image?url=%2Fimg.jpg&w=256&q=75"
+              srcSet="/_next/image?url=%2Fimg.jpg&w=128&q=75 1x, /_next/image?url=%2Fimg.jpg&w=256&q=75 2x"
+              style={
+                Object {
+                  "color": "transparent",
+                }
+              }
+              width={120}
+            />
+          </a>
+        </div>
+        <div
+          className="navbar-menu flex"
+        >
+          <div
+            className="flex justify-end items-center"
+          >
+            <div
+              className="search-icon mr-2"
+              onClick={[Function]}
+            >
+              <svg
+                className="w-6 h-6 dark:fill-NeutralWhite"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 256 256"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                />
+              </svg>
+            </div>
+            <div
+              className="search-bar"
+            >
+              <input
+                className="input input-bordered input-sm w-full"
+                onChange={[Function]}
+                placeholder="Type here"
+                type="text"
+                value=""
+              />
+            </div>
+             
+          </div>
+          <div
+            className="navbar-center justify-end items-end mr-4 hidden lg:flex"
+          >
+            <ul
+              className="menu menu-horizontal"
+            >
+              <li
+                className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
+              >
+                <a
+                  href="/"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onTouchStart={[Function]}
+                >
+                  Home
+                </a>
+              </li>
+              <li
+                className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
+              >
+                <a
+                  href="/blogs"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onTouchStart={[Function]}
+                >
+                  Blogs
+                </a>
+              </li>
+              <li
+                className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
+              >
+                <a
+                  href="/about"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onTouchStart={[Function]}
+                >
+                  About
+                </a>
+              </li>
+              <li
+                className="text-Accent font-semibold font-poppins text-base tracking-wider text-NeutralBlack font-semibold dark:text-NeutralWhite"
+              >
+                <a
+                  href="/contact"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onTouchStart={[Function]}
+                >
+                  Contact
+                </a>
+              </li>
+              <div
+                className="dropdown dropdown-end dropdown-bottom"
+              >
+                <div
+                  className="relative flex items-center"
+                  tabIndex={0}
+                >
+                  <div
+                    className="relative w-10 h-10 ml-2  -mr-6 rounded-full cursor-pointer"
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="avatar "
+                    >
+                      <div
+                        className="w-10 rounded-full "
+                      >
+                        <img
+                          alt="John Doe"
+                          className="object-fill"
+                          data-nimg="1"
+                          decoding="async"
+                          height={50}
+                          loading="lazy"
+                          onError={[Function]}
+                          onLoad={[Function]}
+                          src="/_next/image?url=https%3A%2F%2Fexample.com%2Fprofile.jpg&w=128&q=75"
+                          srcSet="/_next/image?url=https%3A%2F%2Fexample.com%2Fprofile.jpg&w=64&q=75 1x, /_next/image?url=https%3A%2F%2Fexample.com%2Fprofile.jpg&w=128&q=75 2x"
+                          style={
+                            Object {
+                              "color": "transparent",
+                            }
+                          }
+                          width={50}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <span
+                    className="cursor-pointer ml-2"
+                    onClick={[Function]}
+                  />
+                  <div
+                    className="menu-sm-dropdown dropdown-hover"
+                  />
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div
+    className="pt-12"
+  >
+    <div
+      className="flex justify-between font-semibold font-poppins mx-auto flex-col md:flex-row mt-0 lg:mt-20 w-fit  "
+    >
+      <div
+        className="  flex mr-8  mt-8 lg:mt-16"
+      >
+        <div
+          className="mx-auto mb-8 bg-NeutralBlack dark:bg-NeutralWhite w-40 h-40 md:w-52 lg:h-52 md:h-52 rounded-full flex flex-col items-center justify-center relative overflow-visible"
+        >
+          <div
+            className="w-full h-full rounded-full overflow-hidden"
+          >
+            <img
+              alt="John Doe"
+              className="w-full h-full aspect-square object-cover  "
+              data-nimg="1"
+              decoding="async"
+              height={100}
+              loading="lazy"
+              onError={[Function]}
+              onLoad={[Function]}
+              src="/_next/image?url=https%3A%2F%2Fexample.com%2Fprofile.jpg&w=256&q=75"
+              srcSet="/_next/image?url=https%3A%2F%2Fexample.com%2Fprofile.jpg&w=128&q=75 1x, /_next/image?url=https%3A%2F%2Fexample.com%2Fprofile.jpg&w=256&q=75 2x"
+              style={
+                Object {
+                  "color": "transparent",
+                }
+              }
+              width={100}
+            />
+          </div>
+          <input
+            className="hidden"
+            id="userImg"
+            name="userImg"
+            onChange={[Function]}
+            type="file"
+          />
+          <label
+            className="absolute mt-44 lg:mt-56 cursor-pointer"
+            onClick={[Function]}
+          >
+            <svg
+              className="text-NeutralBlack dark:text-NeutralWhite  w-12 h-12 md:w-14 md:h-14 bg-NeutralWhite dark:bg-NeutralBlack rounded-full border border-NeutralBlack p-2"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 32 32"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 13 3 C 9.144531 3 6 6.144531 6 10 C 6 12.410156 7.230469 14.550781 9.09375 15.8125 C 5.527344 17.34375 3 20.882813 3 25 L 5 25 C 5 20.570313 8.570313 17 13 17 C 15.144531 17 17.0625 17.878906 18.5 19.25 L 13.78125 23.96875 L 13.71875 24.28125 L 13.03125 27.8125 L 12.71875 29.28125 L 14.1875 28.96875 L 17.71875 28.28125 L 18.03125 28.21875 L 28.125 18.125 C 29.285156 16.964844 29.285156 15.035156 28.125 13.875 C 27.542969 13.292969 26.769531 13 26 13 C 25.246094 13 24.484375 13.285156 23.90625 13.84375 L 19.9375 17.8125 C 19.066406 16.976563 18.035156 16.292969 16.90625 15.8125 C 18.769531 14.550781 20 12.410156 20 10 C 20 6.144531 16.855469 3 13 3 Z M 13 5 C 15.773438 5 18 7.226563 18 10 C 18 12.773438 15.773438 15 13 15 C 10.226563 15 8 12.773438 8 10 C 8 7.226563 10.226563 5 13 5 Z M 26 15 C 26.253906 15 26.519531 15.082031 26.71875 15.28125 C 27.117188 15.679688 27.117188 16.289063 26.71875 16.6875 L 17.03125 26.375 L 15.25 26.75 L 15.625 24.96875 L 25.3125 15.28125 C 25.511719 15.082031 25.746094 15 26 15 Z"
+              />
+            </svg>
+          </label>
+        </div>
+      </div>
+      <div
+        className="flex items-center justify-center text-NeutralBlack dark:text-NeutralWhite w-full md:w-2/3 lg:w-full"
+      >
+        <div
+          className=" w-full lg:w-full  mb-20"
+        >
+          <h2
+            className="py-5 px-6 text-[2.75rem] font-semibold"
+          >
+            Update profile
+          </h2>
+          <form
+            className="px-6 w-full text-NeutralBlack"
+            onSubmit={[Function]}
+          >
+            <div
+              className="mb-5 text-xl flex"
+            >
+              <label
+                className=" mt-4 w-3/4 text-NeutralBlack dark:text-NeutralWhite  "
+                htmlFor="name"
+              >
+                full name
+              </label>
+              <input
+                className="w-full text-NeutralBlack font-normal text-lg px-4 rounded-md border border-slate-300 bg-white py-3 outline-none "
+                id="name"
+                name="name"
+                onChange={[Function]}
+                type="text"
+                value="John Doe"
+              />
+            </div>
+            <div
+              className="mb-5 text-xl flex"
+            >
+              <label
+                className=" mt-4 w-3/4 text-NeutralBlack dark:text-NeutralWhite "
+                htmlFor="name"
+              >
+                education level
+              </label>
+              <select
+                className="w-full rounded-md lg:text-xl border  border-slate-300 bg-white font-normal text-NeutralBlack py-3 px-4 outline-none "
+                name="education"
+                onChange={[Function]}
+                value="Bachelor"
+              >
+                <option
+                  value=""
+                >
+                  select level
+                </option>
+                <option
+                  value="secondary"
+                >
+                  secondary
+                </option>
+                <option
+                  value="bachelor"
+                >
+                  bachelor
+                </option>
+                <option
+                  value="master"
+                >
+                  master
+                </option>
+              </select>
+            </div>
+            <div
+              className="mb-5 flex flex-col "
+            >
+              <div
+                className="w-full flex"
+              >
+                <label
+                  className=" mt-4 mb-3 w-3/4 text-xl text-NeutralBlack dark:text-NeutralWhite "
+                  htmlFor="name"
+                >
+                  hobbies
+                </label>
+                <input
+                  className="w-full rounded-md mb-5 lg:text-xl border font-normal px-4 border-slate-300 bg-white py-3 outline-none "
+                  id="Hobbies"
+                  name="Hobbies"
+                  onChange={[Function]}
+                  onKeyDown={[Function]}
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                className="flex flex-row flex-wrap"
+              >
+                <span
+                  className="w-fit p-1 mb-5 mr-2 border rounded-3xl border-gray-500  text-NeutralBlack dark:text-NeutralWhite group relative"
+                >
+                  Reading
+                   
+                  <button
+                    className="rounded-full w-4 opacity-0 group-hover:opacity-100 h-4 align-middle text-center absolute -right-1 -top-2  text-[10px] text-white bg-red-500"
+                    onClick={[Function]}
+                  >
+                    X
+                  </button>
+                </span>
+                <span
+                  className="w-fit p-1 mb-5 mr-2 border rounded-3xl border-gray-500  text-NeutralBlack dark:text-NeutralWhite group relative"
+                >
+                  Hiking
+                   
+                  <button
+                    className="rounded-full w-4 opacity-0 group-hover:opacity-100 h-4 align-middle text-center absolute -right-1 -top-2  text-[10px] text-white bg-red-500"
+                    onClick={[Function]}
+                  >
+                    X
+                  </button>
+                </span>
+              </div>
+            </div>
+            <div
+              className="mb-5 flex"
+            >
+              <label
+                className=" mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite"
+                htmlFor="Family Size"
+              >
+                family size
+              </label>
+              <div
+                className=" w-full "
+              >
+                <input
+                  className="rounded-md border font-normal lg:text-xl border-slate-300 bg-NeutralWhite py-3 outline-none text-center "
+                  id="Family Size"
+                  max={30}
+                  min={0}
+                  name="Family Size"
+                  onChange={[Function]}
+                  type="number"
+                  value={4}
+                />
+                <span
+                  className="mt-4 text-xl text-NeutralBlack dark:text-NeutralWhite"
+                >
+                   
+                  members
+                </span>
+              </div>
+            </div>
+            <div
+              className="mb-5 flex"
+            >
+              <label
+                className=" mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite"
+                htmlFor="gender"
+              >
+                gender
+              </label>
+              <select
+                className="w-full rounded-md border font-normal lg:text-xl px-4 border-slate-300 bg-white py-3 outline-none "
+                name="gender"
+                onChange={[Function]}
+                value="Male"
+              >
+                <option
+                  value="Male"
+                >
+                  male
+                </option>
+                <option
+                  value="Female"
+                >
+                  female
+                </option>
+              </select>
+            </div>
+            <div
+              className="mb-5 flex"
+            >
+              <label
+                className=" mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite"
+                htmlFor="Birth Date"
+              >
+                birth date
+              </label>
+              <input
+                className="w-full rounded-md border  font-normal lg:text-xl px-4 border-slate-300 bg-white py-3 outline-none "
+                name="Birth Date"
+                onChange={[Function]}
+                type="date"
+                value="1990-05-15"
+              />
+            </div>
+            <div
+              className="mb-5 flex"
+            >
+              <label
+                className=" mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite "
+                htmlFor="email"
+              >
+                email
+              </label>
+              <input
+                className="w-full rounded-md border font-normal lg:text-xl px-4 border-slate-300 bg-white py-3 outline-none "
+                id="email"
+                name="email"
+                onChange={[Function]}
+                type="email"
+                value="johndoe@example.com"
+              />
+            </div>
+            <div
+              className="mb-5 flex"
+            >
+              <label
+                className=" mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite "
+                htmlFor="phone"
+              >
+                phone number
+              </label>
+              <input
+                className="w-full rounded-md border lg:text-xl font-normal px-4 border-slate-300 bg-white py-3 outline-none "
+                id="phone"
+                name="phone"
+                onChange={[Function]}
+                type="phone"
+                value="123-456-7890"
+              />
+            </div>
+            <div
+              className="mb-5 flex"
+            >
+              <label
+                className=" mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite "
+                htmlFor="IDcard"
+              >
+                upload id
+              </label>
+              <input
+                className="w-full rounded-md border lg:text-xl font-normal px-4 border-slate-300 bg-white py-3 outline-none "
+                id="IDcard"
+                name="IDcard"
+                onChange={[Function]}
+                type="text"
+                value="ABC123XYZ"
+              />
+            </div>
+            <label
+              className="mb-5 pt-5 block text-4xl font-semibold text-NeutralBlack dark:text-NeutralWhite "
+            >
+              Change Password
+            </label>
+            <div
+              className="mb-5 flex"
+            >
+              <label
+                className=" mt-4 text-xl w-3/4  text-NeutralBlack dark:text-NeutralWhite"
+                htmlFor="password"
+              >
+                password
+              </label>
+              <div
+                className="w-full"
+              >
+                <input
+                  className="w-full rounded-md border lg:text-xl font-normal px-4 border-slate-300 bg-white py-3 outline-none "
+                  id="password"
+                  name="password"
+                  onChange={[Function]}
+                  type="password"
+                  value=""
+                />
+                <div
+                  className="relative  bottom-8 flex justify-end items-center mx-4 "
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    strokeWidth="0"
+                    style={
+                      Object {
+                        "color": undefined,
+                      }
+                    }
+                    viewBox="0 0 448 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div
+              className="mb-5 flex"
+            >
+              <label
+                className=" mt-4 text-xl w-3/4 text-NeutralBlack dark:text-NeutralWhite "
+                htmlFor="Confirm Password"
+              >
+                confirm password
+              </label>
+              <div
+                className="w-full"
+              >
+                <input
+                  className="w-full rounded-md border  font-normal px-4 border-slate-300 bg-white py-3 outline-none  "
+                  name="Confirm Password"
+                  onChange={[Function]}
+                  type="password"
+                  value=""
+                />
+                <div
+                  className="relative bottom-8 flex justify-end items-center mx-4 "
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    strokeWidth="0"
+                    style={
+                      Object {
+                        "color": undefined,
+                      }
+                    }
+                    viewBox="0 0 448 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div
+              className="flex gap-2"
+            >
+              <button
+                className="w-full h-11  px-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
+              >
+                save changes
+              </button>
+              <button
+                className="w-full h-11  px-2  rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
+                onClick={[Function]}
+              >
+                delete account
+              </button>
+              <button
+                className="w-full h-11  px-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
+              >
+                cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer
+    className="px-10 py-5 bg-Accent dark:bg-Dark_Primary text-base-content flex flex-col md:flex-row lg:flex-row md:justify-between items-center"
+  >
+    <div
+      className="flex flex-col"
+    >
+      <div
+        className="flex flex-row justify-between"
+      >
+        <header
+          className="font-bold mt-3 text-xl mb-[0.15rem] text-NeutralBlack dark:text-NeutralWhite"
+        >
+          Subscribe
+        </header>
+        <div
+          className="flex md:hidden flex-row justify-end pt-1"
+        >
+          <div
+            className=" px-7 pt-2"
+          >
+            <div
+              className="relative inline-block text-base rounded-md "
+            >
+              <button
+                aria-expanded={false}
+                aria-haspopup="listbox"
+                aria-label="Select Language"
+                className="text-NeutralBlack dark:text-NeutralWhite"
+                onClick={[Function]}
+              >
+                <svg
+                  className="inline-block w-5 h-5 mr-2"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 16 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"
+                  />
+                </svg>
+              </button>
+              <div
+                className="absolute bottom-10 w-32"
+                style={
+                  Object {
+                    "display": "none",
+                  }
+                }
+              >
+                <ul
+                  className="dropdown menu py-2 shadow-2xl bg-NeutralWhite dark:bg-Dark_Primary rounded-md "
+                >
+                  <li>
+                    <a
+                      className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite "
+                      href="/en"
+                      onClick={[Function]}
+                    >
+                      English
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
+                      href="/ar"
+                      onClick={[Function]}
+                    >
+                      العربية
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
+                      href="/fr"
+                      onClick={[Function]}
+                    >
+                      French
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+             
+          </div>
+          <div
+            className="bg-DarkWhite dark:bg-EnglishViolet dark:text-white dark:text-opacity-80"
+            onClick={[Function]}
+          >
+            <label
+              className="toggle"
+              htmlFor="switch"
+            >
+              <div
+                className="icon iconMoon checked"
+              >
+                <svg
+                  fill="currentColor"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div
+                className="icon iconSun"
+              >
+                <svg
+                  fill="currentColor"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"
+                  />
+                </svg>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <label
+        className="label"
+      >
+        <span
+          className="label-text mb-[0.5rem] text-NeutralBlack dark:text-NeutralWhite"
+        >
+          We promise to never spam you, or share your email.
+        </span>
+      </label>
+      <form
+        dir="ltr"
+      >
+        <fieldset
+          className="form-control   lg:w-80 mt-2"
+        >
+          <div
+            className="relative flex flex-row mr-[-2rem]"
+          >
+            <input
+              className="input input-bordered cursor-text border-[#718096] border-solid w-4/5 outline-none focus:outline-none"
+              onChange={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Enter your e-mail"
+              type="text"
+              value=""
+            />
+            <span
+              className="w-20 md:w-24 lg:w-20 -ml-2 cursor-pointer"
+              onClick={[Function]}
+            >
+              <svg
+                fill="none"
+                viewBox="0 0 100 100"
+                width="100%"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1H54C56.7614 1 59 3.23858 59 6V54C59 56.7614 56.7614 59 54 59H1V1Z"
+                  fill="#99B4DF"
+                  id="subscribe"
+                  stroke="#718096"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M29.6327 30.3673L25.0421 32.5401C24.5997 32.7861 24.053 32.7438 23.6538 32.4325L17.4862 27.7498C16.6922 27.1308 16.9078 25.8769 17.8628 25.5585L40.3377 18.0669C41.3237 17.7382 42.2618 18.6763 41.9331 19.6623L34.4415 42.1372C34.1231 43.0922 32.8691 43.3078 32.2502 42.5138L27.5675 36.3462C27.2562 35.947 27.2139 35.4003 27.4599 34.9579L29.6327 30.3673Z"
+                  fill="#1A1A1A"
+                />
+                 
+              </svg>
+            </span>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div
+      className=" items-center flex flex-col justify-center h-full text-NeutralBlack dark:text-NeutralWhite"
+    >
+      <div
+        className="flex flex-col md:flex-row items-center justify-between"
+      >
+        <nav
+          className="footer-title flex flex-wrap gap-4 justify-center  font-base my-4 text-NeutralBlack dark:text-NeutralWhite md:font-medium lg:font-medium "
+        >
+          <a
+            className="text-NeutralBlack dark:text-NeutralWhite"
+            href="/"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Home
+          </a>
+          <a
+            className=" "
+            href="../blogs"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Blogs
+          </a>
+          <a
+            className=" "
+            href="../about"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            About
+          </a>
+          <a
+            className=" "
+            href="../contact"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Contact
+          </a>
+          <a
+            className=" "
+            href="../careers"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Careers
+          </a>
+        </nav>
+      </div>
+      <div
+        className="flex flex-row"
+      >
+        <div
+          className="grid grid-flow-col gap-4 mt-5 md:mt-1 lg:mt-5 mx-4"
+        >
+          <a
+            href="https://twitter.com/recodedofficial?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            <svg
+              className="text-3xl"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://www.facebook.com/recodedofficial/?locale=fr_FR"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            <svg
+              className="text-3xl"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://www.instagram.com/recodedofficial/"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            <svg
+              className="text-3xl"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="flex flex-row md:flex-col mx-4"
+    >
+      <div
+        className="hidden md:flex flex-col md:flex-row justify-end pt-1"
+      >
+        <div
+          className=" px-7 pt-2"
+        >
+          <div
+            className="relative inline-block text-base rounded-md "
+          >
+            <button
+              aria-expanded={false}
+              aria-haspopup="listbox"
+              aria-label="Select Language"
+              className="text-NeutralBlack dark:text-NeutralWhite"
+              onClick={[Function]}
+            >
+              <svg
+                className="inline-block w-5 h-5 mr-2"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 16 16"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"
+                />
+              </svg>
+            </button>
+            <div
+              className="absolute bottom-10 w-32"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              <ul
+                className="dropdown menu py-2 shadow-2xl bg-NeutralWhite dark:bg-Dark_Primary rounded-md "
+              >
+                <li>
+                  <a
+                    className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite "
+                    href="/en"
+                    onClick={[Function]}
+                  >
+                    English
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
+                    href="/ar"
+                    onClick={[Function]}
+                  >
+                    العربية
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="block px-3 py-2 text-NeutralBlack dark:text-NeutralWhite"
+                    href="/fr"
+                    onClick={[Function]}
+                  >
+                    French
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+           
+        </div>
+        <div
+          className="bg-DarkWhite dark:bg-EnglishViolet dark:text-white dark:text-opacity-80"
+          onClick={[Function]}
+        >
+          <label
+            className="toggle"
+            htmlFor="switch"
+          >
+            <div
+              className="icon iconMoon checked"
+            >
+              <svg
+                fill="currentColor"
+                height="20"
+                viewBox="0 0 24 24"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </div>
+            <div
+              className="icon iconSun"
+            >
+              <svg
+                fill="currentColor"
+                height="20"
+                viewBox="0 0 24 24"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"
+                />
+              </svg>
+            </div>
+          </label>
+        </div>
+      </div>
+      <p
+        className="mt-6 text-center md:text-right text-NeutralBlack dark:text-NeutralWhite"
+      >
+         
+        © 
+        2023
+         
+        Hope Hub. All rights reserved.
+      </p>
+    </div>
+  </footer>
+</div>
+`;
