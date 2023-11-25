@@ -28,7 +28,6 @@ function NewsletterSignUp() {
             e.preventDefault();
             let blogContent = "";
             let sortedBlogs = [];
-            router.push(`/thanks?from=${pathname}`);
             try {
                 // Fetch blogs data
                 const blogSnapshot = await getDocs(collection(db, "blogs"));
@@ -93,24 +92,17 @@ function NewsletterSignUp() {
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.success) {
+                        router.push(`/thanks?from=${pathname}`);
                         const newsletterRef = doc(
                             db,
                             "newsletter",
                             "subscribe"
                         );
-                        const docKey = email.replace(/\./g, "*");
+                        const docKey = email.replace(/\./g, "_");
                         try {
                             updateDoc(newsletterRef, {
                                 [docKey]: email,
-                            }).then(() =>
-                                toast.success("thank you for subscribing", {
-                                    position: toast.POSITION.BOTTOM_CENTER,
-                                    autoClose: 2500,
-                                    transition: Slide,
-                                    className:
-                                        "dark:bg-slate-800 dark:text-NeutralWhite text-NeutralBlack bg-NeutralWhite",
-                                })
-                            );
+                            });
                         } catch (err) {
                             console.error(err);
                         }

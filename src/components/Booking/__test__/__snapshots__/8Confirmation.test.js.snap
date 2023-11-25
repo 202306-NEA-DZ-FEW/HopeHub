@@ -53,7 +53,7 @@ exports[`renders correctly 1`] = `
       >
         <a
           className="w-28 h-10 px-5 py-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500"
-          href="/calendar?userId=undefined"
+          href="/calendar?userid=111"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}

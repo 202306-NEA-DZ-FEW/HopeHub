@@ -61,10 +61,7 @@ const Tickets = ({ user }) => {
                             {t("Purchase")}
                         </button>
                         <div className='hidden'>
-                            <TotalTickets
-                                user={user}
-                                setTotalTickets={setTotalTickets}
-                            />
+                            <TotalTickets user={user} />
                         </div>
                     </div>
                 </div>

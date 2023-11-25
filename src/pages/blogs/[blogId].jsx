@@ -136,7 +136,7 @@ function BlogPage({ blog, blogs, user }) {
             <div
                 className={`${styles["blog-content"]} my-6 mx-8 text-base font-poppins text-NeutralBlack dark:text-NeutralWhite`}
                 dangerouslySetInnerHTML={{
-                    __html: blog.body
+                    __html: t(blog.body)
                         .replace(/<p[^>]*>/, "")
                         .split("</p>")
                         .slice(1)

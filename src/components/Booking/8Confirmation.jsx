@@ -46,7 +46,7 @@ export default function Confirmation({ user }) {
 
                     <div className=' self-center py-10 group '>
                         <Link
-                            href={`/calendar?userId=${auth.currentUser?.uid}`}
+                            href={`/calendar?userid=${user.uid}`}
                             className='w-28 h-10 px-5 py-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
                         >
                             {t("Back to Calendar")}
