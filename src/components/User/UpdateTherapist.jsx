@@ -127,7 +127,7 @@ export default function TherapistProfile({ user }) {
             <div className='flex justify-center px-8 md:px-0 mt-16 font-semibold font-poppins flex-col md:flex-row  max-w-screen  '>
                 <div className='pb-12 lg:py-16 lg:w-[60%] md:[60%] flex '>
                     <div className='bg-NeutralBlack dark:bg-NeutralWhite border-2 w-80 h-80 rounded-full mx-auto flex flex-col items-center justify-center relative overflow-visible'>
-                        {cloudinaryImage !== "" ? (
+                        {cloudinaryImage ? (
                             <div className='w-full h-full rounded-full overflow-hidden'>
                                 <Image
                                     src={cloudinaryImage}

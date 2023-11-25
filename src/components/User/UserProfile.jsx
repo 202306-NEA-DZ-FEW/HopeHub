@@ -10,7 +10,6 @@ import {
 import { doc, updateDoc } from "firebase/firestore";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
@@ -76,7 +75,7 @@ export default function UserProfile({ user }) {
 
                 setCloudinaryImage(response.data.secure_url);
                 setUser({ ...user, photoURL: response.data.secure_url });
-                handlePhotoChange(); // to update user infos in firebase
+                // handlePhotoChange();
             })
             .catch((error) => {
                 console.error("cloudinary err", error);
@@ -266,7 +265,7 @@ export default function UserProfile({ user }) {
             <div className='flex justify-between font-semibold font-poppins mx-auto flex-col md:flex-row mt-0 lg:mt-20 w-fit  '>
                 <div className='  flex mr-8  mt-8 lg:mt-16'>
                     <div className='mx-auto mb-8 bg-NeutralBlack dark:bg-NeutralWhite w-40 h-40 md:w-52 lg:h-52 md:h-52 rounded-full flex flex-col items-center justify-center relative overflow-visible'>
-                        {cloudinaryImage !== "" ? (
+                        {cloudinaryImage ? (
                             <div className='w-full h-full rounded-full overflow-hidden'>
                                 <Image
                                     src={cloudinaryImage}

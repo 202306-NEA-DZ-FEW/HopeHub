@@ -32,7 +32,7 @@ class MyDocument extends Document {
                         rel='stylesheet'
                     ></link>
 
-                    <link rel='icon' href='/assets/logoIcon.svg' />
+                    <link rel='icon' href='/assets/LogoIcon.svg' />
                 </Head>
                 <body className='bg-NeutralWhite dark:bg-Dark_Primary'>
                     <Main />
