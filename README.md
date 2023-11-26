@@ -24,9 +24,9 @@ Deployed website: https://hope-hub.vercel.app/
 -   Blogs Page: Central hub for mental health resources.
 -   User Profile Page: Personalized space for users to manage information and profiles for both patients/therapists.
 -   Booking Page: Enables users to schedule appointments with therapists, facilitating seamless interaction for users and therapists alike.
+-   Video calls: Enable users to join a secured call room and make real live video calls to take maximum profit from the therapy session.
 -   Payment Page (via Stripe): Secure payment gateway for users to handle financial transactions.
 -   Thank You Page: Displays a heartfelt "Thank You" message after every submission, expressing gratitude for the user's engagement.
-<!--
 
 ## Bonus Features
 
@@ -34,7 +34,7 @@ Deployed website: https://hope-hub.vercel.app/
 -   Payment with Stripe: Secure payment processing through Stripe for hassle-free transactions.
 -   Admin Dashboard: Centralized Admin Control and Monitoring for Streamlined Management
 -   Search Functionality: Efficient Search Capability for Quick Access to Relevant Information
--   Calendar: provide users with a visual representation of their scheduled activities. -->
+-   Calendar: provide users with a visual representation of their scheduled activities.
 
 ## Project Management
 
