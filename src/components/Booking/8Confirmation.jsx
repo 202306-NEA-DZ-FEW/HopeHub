@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
 
-import { auth } from "@/util/firebase";
 import TotalTickets from "../StripePayment/TotalTickets";
 export default function Confirmation({ user }) {
     const { t } = useTranslation("common");
@@ -24,7 +23,7 @@ export default function Confirmation({ user }) {
                         setTotalTickets={setTotalTickets}
                     />
                 </div>
-                <div className='font-poppins font-regular text-justify text-NeutralBlack dark:text-NeutralWhite text-base lg:text-lg leading-relaxed'>
+                <div className='font-poppins font-regular text-justify text-NeutralBlack dark:text-white text-base lg:text-lg leading-relaxed'>
                     {t(
                         " You will receive an email guiding you to book a date and time soon."
                     )}
@@ -46,7 +45,7 @@ export default function Confirmation({ user }) {
 
                     <div className=' self-center py-10 group '>
                         <Link
-                            href={`/calendar?userid=${user.uid}`}
+                            href={`/calendar?userid=${user?.uid}`}
                             className='w-28 h-10 px-5 py-2 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
                         >
                             {t("Back to Calendar")}

@@ -13,6 +13,7 @@ export default function CounseQualities({ OnNext, OnPrevious }) {
     const [counseQualities, setCounseQualities] = useState([]); // Use an array for multiple selections
     const [error, setError] = useState("");
     const { bookingInfos, setBookingInfos } = useAppcontext();
+    console.log("the booking infos in counsler qualities", bookingInfos);
     const toastifyError = (message) => {
         toast.error(message, {
             position: toast.POSITION.BOTTOM_CENTER,
@@ -35,14 +36,25 @@ export default function CounseQualities({ OnNext, OnPrevious }) {
 
     const handleCheckboxChange = (label, isChecked) => {
         if (!isChecked) {
-            setCounseQualities([...counseQualities, label]); // Add to the selected options
+            const newCounseQualities = [...counseQualities, label];
+            setCounseQualities(newCounseQualities);
+            setBookingInfos({
+                ...bookingInfos,
+                counseQualities: newCounseQualities,
+            });
+            console.log("quality added", label, newCounseQualities);
         } else {
-            setCounseQualities(
-                counseQualities.filter((option) => option !== label)
-            ); // Remove from selected options
+            const newCounseQualities = counseQualities.filter(
+                (option) => option !== label
+            );
+            setCounseQualities(newCounseQualities);
+            setBookingInfos({
+                ...bookingInfos,
+                counseQualities: newCounseQualities,
+            });
         }
-        setBookingInfos({ ...bookingInfos, counseQualities: counseQualities });
     };
+
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12'>
             <Head>

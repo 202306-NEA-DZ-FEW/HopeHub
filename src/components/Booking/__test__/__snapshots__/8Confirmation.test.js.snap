@@ -23,7 +23,7 @@ exports[`renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="font-poppins font-regular text-justify text-NeutralBlack dark:text-NeutralWhite text-base lg:text-lg leading-relaxed"
+      className="font-poppins font-regular text-justify text-NeutralBlack dark:text-white text-base lg:text-lg leading-relaxed"
     >
        You will receive an email guiding you to book a date and time soon.
     </div>

@@ -5,7 +5,6 @@ import {
     getDocs,
     setDoc,
     updateDoc,
-    where,
 } from "firebase/firestore";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
@@ -13,13 +12,12 @@ import React, { useState } from "react";
 
 import { useAppcontext } from "@/context/state";
 import { auth, db } from "@/util/firebase";
-import TotalTickets from "../StripePayment/TotalTickets";
 
 export default function Submission({ OnNext, OnPrevious, user }) {
     const { bookingInfos, setUser } = useAppcontext();
     const { t } = useTranslation("common");
     const [totalTickets, setTotalTickets] = useState(0); // Track total tickets
-
+    console.log("the booking infos ", bookingInfos);
     async function handleSubmit() {
         const appointment = {
             date: bookingInfos.date,

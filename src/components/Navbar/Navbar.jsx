@@ -520,6 +520,15 @@ export default function Navbar({ user }) {
                                                             <div className='avatar '>
                                                                 <div className='w-10 rounded-full '>
                                                                     <Image
+                                                                        alt={
+                                                                            user.name
+                                                                        }
+                                                                        width={
+                                                                            50
+                                                                        }
+                                                                        height={
+                                                                            50
+                                                                        }
                                                                         src={
                                                                             user.photoURL
                                                                         }
