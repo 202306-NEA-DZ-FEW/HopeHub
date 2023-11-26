@@ -4,7 +4,7 @@
 
 In a world where time and circumstances often become barriers to seeking help, HopeHub strives to break down these walls. Our mission is crystal clear - to provide a safe, careful, and friendly space. Here, users can seamlessly connect with professional therapists, schedule online appointments, engage in therapy sessions through chat, video, and voice calls, and partake in therapeutic activities.
 
-Deployed website: https://hope-hub-w4pj.vercel.app/
+Deployed website: https://hope-hub.vercel.app/
 
 ## Core Components
 
