@@ -145,7 +145,7 @@ function Signup({ isChecked, setChecked }) {
                         id='email'
                         name={email}
                         type='email'
-                        placeholder={t("footer_msg_3")}
+                        placeholder={t("Enter your e-mail")}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className='input input-bordered w-full bg-NeutralWhite text-NeutralBlack  h-16'

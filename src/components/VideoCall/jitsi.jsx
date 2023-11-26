@@ -1,3 +1,5 @@
+// this component is not being used in this version of Hope Hub
+
 import { JitsiMeeting } from "@jitsi/react-sdk";
 import React from "react";
 

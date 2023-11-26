@@ -51,7 +51,7 @@ function BlogsPage({ blogs, user }) {
     return (
         <Layout user={user}>
             <Head>
-                <title>Blogs</title>
+                <title>{t("Blogs")}</title>
             </Head>
             <h1 className='mx-6 mt-4 text-base md:mb-4 lg:mb-0 md:text-3xl md:mx-9 md:mt-16 font-poppins uppercase font-medium inline-block text-NeutralBlack dark:text-NeutralWhite'>
                 {t("Our Blog Posts")}

@@ -40,7 +40,7 @@ exports[`renders correctly 1`] = `
               >
                 <input
                   checked={false}
-                  className="appearance-none relative h-[1.30rem] w-[1.30rem] rounded-md border-[0.125rem] border-solid border-slate-500 checked:after:absolute    checked:after:-mt-px checked:after:ml-[0.35rem] checked:after:block checked:after:h-[1rem] checked:after:w-[0.375rem] checked:after:rotate-45    checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:bg-transparent    hover:cursor-pointer focus:before:opacity-[0] checked:bg-Accent dark:checked:border-Dark_Primary dark:checked:bg-Dark_Primary"
+                  className="appearance-none relative h-[1.30rem] w-[1.30rem] rounded-md border-[0.125rem] border-solid border-slate-500 checked:after:absolute  checked:after:-mt-px checked:after:ml-[0.35rem] checked:after:block checked:after:h-[1rem] checked:after:w-[0.375rem] checked:after:rotate-45  checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:bg-transparent  hover:cursor-pointer focus:before:opacity-[0] checked:bg-Accent dark:checked:border-Dark_Primary dark:checked:bg-Dark_Primary"
                   onChange={[Function]}
                   type="checkbox"
                 />
@@ -64,7 +64,7 @@ exports[`renders correctly 1`] = `
               >
                 <input
                   checked={false}
-                  className="appearance-none relative h-[1.30rem] w-[1.30rem] rounded-md border-[0.125rem] border-solid border-slate-500 checked:after:absolute    checked:after:-mt-px checked:after:ml-[0.35rem] checked:after:block checked:after:h-[1rem] checked:after:w-[0.375rem] checked:after:rotate-45    checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:bg-transparent    hover:cursor-pointer focus:before:opacity-[0] checked:bg-Accent dark:checked:border-Dark_Primary dark:checked:bg-Dark_Primary"
+                  className="appearance-none relative h-[1.30rem] w-[1.30rem] rounded-md border-[0.125rem] border-solid border-slate-500 checked:after:absolute  checked:after:-mt-px checked:after:ml-[0.35rem] checked:after:block checked:after:h-[1rem] checked:after:w-[0.375rem] checked:after:rotate-45  checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:bg-transparent  hover:cursor-pointer focus:before:opacity-[0] checked:bg-Accent dark:checked:border-Dark_Primary dark:checked:bg-Dark_Primary"
                   onChange={[Function]}
                   type="checkbox"
                 />
@@ -88,7 +88,7 @@ exports[`renders correctly 1`] = `
               >
                 <input
                   checked={false}
-                  className="appearance-none relative h-[1.30rem] w-[1.30rem] rounded-md border-[0.125rem] border-solid border-slate-500 checked:after:absolute    checked:after:-mt-px checked:after:ml-[0.35rem] checked:after:block checked:after:h-[1rem] checked:after:w-[0.375rem] checked:after:rotate-45    checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:bg-transparent    hover:cursor-pointer focus:before:opacity-[0] checked:bg-Accent dark:checked:border-Dark_Primary dark:checked:bg-Dark_Primary"
+                  className="appearance-none relative h-[1.30rem] w-[1.30rem] rounded-md border-[0.125rem] border-solid border-slate-500 checked:after:absolute  checked:after:-mt-px checked:after:ml-[0.35rem] checked:after:block checked:after:h-[1rem] checked:after:w-[0.375rem] checked:after:rotate-45  checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:bg-transparent  hover:cursor-pointer focus:before:opacity-[0] checked:bg-Accent dark:checked:border-Dark_Primary dark:checked:bg-Dark_Primary"
                   onChange={[Function]}
                   type="checkbox"
                 />
@@ -112,7 +112,7 @@ exports[`renders correctly 1`] = `
               >
                 <input
                   checked={false}
-                  className="appearance-none relative h-[1.30rem] w-[1.30rem] rounded-md border-[0.125rem] border-solid border-slate-500 checked:after:absolute    checked:after:-mt-px checked:after:ml-[0.35rem] checked:after:block checked:after:h-[1rem] checked:after:w-[0.375rem] checked:after:rotate-45    checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:bg-transparent    hover:cursor-pointer focus:before:opacity-[0] checked:bg-Accent dark:checked:border-Dark_Primary dark:checked:bg-Dark_Primary"
+                  className="appearance-none relative h-[1.30rem] w-[1.30rem] rounded-md border-[0.125rem] border-solid border-slate-500 checked:after:absolute  checked:after:-mt-px checked:after:ml-[0.35rem] checked:after:block checked:after:h-[1rem] checked:after:w-[0.375rem] checked:after:rotate-45  checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:bg-transparent  hover:cursor-pointer focus:before:opacity-[0] checked:bg-Accent dark:checked:border-Dark_Primary dark:checked:bg-Dark_Primary"
                   onChange={[Function]}
                   type="checkbox"
                 />
@@ -136,7 +136,7 @@ exports[`renders correctly 1`] = `
               >
                 <input
                   checked={false}
-                  className="appearance-none relative h-[1.30rem] w-[1.30rem] rounded-md border-[0.125rem] border-solid border-slate-500 checked:after:absolute    checked:after:-mt-px checked:after:ml-[0.35rem] checked:after:block checked:after:h-[1rem] checked:after:w-[0.375rem] checked:after:rotate-45    checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:bg-transparent    hover:cursor-pointer focus:before:opacity-[0] checked:bg-Accent dark:checked:border-Dark_Primary dark:checked:bg-Dark_Primary"
+                  className="appearance-none relative h-[1.30rem] w-[1.30rem] rounded-md border-[0.125rem] border-solid border-slate-500 checked:after:absolute  checked:after:-mt-px checked:after:ml-[0.35rem] checked:after:block checked:after:h-[1rem] checked:after:w-[0.375rem] checked:after:rotate-45  checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:bg-transparent  hover:cursor-pointer focus:before:opacity-[0] checked:bg-Accent dark:checked:border-Dark_Primary dark:checked:bg-Dark_Primary"
                   onChange={[Function]}
                   type="checkbox"
                 />
@@ -160,7 +160,7 @@ exports[`renders correctly 1`] = `
               >
                 <input
                   checked={false}
-                  className="appearance-none relative h-[1.30rem] w-[1.30rem] rounded-md border-[0.125rem] border-solid border-slate-500 checked:after:absolute    checked:after:-mt-px checked:after:ml-[0.35rem] checked:after:block checked:after:h-[1rem] checked:after:w-[0.375rem] checked:after:rotate-45    checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:bg-transparent    hover:cursor-pointer focus:before:opacity-[0] checked:bg-Accent dark:checked:border-Dark_Primary dark:checked:bg-Dark_Primary"
+                  className="appearance-none relative h-[1.30rem] w-[1.30rem] rounded-md border-[0.125rem] border-solid border-slate-500 checked:after:absolute  checked:after:-mt-px checked:after:ml-[0.35rem] checked:after:block checked:after:h-[1rem] checked:after:w-[0.375rem] checked:after:rotate-45  checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:bg-transparent  hover:cursor-pointer focus:before:opacity-[0] checked:bg-Accent dark:checked:border-Dark_Primary dark:checked:bg-Dark_Primary"
                   onChange={[Function]}
                   type="checkbox"
                 />
@@ -178,7 +178,7 @@ exports[`renders correctly 1`] = `
         className="flex justify-between "
       >
         <div
-          className=" pl-6 py-10 lg:py-10 lg:pl-11 group "
+          className=" px-6 py-10 lg:py-10 lg:px-11 group "
         >
           <button
             className="w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"
@@ -187,7 +187,7 @@ exports[`renders correctly 1`] = `
           </button>
         </div>
         <div
-          className=" pr-6 py-10 lg:py-10 lg:pr-11 group "
+          className=" px-6 py-10 lg:py-10 lg:px-11 group "
         >
           <button
             className="w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500"

@@ -41,7 +41,7 @@ export default function Description({ OnNext, OnPrevious }) {
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen min-h-screen'>
             <Head>
-                <title>Description</title>
+                <title>{t("Description")}</title>
             </Head>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent flex flex-col '>
                 <div className='mb-3 pt-6 font-poppins font-bold text-NeutralBlack dark:text-NeutralWhite  capitalize text-2xl lg:text-4xl leading-normal'>

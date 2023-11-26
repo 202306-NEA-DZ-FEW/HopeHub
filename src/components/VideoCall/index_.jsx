@@ -1,3 +1,5 @@
+// this code is not being used in this version of Hope Hub
+
 import { JaaSMeeting } from "@jitsi/react-sdk";
 import { randomUUID } from "crypto";
 import fs from "fs";

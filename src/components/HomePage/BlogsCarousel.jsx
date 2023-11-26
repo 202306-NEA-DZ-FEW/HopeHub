@@ -98,10 +98,10 @@ const BlogsCarousel = ({ blogs }) => {
                                 />
                                 <div className='absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 lg:px-4'>
                                     <h1 className='text-Primary dark:text-Dark_NeutralWhite text-base text-center md:text-2xl font-normal font-poppins'>
-                                        {blog.title}
+                                        {t(blog.title)}
                                     </h1>
                                     <h1 className='text-white text-xs text-center md:text-sm font-normal font-poppins'>
-                                        {blog.subTitle}
+                                        {t(blog.subTitle)}
                                     </h1>
                                 </div>
                             </div>
