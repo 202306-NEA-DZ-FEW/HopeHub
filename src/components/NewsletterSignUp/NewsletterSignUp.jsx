@@ -52,7 +52,7 @@ function NewsletterSignUp() {
                     </div>
             <div style='margin-left: 20px; width: 50%;'>
             <h2 style='font-size: 16px; font-weight: bold; color: #222; margin: 0;'>
-            <a href='https://hope-hub-w4pj.vercel.app/blogs/${blog.id}' target='_blank' style='text-decoration: none; color: #222;'>${blog.title}</a>
+            <a href='https://hopehub.vercel.app/blogs/${blog.id}' target='_blank' style='text-decoration: none; color: #222;'>${blog.title}</a>
              </h2>
                 <p style='font-size: 12px; color: #888;'>
                     Written by ${blog.author}
