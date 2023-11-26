@@ -34,7 +34,11 @@ function BookingPage({ dates, user }) {
         switch (step) {
             case 1:
                 return (
-                    <TypeOfCounseling OnNext={OnNext} OnPrevious={OnPrevious} />
+                    <TypeOfCounseling
+                        user={user}
+                        OnNext={OnNext}
+                        OnPrevious={OnPrevious}
+                    />
                 );
             case 2:
                 return (

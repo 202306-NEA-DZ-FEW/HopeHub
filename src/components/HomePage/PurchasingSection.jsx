@@ -32,7 +32,6 @@ const PurchasingSection = ({ user }) => {
                 window.location.replace("/Auth");
                 return;
             } else if (user.isTherapist == true) {
-                console.log("helooooooooo");
                 toast.error("Can't purchase tickets as a therapist!", {
                     position: toast.POSITION.BOTTOM_CENTER,
                     autoClose: 2500,

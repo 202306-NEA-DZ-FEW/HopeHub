@@ -1,3 +1,5 @@
+// This component is not being used in this version Hope Hub
+
 import AgoraRTC from "agora-rtc-sdk-ng";
 import React, { useRef, useState } from "react";
 

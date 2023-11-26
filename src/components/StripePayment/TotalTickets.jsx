@@ -53,9 +53,19 @@ const TotalTickets = ({ user, setTotalTickets }) => {
                         });
                     }
 
-                    const appointmentsCount = user.appointments
-                        ? user.appointments.length
-                        : 0;
+                    let appointmentsCount = 0;
+
+                    if (
+                        user &&
+                        user.appointments &&
+                        Array.isArray(user.appointments)
+                    ) {
+                        appointmentsCount = user.appointments.length;
+                        // Use appointmentsCount as needed
+                    } else {
+                        appointmentsCount = 0;
+                        // Handle the case where appointments are not properly defined
+                    }
 
                     const remainingTickets = totalTickets - appointmentsCount;
 

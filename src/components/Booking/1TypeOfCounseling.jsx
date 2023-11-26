@@ -5,12 +5,14 @@ import React from "react";
 import { Slide, toast } from "react-toastify";
 
 import { useAppcontext } from "@/context/state";
+import TotalTickets from "../StripePayment/TotalTickets";
 
-export default function TypeOfCounseling({ OnNext }) {
+export default function TypeOfCounseling({ OnNext, user }) {
     const { t } = useTranslation("common");
     const [typesOfCounceling, setTypesOfCounceling] = useState(""); // You can initialize it with a default value if needed
 
     const { bookingInfos, setBookingInfos } = useAppcontext();
+    const [totalTickets, setTotalTickets] = useState(); // Track total tickets
 
     const SelectCouncelingType = (text) => {
         setTypesOfCounceling(text);
@@ -39,7 +41,7 @@ export default function TypeOfCounseling({ OnNext }) {
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12'>
             <Head>
-                <title>Type Of Counseling</title>
+                <title>{t("Type Of Counseling")}</title>
             </Head>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent mb-16'>
                 <div className='mb-3 pt-6 font-poppins font-semibold tracking-wider text-NeutralBlack dark:text-NeutralWhite capitalize text-2xl lg:text-4xl leading-normal'>
@@ -57,7 +59,7 @@ export default function TypeOfCounseling({ OnNext }) {
 
                     <div className='px-3 mx-5 mt-1 lg:px-6  group '>
                         <h3
-                            className={`rounded-md py-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] pl-2 lg:px-5 lg:py-5 cursor-pointer text-NeutralBlack dark:text-NeutralWhite group-hover:text-NeutralWhite dark:hover:bg-[#3E4E68] group-hover:bg-Accent group-hover:scale-105 duration-300 text-lg lg:text-xl font-regular font-poppins capitalize
+                            className={`rounded-md py-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] px-2 lg:px-5 lg:py-5 cursor-pointer text-NeutralBlack dark:text-NeutralWhite group-hover:text-NeutralWhite dark:hover:bg-[#3E4E68] group-hover:bg-Accent group-hover:scale-105 duration-300 text-lg lg:text-xl font-regular font-poppins capitalize
                             ${
                                 typesOfCounceling === "Individual counseling"
                                     ? "bg-Accent dark:bg-[#3E4E68]"
@@ -72,7 +74,7 @@ export default function TypeOfCounseling({ OnNext }) {
                     </div>
                     <div className='px-3 mx-5 lg:px-6 mt-1 lg:mt-2 group'>
                         <h3
-                            className={`rounded-md py-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] pl-2 lg:pl-5 lg:py-5 cursor-pointer text-NeutralBlack dark:text-NeutralWhite group-hover:text-NeutralWhite group-hover:bg-Accent dark:hover:bg-[#3E4E68] group-hover:scale-105 duration-300 text-lg lg:text-xl font-regular font-poppins capitalize
+                            className={`rounded-md py-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] px-2 lg:px-5 lg:py-5 cursor-pointer text-NeutralBlack dark:text-NeutralWhite group-hover:text-NeutralWhite group-hover:bg-Accent dark:hover:bg-[#3E4E68] group-hover:scale-105 duration-300 text-lg lg:text-xl font-regular font-poppins capitalize
                                 ${
                                     typesOfCounceling ===
                                     "Teen counseling (for my child)"
@@ -88,13 +90,19 @@ export default function TypeOfCounseling({ OnNext }) {
                             {t("Teen counseling (for my child)")}
                         </h3>
                     </div>
-                    <div className='self-end pr-6 py-10 lg:py-10 lg:pr-11 group '>
+                    <div className='self-end px-6 py-10 lg:py-10 lg:px-11 group '>
                         <button
                             className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                             onClick={handleNextClick}
                         >
                             {t("Next")}
                         </button>
+                    </div>
+                    <div className='hidden'>
+                        <TotalTickets
+                            user={user}
+                            setTotalTickets={setTotalTickets}
+                        />
                     </div>
                 </div>
             </div>

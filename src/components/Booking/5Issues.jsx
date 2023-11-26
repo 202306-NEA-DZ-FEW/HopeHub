@@ -44,7 +44,7 @@ export default function Issues({ OnNext, OnPrevious }) {
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12'>
             <Head>
-                <title>Issues</title>
+                <title>{t("Issues")}</title>
             </Head>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent'>
                 <div className='mb-3 pt-6 font-ogg font-bold text-NeutralBlack dark:text-NeutralWhite uppercase text-2xl lg:text-4xl leading-normal'>
@@ -142,7 +142,7 @@ export default function Issues({ OnNext, OnPrevious }) {
                         </div>
                     </div>
                     <div className='flex justify-between '>
-                        <div className=' pl-6 py-10 lg:py-10 lg:pl-11 group '>
+                        <div className=' px-6 py-10 lg:py-10 lg:px-11 group '>
                             <button
                                 className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                 onClick={OnPrevious}
@@ -150,7 +150,7 @@ export default function Issues({ OnNext, OnPrevious }) {
                                 {t("Previous")}
                             </button>
                         </div>
-                        <div className=' pr-6 py-10 lg:py-10 lg:pr-11 group '>
+                        <div className=' px-6 py-10 lg:py-10 lg:px-11 group '>
                             <button
                                 className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack dark:text-NeutralWhite dark:bg-Dark_Primary dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                                 onClick={handleNextClick}
