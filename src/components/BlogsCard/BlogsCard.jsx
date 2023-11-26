@@ -24,17 +24,17 @@ const BlogCard = ({ image, title, subtitle, author, blogId, body }) => {
             <div className='flex flex-col my-2 lg:px-6 text-poppins'>
                 <Link href={`/blogs/${blogId}`}>
                     <h2 className='text-sm lg:text-xl font-semibold text-NeutralBlack dark:text-NeutralWhite'>
-                        {title}
+                        {t(title)}
                     </h2>
                 </Link>
                 <p className='text-gray-500 dark:text-gray-400 font-light text-xs lg:text-sm'>
-                    {t("Written by")} {author}
+                    {t("Written by")} {t(author)}
                 </p>
                 <p
                     dangerouslySetInnerHTML={{
                         __html:
                             body && typeof body === "string"
-                                ? body.split("</p")[0]
+                                ? t(body).split("</p")[0]
                                 : "",
                     }}
                     className='text-NeutralBlack dark:text-NeutralWhite font-light text-xs lg:text-base py-2'

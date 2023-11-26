@@ -13,10 +13,13 @@ import EventModal from "@/components/CalendarEvents/EventModal";
 
 import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
+import TotalTickets from "@/components/StripePayment/TotalTickets";
 
 function Calendar({ appointments, user }) {
     const router = useRouter();
     const { t } = useTranslation("common");
+    const [totalTickets, setTotalTickets] = useState(); // Track total tickets
+
     // const [filteredAppointments, setFilteredAppointments] = useState([]);
 
     const [modalOpen, setModalOpen] = useState(false);
@@ -123,6 +126,9 @@ function Calendar({ appointments, user }) {
                     }
                     nowIndicator={true}
                 />
+            </div>
+            <div className='hidden'>
+                <TotalTickets user={user} setTotalTickets={setTotalTickets} />
             </div>
         </Layout>
     );

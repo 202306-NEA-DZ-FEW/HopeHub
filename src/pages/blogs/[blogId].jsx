@@ -51,10 +51,12 @@ function BlogPage({ blog, blogs, user }) {
         month: "long",
         day: "numeric",
     };
-    const serverFormattedDate = format(new Date(blog.date), "MMMM dd, yyyy");
+    const serverFormattedDate = format(new Date(blog.date), "dd/MM/yyyy");
+
+    const newText = blog.body.replace(/"/g, '\\"');
 
     // Render first paragraph as a preview
-    const firstParagraph = blog.body.split("</p")[0]; // Get the first paragraph
+    const firstParagraph = t(blog.body).split("</p")[0]; // Get the first paragraph
     const renderFirstParagraph = firstParagraph ? (
         <h1
             className='my-2 mx-4 md:mx-20 italic md:text-base text-center font-poppins text-NeutralBlack dark:text-NeutralWhite md:block'
@@ -101,7 +103,7 @@ function BlogPage({ blog, blogs, user }) {
             <div className='relative flex items-center justify-center'>
                 <div
                     className='-mt-16 md:-mt-36 '
-                    style={{ height: "650px", overflow: "hidden" }}
+                    style={{ height: "700px", overflow: "hidden" }}
                 >
                     <img
                         src={blog.imageURL || placeholderImage}
@@ -114,27 +116,27 @@ function BlogPage({ blog, blogs, user }) {
                     />
                 </div>
                 <div
-                    className={`absolute w-full h-full top-0 left-0 ${
+                    className={`absolute w-full h-full bottom-96 sm:-top-32 lg:top-5 left-0 ${
                         darkMode ? "gradient-dark" : "gradient-light"
                     }`}
                 ></div>
-                <div className='absolute bottom-0 md:bottom-0 flex flex-col text-NeutralBlack dark:text-NeutralWhite items-center '>
+                <div className='absolute bottom-28 md:bottom-0 flex flex-col text-NeutralBlack dark:text-NeutralWhite items-center '>
                     <h1 className='my-1 mx-auto text-lg md:text-4xl font-poppins text-NeutralBlack dark:text-NeutralWhite font-semibold'>
-                        {blog.title}
+                        {t(blog.title)}
                     </h1>
                     {renderFirstParagraph}
                     <div className='my-1 font-poppins text-NeutralBlack dark:text-NeutralWhite items-center mx-auto flex flex-col text-xs md:text-base'>
                         <h1>
-                            {t("Written by")} {blog.author}
+                            {t("Written by")} {t(blog.author)}
                         </h1>
                         <h1 className='font-extralight'>
-                            {serverFormattedDate}.
+                            {serverFormattedDate}
                         </h1>
                     </div>
                 </div>
             </div>
             <div
-                className={`${styles["blog-content"]} my-6 mx-8 text-base font-poppins text-NeutralBlack dark:text-NeutralWhite`}
+                className={`${styles["blog-content"]} -mt-28 md:-mt-0 my-12 md:my-6 mx-8 text-base font-poppins text-NeutralBlack dark:text-NeutralWhite`}
                 dangerouslySetInnerHTML={{
                     __html: t(blog.body)
                         .replace(/<p[^>]*>/, "")

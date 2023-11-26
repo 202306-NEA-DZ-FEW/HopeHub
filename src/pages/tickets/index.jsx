@@ -61,7 +61,10 @@ const Tickets = ({ user }) => {
                             {t("Purchase")}
                         </button>
                         <div className='hidden'>
-                            <TotalTickets user={user} />
+                            <TotalTickets
+                                user={user}
+                                setTotalTickets={setTotalTickets}
+                            />{" "}
                         </div>
                     </div>
                 </div>
@@ -84,13 +87,17 @@ const Tickets = ({ user }) => {
                     {cards}
                 </div>
             </div>
-            <div className='border-t-2 border-Accent pb-4 text-NeutralBlack dark:text-NeutralWhite'></div>
             <div className='pb-16'>
-                <h2 className='font-poppins text-2xl text-NeutralBlack dark:text-NeutralWhite px-10 pt-8 '>
-                    {" "}
-                    {t("You currently have")} {user.totalTickets} {t("tickets")}
-                    .
-                </h2>
+                {user.totalTickets == 0 || user.totalTickets == undefined ? (
+                    <h2 className='font-poppins text-2xl text-NeutralBlack dark:text-NeutralWhite px-10 pt-8 '>
+                        {t("You currently have")} 0 {t("tickets")}.
+                    </h2>
+                ) : (
+                    <h2 className='font-poppins text-2xl text-NeutralBlack dark:text-NeutralWhite px-10 pt-8 '>
+                        {t("You currently have")} {user.totalTickets}{" "}
+                        {t("tickets")}.
+                    </h2>
+                )}
                 <h2 className='font-poppins  text-NeutralBlack dark:text-NeutralWhite px-10 py-4'>
                     {t(
                         "Every appointment costs 1 ticket, book an appointement now."

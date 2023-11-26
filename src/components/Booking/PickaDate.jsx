@@ -60,7 +60,7 @@ function PickaDate({ OnPrevious, OnNext, dates = [] }) {
     return (
         <div className='bg-NeutralWhite dark:bg-Dark_Accent min-w-screen mb-12'>
             <Head>
-                <title>Pick a Date</title>
+                <title>{t("Pick a Date")}</title>
             </Head>
             <div className='w-full h-full px-8 lg:px-20 bg-NeutralWhite dark:bg-Dark_Accent '>
                 <div className='mb-3 pt-12 font-poppins font-semibold tracking-wider text-NeutralBlack dark:text-NeutralWhite capitalize text-2xl lg:text-4xl leading-normal'>
@@ -92,7 +92,7 @@ function PickaDate({ OnPrevious, OnNext, dates = [] }) {
                             className='select maxW select-bordered w-full lg:w-32 md:w-1/2  border border-gray-300 outline-none '
                         >
                             <option value='' disabled>
-                                select time
+                                {t("select time")}
                             </option>
                             {hours.map((h) => (
                                 <option
@@ -117,7 +117,7 @@ function PickaDate({ OnPrevious, OnNext, dates = [] }) {
                         </select>
                     </div>
                     <div className='flex justify-between '>
-                        <div className=' pl-6 py-10 lg:py-10 lg:pl-11 group '>
+                        <div className=' px-6 py-10 lg:py-10 lg:px-11 group '>
                             <button
                                 className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
                                 onClick={OnPrevious}
@@ -125,7 +125,7 @@ function PickaDate({ OnPrevious, OnNext, dates = [] }) {
                                 {t("Previous")}
                             </button>
                         </div>
-                        <div className='self-end pr-6 py-10 lg:py-10 lg:pr-11 group '>
+                        <div className='self-end px-6 py-10 lg:py-10 lg:px-11 group '>
                             <button
                                 className='w-28 h-10 rounded-md text-base font-poppins font-regular bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
                                 onClick={handleNext}
