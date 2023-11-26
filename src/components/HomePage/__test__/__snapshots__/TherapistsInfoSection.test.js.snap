@@ -36,7 +36,7 @@ exports[`renders correctly 1`] = `
     Tap to the world's largest network of licensed, accredited, and experienced therapists who can help you with a range of issues including depression, anxiety, relationships, trauma, grief, and more. with our therapists, you get the same professionalism and quality you would expect from an in-office therapist, but with the ability to communicate whenever and however you want.
   </p>
   <div
-    className="inset-0 flex items-end justify-end mx-6 md:mx-10 mb-6 sm:mx-20 lg:mx-10"
+    className="inset-0 flex items-end justify-end my-2 md:my-8 mx-6 md:mx-10 mb-6 sm:mx-20 lg:mx-10"
   >
     <div>
       <button
@@ -44,7 +44,7 @@ exports[`renders correctly 1`] = `
         data-testid="booking-button"
       >
         <a
-          href="/booking?userid=undefined"
+          href="/Auth"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}

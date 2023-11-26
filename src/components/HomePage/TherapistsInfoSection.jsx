@@ -7,10 +7,9 @@ import { useAppcontext } from "@/context/state";
 import BookingButton from "../BookingButton/BookingButton";
 import therapists from "../../../public/assets/therapists.svg";
 
-export default function TherapistsInfoSection() {
+export default function TherapistsInfoSection({ user }) {
     //Function used for translations
     const { t } = useTranslation("common");
-    const { user } = useAppcontext();
 
     //Displaying the therapists info section
     return (
@@ -37,14 +36,22 @@ export default function TherapistsInfoSection() {
             </p>
 
             {/* Adding the button for booking an appointment */}
-            <div className='inset-0 flex items-end justify-end mx-6 md:mx-10 mb-6 sm:mx-20 lg:mx-10'>
+            <div className='inset-0 flex items-end justify-end my-2 md:my-8 mx-6 md:mx-10 mb-6 sm:mx-20 lg:mx-10'>
                 <BookingButton
                     destination={
-                        user !== undefined
-                            ? `/booking?userid=${user.uid}`
-                            : "/Auth"
+                        user !== undefined && user.isTherapist
+                            ? `/call?userid=${user.uid}` // If user is a therapist, go to call page
+                            : user !== undefined
+                            ? `/booking?userid=${user.uid}` // If user is a patient, go to booking page
+                            : "/Auth" // If user is not identified, redirect to auth
                     }
-                    buttonText='Book An Appointment'
+                    buttonText={
+                        user !== undefined && user.isTherapist
+                            ? "Join Call" // If user is a therapist, show 'Join Call'
+                            : user !== undefined
+                            ? "Book An Appointment" // If user is a patient, show 'Book An Appointment'
+                            : "Book An Appointment"
+                    }
                 />
             </div>
         </div>

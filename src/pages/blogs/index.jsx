@@ -93,11 +93,19 @@ function BlogsPage({ blogs, user }) {
                             <div className='flex justify-center'>
                                 <BookingButton
                                     destination={
-                                        user !== undefined
-                                            ? `/booking?userid=${user.uid}`
-                                            : "/Auth"
+                                        user !== undefined && user.isTherapist
+                                            ? `/call?userid=${user.uid}` // If user is a therapist, go to call page
+                                            : user !== undefined
+                                            ? `/booking?userid=${user.uid}` // If user is a patient, go to booking page
+                                            : "/Auth" // If user is not identified, redirect to auth
                                     }
-                                    buttonText='Book An Appointment'
+                                    buttonText={
+                                        user !== undefined && user.isTherapist
+                                            ? "Join Call" // If user is a therapist, show 'Join Call'
+                                            : user !== undefined
+                                            ? "Book An Appointment" // If user is a patient, show 'Book An Appointment'
+                                            : "Book An Appointment"
+                                    }
                                 />
                             </div>
                         </div>

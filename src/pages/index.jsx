@@ -19,12 +19,12 @@ import { db } from "@/util/firebase";
 const AnimatedSection = ({ children }) => {
     const [ref, inView] = useInView({
         triggerOnce: true,
-        threshold: 0.5, // Adjust as needed
+        threshold: 0.3,
     });
 
     const animation = useSpring({
         opacity: inView ? 1 : 0,
-        transform: inView ? "translateY(0px)" : "translateY(20px)",
+        transform: inView ? "translateY(0px)" : "translateY(10px)",
         width: "100%",
     });
 
@@ -46,7 +46,7 @@ const HomePage = ({ blogs, user }) => {
             <div className='flex flex-col items-center justify-start dark:bg-Dark_Primary'>
                 <Banner user={user} />
                 <AnimatedSection>
-                    <TherapistsInfoSection />
+                    <TherapistsInfoSection user={user} />
                 </AnimatedSection>
                 <AnimatedSection>
                     <ConnectionSection />

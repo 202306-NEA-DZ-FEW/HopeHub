@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { useAppcontext } from "@/context/state";
 import { auth } from "@/util/firebase";
 
-import { CheckoutURL } from "../../components/StripePayment/CheckoutURL";
+import { CheckoutURL } from "../../util/CheckoutURL";
 import TotalTickets from "../StripePayment/TotalTickets";
 import { Slide, toast } from "react-toastify";
 

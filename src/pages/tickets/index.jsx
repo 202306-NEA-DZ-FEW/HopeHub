@@ -11,7 +11,7 @@ import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
 import { auth } from "@/util/firebase";
 
-import { CheckoutURL } from "../../components/StripePayment/CheckoutURL";
+import { CheckoutURL } from "../../util/CheckoutURL";
 import BookingButton from "@/components/BookingButton/BookingButton";
 
 const Tickets = ({ user }) => {
