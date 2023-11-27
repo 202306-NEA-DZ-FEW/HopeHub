@@ -8,7 +8,6 @@ import React from "react";
 import { useState } from "react";
 
 import { db } from "@/util/firebase";
-import { Slide, toast } from "react-toastify";
 function NewsletterSignUp() {
     const { t } = useTranslation("common");
     const [email, setEmail] = useState("");

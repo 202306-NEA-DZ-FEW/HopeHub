@@ -51,7 +51,7 @@ export default function TherapistProfile({ user }) {
                 birthDate: birthDate,
                 email: email,
                 phoneNumber: phone,
-                photoURL: cloudinaryImage,
+                photoURL: cloudinaryImage ? cloudinaryImage : "",
                 bio: bio,
             });
             await updateUserProfile();
@@ -81,15 +81,14 @@ export default function TherapistProfile({ user }) {
     async function updateUserProfile() {
         try {
             if (fullName !== auth.currentUser.displayName) handleNameChange();
-            if (cloudinaryImage !== auth.currentUser.photoURL)
-                handlePhotoChange();
+            if (cloudinaryImage !== user.photoURL) handlePhotoChange();
             await updateDoc(doc(db, "users", user.uid), {
                 ...user,
                 name: fullName,
                 birthDate: birthDate,
                 email: email,
                 phoneNumber: phone,
-                photoURL: cloudinaryImage,
+                photoURL: cloudinaryImage ? cloudinaryImage : "",
                 bio: bio,
             });
             console.log("saved for user", auth.currentUser);

@@ -38,7 +38,7 @@ function Thanks({ user }) {
         default:
             background = "/assets/thank-bg-2.svg";
             text = t(
-                "Thank you for choosing our online therapy services! We're here to support you on your journey to well-being."
+                "Thank you for choosing our online therapy services! We're here to support you on your journey."
             );
     }
 
