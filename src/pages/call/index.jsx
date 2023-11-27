@@ -29,9 +29,9 @@ function CallRoom({ user }) {
             <main className={` -mt-20 ${callFinished ? "" : "p-12 mt-1"}`}>
                 {callFinished ? (
                     <div
-                        className='flex items-center justify-center h-screen w-full bg-NeutralWhite dark:bg-Dark_Accent bg-cover bg-center bg-no-repeat'
+                        className='flex items-center justify-center h-screen py-8 w-full bg-NeutralWhite dark:bg-Dark_Accent bg-cover bg-center bg-no-repeat'
                         style={{
-                            backgroundImage: `url('/assets/login-bg.svg')`, // Replace with the actual path to your image
+                            backgroundImage: `url('/assets/login-bg.svg')`,
                         }}
                     >
                         <div className='text-center flex flex-col items-center justify-center gap-14 w-3/4 h-3/4 p-8  rounded-xl bg-[rgba(255,255,255,60%)]'>

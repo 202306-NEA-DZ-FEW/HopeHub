@@ -21,7 +21,7 @@ export default function Layout({ children, user }) {
 
     return (
         <div
-            className={`bg-NeutralWhite dark:bg-Dark_Accent ${textDirectionClass}`}
+            className={` bg-NeutralWhite dark:bg-Dark_Accent ${textDirectionClass}`}
         >
             <Navbar user={user} />
             <div className='pt-12'>{children}</div>

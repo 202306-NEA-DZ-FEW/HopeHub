@@ -197,22 +197,37 @@ export default Therapist;
 
 export async function getServerSideProps({ locale, req }) {
     // Check if there is a logged-in user
-    // const cookies = parse(req.headers.cookie || "");
-    // const userId = cookies.loggedInUser;
-
-    // if (!userId || userId == "undefined") {
-    //     return { redirect: { destination: "/Auth", permanent: false } };
-    // }
-
+    const cookies = parse(req.headers.cookie || "");
+    const userId = cookies.loggedInUser;
     try {
-        // User is not logged in
-        return {
-            props: {
-                ...(await serverSideTranslations(locale, ["common"])),
-            },
-        };
+        if (userId) {
+            // Fetch user data from Firestore based on user ID
+            const userDoc = await getDoc(doc(db, "users", userId));
+
+            if (!userDoc.exists()) {
+                // Handle the case when the user with the specified ID is not found
+                return { notFound: true };
+            }
+
+            // Extract user data from the document
+            const user = userDoc.data();
+
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                    user,
+                },
+            };
+        } else {
+            // User is not logged in
+            return {
+                props: {
+                    ...(await serverSideTranslations(locale, ["common"])),
+                },
+            };
+        }
     } catch (error) {
-        console.error("Error fetching user data:", error);
-        return { props: { error: "Error fetching user data" } };
+        console.error("Error fetching data:", error);
+        return { props: { error: "Error fetching data" } };
     }
 }

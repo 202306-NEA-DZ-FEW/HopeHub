@@ -34,7 +34,7 @@ class MyDocument extends Document {
 
                     <link rel='icon' href='/assets/LogoIcon.svg' />
                 </Head>
-                <body className='bg-NeutralWhite dark:bg-Dark_Primary'>
+                <body className=' bg-NeutralWhite dark:bg-Dark_Primary'>
                     <Main />
                     <NextScript />
                 </body>

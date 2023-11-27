@@ -81,23 +81,28 @@ export default function Requirement({ user }) {
                             {"\u25CF "}
                             {t("Currently residing in the US")}
                         </li>
-                        <li className='mb-2'>
-                            {"\u25CF "}
-                            {t(
-                                "Licensed by a State Board to provide counseling"
-                            )}
-                        </li>
                     </ul>{" "}
-                    {user.isTherapist ? (
-                        <h2 className='text-lg font-poppins text-NeutralBlack dark:text-NeutralWhite'>
-                            {t("Thank you for being a part of our team")}.
-                        </h2>
+                    {user !== undefined ? (
+                        // User is identified
+                        user.isTherapist ? (
+                            <h2 className='text-lg font-poppins text-NeutralBlack dark:text-NeutralWhite'>
+                                {t("Thank you for being a part of our team")}.
+                            </h2>
+                        ) : (
+                            // Non-therapist identified user
+                            <Link
+                                href='/therapist'
+                                className='mt-3 flex items-center justify-center self-end w-28 h-10 rounded-md text-base font-poppins font-regular dark:text-NeutralWhite dark:bg-Dark_Primary dark:group-hover:bg-[#3E4E68] bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
+                            >
+                                {t("Next")}
+                            </Link>
+                        )
                     ) : (
+                        // User is not identified
                         <Link
                             href='/therapist'
-                            className=' mt-3 flex items-center justify-center self-end w-28 h-10 rounded-md text-base font-poppins font-regular dark:text-NeutralWhite dark:bg-Dark_Primary dark:group-hover:bg-[#3E4E68]  bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
+                            className='mt-3 flex items-center justify-center self-end w-28 h-10 rounded-md text-base font-poppins font-regular dark:text-NeutralWhite dark:bg-Dark_Primary dark:group-hover:bg-[#3E4E68] bg-Accent text-NeutralBlack group-hover:bg-[#879AB8] group-hover:text-NeutralWhite group-hover:scale-105 duration-500'
                         >
-                            {" "}
                             {t("Next")}
                         </Link>
                     )}

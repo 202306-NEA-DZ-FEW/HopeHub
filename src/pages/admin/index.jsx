@@ -46,7 +46,7 @@ export default function AdminDashboard({
 }) {
     const { t } = useTranslation("common");
     // const [emails, setEmails] = useState([]);
-    const [visibleSection, setVisibleSection] = useState("therapists");
+    const [visibleSection, setVisibleSection] = useState("dashboard");
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [selectedBlog, setSelectedBlog] = useState(null);
     const [blogs, setBlogs] = useState(initialBlogs);

@@ -147,7 +147,7 @@ export default function UserProfile({ user }) {
                     email: email,
                     phoneNumber: phone,
                     password: password,
-                    photoURL: cloudinaryImage,
+                    photoURL: cloudinaryImage ? cloudinaryImage : "",
                     idcard: idcard,
                 });
                 await updateUserProfile(); // change the data in firebase
@@ -213,8 +213,7 @@ export default function UserProfile({ user }) {
             if (password !== "") handlePsswordChange();
             if (fullName !== auth.currentUser.displayName) handelNameChange();
             if (phone !== auth.currentUser.phoneNumber) handlePhoneChange();
-            if (cloudinaryImage !== auth.currentUser.photoURL)
-                handlePhotoChange();
+            if (cloudinaryImage !== user.photoURL) handlePhotoChange();
             // update the user collection in firestore
             await updateDoc(doc(db, "users", user.uid), {
                 ...user,
@@ -227,7 +226,7 @@ export default function UserProfile({ user }) {
                 email: email,
                 phoneNumber: phone,
                 password: password,
-                photoURL: cloudinaryImage,
+                photoURL: cloudinaryImage ? cloudinaryImage : "",
                 idcard: idcard,
             });
             console.log("save for uid", auth.currentUser);

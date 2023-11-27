@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="bg-NeutralWhite dark:bg-Dark_Accent ltr"
+  className=" bg-NeutralWhite dark:bg-Dark_Accent ltr"
 >
   <nav
     style={
