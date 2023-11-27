@@ -88,7 +88,7 @@ function BookingPage({ dates, user }) {
             <Head>
                 <title>{t("Booking")}</title>
             </Head>
-            <div className='my-12'>{Step()}</div>
+            <div className='my-12 md:py-10 md:pb-16'>{Step()}</div>
         </Layout>
     );
 }

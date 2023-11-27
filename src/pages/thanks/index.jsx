@@ -45,7 +45,7 @@ function Thanks({ user }) {
     return (
         <Layout user={user}>
             <main
-                className='h-fit -mt-16 py-48 px-20 flex flex-col items-center bg-no-repeat bg-cover text-NeutralWhite dark:text-NeutralBlack font-poppins'
+                className='h-full pb-40 -mt-16 py-56  px-20 flex flex-col items-center bg-no-repeat bg-cover text-NeutralWhite dark:text-NeutralBlack font-poppins'
                 style={{
                     backgroundImage: `url(${background})`,
                 }}
@@ -53,12 +53,12 @@ function Thanks({ user }) {
                 <h1 className='text-7xl font-poppins font-extrabold text-NeutralWhite dark:text-NeutralBlack w-full text-left'>
                     {t("Thank you")}
                 </h1>
-                <p className='font-medium text-2xl text-NeutralWhite dark:text-NeutralBlack w-full py-5'>
+                <p className='pb-40 font-medium text-2xl text-NeutralWhite dark:text-NeutralBlack w-full py-5'>
                     {text}
                 </p>
                 <Link
                     href='/'
-                    className='btn ml-auto font-poppins border-none font-medium text-2xl bg-Accent text-NeutralBlack dark:text-NeutralWhite  dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
+                    className='btn mb-56 ml-auto font-poppins border-none font-medium text-2xl bg-Accent text-NeutralBlack dark:text-NeutralWhite  dark:bg-Dark_Accent dark:hover:bg-[#3E4E68]  hover:bg-[#879AB8] hover:text-NeutralWhite hover:scale-105 duration-500'
                 >
                     {t("Back to Home")}
                 </Link>

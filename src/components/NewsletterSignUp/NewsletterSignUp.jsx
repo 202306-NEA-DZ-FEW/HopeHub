@@ -45,7 +45,7 @@ function NewsletterSignUp() {
                 blogContent += `
         <div style='display: flex; align-items: center; padding-bottom: 20px;'>
             <div style='width: 300px; height: 200px;'>
-            <a href='https://hope-hub-w4pj.vercel.app/blogs/${blog.id}' target='_blank'>
+            <a href='https://hope-hub.vercel.app/blogs/${blog.id}' target='_blank'>
             <img src='${blog.imageURL}' alt='${blog.title}' style='width: 100%; height: 100%; object-fit: cover;' />
         </a>
                     </div>
