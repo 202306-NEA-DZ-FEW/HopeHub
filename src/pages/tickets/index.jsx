@@ -87,7 +87,7 @@ const Tickets = ({ user }) => {
                     {cards}
                 </div>
             </div>
-            <div className='pb-16 bg-slate-800'>
+            <div className='pb-16 dark:bg-slate-800'>
                 {user.totalTickets == 0 || user.totalTickets == undefined ? (
                     <h2 className='font-poppins text-2xl text-NeutralBlack dark:text-NeutralWhite px-10 pt-8 '>
                         {t("You currently have")} 0 {t("tickets")}.

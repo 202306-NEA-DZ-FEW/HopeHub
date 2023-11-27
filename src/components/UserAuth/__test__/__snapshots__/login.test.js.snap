@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="font-poppins flex flex-col items-start justify-center w-full "
+  className="pt-2 md:pt-40  font-poppins flex flex-col items-start justify-center w-full "
 >
   <h2
     className=" font-extrabold text-4xl text-NeutralBlack my-8"

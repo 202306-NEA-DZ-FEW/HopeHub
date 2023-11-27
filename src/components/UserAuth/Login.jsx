@@ -82,7 +82,7 @@ function Login({ isChecked, setChecked }) {
 
     return (
         <>
-            <div className='font-poppins flex flex-col items-start justify-center w-full '>
+            <div className='pt-2 md:pt-40  font-poppins flex flex-col items-start justify-center w-full '>
                 <Head>
                     <title>Log In</title>
                 </Head>

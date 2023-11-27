@@ -108,7 +108,7 @@ function Signup({ isChecked, setChecked }) {
 
     return (
         <>
-            <div className='font-poppins flex flex-col items-start justify-center w-full '>
+            <div className=' font-poppins flex flex-col items-start justify-center w-full '>
                 <Head>
                     <title>Sign Up</title>
                 </Head>

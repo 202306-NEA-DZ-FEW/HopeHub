@@ -380,7 +380,7 @@ export default function Navbar({ user }) {
                                                     <Link
                                                         href={`/blog/${blog.id}`}
                                                     >
-                                                        {blog.title}
+                                                        {t(blog.title)}
                                                     </Link>
                                                 </li>
                                             ))}
@@ -463,7 +463,7 @@ export default function Navbar({ user }) {
                                                     <Link
                                                         href={`/blog/${blog.id}`}
                                                     >
-                                                        {blog.title}
+                                                        {t(blog.title)}
                                                     </Link>
                                                 </li>
                                             ))}
